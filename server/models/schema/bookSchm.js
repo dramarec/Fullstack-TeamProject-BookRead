@@ -1,6 +1,10 @@
-const mongoose = require('mongoose');
-  const { Schema } = mongoose;
+
+//const mongoose = require('mongoose');
+  //const { Schema } = mongoose;
   //const mongoosePaginate = require('mongoose-paginate-v2');  
+
+const { Schema, SchemaTypes } = require("mongoose");
+
 
   const bookSchema = new Schema({
     title:  {
@@ -27,6 +31,10 @@ const mongoose = require('mongoose');
         max: [33000, 'Number of page can\'t be more than 330000'],
         required: [true, 'Enter number of pages']
       },
+    readPages:{
+      type: Number,
+      default: null
+    },
     review:{
         type: String,
         default: '',
@@ -38,21 +46,10 @@ const mongoose = require('mongoose');
         min: 0,
         max: 5
     },
-    
-    /*token: {
-        type: Number,
-    },*/
-    readingStage: {
-        type: String,
-        enum:{ 
-            values: ['done', 'reading', 'will read']
-    },
-    default: 'will read' 
-    },
-    /*creator: {
-      type: mongoose.SchemaTypes.ObjectId,
+    creator: {
+      type: SchemaTypes.ObjectId,
       ref: 'user',
-    }*/
+    }
   },
   { versionKey: false, timestamps: true }
   );
@@ -62,3 +59,12 @@ const mongoose = require('mongoose');
 
 
   module.exports = bookSchema
+
+    /*owner: {
+        type: SchemaTypes.ObjectId,
+        ref: 'user',
+        required: true,
+      }
+});
+module.exports = bookSchema;*/
+
