@@ -52,6 +52,7 @@ const LibraryForm = () => {
                   type="text"
                   value={values.bookName}
                   name="bookName"
+                  placeholder="..."
                   autoComplete="off"
                 />
                 <ErrorMessage
@@ -69,6 +70,7 @@ const LibraryForm = () => {
                   type="text"
                   value={values.bookAuthor}
                   name="bookAuthor"
+                  placeholder="..."
                   autoComplete="off"
                 />
                 <ErrorMessage
@@ -80,12 +82,12 @@ const LibraryForm = () => {
 
               <label className="bookFormListItem">
                 <span className="bookFormListItemTitle">Рік випуску</span>
-
                 <Field
                   className="bookFormInput"
                   type="text"
                   value={values.bookYear}
                   name="bookYear"
+                  placeholder="..."
                   autoComplete="off"
                 />
                 <ErrorMessage
@@ -105,6 +107,7 @@ const LibraryForm = () => {
                   type="text"
                   value={values.bookPages}
                   name="bookPages"
+                  placeholder="..."
                   autoComplete="off"
                 />
                 <ErrorMessage

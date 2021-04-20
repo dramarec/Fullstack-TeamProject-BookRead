@@ -5,9 +5,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <div className="container">
-        <LibraryForm />
-      </div>
+      <LibraryForm />
     </>
   );
 };
