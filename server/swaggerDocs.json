@@ -1,0 +1,191 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "version": "1.0.0",
+    "title": "Fullstack-TeamProject-BookRead API docs",
+    "description": "API documentation for Fullstack-TeamProject-BookRead. [backend GitHub repository](https://github.com/dramarec/Fullstack-TeamProject-BookRead/tree/dev/server)",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [{ "url": "http://localhost:5000/api" }],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "tags": [
+    {
+      "name": "Training",
+      "description": "Training ENDPOINTS"
+    }
+  ],
+  "paths": {
+    "/training": {
+      "post": {
+        "tags": ["Training"],
+        "summary": "Get contact",
+        "security": [{ "Bearer": [] }],
+        "parameters": [
+          {
+            "name": "contactId",
+            "in": "path",
+            "description": "Contact id ('id' field in contact object)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetContactById"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid id) / No token provided",
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized (invalid access token)",
+            "content": {}
+          },
+          "404": {
+            "description": "Contact not found",
+            "content": {}
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Training"],
+        "summary": "Update contact",
+        "security": [{ "Bearer": [] }],
+        "parameters": [
+          {
+            "name": "contactId",
+            "in": "path",
+            "description": "Contact id ('id' field in contact object)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "description": "Contact object (at least 1 field is required)",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchContactRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatchContactResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid id) / No token provided",
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized (invalid access token)",
+            "content": {}
+          },
+          "404": {
+            "description": "Call not found / Invalid user / Invalid session",
+            "content": {}
+          }
+        }
+      },
+      "get": {
+        "tags": ["Training"],
+        "summary": "Remove contact",
+        "security": [{ "Bearer": [] }],
+        "parameters": [
+          {
+            "name": "contactId",
+            "in": "path",
+            "description": "Contact id ('id' field in contact object)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad request (invalid id) / No token provided",
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized (invalid access token)",
+            "content": {}
+          },
+          "404": {
+            "description": "Contact not found",
+            "content": {}
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RegistrationRequest": {
+        "required": ["email", "password"],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "description": "User's password",
+            "example": "qwerty123"
+          }
+        }
+      },
+      "RegistrationResponse": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email"
+          },
+          "subscription": {
+            "type": "string",
+            "description": "subscription",
+            "example": "free"
+          },
+          "avatarURL": {
+            "type": "string",
+            "description": "avatarURL",
+            "example": "https://s.gravatar.com/avatar/aa785725ab2f6a530f673c8ec2b68979"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
