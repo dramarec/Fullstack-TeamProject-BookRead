@@ -1,4 +1,4 @@
-const { Schema } = require("mongoose");
+const { Schema, SchemaTypes } = require("mongoose");
 
 const bookSchema = Schema({
     title: {
@@ -7,5 +7,10 @@ const bookSchema = Schema({
     author: {
         type: String,
     },
+    owner: {
+        type: SchemaTypes.ObjectId,
+        ref: 'user',
+        required: true,
+      }
 });
 module.exports = bookSchema;
