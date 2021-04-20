@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 const validateUser = (req, res, next) => {
   const schema = Joi.object({
-    name: Joi.string().alphanum().min(2).max(30).required(),
+    name: Joi.string().alphanum().min(2).max(30),
     email: Joi.string().email({ minDomainSegments: 2 }).required(),
     password: Joi.string().min(6).max(20).required(),
   });
@@ -18,4 +18,4 @@ const validateUser = (req, res, next) => {
   next();
 };
 
-module.exports = { validateUser };
+module.exports = validateUser;
