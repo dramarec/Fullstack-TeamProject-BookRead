@@ -1,17 +1,3 @@
-// import { createStore, combineReducers } from 'redux';
-// import modalReducer from './reducers/modalReducer'
-
-// const rootReducer = combineReducers({
-//     modal: modalReducer
-// })
-
-// const store = createStore(rootReducer);
-
-// export default store;
-
-
-
-
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
     FLUSH,

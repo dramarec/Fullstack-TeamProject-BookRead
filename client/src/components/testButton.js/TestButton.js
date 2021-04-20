@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import modalActions from '../../redux/actions/modalAction';
 
+// DELETE AFTER TESTING!!!!!
+
 const Button = () => {
     const dispatch = useDispatch();
 
