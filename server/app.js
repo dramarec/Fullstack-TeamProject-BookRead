@@ -5,12 +5,17 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const { booksApi } = require("./api/books");
+const { usersApi } = require("./api/users")
+
+
+//const { usersApi } = require("./api/users");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 app.use("/api/books", booksApi);
+app.use("/api/users", usersApi)
 
 app.use((req, res) => {
     res.status(404).json({
