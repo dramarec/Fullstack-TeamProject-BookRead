@@ -3,14 +3,17 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const swaggerUI = require("swagger-ui-express");
 
 const { booksApi } = require("./api/books");
+const apiDocs = require("./swaggerDocs.json");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 app.use("/api/books", booksApi);
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(apiDocs));
 
 app.use((req, res) => {
   res.status(404).json({
