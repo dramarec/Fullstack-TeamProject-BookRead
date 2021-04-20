@@ -9,13 +9,25 @@ const Wrapper = styled.div`
   padding-top: 52px;
   padding-bottom: 109px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     padding-top: 20px;
     min-width: 594px;
   }
   @media screen and (min-width: 1280px) {
+    min-width: 1117px;
   }
+
   .bookForm {
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+      margin: 0px 87px 693px;
+      width: 594px;
+    }
+    @media screen and (min-width: 1280px) {
+      display: flex;
+      flex-direction: row;
+      margin: 30px 124px 680px 39px;
+      min-width: 1117px;
+    }
   }
   .bookFormList {
     display: flex;
@@ -24,13 +36,18 @@ const Wrapper = styled.div`
     @media screen and (min-width: 768px) {
     }
     @media screen and (min-width: 1280px) {
+      flex-direction: row;
     }
   }
   .bookFormListItem {
-    width: 270px;
+    @media screen and (max-width: 767px) {
+      width: 270px;
+    }
   }
   .bookFormListItem:not(:last-child) {
-    margin-right: 15px;
+    @media screen and (min-width: 1280px) {
+      margin-right: 15px;
+    }
   }
   .bookFormListItemTitle {
     font-style: normal;
@@ -60,6 +77,25 @@ const Wrapper = styled.div`
     box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
   }
   .bookFormError {
+    color: #e63946;
+    font-size: 13px;
+  }
+
+  .bookFormhelpers {
+    @media screen and (max-width: 767px) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    @media screen and (min-width: 1280px) {
+      display: flex;
+      flex-direction: row;
+    }
   }
   .bookFormBtn {
     display: flex;
@@ -73,6 +109,11 @@ const Wrapper = styled.div`
     border: 1px solid #242a37;
     background-color: #f6f7fb;
     outline: none;
+    height: 42px;
+
+    @media screen and (min-width: 1280px) {
+      margin: 36px 0px 0px 41px;
+    }
   }
   .bookFormBtn:hover,
   .bookFormBtn:focus {
@@ -80,6 +121,40 @@ const Wrapper = styled.div`
     background-color: #ff6b08;
     border: 1px solid #f6f7fb;
     outline: none;
+  }
+  .input0 {
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+      width: 594px;
+    }
+    @media screen and (min-width: 1280px) {
+      width: 376px;
+    }
+  }
+  .input1 {
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+      width: 250px;
+      margin-right: 27px;
+    }
+    @media screen and (min-width: 1280px) {
+      width: 250px;
+    }
+  }
+  .input2 {
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+      width: 145px;
+      margin-right: 27px;
+    }
+    @media screen and (min-width: 1280px) {
+      width: 130px;
+    }
+  }
+  .input3 {
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+      width: 145px;
+    }
+    @media screen and (min-width: 1280px) {
+      width: 134px;
+    }
   }
 `;
 

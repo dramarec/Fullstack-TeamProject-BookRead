@@ -10,11 +10,13 @@ const schema = Yup.object().shape({
     .required('Заповніть поле "Назва книги"'),
   bookAuthor: Yup.string().required('Заповніть поле "Автор книги"'),
   bookYear: Yup.number()
-    .min(4, 'Min значення 4 символу')
-    .required('Заповніть поле "Рік випуску"'),
+    .min(1000, 'Min значення 4 символу')
+    .required('Заповніть поле "Рік випуску"')
+    .typeError('Введіть число'),
   bookPages: Yup.number()
     .min(1, 'Min значення 1')
-    .required('Заповніть поле "Кількість сторінок"'),
+    .required('Заповніть поле "Кількість сторінок"')
+    .typeError('Введіть число'),
 });
 
 const initialState = {
@@ -48,7 +50,7 @@ const LibraryForm = () => {
               <label className="bookFormListItem">
                 <span className="bookFormListItemTitle">Назва книги</span>
                 <Field
-                  className="bookFormInput"
+                  className="bookFormInput input0"
                   type="text"
                   value={values.bookName}
                   name="bookName"
@@ -61,61 +63,62 @@ const LibraryForm = () => {
                   name="bookName"
                 />
               </label>
+              <div className="bookFormhelpers">
+                <label className="bookFormListItem">
+                  <span className="bookFormListItemTitle">Автор книги</span>
 
-              <label className="bookFormListItem">
-                <span className="bookFormListItemTitle">Автор книги</span>
+                  <Field
+                    className="bookFormInput input1"
+                    type="text"
+                    value={values.bookAuthor}
+                    name="bookAuthor"
+                    placeholder="..."
+                    autoComplete="off"
+                  />
+                  <ErrorMessage
+                    className="bookFormError"
+                    component="div"
+                    name="bookAuthor"
+                  />
+                </label>
 
-                <Field
-                  className="bookFormInput"
-                  type="text"
-                  value={values.bookAuthor}
-                  name="bookAuthor"
-                  placeholder="..."
-                  autoComplete="off"
-                />
-                <ErrorMessage
-                  className="bookFormError"
-                  component="div"
-                  name="bookAuthor"
-                />
-              </label>
+                <label className="bookFormListItem">
+                  <span className="bookFormListItemTitle">Рік випуску</span>
+                  <Field
+                    className="bookFormInput  input2"
+                    type="text"
+                    value={values.bookYear}
+                    name="bookYear"
+                    placeholder="..."
+                    autoComplete="off"
+                  />
+                  <ErrorMessage
+                    className="bookFormError"
+                    component="div"
+                    name="bookYear"
+                  />
+                </label>
 
-              <label className="bookFormListItem">
-                <span className="bookFormListItemTitle">Рік випуску</span>
-                <Field
-                  className="bookFormInput"
-                  type="text"
-                  value={values.bookYear}
-                  name="bookYear"
-                  placeholder="..."
-                  autoComplete="off"
-                />
-                <ErrorMessage
-                  className="bookFormError"
-                  component="div"
-                  name="bookYear"
-                />
-              </label>
+                <label className="bookFormListItem">
+                  <span className="bookFormListItemTitle">
+                    Кількість сторінок
+                  </span>
 
-              <label className="bookFormListItem">
-                <span className="bookFormListItemTitle">
-                  Кількість сторінок
-                </span>
-
-                <Field
-                  className="bookFormInput"
-                  type="text"
-                  value={values.bookPages}
-                  name="bookPages"
-                  placeholder="..."
-                  autoComplete="off"
-                />
-                <ErrorMessage
-                  className="bookFormError"
-                  component="div"
-                  name="bookPages"
-                />
-              </label>
+                  <Field
+                    className="bookFormInput input3"
+                    type="text"
+                    value={values.bookPages}
+                    name="bookPages"
+                    placeholder="..."
+                    autoComplete="off"
+                  />
+                  <ErrorMessage
+                    className="bookFormError"
+                    component="div"
+                    name="bookPages"
+                  />
+                </label>
+              </div>
             </div>
             <button type="submit" className="bookFormBtn">
               Додати
