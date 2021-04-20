@@ -2,8 +2,8 @@ const { booksServices } = require("../../services");
 
 const addNewBook = async (req, res, next) => {
     try {
-      //const userID = req.user.id
-      const book = await booksServices.addNewBook(req.body,/*userID*/ )
+      const userID = req.user.id
+      const book = await booksServices.addNewBook(req.body, userID )
       if (book)
       {
         res.status(201).json({

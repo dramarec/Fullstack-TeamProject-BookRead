@@ -1,8 +1,4 @@
 
-//const mongoose = require('mongoose');
-  //const { Schema } = mongoose;
-  //const mongoosePaginate = require('mongoose-paginate-v2');  
-
 const { Schema, SchemaTypes } = require("mongoose");
 
 
@@ -49,12 +45,12 @@ const { Schema, SchemaTypes } = require("mongoose");
     creator: {
       type: SchemaTypes.ObjectId,
       ref: 'user',
+      required: true
     }
   },
   { versionKey: false, timestamps: true }
   );
   
-  //bookSchema.plugin(mongoosePaginate);
 
 
 
@@ -65,6 +61,6 @@ const { Schema, SchemaTypes } = require("mongoose");
         ref: 'user',
         required: true,
       }
-});
-module.exports = bookSchema;*/
+});*/
+
 

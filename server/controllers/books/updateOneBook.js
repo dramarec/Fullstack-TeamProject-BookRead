@@ -2,8 +2,9 @@ const { booksServices } = require("../../services");
 
 const updateOneBook =  async (req, res, next) => {
     try {
-      //const userID = req.user.id
-      const book  = await booksServices.updateBook(/*userID,*/ req.params.bookId, req.body);
+      const userID = req.user.id
+      console.log(userID)
+      const book  = await booksServices.updateBook(userID, req.params.bookId, req.body);
      if (book) {
       return res.status(201).json({
        status: 'success',

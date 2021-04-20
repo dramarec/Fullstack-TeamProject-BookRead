@@ -5,7 +5,7 @@ const { BooksCtrl } = require("../../controllers");
 const guard = require("../../utils/guard")
 
 
-router.get("/", BooksCtrl.get);
+router.get("/", guard, BooksCtrl.get);
 router.post('/', guard, schemaCreateBook, BooksCtrl.addNewBook)
 router.patch('/:bookId', guard, schemaUpdateBook, BooksCtrl.updateOneBook)
 
