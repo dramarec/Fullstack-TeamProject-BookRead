@@ -1,7 +1,9 @@
 const Book = require("./bookMdl");
 const User = require("./userMdl");
-
+const Training = require("./trainingMdl");
+    
 module.exports = {
-    Book,
-    User,
+  Book,
+  Training,
+  User,
 };
