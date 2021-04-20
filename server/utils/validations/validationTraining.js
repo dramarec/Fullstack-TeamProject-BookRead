@@ -1,4 +1,4 @@
-const Joi = require("joi");
+const Joi = require('joi');
 
 const schemaAddTraining = Joi.object({
   start: Joi.string()
@@ -8,7 +8,7 @@ const schemaAddTraining = Joi.object({
       const validDate = regEx.test(value);
 
       if (!validDate) {
-        return helpers.error(400, "invalid format, use YYYY-MM-DD");
+        return helpers.error(400, 'invalid format, use YYYY-MM-DD');
       }
 
       return value;
@@ -22,7 +22,7 @@ const schemaAddTraining = Joi.object({
       const validDate = regEx.test(value);
 
       if (!validDate) {
-        return helpers.error(400, "invalid format, use YYYY-MM-DD");
+        return helpers.error(400, 'invalid format, use YYYY-MM-DD');
       }
 
       return value;
@@ -43,10 +43,10 @@ const validate = (schema, obj, next) => {
     const [{ message }] = error.details;
 
     return next({
-      status: "bad request",
+      status: 'bad request',
       code: 400,
-      data: "Bad Request",
-      message: `Filed: ${message.replace(/"/g, "")}`,
+      data: 'Bad Request',
+      message: `Filed: ${message.replace(/"/g, '')}`,
     });
   }
 
