@@ -8,30 +8,7 @@ const App = () => {
             <Button />
             <Modal>
                 <h1>Hello</h1>
-                <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-                <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-                <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-                <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-                <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-                <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-                <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-                <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-                <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-                <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-                <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-                <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
             </Modal>
-            <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-            <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-            <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-            <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-            <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-            <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-            <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-            <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-            <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-            <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
-            <p>Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem Lorem lorem lorem</p>
         </div>
     );
 };

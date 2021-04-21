@@ -7,7 +7,7 @@ import modalActions from '../../redux/actions/modalAction';
 const Button = () => {
     const dispatch = useDispatch();
 
-    const handleClick = e => {
+    const handleClick = () => {
         dispatch(modalActions.toggleModal());
         document.body.style.overflow = 'visible';
     };
