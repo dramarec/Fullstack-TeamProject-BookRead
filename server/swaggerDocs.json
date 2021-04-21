@@ -76,7 +76,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PatchContactRequest"
+                "$ref": "#/components/schemas/RegistrationRequest"
               }
             }
           },
@@ -88,7 +88,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PatchContactResponse"
+                  "$ref": "#/components/schemas/RegistrationResponse"
                 }
               }
             }
@@ -144,18 +144,26 @@
   "components": {
     "schemas": {
       "RegistrationRequest": {
-        "required": ["email", "password"],
+        "required": ["startDate", "endDate", "books"],
         "type": "object",
         "properties": {
-          "email": {
+          "startDate": {
             "type": "string",
-            "description": "User's email",
-            "format": "email"
+            "example": "2020-12-31",
+            "description": "Planning's start date"
           },
-          "password": {
+          "endDate": {
             "type": "string",
-            "description": "User's password",
-            "example": "qwerty123"
+            "example": "2020-01-05",
+            "description": "Planning's end date"
+          },
+          "books": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "id of the book you want to add to planning"
+            },
+            "example": ["507f1f77bcf86cd799439013"]
           }
         }
       },
