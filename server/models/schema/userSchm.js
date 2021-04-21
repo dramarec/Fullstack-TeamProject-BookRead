@@ -29,6 +29,7 @@ const userSchema = new Schema(
     ],
     training: {
       type: SchemaTypes.ObjectId,
+      default: null,
       ref: 'Training',
     },
     token: {
