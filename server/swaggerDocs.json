@@ -193,7 +193,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PatchContactRequest"
+                "$ref": "#/components/schemas/RegistrationRequest"
               }
             }
           },
@@ -205,7 +205,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PatchContactResponse"
+                  "$ref": "#/components/schemas/RegistrationResponse"
                 }
               }
             }
@@ -258,7 +258,7 @@
       }
     }
   },
-  "components": {
+ "components": {
     "schemas": {
       "RegistrationRequest": {
         "type": "object",
