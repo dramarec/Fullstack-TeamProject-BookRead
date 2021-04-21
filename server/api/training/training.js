@@ -6,7 +6,7 @@ const router = express.Router();
 const { TrainingCtrl } = require('../../controllers');
 
 router.post('/', guard, validate.addTraining, TrainingCtrl.addTraining);
-router.patch('/', guard, validate.addRead);
+router.patch('/', guard, validate.addRead, TrainingCtrl.addRead);
 router.get('/', guard);
 
 module.exports = router;
