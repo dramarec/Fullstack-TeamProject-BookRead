@@ -8,7 +8,7 @@ const getTraining = async (req, res, next) => {
     return await Training.findOne({ _id: user?.training })
       .populate('books')
       .exec(async (err, data) => {
-        console.log(data);
+        console.log(data, 'data');
         if (err) {
           next(err);
         }
@@ -22,7 +22,7 @@ const getTraining = async (req, res, next) => {
 
         const dateLuxon = DateTime.now()
           .setZone('Europe/Kiev')
-          .toFormat('yyyy LL dd')
+          .toFormat('yyyy-LL-dd')
           .split('-');
 
         const endTime = data.end.split('-');
@@ -39,7 +39,7 @@ const getTraining = async (req, res, next) => {
         );
 
         const duration = endDate.diff(dateNow, 'days').toObject().days;
-
+        console.log(duration, 'duration');
         if (!duration || duration < 1) {
           await Training.deleteOne({ _id: req.user.training });
 
