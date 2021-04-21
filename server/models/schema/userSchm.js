@@ -4,7 +4,7 @@ const SALT_FACTOR = 6;
 
 const userSchema = new Schema(
   {
-    name: {
+    username: {
       type: String,
       required: [true, 'Name is required'],
     },
