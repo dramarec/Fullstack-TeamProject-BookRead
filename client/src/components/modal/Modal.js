@@ -4,7 +4,7 @@ import ModalWrapper from './Modal.styled';
 import getModalState from '../../redux/selectors/modalSelector';
 import modalActions from '../../redux/actions/modalAction';
 
-const Modal = ({ children, text }) => {
+const Modal = ({ children }) => {
     const modalActive = useSelector(getModalState);
     const dispatch = useDispatch();
 
@@ -34,7 +34,7 @@ const Modal = ({ children, text }) => {
 
     return (
         <>
-            {modalActive && (< ModalWrapper onClick={handleClick} data-name='wrapper'>
+            {modalActive.modal && (< ModalWrapper onClick={handleClick} data-name='wrapper'>
                 <div className='modal'>
                     {children}
                     <button className='closeButton' type='button' onClick={closeModal}>Cancel</button>

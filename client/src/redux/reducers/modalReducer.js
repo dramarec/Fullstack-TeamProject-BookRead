@@ -9,3 +9,31 @@ const modalReducer = (state = false, action) => {
     }
 }
 export default modalReducer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { createReducer } from '@reduxjs/toolkit';
+// import modalActions from '../actions/modalAction';
+
+// const modalReducer = createReducer(false, {
+//     [modalActions.toggleModal]: state => !state,
+// });
+
+// export default modalReducer;
