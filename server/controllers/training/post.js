@@ -6,29 +6,35 @@ const addTraining = async (req, res, next) => {
     const { start, end, books } = req.body;
     const user = req.user;
 
-    const startDay = start.split('-');
-    const endDay = end.split('-');
+    const startTime = start.split('-');
+    const endTime = end.split('-');
 
-    const starTime = DateTime.local(
-      Number(startDay[0]),
-      Number(startDay[1]),
-      Number(startDay[2]),
+    const startDate = DateTime.local(
+      Number(startTime[0]),
+      Number(startTime[1]),
+      Number(startTime[2]),
+      // startTime[0],
+      // startTime[1],
+      // startTime[2],
     );
-    const endTime = DateTime.local(
-      Number(endDay[0]),
-      Number(endDay[1]),
-      Number(endDay[2]),
+    const endDate = DateTime.local(
+      Number(endTime[0]),
+      Number(endTime[1]),
+      Number(endTime[2]),
+      // endTime[0],
+      // endTime[1],
+      // endTime[2],
     );
 
-    const period = endTime.diff(starTime, 'days').toObject().days;
+    const period = endDate.diff(startDate, 'days').toObject().days;
 
-    if (!period) {
-      return res.status(400).json({
-        status: 'error',
-        code: 400,
-        message: 'wrong dates',
-      });
-    }
+    // if (!period || period < 1) {
+    //   return res.status(400).json({
+    //     status: 'error',
+    //     code: 400,
+    //     message: 'wrong dates',
+    //   });
+    // }
 
     let totalPages = 0;
     let booksCompleted = [];

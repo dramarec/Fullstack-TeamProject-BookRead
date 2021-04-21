@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.use('/api/books', booksApi);
 app.use('/api/users', usersApi);
-app.use('/training', trainingApi);
+app.use('/api/training', trainingApi);
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(apiDocs));
 
 app.use((req, res) => {
