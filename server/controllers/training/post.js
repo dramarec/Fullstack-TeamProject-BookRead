@@ -8,7 +8,6 @@ const addTraining = async (req, res, next) => {
 
     const startTime = start.split('-');
     const endTime = end.split('-');
-    console.log(startTime, endTime);
 
     const startDate = DateTime.local(
       Number(startTime[0]),
