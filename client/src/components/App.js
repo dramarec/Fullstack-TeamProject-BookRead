@@ -1,11 +1,16 @@
-import Header from './header/Header';
+import React from 'react';
+import Modal from './modal/Modal'
+import Button from './testButton.js/TestButton'
 
 const App = () => {
-  return (
-    <>
-      <Header />
-    </>
-  );
+    return (
+        <div>
+            <Button />
+            <Modal>
+                <h1>Hello</h1>
+            </Modal>
+        </div>
+    );
 };
 
 export default App;
