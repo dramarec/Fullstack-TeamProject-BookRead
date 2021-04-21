@@ -90,7 +90,8 @@ const Wrapper = styled.div`
   }
   .bookFormInput:hover,
   .bookFormInput:focus {
-    border: none;
+    border: 1px solid #f6f7fb;
+    outline: none;
     box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
   }
   .bookFormError {
