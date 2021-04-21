@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useLocation } from 'react-router-dom';
 import AuthFormStyled from './AuthFormStyled';
+import Two from './icons/two';
 
 const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
     let location = useLocation();
@@ -11,8 +12,9 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
             : { email: '', password: '' };
     return (
         <AuthFormStyled>
-
-            <button className="btn-google">Google</button>
+        
+<div className="container">
+           <div className="bg-ph">
             <Formik
                 initialValues={{ ...initialState }}
                 validationSchema={errorMessagesSchema}
@@ -21,9 +23,13 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                 }}
             >
                 {({ errors, touched }) => (
-                    <Form className="authForm">
+                        <Form className="authForm">
+                             <button className="btn-google">Google</button>
                         {location.pathname === '/signup' && (
-                            <label className="authFormFild">
+                                    <label className="authFormFild">
+                                        <span className="authFormText">
+                                    Им'я <sup className="authFormStar">*</sup>
+                                </span>
                                 <Field
                                     className={`authFormInput ${
                                         touched.username &&
@@ -34,9 +40,7 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                                     name="username"
                                     placeholder=" "
                                 />
-                                <span className="authFormText">
-                                    Имя <sup className="authFormStar">*</sup>
-                                </span>
+                                
 
                                 <span className="authError">
                                     <ErrorMessage name="username" />
@@ -44,6 +48,9 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                             </label>
                         )}
                         <label className="authFormFild">
+                             <span className="authFormText">
+                                Електронна адреса <sup className="authFormStar">*</sup>
+                            </span>
                             <Field
                                 className={`authFormInput ${
                                     touched.email &&
@@ -52,17 +59,39 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                                 }`}
                                 type="text"
                                 name="email"
-                                placeholder=" "
+                                placeholder="your@email.com"
                             />
-                            <span className="authFormText">
-                                E-mail <sup className="authFormStar">*</sup>
-                            </span>
+                           
 
                             <span className="authError">
                                 <ErrorMessage name="email" />
                             </span>
                         </label>
-                        <label className="authFormFild">
+                             <label className="authFormFild">
+                                 <span className="authFormText">
+                                Пароль <sup className="authFormStar">*</sup>
+                            </span>
+                             <Field
+                                className={`authFormInput ${
+                                    touched.password &&
+                                    errors.password &&
+                                    'authInputError'
+                                }`}
+                                type="password"
+                                name="password"
+                                placeholder="Пароль"
+                            />
+                    
+
+                            <span className="authError">
+                                <ErrorMessage name="password" />
+                            </span>
+                                </label>
+                                {/*
+                                <label className="authFormFild">
+                                 <span className="authFormText">
+                                Підтвердіть пароль <sup className="authFormStar">*</sup>
+                            </span>
                             <Field
                                 className={`authFormInput ${
                                     touched.password &&
@@ -71,27 +100,46 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                                 }`}
                                 type="password"
                                 name="password"
-                                placeholder=" "
+                                placeholder="Пароль"
                             />
-                            <span className="authFormText">
-                                Пароль <sup className="authFormStar">*</sup>
-                            </span>
+                           
 
                             <span className="authError">
                                 <ErrorMessage name="password" />
                             </span>
-                        </label>
+                        </label> */}
                         <button
                             className="mainButton authFormBtn"
                             type="submit"
                         >
                             {location.pathname === '/signup'
                                 ? 'Реєстрація'
-                                : 'Вхід'}
-                        </button>
+                                : 'Увійти'}
+                            </button>
+                            <button
+                            className="mainButton authFormBtnSec"
+                            type="submit"
+                        >
+                            {location.pathname === '/signup'
+                                ? 'Увійти'
+                                : 'Реєстрація'}
+                            </button>
+                            
                     </Form>
                 )}
-            </Formik>
+                </Formik>
+                </div>
+                <div className="div-for-fl">
+                    <Two />
+                        <p className="teza">Книги — это корабли мысли,<br/>
+                    странствующие по волнам <br/>
+                        времени и бережно несущие <br/>
+                     свой драгоценный груз от <br/>
+                     поколения к поколению.</p>
+                    <p className="becon line">Бэкон Ф.</p>
+                </div>
+                
+                </div>
        </AuthFormStyled>
     );
 };
