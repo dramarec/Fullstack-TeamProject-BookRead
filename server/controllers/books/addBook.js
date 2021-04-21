@@ -1,3 +1,4 @@
+const { Book } = require('../../models');
 const { booksServices } = require('../../services');
 
 const addNewBook = async (req, res, next) => {
@@ -22,13 +23,13 @@ const addNewBook = async (req, res, next) => {
     const book = req.body;
     const user = req.user;
 
-    const newBook = await booksServices.addNewBook({
+    const newBook = await Book.create({
       ...book,
-      finishedPages: 0,
+      readPages: 0,
     });
 
     user?.books.push(newBook);
-    user?.save();
+    await user?.save();
 
     res.status(201).json({
       status: 'success',
