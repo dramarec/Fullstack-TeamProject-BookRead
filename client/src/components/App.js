@@ -1,20 +1,22 @@
 import React from 'react';
-import Modal from './modal/Modal'
-import Button from './testButton.js/TestButton'
+import Modal from './modal/Modal';
+import Button from './testButton.js/TestButton';
 import Header from './header/Header';
-import AuthForm  from './auth/AuthForm'
+import AuthForm from './auth/AuthForm';
+import LibraryForm from './libraryForm/LibraryForm';
 
 const App = () => {
-    return (
-        <div>
-            <Button />
-            <Modal>
-                <h1>Hello</h1>
-            </Modal>
-            <Header />
-            <AuthForm />
-        </div>
-    );
+  return (
+    <div>
+      <Button />
+      <Modal>
+        <h1>Hello</h1>
+      </Modal>
+      <Header />
+      <AuthForm />
+      <LibraryForm />
+    </div>
+  );
 };
 
 export default App;
