@@ -22,8 +22,9 @@ const reg = async (req, res, next) => {
       status: 'success',
       data: {
         user: {
-          id: newUser.id,
           email: newUser.email,
+          userId: newUser.id,
+          username: newUser.username,
         },
       },
     });
@@ -67,7 +68,7 @@ const logout = async (req, res, next) => {
     const id = req.user.id;
     await userServices.updateToken(id, null);
     return res.status(204).json({
-      status: 'No Content',
+      status: 'Successful operation',
       code: 204,
     });
   } catch (e) {

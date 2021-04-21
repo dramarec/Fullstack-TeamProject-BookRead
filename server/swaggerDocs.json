@@ -14,11 +14,128 @@
   "produces": ["application/json"],
   "tags": [
     {
+      "name": "Auth",
+      "description": "Authorization ENDPOINTS"
+    },
+    {
       "name": "Training",
       "description": "Training ENDPOINTS"
     }
+     
   ],
+
+
+
   "paths": {
+    "/users/auth/register": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "User registration",
+
+        "security": [],
+        "parameters": [],
+
+         "requestBody": {
+          "description": "Registration's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegistrationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid request boby)",
+            "content": {}
+          },
+          "409": {
+            "description": "Provided email already exists",
+            "content": {}
+          }
+        }
+      }
+    },
+     "/users/auth/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "User authentication",
+
+        "security": [],
+        "parameters": [],
+
+         "requestBody": {
+          "description": "Authentication's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid request boby)",
+            "content": {}
+          },
+          "401": {
+            "description": "Email or password is wrong",
+            "content": {}
+          }
+        }
+      }
+    },
+     "/users/auth/logout": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "User logout",
+        "security": [{ "Bearer": [] }],
+
+        "parameters": [],
+
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+           "400": {
+            "description": "No token provided",
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized (invalid access token)",
+            "content": {}
+          },
+          "404": {
+            "description": "Invalid user / Invalid session",
+            "content": {}
+          }
+        }
+      }
+    },
     "/training": {
       "post": {
         "tags": ["Training"],
@@ -141,29 +258,26 @@
       }
     }
   },
-  "components": {
+ "components": {
     "schemas": {
       "RegistrationRequest": {
-        "required": ["startDate", "endDate", "books"],
         "type": "object",
+        "required": ["username", "email", "password"],
         "properties": {
-          "startDate": {
+           "username": {
             "type": "string",
-            "example": "2020-12-31",
-            "description": "Planning's start date"
+            "description": "User's name",
+            "example": "User"
           },
-          "endDate": {
+          "email": {
             "type": "string",
-            "example": "2020-01-05",
-            "description": "Planning's end date"
+            "description": "User's email",
+            "format": "email"
           },
-          "books": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "description": "id of the book you want to add to planning"
-            },
-            "example": ["507f1f77bcf86cd799439013"]
+          "password": {
+            "type": "string",
+            "description": "User's password",
+            "example": "qwerty123"
           }
         }
       },
@@ -175,15 +289,56 @@
             "description": "User's email",
             "format": "email"
           },
-          "subscription": {
+          "userId": {
             "type": "string",
-            "description": "subscription",
-            "example": "free"
+            "description": "User's id",
+            "example": "60801d991928a48364f687d2"
           },
-          "avatarURL": {
+          "username": {
             "type": "string",
-            "description": "avatarURL",
-            "example": "https://s.gravatar.com/avatar/aa785725ab2f6a530f673c8ec2b68979"
+            "description": "User's name",
+            "example": "User"
+          }
+        }
+      },
+      "LoginRequest": {
+        "type": "object",
+        "required": ["email", "password"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "description": "User's password",
+            "example": "qwerty123"
+          }
+        }
+      },
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "User's token",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxZDk5MTkyOGE0ODM2NGY2ODdkMiIsImlhdCI6MTYxOTAwOTI2NywiZXhwIjoxNjIxNjAxMjY3fQ.LPz3owBfisJKIbdU-q9vjt7sGSFDSw_Otd9zSnBRuvU"
+          },
+          "user": {
+            "type": "object",
+            "description": "Information about user",
+            "example": {
+              "books": [],
+              "training": null,
+              "token": null,
+              "_id": "60801d991928a48364f687d2",
+              "name": "User",
+              "email": "user@example.com",
+              "password": "$2a$06$hYzvTDkcWa4u/3hDeZtp2.HtTHJEcj2YaNpRFysWf5QiIPew6mvbe",
+              "createdAt": "2021-04-21T12:42:01.460Z",
+              "updatedAt": "2021-04-21T12:42:01.460Z"
+            }
           }
         }
       }
