@@ -5,6 +5,8 @@ import Header from './header/Header';
 import AuthForm from './auth/AuthForm';
 import LibraryForm from './libraryForm/LibraryForm';
 
+import LibraryPage from '../pages/library/LibraryPage';
+
 const App = () => {
   return (
     <div>
@@ -14,9 +16,10 @@ const App = () => {
       </Modal>
       <Header />
       <AuthForm />
-      <LibraryForm />
+      <LibraryPage/>
     </div>
   );
 };
 
 export default App;
+//<LibraryForm />
