@@ -1,11 +1,11 @@
-import bookOrg from '../../../assets/svg/bookOrg.svg'
+import book3 from '../../../assets/svg/book3.svg'
 import ReadBookItemMobileStyled from '../readBooks/ReadBookItemMobileStyled';
 
 const WillReadBookItemMobile = () => {
     return (
         <ReadBookItemMobileStyled>
         <div className='bookName flex'>
-        <img src={bookOrg} alt=''/>
+        <img src={book3} alt=''/>
         <p>Психбольница в руках пациентов...</p>
         </div>
         <div className='author flex'>
