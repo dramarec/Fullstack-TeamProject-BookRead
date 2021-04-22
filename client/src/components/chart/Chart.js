@@ -13,10 +13,10 @@ import ChartWrapper from './Chart.styled';
 
 
 const data = [
-    { name: 'Page A', ПЛАН: 570, ФАКТ: 400 },
-    { name: 'Page B', ПЛАН: 290, ФАКТ: 450 },
-    { name: 'Page C', ПЛАН: 880, ФАКТ: 720 },
-    { name: 'Page D', ПЛАН: 260, ФАКТ: 390 }]
+    { name: 'Day 1', ПЛАН: 570, ФАКТ: 400 },
+    { name: 'Day 2', ПЛАН: 290, ФАКТ: 450 },
+    { name: 'Day 3', ПЛАН: 880, ФАКТ: 720 },
+    { name: 'Day 4', ПЛАН: 260, ФАКТ: 390 }]
 
 const style = {
     top: 100,
