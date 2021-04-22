@@ -209,6 +209,7 @@ margin-top: 28px;
         /* width: 565px; */
         max-height: 790px;
         background:  url(${imgDec}) ;
+         background-repeat: no-repeat;
         position: relative;
         .authForm {
         display: flex;

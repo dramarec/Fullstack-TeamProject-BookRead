@@ -6,6 +6,8 @@ import AuthForm from './auth/AuthForm';
 import LibraryForm from './libraryForm/LibraryForm';
 import Chart from './chart/Chart';
 
+import LibraryPage from '../pages/library/LibraryPage';
+
 const App = () => {
   return (
     <div>
@@ -18,8 +20,10 @@ const App = () => {
       <AuthForm />
       <LibraryForm />
 
+      <LibraryPage />
     </div>
   );
 };
 
 export default App;
+//<LibraryForm />

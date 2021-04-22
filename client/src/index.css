@@ -1,3 +1,15 @@
+:root {
+  --accent-color: #FF6B08;
+  --main-text: #242A37;
+  --secondary-text: #898F9F;
+  --third-text: #A6ABB9;
+  --light-text: #ffffff;
+  --main-background: #F6F7FB;
+  --table-title: #B1B5C2;
+  --box-background: #F5F7FA;
+  
+}
+
 html {
   box-sizing: border-box;
 }
@@ -14,6 +26,7 @@ body {
   background-color: white;
   color: black;
 }
+
 
 .container {
   overflow: hidden;
@@ -102,6 +115,11 @@ ul {
   list-style: none;
 }
 
+li
+{
+  list-style: none;
+}
+
 button {
   cursor: pointer;
 }
@@ -123,4 +141,42 @@ h6 {
 p {
   margin: 0;
   padding: 0;
+}
+
+.mainButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 26px;
+  background: var(--accent-color);
+  font-family: 'Montserrat-Medium';
+  font-size: 14px;
+  line-height: 2.7;
+  color: var(--light-text);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.mainButton:hover,
+.mainButton:focus {
+  background: transparent;
+  border: 2px solid var(--accent-color);
+  outline: none;
+  box-shadow: 0px 4px 30px rgba(252, 132, 45, 0.5);
+}
+.secondButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 26px;
+  font-family: 'Montserrat-Medium';
+  font-size: 14px;
+  line-height: 2.7;
+  background: transparent;
+  color: var(--main-text);
+  border: 1px solid var(--main-text);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.secondButton:hover {
+  box-shadow: 0px 4px 30px rgba(65, 61, 59, 0.5);
+  outline: none;
 }
