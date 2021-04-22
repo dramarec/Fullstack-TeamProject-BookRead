@@ -456,16 +456,37 @@
           "user": {
             "type": "object",
             "description": "Information about user",
-            "example": {
-              "books": [],
-              "training": null,
-              "token": null,
-              "_id": "60801d991928a48364f687d2",
-              "username": "User",
-              "email": "user@example.com",
-              "password": "$2a$06$hYzvTDkcWa4u/3hDeZtp2.HtTHJEcj2YaNpRFysWf5QiIPew6mvbe",
-              "createdAt": "2021-04-21T12:42:01.460Z",
-              "updatedAt": "2021-04-21T12:42:01.460Z"
+            "properties": {
+              "books": {
+                "type": "array",
+                "items":{
+                  "type":"sting",
+                  "description": "Book's id",
+                  "example": "608170ac715ef491300d3d2e"
+                }
+              },
+              "training": {
+                "type": "string",
+                "description": "Training's id",
+                "example": "608170fb715ef491300d3d2f"},
+              "token": {
+                "type": "string",
+                "description": "User's token",
+                "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxZDk5MTkyOGE0ODM2NGY2ODdkMiIsImlhdCI6MTYxOTAwOTI2NywiZXhwIjoxNjIxNjAxMjY3fQ.LPz3owBfisJKIbdU-q9vjt7sGSFDSw_Otd9zSnBRuvU"},
+              "_id":  {
+                "type": "string",
+                "description": "User's id",
+                "example": "608048faa47d660830c96369"},
+              "username": {
+                "type": "string",
+                "description": "User's name",
+                "example": "User"
+              },
+              "email": {
+                "type": "string",
+                "description": "User's email",
+                "example": "user@example.com"
+              }
             }
           }
         }
