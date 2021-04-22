@@ -14,11 +14,128 @@
   "produces": ["application/json"],
   "tags": [
     {
+      "name": "Auth",
+      "description": "Authorization ENDPOINTS"
+    },
+    {
       "name": "Training",
       "description": "Training ENDPOINTS"
     }
+     
   ],
+
+
+
   "paths": {
+    "/users/auth/register": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "User registration",
+
+        "security": [],
+        "parameters": [],
+
+         "requestBody": {
+          "description": "Registration's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegistrationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid request boby)",
+            "content": {}
+          },
+          "409": {
+            "description": "Provided email already exists",
+            "content": {}
+          }
+        }
+      }
+    },
+     "/users/auth/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "User authentication",
+
+        "security": [],
+        "parameters": [],
+
+         "requestBody": {
+          "description": "Authentication's object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid request boby)",
+            "content": {}
+          },
+          "401": {
+            "description": "Email or password is wrong",
+            "content": {}
+          }
+        }
+      }
+    },
+     "/users/auth/logout": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "User logout",
+        "security": [{ "Bearer": [] }],
+
+        "parameters": [],
+
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+           "400": {
+            "description": "No token provided",
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized (invalid access token)",
+            "content": {}
+          },
+          "404": {
+            "description": "Invalid user / Invalid session",
+            "content": {}
+          }
+        }
+      }
+    },
     "/training": {
       "post": {
         "tags": ["Training"],
@@ -76,7 +193,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PatchContactRequest"
+                "$ref": "#/components/schemas/RegistrationRequest"
               }
             }
           },
@@ -88,7 +205,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PatchContactResponse"
+                  "$ref": "#/components/schemas/RegistrationResponse"
                 }
               }
             }
@@ -139,14 +256,113 @@
           }
         }
       }
+    },
+    "api/books": {
+      "post": {
+        "tags": ["Book"],
+        "summary": "Add a book",
+        "security": [{ "Bearer": [] }],
+        "parameters": [   
+        ],
+        "requestBody": {
+          "description": "Info about a book",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddingBookRequest"
+              }
+            }
+            }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddingBookResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid id) / No token provided",
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized (invalid access token)",
+            "content": {}
+          },
+          "404": {
+            "description": "Invalid user / Invalid session",
+            "content": {}
+          }
+      }
+    }},
+    "api/books/{bookId}":{
+      "patch": {
+        "tags": ["Book"],
+        "summary": "Update a book",
+        "security": [{ "Bearer": [] }],
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "description": "Book's id ('id' field in book's object)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "description": "Book object",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchBookRequest"
+            }
+          }
+        }
+      
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatchContactResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid id) / No token provided",
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized (invalid access token)",
+            "content": {}
+          },
+          "404": {
+            "description": "Book not found / Invalid user / Invalid session",
+            "content": {}
+          }
+        }
+      }
     }
   },
-  "components": {
+ "components": {
     "schemas": {
       "RegistrationRequest": {
-        "required": ["email", "password"],
         "type": "object",
+        "required": ["username", "email", "password"],
         "properties": {
+           "username": {
+            "type": "string",
+            "description": "User's name",
+            "example": "User"
+          },
           "email": {
             "type": "string",
             "description": "User's email",
@@ -167,18 +383,142 @@
             "description": "User's email",
             "format": "email"
           },
-          "subscription": {
+          "userId": {
             "type": "string",
-            "description": "subscription",
-            "example": "free"
+            "description": "User's id",
+            "example": "60801d991928a48364f687d2"
           },
-          "avatarURL": {
+          "username": {
             "type": "string",
-            "description": "avatarURL",
-            "example": "https://s.gravatar.com/avatar/aa785725ab2f6a530f673c8ec2b68979"
+            "description": "User's name",
+            "example": "User"
           }
         }
-      }
+      },
+      "LoginRequest": {
+        "type": "object",
+        "required": ["email", "password"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "description": "User's password",
+            "example": "qwerty123"
+          }
+        }
+      },
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "User's token",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxZDk5MTkyOGE0ODM2NGY2ODdkMiIsImlhdCI6MTYxOTAwOTI2NywiZXhwIjoxNjIxNjAxMjY3fQ.LPz3owBfisJKIbdU-q9vjt7sGSFDSw_Otd9zSnBRuvU"
+          },
+          "user": {
+            "type": "object",
+            "description": "Information about user",
+            "example": {
+              "books": [],
+              "training": null,
+              "token": null,
+              "_id": "60801d991928a48364f687d2",
+              "name": "User",
+              "email": "user@example.com",
+              "password": "$2a$06$hYzvTDkcWa4u/3hDeZtp2.HtTHJEcj2YaNpRFysWf5QiIPew6mvbe",
+              "createdAt": "2021-04-21T12:42:01.460Z",
+              "updatedAt": "2021-04-21T12:42:01.460Z"
+            }
+          }
+        }
+      },
+
+      "AddingBookRequest": {
+        "required": ["title", "numberOfPages"],
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Book's title",
+            "example": "Harry Potter"
+          },
+          "author": {
+            "type": "string",
+            "description": "Book's author",
+            "example": "J. K. Rowling"
+          },
+          "year": {
+            "type": "number",
+            "description": "Book's year",
+            "example": "1997"
+          },
+          "numberOfPages": {
+            "type": "number",
+            "description": "numberOfPages's title",
+            "example": "123"
+          }
+        }
+      },
+      "AddingBookResponse": {
+        "type": "object",
+        "properties": {
+           "title": {
+            "type": "string",
+            "description": "Book's title",
+            "example": "Harry Porter"
+          },
+           "bookId": {
+            "type": "string",
+            "description": "book's id",
+            "example": "07ef3f4358b773378699381"
+          },
+          "year": {
+            "type": "integer",
+            "description": "Book's year",
+            "example": "1997"
+          },
+          "numberOfPages": {
+            "type": "integer",
+            "description": "numberOfPages's title",
+            "example": "123"
+          }
+        }
+    },
+    "PatchBookRequest": {
+        "required": [],
+        "type": "object",
+        "properties": {
+          "review": {
+            "type": "string",
+            "description": "Book's review",
+            "example": "Harry Potter"
+          },
+          "rating": {
+            "type": "string",
+            "description": "Book's rating",
+            "example": "4"
+          }        
+        }
+      },
+      "PatchBookResponse": {
+        "required": [],
+        "type": "object",
+        "properties": {
+          "review": {
+            "type": "string",
+            "description": "Book's review",
+            "example": "Harry Potter"
+          },
+          "rating": {
+            "type": "string",
+            "description": "Book's rating",
+            "example": "4"
+          }
+        }
     },
     "securitySchemes": {
       "Bearer": {
@@ -188,4 +528,5 @@
       }
     }
   }
+ }
 }

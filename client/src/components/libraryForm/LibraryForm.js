@@ -9,25 +9,25 @@ const getYear = () => {
 };
 
 const schema = Yup.object().shape({
-  bookName: Yup.string()
+  title: Yup.string()
     .min(2, 'Занадто коротка назва!')
     .required('Заповніть поле "Назва книги"'),
-  bookAuthor: Yup.string().required('Заповніть поле "Автор книги"'),
-  bookYear: Yup.number()
+  author: Yup.string().required('Заповніть поле "Автор книги"'),
+  year: Yup.number()
     .min(1000, 'Повинно бути 4 символу')
     .max(getYear(), 'Не більш, ніж поточний рік')
     .required('Заповніть поле "Рік випуску"')
     .typeError('Введіть число'),
-  bookPages: Yup.number()
+  numberOfPages: Yup.number()
     .min(1, 'Min значення 1')
     .required('Заповніть поле "Кількість сторінок"')
     .typeError('Введіть число'),
 });
 
 const initialState = {
-  bookName: '',
-  bookAuthor: '',
-  bookYear: '',
+  title: '',
+  author: '',
+  year: '',
   bookPages: '',
 };
 
@@ -58,15 +58,15 @@ const LibraryForm = () => {
                   <Field
                     className="bookFormInput input0"
                     type="text"
-                    value={values.bookName}
-                    name="bookName"
+                    value={values.title}
+                    name="title"
                     placeholder="..."
                     autoComplete="off"
                   />
                   <ErrorMessage
                     className="bookFormError"
                     component="div"
-                    name="bookName"
+                    name="title"
                   />
                 </div>
               </label>
@@ -77,15 +77,15 @@ const LibraryForm = () => {
                     <Field
                       className="bookFormInput input1"
                       type="text"
-                      value={values.bookAuthor}
-                      name="bookAuthor"
+                      value={values.author}
+                      name="author"
                       placeholder="..."
                       autoComplete="off"
                     />
                     <ErrorMessage
                       className="bookFormError"
                       component="div"
-                      name="bookAuthor"
+                      name="author"
                     />
                   </div>
                 </label>
@@ -96,15 +96,15 @@ const LibraryForm = () => {
                     <Field
                       className="bookFormInput  input2"
                       type="text"
-                      value={values.bookYear}
-                      name="bookYear"
+                      value={values.year}
+                      name="year"
                       placeholder="..."
                       autoComplete="off"
                     />
                     <ErrorMessage
                       className="bookFormError"
                       component="div"
-                      name="bookYear"
+                      name="year"
                     />
                   </div>
                 </label>
@@ -117,15 +117,15 @@ const LibraryForm = () => {
                     <Field
                       className="bookFormInput input3"
                       type="text"
-                      value={values.bookPages}
-                      name="bookPages"
+                      value={values.numberOfPages}
+                      name="numberOfPages"
                       placeholder="..."
                       autoComplete="off"
                     />
                     <ErrorMessage
                       className="bookFormError"
                       component="div"
-                      name="bookPages"
+                      name="numberOfPages"
                     />
                   </div>
                 </label>

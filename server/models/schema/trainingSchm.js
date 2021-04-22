@@ -10,7 +10,7 @@ const trainingSchema = new Schema(
       type: String,
       required: [true, 'end date is required'],
     },
-    period: Number,
+    duration: Number,
     books: [
       {
         type: SchemaTypes.ObjectId,

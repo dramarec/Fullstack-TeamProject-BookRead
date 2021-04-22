@@ -19,13 +19,13 @@ const Wrapper = styled.div`
 
   .bookForm {
     @media screen and (min-width: 768px) and (max-width: 1279px) {
-      margin: 0px 87px 693px;
+      //margin: 0px 87px 693px;
       width: 594px;
     }
     @media screen and (min-width: 1280px) {
       display: flex;
       flex-direction: row;
-      margin: 30px 124px 680px 39px;
+      //margin: 30px 124px 680px 39px;
       width: 1117px;
     }
   }
