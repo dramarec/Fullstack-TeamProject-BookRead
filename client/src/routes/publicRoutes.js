@@ -1,18 +1,8 @@
 import { lazy } from 'react';
 
-const mainRoutes = [
+const publicRoutes = [
     {
         path: '/',
-        name: 'Home',
-        exact: true,
-        component: lazy(() =>
-            import('../pages/home/HomePage' /* webpackChunkName: "HomePage"*/),
-        ),
-        isPrivate: false,
-        restricted: false,
-    },
-    {
-        path: '/signin',
         name: 'Вход',
         exact: true,
         component: lazy(() =>
@@ -37,4 +27,4 @@ const mainRoutes = [
     },
 
 ];
-export default mainRoutes;
+export default publicRoutes;
