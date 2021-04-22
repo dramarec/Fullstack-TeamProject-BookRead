@@ -40,11 +40,6 @@ const bookSchema = new Schema(
       min: 0,
       max: 5,
     },
-    // creator: {
-    //   type: SchemaTypes.ObjectId,
-    //   ref: 'user',
-    //   required: true,
-    // },
   },
   { versionKey: false, timestamps: true },
 );
