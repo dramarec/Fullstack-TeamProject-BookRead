@@ -13,28 +13,22 @@ const addTraining = async (req, res, next) => {
       Number(startTime[0]),
       Number(startTime[1]),
       Number(startTime[2]),
-      // startTime[0],
-      // startTime[1],
-      // startTime[2],
     );
     const endDate = DateTime.local(
       Number(endTime[0]),
       Number(endTime[1]),
       Number(endTime[2]),
-      // endTime[0],
-      // endTime[1],
-      // endTime[2],
     );
 
-    const period = endDate.diff(startDate, 'days').toObject().days;
+    const duration = endDate.diff(startDate, 'days').toObject().days;
 
-    // if (!period || period < 1) {
-    //   return res.status(400).json({
-    //     status: 'error',
-    //     code: 400,
-    //     message: 'wrong dates',
-    //   });
-    // }
+    if (!duration || duration < 1) {
+      return res.status(400).json({
+        status: 'error',
+        code: 400,
+        message: 'wrong dates',
+      });
+    }
 
     let totalPages = 0;
     let booksCompleted = [];
@@ -54,12 +48,12 @@ const addTraining = async (req, res, next) => {
       booksCompleted.push(book);
     }
 
-    const pagesReadPerDay = Math.ceil(totalPages / period);
+    const pagesReadPerDay = Math.ceil(totalPages / duration);
 
     const createTraining = await Training.create({
       start,
       end,
-      period,
+      duration,
       books,
       pagesReadPerDay,
     });
@@ -74,7 +68,7 @@ const addTraining = async (req, res, next) => {
       data: {
         start: createTraining.start,
         end: createTraining.end,
-        period: createTraining.period,
+        duration: createTraining.duration,
         books: booksCompleted,
         pagesReadPerDay: createTraining.pagesReadPerDay,
         results: createTraining.results,

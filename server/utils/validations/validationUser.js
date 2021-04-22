@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const schemaRegistration = Joi.object({
-  name: Joi.string().min(2).max(30).required(),
+  username: Joi.string().min(2).max(30).required(),
   email: Joi.string().email({ minDomainSegments: 2 }).required(),
   password: Joi.string().min(6).max(20).required(),
 });

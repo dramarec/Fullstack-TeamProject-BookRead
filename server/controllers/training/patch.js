@@ -21,14 +21,14 @@ const addRead = async (req, res, next) => {
     for (let i = 0; i < training.books.length; i++) {
       book = await Book.findOne({ _id: training.books[i] });
 
-      if (book?.numberOfPages === book?.finishedPages) {
+      if (book?.numberOfPages === book?.readPages) {
         continue;
       }
 
-      book.finishedPages += pages;
+      book.readPages += pages;
 
-      if (book.finishedPages > book.numberOfPages) {
-        book.finishedPages = book.numberOfPages;
+      if (book.readPages > book.numberOfPages) {
+        book.readPages = book.numberOfPages;
       }
 
       await book.save();
@@ -44,7 +44,19 @@ const addRead = async (req, res, next) => {
       });
     }
 
-    const date = DateTime.now().setZone('EEST');
+    const dateLuxon = DateTime.now().setZone('Europe/Kiev').toObject();
+
+    const date = `${dateLuxon.year}-${dateLuxon.month}-${dateLuxon.day} ${dateLuxon.hour}:${dateLuxon.minute}:${dateLuxon.second}`;
+
+    training.results.push({ date, pageCount: pages });
+
+    await training.save();
+
+    return res.status(200).json({
+      status: 'success',
+      code: 200,
+      data: { book, training },
+    });
   } catch (err) {
     next(err);
   }
