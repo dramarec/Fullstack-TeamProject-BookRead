@@ -5,142 +5,15 @@ import imgDec from './photo/desctop.jpg';
 
 const AuthFormStyled = styled.div`
  
-    /* max-width: 382px;
-    
-    
-    @media (min-width: 320px) {
-       // max-width: 382px;
-           background:  url(${imgMob}) ;
-           background-repeat: no-repeat;
-           background-size: cover;
-    }
-    /* @media (min-width: 768px) {
-        max-width: 382px;
-        
-    } 
-     @media (min-width: 768px) {
-        //max-width: 382px;
-        background:  url(${imgTab}) ;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    .authFormTitle {
-        margin-top: 0;
-        margin-bottom: 80px;
-        font-family: 'Gotham Pro', sans-serif;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 1.93;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        color: var(--accent-color);
-        @media (max-width: 768px) {
-            text-align: center;
-        }
-        @media (min-width: 768px) and (max-width: 1279px) {
-            margin-bottom: 60px;
-        }
-        @media (min-width: 768px) {
-            background:  url(${imgTab}) #091E3FCC;
-        }
-        @media (min-width: 1279px) and (max-width: 1300px)  {
-            background:  url(${imgDec}) #091E3FCC;
-           
-        }
-    }
-    .authForm {
-        display: flex;
-        flex-direction: column;
-    }
-    .authFormFild {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 50px;
-        font-size: 14px;
-        line-height: 1.21;
-        letter-spacing: 0.04em;
-    }
-    
-    .authFormInput {
-        padding: 5px 0;
-        width: 100%;
-        font-size: 16px;
-        line-height: 1.21;
-        letter-spacing: 0.04em;
-        border: none;
-        background-color: transparent;
-        border-bottom: 1px solid var(--header-border);
-        outline: none;
-         width: 270px;
-         height: 42px;
-         
-        &:focus,
-        &:hover {
-            border-color: var(--accent-color);
-        }
-    }
-    .authInputError {
-        border-bottom: 1px solid #e11616;
-    }
-    .authError {
-        position: absolute;
-        top: 34px;
-        left: 0;
-        color: #e11616;
-        font-size: 12px;
-    }
-    .authFormInput:not(:placeholder-shown) ~ .authFormText {
-        top: -20px;
-        font-size: 12px;
-    }
-    .authFormBtn {
-        margin: 0 auto;
-        background-color: #FF6B08;
-        color: #ffffff;
-        width: 270px;
-        height: 60px;
-    }
-    @media (min-width: 768px){
-        .authFormBtn {
-            margin: 0 auto;
-            background-color: #FF6B08;
-            color: #ffffff;
-            width: 320px;
-            height: 60px;
-        }
-    }
-   
-    /* width: 320px; */
-   
     background: #091E3FCC;
     background:  url(${imgMob}) ;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 400px;
-    @media (min-width: 768px){
-         background: #091E3FCC;
-    background:  url(${imgTab}) ;
-    width: 768px;
-    height: 560px;
-    box-sizing: border-box;
-    }
-    @media (min-width: 1280px){
-        width: 565px;
-        height: 790px;
-        background:  url(${imgDec}) ;
-        .authForm {
-        display: flex;
-        flex-direction: column;
-        width: 400px;
-        height: 420px;
-        background-color: white;
-
-        margin:0;
-        margin-top: 185px;
-        margin-left: 44px;
-        /* margin: 0 auto; */
-        }
+    max-height: 588px;
+   .authForm {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
     }
     .btn-google{
     font-weight: bold;
@@ -156,25 +29,14 @@ const AuthFormStyled = styled.div`
     margin-top: 30px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
-    
-        .authFormText{
+    .authFormText{
         font-family:  Montserrat-Medium;
         font-weight: 600;
         font-size: 14px;
         line-height: 2.3;
         color: #ffffff;
-    
     }
-    @media (min-width: 768px) and (max-width: 1279px){
-        .authFormText{
-        font-family:  Montserrat-Medium;
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 2.3;
-        color: #898F9F;
-    }
-    }
-    .authFormStar{
+        .authFormStar{
         color: #FF6B08;
         font-size: 14px;
     }
@@ -196,24 +58,10 @@ const AuthFormStyled = styled.div`
     width: 76px;
     height: 38px;
     margin: 0 auto;
-    margin-bottom: 11px;
+    margin-bottom: 25px;
     }
-    .authForm {
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto;
-    }
-    @media (min-width: 768px) and (max-width: 1279px){
-        .authForm {
-        display: flex;
-        flex-direction: column;
-        width: 400px;
-        height: 420px;
-        background-color: white;
-        margin: 0 auto;
-        margin-top: 70px;
-    }  
-    }
+    
+    
     .authFormFild {
         position: relative;
         display: flex;
@@ -238,12 +86,7 @@ const AuthFormStyled = styled.div`
          height: 42px;
     
     }
-    /* .div-for-fl{
-        display: flex;
-    }
-    .teza{
-        font-size: 24px;
-    } */
+    
 .div-for-fl{
     /* width: 316px; */
     width: 100%;
@@ -258,7 +101,7 @@ const AuthFormStyled = styled.div`
     text-align: center;
         
     }
-    .svg{
+.svg{
         margin: 0 auto;
         text-align: center;
         height:45px;
@@ -289,13 +132,42 @@ margin-top: 18px;
 .bg-ph{
     display: flex;
 }
+
     @media (min-width: 768px) and (max-width: 1279px){
-    .div-for-fl{
+         background: #091E3FCC;
+    background:  url(${imgTab}) ;
+    width: 100%;
+    max-height: 730px;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .div-cont{
+        position: relative;
+        padding-top: 60px;
+    }
+    .authFormText{
+        font-family:  Montserrat-Medium;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 2.3;
+        color: #898F9F;
+    }
+    .authForm {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+       
+        background-color: white;
+        margin: 0 auto;
+        margin-top: 70px;
+        margin-bottom: 70px
+    }
+      .div-for-fl{
     width: 100%;
     height: 404px;
     background: #ffffff;
     margin: 0 auto;
-    margin-top: 132px;
+   
     }
     .svg{
         margin: 0 auto;
@@ -331,22 +203,36 @@ line-height: 2.3;
 text-align: center;
 margin-top: 28px;
 }
-}
-@media (min-width: 1280px){
-    .authForm {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    margin-top: 185px;
-}
+    }
+
+    @media (min-width: 1280px){
+        /* width: 565px; */
+        max-height: 790px;
+        background:  url(${imgDec}) ;
+        position: relative;
+        .authForm {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        background-color: white;
+        margin:0;
+        margin-top: 185px;
+        margin-left: 83px;
+        margin-bottom: 185px;
+        /* margin: 0 auto; */
+        }
+        .div-cont{
+            padding-top: 266px;
+        }
+      
   .div-for-fl{
     width: 715px;
     height: 790px;
     background: #ffffff;
-    margin: 0 auto;
-    margin-top: 132px;
-    position: absolute;
-    right: 0;
+    margin: 0 auto; 
+   position: absolute;
+    left: 565px;
+    top: 0px;
     }
     .svg{
         margin: 0 auto;
@@ -381,6 +267,25 @@ font-size: 20px;
 line-height: 2.3;
 text-align: center;
 margin-top: 28px;
+}
+.authFormText{
+        color: #898F9F;
+    }
+    }
+
+ 
+@media screen and (min-width: 480px){
+.container {
+    /* width: 480px; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+
+.container {
+    overflow: hidden;
+    width: 100%;
+    padding-left: 0; 
+     padding-right: 0;
 }
 }
 `;

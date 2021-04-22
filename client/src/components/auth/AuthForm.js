@@ -87,8 +87,8 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                                 <ErrorMessage name="password" />
                             </span>
                                 </label>
-                                {/*
-                                <label className="authFormFild">
+                                
+                                {/* <label className="authFormFild">
                                  <span className="authFormText">
                                 Підтвердіть пароль <sup className="authFormStar">*</sup>
                             </span>
@@ -130,13 +130,15 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                 </Formik>
                 </div>
                 <div className="div-for-fl">
+                    <div className="div-cont">
                     <Two />
                         <p className="teza">Книги — это корабли мысли,<br/>
                     странствующие по волнам <br/>
                         времени и бережно несущие <br/>
                      свой драгоценный груз от <br/>
                      поколения к поколению.</p>
-                    <p className="becon line">Бэкон Ф.</p>
+                        <p className="becon line">Бэкон Ф.</p>
+                    </div>
                 </div>
                 
                 </div>
