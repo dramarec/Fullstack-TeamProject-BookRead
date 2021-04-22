@@ -167,7 +167,7 @@ margin-top: 18px;
     height: 404px;
     background: #ffffff;
     margin: 0 auto;
-   
+   position: relative;
     }
     .svg{
         margin: 0 auto;
