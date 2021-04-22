@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useLocation } from 'react-router-dom';
+import { useLocation} from 'react-router-dom';
 import AuthFormStyled from './AuthFormStyled';
 import Two from './icons/two';
 
@@ -12,7 +12,7 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
             : { email: '', password: '' };
     return (
         <AuthFormStyled>
-        
+        {/* signin */}
 <div className="container">
            <div className="bg-ph">
             <Formik

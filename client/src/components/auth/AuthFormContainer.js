@@ -3,10 +3,8 @@ import { useLocation, useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import AuthForm from './AuthForm';
 
-
 const AuthFormContainer = () => {
-
-
+    
     const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
     const errorMessagesSchemaSignUp = Yup.object().shape({
