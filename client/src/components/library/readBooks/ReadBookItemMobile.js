@@ -1,6 +1,7 @@
 import star from '../../../assets/img/star.png'
 import book from '../../../assets/svg/book.svg'
 import ReadBookItemMobileStyled from './ReadBookItemMobileStyled';
+import Star from './Star';
 
 const ReadingBookItemMobile = () => {
     return (
@@ -23,13 +24,7 @@ const ReadingBookItemMobile = () => {
         </div>
         <div className='review flex'>
         <p className='title'>Рейтинг:</p>
-        <div className='star flex'>
-        <img src={star} alt=''/>
-        <img src={star} alt=''/>
-        <img src={star} alt=''/>
-        <img src={star} alt=''/>
-        <img src={star} alt=''/>
-        </div>
+        <Star/>
         </div>
         <button type='button'>Резюме</button>
         </ReadBookItemMobileStyled>

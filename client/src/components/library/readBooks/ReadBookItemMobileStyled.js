@@ -32,9 +32,7 @@ flex: 2 1 0%;
 .review {
     line-height: 0px;
 }
-.star {
-    flex: 2 1 0%;
-}
+
 button {
     padding: 0 34px;
     line-height: 38px;
