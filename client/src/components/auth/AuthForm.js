@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useLocation } from 'react-router-dom';
 import AuthFormStyled from './AuthFormStyled';
 import Two from './icons/two';
+import GoogleAuthBtn from './GoogleAuthBtn';
 
 const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
   let location = useLocation();
@@ -24,7 +25,8 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
           >
             {({ errors, touched }) => (
               <Form className="authForm">
-                <button className="btn-google">Google</button>
+                {/* <button className="btn-google">Google</button> */}
+                <GoogleAuthBtn />
                 {location.pathname === '/signup' && (
                   <label className="authFormFild">
                     <span className="authFormText">
