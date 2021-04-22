@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const swaggerUI = require('swagger-ui-express');
 
 const { booksApi } = require('./api/books');
-const { usersApi, googleApi } = require('./api/users');
+const { usersApi } = require('./api/users');
 const { trainingApi } = require('./api/training');
 const apiDocs = require('./swaggerDocs.json');
 
@@ -16,7 +16,6 @@ app.use(express.json());
 
 app.use('/api/books', booksApi);
 app.use('/api/users', usersApi);
-app.use('/api/auth', googleApi);
 app.use('/api/training', trainingApi);
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(apiDocs));
 
