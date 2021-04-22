@@ -20,8 +20,11 @@
     {
       "name": "Training",
       "description": "Training ENDPOINTS"
-    }
-     
+    },
+    {
+      "name": "User",
+      "description": "User ENDPOINTS"
+    }     
   ],
 
 
@@ -113,8 +116,8 @@
       "post": {
         "tags": ["Auth"],
         "summary": "User logout",
-        "security": [{ "Bearer": [] }],
 
+        "security": [{ "Bearer": [] }],
         "parameters": [],
 
         "responses": {
@@ -299,7 +302,8 @@
             "content": {}
           }
       }
-    }},
+    }
+  },
     "api/books/{bookId}":{
       "patch": {
         "tags": ["Book"],
@@ -346,6 +350,36 @@
           },
           "404": {
             "description": "Book not found / Invalid user / Invalid session",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/users/user": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Get user info",
+
+        "security": [{ "Bearer": [] }],
+        "parameters": [],
+
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegistrationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (invalid request boby)",
+            "content": {}
+          },
+          "409": {
+            "description": "Provided email already exists",
             "content": {}
           }
         }
