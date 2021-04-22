@@ -2,15 +2,12 @@ const { User } = require('../models');
 
 const findUserById = async id => {
   const userById = await User.findById(id);
-  // console.log('userById', userById)
+  // console.log('userById', userById);
   return userById;
 };
 
 const findUserByEmail = async email => {
-  const userByEmail = await User.findOne({ email }).populate({
-    path: 'book',
-    // select: 'name email -_id'
-  });
+  const userByEmail = await User.findOne({ email });
   // console.log('userByEmail', userByEmail)
   return userByEmail;
 };
