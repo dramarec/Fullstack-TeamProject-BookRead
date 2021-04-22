@@ -4430,7 +4430,7 @@
   "resolved" "https://registry.npmjs.org/dotenv-expand/-/dotenv-expand-5.1.0.tgz"
   "version" "5.1.0"
 
-"dotenv@^8.0.0", "dotenv@8.2.0":
+"dotenv@8.2.0":
   "integrity" "sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw=="
   "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-8.2.0.tgz"
   "version" "8.2.0"
@@ -9437,13 +9437,6 @@
   "version" "4.0.0"
   dependencies:
     "prop-types" "^15.7.2"
-
-"react-native-dotenv@2.5.5":
-  "integrity" "sha512-ODaFNUX52ZYfBLJ8WSEm87nv+HrwxeEoZchuwsPyEWwsC4ARRhklfsKTf1dg09UpPS31zx5IUV431fLvcepCsA=="
-  "resolved" "https://registry.npmjs.org/react-native-dotenv/-/react-native-dotenv-2.5.5.tgz"
-  "version" "2.5.5"
-  dependencies:
-    "dotenv" "^8.0.0"
 
 "react-redux@7.2.3":
   "integrity" "sha512-ZhAmQ1lrK+Pyi0ZXNMUZuYxYAZd59wFuVDGUt536kSGdD0ya9Q7BfsE95E3TsFLE3kOSFp5m6G5qbatE+Ic1+w=="
