@@ -1,5 +1,9 @@
-const { reg, login, logout } = require("./post");
+const { reg, login, logout } = require('./post');
+const { getUserInfo } = require('./get');
 
 module.exports = {
-    reg, login, logout,
+  reg,
+  login,
+  logout,
+  getUserInfo,
 };
