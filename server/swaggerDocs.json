@@ -331,7 +331,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PatchContactResponse"
+                  "$ref": "#/components/schemas/PatchBookResponse"
                 }
               }
             }
@@ -495,10 +495,10 @@
           "review": {
             "type": "string",
             "description": "Book's review",
-            "example": "Harry Potter"
+            "example": "Harry Potter is a good book"
           },
           "rating": {
-            "type": "string",
+            "type": "integer",
             "description": "Book's rating",
             "example": "4"
           }        
@@ -511,10 +511,10 @@
           "review": {
             "type": "string",
             "description": "Book's review",
-            "example": "Harry Potter"
+            "example": "Harry Potter is a good book"
           },
           "rating": {
-            "type": "string",
+            "type": "integer",
             "description": "Book's rating",
             "example": "4"
           }
