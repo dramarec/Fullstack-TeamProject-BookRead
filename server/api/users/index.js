@@ -1,5 +1,5 @@
-const usersApi = require("./users");
+const usersApi = require('./users');
 
 module.exports = {
-    usersApi,
+  usersApi,
 };
