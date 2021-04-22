@@ -1,10 +1,15 @@
-import React from 'react'
-import star from '../../../assets/img/star.png'
+import React, { useState } from 'react'
+
 import book from '../../../assets/svg/book.svg'
+import Modal from '../../modal/Modal';
 import ReadBookItemStyled from './ReadBookItemStyled';
 import Star from './Star';
 
 const ReadBookItem = () => {
+    const [openModal, setOpenModal] = useState(false);
+    const toggaleModal = () => {
+        setOpenModal(!openModal)
+    }
     return (
         <ReadBookItemStyled >
         <div className='bookName'>
@@ -16,19 +21,15 @@ const ReadBookItem = () => {
         <p className='pages'>183</p>
         <div className='review'>
         <Star/>
-        <button type='button'>Резюме</button>
+        {openModal && <Modal/>}
+        <button type='button' onClick={toggaleModal}>Резюме</button>
         </div>
         </ReadBookItemStyled>
         
-       
-    )
-}
-
-export default ReadBookItem
-        /*<div className='star'>
-        <img src={star} alt=''/>
-        <img src={star} alt=''/>
-        <img src={star} alt=''/>
-        <img src={star} alt=''/>
-        <img src={star} alt=''/>
-        </div>*/
+        
+        )
+    }
+    
+    export default ReadBookItem
+    
+    //<Modal openModal={openModal}/>
