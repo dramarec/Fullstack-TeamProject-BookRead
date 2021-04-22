@@ -20,11 +20,12 @@
     {
       "name": "Training",
       "description": "Training ENDPOINTS"
+    },
+    {
+      "name": "Books",
+      "description": "Books ENDPOINTS"
     }
-     
   ],
-
-
 
   "paths": {
     "/users/auth/register": {
@@ -35,7 +36,7 @@
         "security": [],
         "parameters": [],
 
-         "requestBody": {
+        "requestBody": {
           "description": "Registration's object",
           "required": true,
           "content": {
@@ -68,7 +69,7 @@
         }
       }
     },
-     "/users/auth/login": {
+    "/users/auth/login": {
       "post": {
         "tags": ["Auth"],
         "summary": "User authentication",
@@ -76,7 +77,7 @@
         "security": [],
         "parameters": [],
 
-         "requestBody": {
+        "requestBody": {
           "description": "Authentication's object",
           "required": true,
           "content": {
@@ -109,7 +110,7 @@
         }
       }
     },
-     "/users/auth/logout": {
+    "/users/auth/logout": {
       "post": {
         "tags": ["Auth"],
         "summary": "User logout",
@@ -121,7 +122,7 @@
           "204": {
             "description": "Successful operation"
           },
-           "400": {
+          "400": {
             "description": "No token provided",
             "content": {}
           },
@@ -257,13 +258,12 @@
         }
       }
     },
-    "api/books": {
+    "/books": {
       "post": {
-        "tags": ["Book"],
+        "tags": ["Books"],
         "summary": "Add a book",
         "security": [{ "Bearer": [] }],
-        "parameters": [   
-        ],
+        "parameters": [],
         "requestBody": {
           "description": "Info about a book",
           "required": true,
@@ -273,7 +273,7 @@
                 "$ref": "#/components/schemas/AddingBookRequest"
               }
             }
-            }
+          }
         },
         "responses": {
           "200": {
@@ -298,11 +298,12 @@
             "description": "Invalid user / Invalid session",
             "content": {}
           }
+        }
       }
-    }},
-    "api/books/{bookId}":{
+    },
+    "/books/{bookId}": {
       "patch": {
-        "tags": ["Book"],
+        "tags": ["Books"],
         "summary": "Update a book",
         "security": [{ "Bearer": [] }],
         "parameters": [
@@ -320,10 +321,9 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PatchBookRequest"
+              }
             }
           }
-        }
-      
         },
         "responses": {
           "200": {
@@ -352,13 +352,13 @@
       }
     }
   },
- "components": {
+  "components": {
     "schemas": {
       "RegistrationRequest": {
         "type": "object",
         "required": ["username", "email", "password"],
         "properties": {
-           "username": {
+          "username": {
             "type": "string",
             "description": "User's name",
             "example": "User"
@@ -466,12 +466,12 @@
       "AddingBookResponse": {
         "type": "object",
         "properties": {
-           "title": {
+          "title": {
             "type": "string",
             "description": "Book's title",
             "example": "Harry Porter"
           },
-           "bookId": {
+          "bookId": {
             "type": "string",
             "description": "book's id",
             "example": "07ef3f4358b773378699381"
@@ -487,8 +487,8 @@
             "example": "123"
           }
         }
-    },
-    "PatchBookRequest": {
+      },
+      "PatchBookRequest": {
         "required": [],
         "type": "object",
         "properties": {
@@ -501,7 +501,7 @@
             "type": "string",
             "description": "Book's rating",
             "example": "4"
-          }        
+          }
         }
       },
       "PatchBookResponse": {
@@ -519,6 +519,7 @@
             "example": "4"
           }
         }
+      }
     },
     "securitySchemes": {
       "Bearer": {
@@ -528,5 +529,4 @@
       }
     }
   }
- }
 }
