@@ -3,7 +3,6 @@ import Modal from './modal/Modal';
 import Button from './testButton.js/TestButton';
 import Header from './header/Header';
 import AuthForm from './auth/AuthForm';
-import LibraryForm from './libraryForm/LibraryForm';
 
 import LibraryPage from '../pages/library/LibraryPage';
 
@@ -16,7 +15,7 @@ const App = () => {
       </Modal>
       <Header />
       <AuthForm />
-      <LibraryPage/>
+      <LibraryPage />
     </div>
   );
 };

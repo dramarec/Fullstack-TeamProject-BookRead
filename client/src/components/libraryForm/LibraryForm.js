@@ -39,7 +39,7 @@ const LibraryForm = () => {
   };
 
   return (
-    <LibraryFormStyled>
+    <LibraryFormStyled className="container">
       <Formik
         initialValues={state}
         validationSchema={schema}
