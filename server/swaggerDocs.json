@@ -364,22 +364,22 @@
         "parameters": [],
 
         "responses": {
-          "201": {
+          "200": {
             "description": "Successful operation",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RegistrationResponse"
+                  "$ref": "#/components/schemas/GetUserInfo"
                 }
               }
             }
           },
           "400": {
-            "description": "Bad request (invalid request boby)",
+            "description": "No token provided",
             "content": {}
           },
-          "409": {
-            "description": "Provided email already exists",
+          "404": {
+            "description": "Invalid user / Invalid session",
             "content": {}
           }
         }
@@ -461,7 +461,7 @@
               "training": null,
               "token": null,
               "_id": "60801d991928a48364f687d2",
-              "name": "User",
+              "username": "User",
               "email": "user@example.com",
               "password": "$2a$06$hYzvTDkcWa4u/3hDeZtp2.HtTHJEcj2YaNpRFysWf5QiIPew6mvbe",
               "createdAt": "2021-04-21T12:42:01.460Z",
@@ -551,6 +551,135 @@
             "type": "string",
             "description": "Book's rating",
             "example": "4"
+          }
+        }
+    },
+    "GetUserInfo": {
+         "type":"object",
+         "properties": {
+          "email": {
+            "type": "string",
+            "description": "User's email",
+            "example": "user@example.com"
+          },
+          "username": {
+            "type": "string",
+            "description": "User's name",
+            "example": "User"
+          },
+          "planeToRead": {
+             "type": "object",
+            "description": "Information about books which user planes to read",
+            "properties": {
+              "readPages":  {
+                "type": "number",
+                "description": "How many pages you  have read",
+                "example": "0"},
+              "review":  {
+                "type": "sting",
+                "description": "Book's review",
+                "example": "null"},
+              "rating": {
+                "type": "sting",
+                "description": "Book's rating",
+                "example": "null"},
+              "_id": {
+                "type": "string",
+                "description": "Book's id",
+                "example": "608170ac715ef491300d3d2e"},
+              "title":  {
+                "type": "string",
+                "description": "Book's title",
+                "example": "'Тося Бося и день Суперпапы'"},
+              "author": {
+                "type": "string",
+                "description": "Book's author",
+                "example": "Лина Жутауте"},
+              "year": {
+                "type": "number",
+                "description": "Book's year",
+                "example":"2019"},
+              "numberOfPages": {
+                "type": "number",
+                "description": "Book's numberOfPages",
+                "example":"42"}
+            }
+          },
+          "readNow": {
+             "type": "object",
+            "description": "Information about books which user reading now",
+            "properties": {
+              "readPages":  {
+                "type": "number",
+                "description": "How many pages you  have read",
+                "example": "16"},
+              "review":  {
+                "type": "sting",
+                "description": "Book's review",
+                "example": "null"},
+              "rating": {
+                "type": "sting",
+                "description": "Book's rating",
+                "example": "null"},
+              "_id": {
+                "type": "string",
+                "description": "Book's id",
+                "example": "6081706a715ef491300d3d2d"},
+              "title":  {
+                "type": "string",
+                "description": "Book's title",
+                "example": "'Тося Бося и пир у Зубной феи'"},
+              "author": {
+                "type": "string",
+                "description": "Book's author",
+                "example": "Лина Жутауте"},
+              "year": {
+                "type": "number",
+                "description": "Book's year",
+                "example":"2019"},
+              "numberOfPages": {
+                "type": "number",
+                "description": "Book's numberOfPages",
+                "example":"40"}
+            }
+          },
+           "readFinish": {
+             "type": "object",
+            "description": "Information about books which user finished reading",
+            "properties": {
+              "readPages":  {
+                "type": "number",
+                "description": "How many pages you  have read",
+                "example": "37"},
+              "review":  {
+                "type": "sting",
+                "description": "Book's review",
+                "example": "null"},
+              "rating": {
+                "type": "sting",
+                "description": "Book's rating",
+                "example": "null"},
+              "_id": {
+                "type": "string",
+                "description": "Book's id",
+                "example": "60816fd9d9c36e9cb8b8330a"},
+              "title":  {
+                "type": "string",
+                "description": "Book's title",
+                "example": "'Тося Бося и гном Чистюля'"},
+              "author": {
+                "type": "string",
+                "description": "Book's author",
+                "example": "Лина Жутауте"},
+              "year": {
+                "type": "number",
+                "description": "Book's year",
+                "example":"2013"},
+              "numberOfPages": {
+                "type": "number",
+                "description": "Book's numberOfPages",
+                "example":"37"}
+            }
           }
         }
     },
