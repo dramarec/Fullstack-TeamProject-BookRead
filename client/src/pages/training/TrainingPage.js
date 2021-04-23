@@ -1,5 +1,5 @@
 const TrainingPage = () => {
-    <h1>home page</h1>
-}
+  return <h1>TrainingPage</h1>;
+};
 
 export default TrainingPage;

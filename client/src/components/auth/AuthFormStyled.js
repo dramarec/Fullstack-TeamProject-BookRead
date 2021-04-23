@@ -4,6 +4,9 @@ import imgTab from './photo/tab.jpg';
 import imgDec from './photo/desctop.jpg';
 
 const AuthFormStyled = styled.div`
+  /* margin-top: 10px;
+  outline: 1px solid tomato; */
+
   background: #091e3fcc;
   background: url(${imgMob});
   background-repeat: no-repeat;
@@ -227,7 +230,7 @@ const AuthFormStyled = styled.div`
     .div-for-fl {
       width: 715px;
       height: 790px;
-      background: #ffffff;
+      /* background: #ffffff; */
       margin: 0 auto;
       position: absolute;
       left: 565px;

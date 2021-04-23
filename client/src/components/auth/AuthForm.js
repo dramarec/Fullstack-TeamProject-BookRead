@@ -76,6 +76,7 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                     type="password"
                     name="password"
                     placeholder="Пароль"
+                    autoComplete="off"
                   />
                   <span className="authError">
                     <ErrorMessage name="password" />

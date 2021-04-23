@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import modalReducer from './modalReducer'
+
+import modalReducer from './modalReducer';
 
 const authPersistConfig = {
   key: 'auth',
