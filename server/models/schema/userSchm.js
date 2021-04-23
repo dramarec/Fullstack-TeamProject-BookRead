@@ -37,7 +37,7 @@ const userSchema = new Schema(
       default: null,
     },
   },
-  { versionKey: false, timestamps: true },
+  { versionKey: false },
 );
 
 userSchema.pre('save', async function (next) {

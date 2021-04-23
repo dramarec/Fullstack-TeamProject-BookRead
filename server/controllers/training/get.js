@@ -8,7 +8,6 @@ const getTraining = async (req, res, next) => {
     return await Training.findOne({ _id: user?.training })
       .populate('books')
       .exec(async (err, data) => {
-        console.log(data, 'data');
         if (err) {
           next(err);
         }
@@ -39,7 +38,7 @@ const getTraining = async (req, res, next) => {
         );
 
         const duration = endDate.diff(dateNow, 'days').toObject().days;
-        console.log(duration, 'duration');
+
         if (!duration || duration < 1) {
           await Training.deleteOne({ _id: req.user.training });
 
@@ -54,10 +53,20 @@ const getTraining = async (req, res, next) => {
           });
         }
 
+        const { books, _id, start, end, pagesReadPerDay, results } = data;
+
         return res.status(200).json({
           status: 'success',
           code: 200,
-          training: data,
+          training: {
+            _id,
+            start,
+            end,
+            duration,
+            pagesReadPerDay,
+            books,
+            results,
+          },
         });
       });
   } catch (err) {

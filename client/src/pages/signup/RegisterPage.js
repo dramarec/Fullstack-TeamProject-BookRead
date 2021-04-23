@@ -1,5 +1,10 @@
+import AuthFormContainer from "../../components/auth/AuthFormContainer";
+import  RegisterStyled  from './RegisterStyled'
+
 const RegisterPage = () => {
-    <h1>Register Page</h1>
+    < RegisterStyled >
+            <AuthFormContainer />
+    </ RegisterStyled >
 }
 
 export default RegisterPage;

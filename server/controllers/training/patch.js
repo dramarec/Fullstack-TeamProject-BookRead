@@ -44,9 +44,13 @@ const addRead = async (req, res, next) => {
       });
     }
 
-    const dateLuxon = DateTime.now().setZone('Europe/Kiev').toObject();
+    const dateLuxon = DateTime.now()
+      .setZone('Europe/Kiev')
+      .toFormat('yyyy-LL-dd HH:mm:ss');
 
-    const date = `${dateLuxon.year}-${dateLuxon.month}-${dateLuxon.day} ${dateLuxon.hour}:${dateLuxon.minute}:${dateLuxon.second}`;
+    const date = dateLuxon;
+
+    console.log(date);
 
     training.results.push({ date, pageCount: pages });
 
@@ -55,7 +59,18 @@ const addRead = async (req, res, next) => {
     return res.status(200).json({
       status: 'success',
       code: 200,
-      data: { book, training },
+      data: {
+        book,
+        training: {
+          _id: training._id,
+          start: training.start,
+          end: training.end,
+          duration: training.duration,
+          pagesReadPerDay: training.pagesReadPerDay,
+          books: training.books,
+          results: training.results,
+        },
+      },
     });
   } catch (err) {
     next(err);

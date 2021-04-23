@@ -34,7 +34,18 @@ const addNewBook = async (req, res, next) => {
     res.status(201).json({
       status: 'success',
       code: 201,
-      data: { newBook },
+      data: {
+        newBook: {
+          id: newBook._id,
+          title: newBook.title,
+          author: newBook.author,
+          year: newBook.year,
+          numberOfPages: newBook.numberOfPages,
+          readPages: newBook.readPages,
+          review: newBook.review,
+          rating: newBook.rating,
+        },
+      },
     });
   } catch (error) {
     next(error);

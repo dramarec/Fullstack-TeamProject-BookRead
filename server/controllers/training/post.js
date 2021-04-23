@@ -45,6 +45,7 @@ const addTraining = async (req, res, next) => {
       }
 
       totalPages += book.numberOfPages;
+
       booksCompleted.push(book);
     }
 
