@@ -7,6 +7,7 @@ import LibraryForm from './libraryForm/LibraryForm';
 import Chart from './chart/Chart';
 
 import LibraryPage from '../pages/library/LibraryPage';
+import TrainingPage from '../pages/training/TrainingPage';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
       <LibraryForm />
 
       <LibraryPage />
+      <TrainingPage />
     </div>
   );
 };

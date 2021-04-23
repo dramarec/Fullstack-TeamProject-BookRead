@@ -1,5 +1,12 @@
+import MyGoal from "../../components/traning/MyGoal";
+
 const TrainingPage = () => {
-    <h1>home page</h1>
+    return (
+    <>
+        <MyGoal/>
+
+    </>
+    )
 }
 
 export default TrainingPage;
