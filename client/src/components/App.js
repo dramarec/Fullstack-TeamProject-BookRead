@@ -18,8 +18,6 @@ const App = () => {
       </Modal>
       <Header />
       <AuthForm />
-      <LibraryForm />
-
       <LibraryPage />
     </div>
   );
