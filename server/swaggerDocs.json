@@ -513,7 +513,7 @@
           },
           "numberOfPages": {
             "type": "number",
-            "description": "numberOfPages's title",
+            "description": "Number of pages in a book",
             "example": "123"
           }
         }
@@ -521,15 +521,20 @@
       "AddingBookResponse": {
         "type": "object",
         "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Book's id",
+            "example": "608170ac715ef491300d3d2e"
+        },
            "title": {
             "type": "string",
             "description": "Book's title",
             "example": "Harry Porter"
           },
-           "bookId": {
+          "author": {
             "type": "string",
-            "description": "book's id",
-            "example": "07ef3f4358b773378699381"
+            "description": "Book's author",
+            "example": "J. K. Rowling"
           },
           "year": {
             "type": "integer",
@@ -538,8 +543,23 @@
           },
           "numberOfPages": {
             "type": "integer",
-            "description": "numberOfPages's title",
+            "description": "Number of pages in a book",
             "example": "123"
+          },
+          "review": {
+            "type": "string",
+            "description": "Book's review",
+            "example": ""
+          },
+          "rating": {
+            "type": "integer",
+            "description": "Book's rating",
+            "example": null
+          },        
+          "readPages":  {
+            "type": "number",
+            "description": "How many pages you  have read",
+            "example": null
           }
         }
     },
@@ -563,6 +583,11 @@
         "required": [],
         "type": "object",
         "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Book's id",
+            "example": "608170ac715ef491300d3d2e"
+        },
           "review": {
             "type": "string",
             "description": "Book's review",
@@ -572,6 +597,31 @@
             "type": "integer",
             "description": "Book's rating",
             "example": "4"
+          },
+          "title": {
+            "type": "string",
+            "description": "Book's title",
+            "example": "Harry Porter"
+          },
+          "author": {
+            "type": "string",
+            "description": "Book's author",
+            "example": "J. K. Rowling"
+          },
+          "year": {
+            "type": "integer",
+            "description": "Book's year",
+            "example": "1997"
+          },
+          "numberOfPages": {
+            "type": "integer",
+            "description": "Number of pages in a book",
+            "example": "123"
+          },
+          "readPages":  {
+            "type": "number",
+            "description": "How many pages you  have read",
+            "example": 25
           }
         }
     },
