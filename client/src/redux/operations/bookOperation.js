@@ -1,19 +1,19 @@
 import axios from 'axios';
 import {
-  postBookRequest,
-  postBookSuccess,
-  postBookError,
+  addNewBookRequest,
+  addNewBookSuccess,
+  addNewBookError,
 } from '../actions/bookAction';
 
-const postBookOperation = book => async dispatch => {
-  dispatch(postBookRequest());
+const addBookOperation = book => async dispatch => {
+  dispatch(addNewBookRequest());
   try {
     const response = await axios.post('/books', book);
     console.log(`response.book`, response.book);
-    dispatch(postBookSuccess(response.book));
+    dispatch(addNewBookSuccess(response.book));
   } catch (error) {
-    dispatch(postBookError(error));
+    dispatch(addNewBookError(error));
   }
 };
 
-export { postBookOperation };
+export { addBookOperation };

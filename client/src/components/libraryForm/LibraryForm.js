@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-//import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { addBookOperation } from '../../redux/operations/bookOperation';
 import LibraryFormStyled from './LibraryFormStyled';
 
 const getYear = () => {
@@ -33,9 +34,11 @@ const initialState = {
 
 const LibraryForm = () => {
   const [state, setState] = useState({ ...initialState });
+  const dispatch = useDispatch();
 
   const onHandlerSubmit = values => {
     console.log(`values`, values);
+    dispatch(addBookOperation(values));
   };
 
   return (
