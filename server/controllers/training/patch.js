@@ -1,10 +1,12 @@
 const { DateTime } = require('luxon');
-const { Training, Book } = require('../../models');
+const { Training, Book, User } = require('../../models');
 
 const addRead = async (req, res, next) => {
   try {
     const user = req.user;
-    const { pages } = req.body;
+    let { pages } = req.body;
+    let totalPages = 0;
+    totalPages += pages;
 
     const training = await Training.findOne({ _id: user?.training });
 
@@ -16,31 +18,47 @@ const addRead = async (req, res, next) => {
       });
     }
 
-    let book = null;
+    let bookout = null;
+    let pagesForTraining = 0;
 
     for (let i = 0; i < training.books.length; i++) {
+      let book = null;
+
       book = await Book.findOne({ _id: training.books[i] });
 
       if (book?.numberOfPages === book?.readPages) {
         continue;
       }
 
-      book.readPages += pages;
+      // book.readPages += pages;
+      book.readPages += totalPages;
 
       if (book.readPages > book.numberOfPages) {
         book.readPages = book.numberOfPages;
       }
 
+      totalPages = book.readPages;
+      console.log(totalPages, 'pages in cycle');
+
       await book.save();
+
+      bookout = book;
+      pagesForTraining = totalPages;
 
       break;
     }
 
-    if (!book) {
+    if (!bookout) {
+      await Training.deleteOne({ _id: req.user.training });
+
+      req.user.training = null;
+
+      await req.user.save();
+
       return res.status(403).json({
         status: 'error',
         code: 403,
-        message: 'you must read all the books from this training',
+        message: 'you read all the books from this training',
       });
     }
 
@@ -50,7 +68,10 @@ const addRead = async (req, res, next) => {
 
     const date = dateLuxon;
 
-    console.log(date);
+    pages = pagesForTraining;
+
+    console.log(pages, 'pages out cycle');
+    console.log(date, 'end test');
 
     training.results.push({ date, pageCount: pages });
 
@@ -60,7 +81,7 @@ const addRead = async (req, res, next) => {
       status: 'success',
       code: 200,
       data: {
-        book,
+        bookout,
         training: {
           _id: training._id,
           start: training.start,

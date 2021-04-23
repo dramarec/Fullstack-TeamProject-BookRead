@@ -1,6 +1,6 @@
-const { model } = require("mongoose");
-const { trainingSchema } = require("./schema");
+const { model } = require('mongoose');
+const { trainingSchema } = require('./schema');
 
-const Training = model("training", trainingSchema);
+const Training = model('Training', trainingSchema);
 
 module.exports = Training;

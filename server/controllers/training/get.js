@@ -11,6 +11,7 @@ const getTraining = async (req, res, next) => {
         if (err) {
           next(err);
         }
+        console.log(data);
         if (!data) {
           return res.status(403).json({
             status: 'error',
@@ -31,6 +32,7 @@ const getTraining = async (req, res, next) => {
           Number(dateLuxon[1]),
           Number(dateLuxon[2]),
         );
+
         const endDate = DateTime.local(
           Number(endTime[0]),
           Number(endTime[1]),
