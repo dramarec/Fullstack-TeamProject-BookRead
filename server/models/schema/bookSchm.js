@@ -41,7 +41,7 @@ const bookSchema = new Schema(
       max: 5,
     },
   },
-  { versionKey: false, timestamps: true },
+  { versionKey: false },
 );
 
 module.exports = bookSchema;

@@ -27,15 +27,6 @@ const App = () => {
                 component={component}
               />
             ))}
-
-            {/* <AuthForm />
-            <LibraryForm />
-            <LibraryPage />
-            <Modal>
-              <h1>Hello</h1>
-            </Modal>
-            <Chart />
-            <Button /> */}
           </Switch>
         </Suspense>
       </div>
@@ -44,3 +35,18 @@ const App = () => {
 };
 
 export default App;
+
+{
+  /* <div>
+ <AuthForm />
+<LibraryForm />
+<LibraryPage />
+  <Chart />
+  <Button />
+  <Modal>
+    <h1>Hello</h1>
+  </Modal>
+  <Header />
+  <LibraryPage />
+</div> */
+}
