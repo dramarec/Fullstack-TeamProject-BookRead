@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useLocation } from 'react-router-dom';
 import AuthFormStyled from './AuthFormStyled';
 import Two from './icons/two';
+// import RegisterStyled from '../../pages/signup/RegisterStyled';
 import GoogleAuthBtn from './GoogleAuthBtn';
 
 const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
@@ -25,8 +26,9 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
           >
             {({ errors, touched }) => (
               <Form className="authForm">
-                {/* <button className="btn-google">Google</button> */}
                 <GoogleAuthBtn />
+                {/* <button className="btn-google">Google</button> */}
+
                 {location.pathname === '/signup' && (
                   <label className="authFormFild">
                     <span className="authFormText">
@@ -75,32 +77,29 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                     name="password"
                     placeholder="Пароль"
                   />
-
                   <span className="authError">
                     <ErrorMessage name="password" />
                   </span>
                 </label>
+                {location.pathname === '/signup' && (
+                  <label className="authFormFild">
+                    <span className="authFormText">
+                      Підтвердіть пароль <sup className="authFormStar">*</sup>
+                    </span>
+                    <Field
+                      className={`authFormInput ${
+                        touched.password && errors.password && 'authInputError'
+                      }`}
+                      type="password-true"
+                      name="password-true"
+                      placeholder="Пароль"
+                    />
 
-                {/* <label className="authFormFild">
-                                 <span className="authFormText">
-                                Підтвердіть пароль <sup className="authFormStar">*</sup>
-                            </span>
-                            <Field
-                                className={`authFormInput ${
-                                    touched.password &&
-                                    errors.password &&
-                                    'authInputError'
-                                }`}
-                                type="password"
-                                name="password"
-                                placeholder="Пароль"
-                            />
-                           
-
-                            <span className="authError">
-                                <ErrorMessage name="password" />
-                            </span>
-                        </label> */}
+                    <span className="authError">
+                      <ErrorMessage name="password" />
+                    </span>
+                  </label>
+                )}
                 <button className="mainButton authFormBtn" type="submit">
                   {location.pathname === '/signup' ? 'Реєстрація' : 'Увійти'}
                 </button>
@@ -112,18 +111,61 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
           </Formik>
         </div>
         <div className="div-for-fl">
-          <div className="div-cont">
-            <Two />
-            <p className="teza">
-              Книги — это корабли мысли,
-              <br />
-              странствующие по волнам <br />
-              времени и бережно несущие <br />
-              свой драгоценный груз от <br />
-              поколения к поколению.
-            </p>
-            <p className="becon line">Бэкон Ф.</p>
-          </div>
+          {location.pathname === '/' && (
+            <div className="div-cont">
+              <Two />
+              <p className="teza">
+                Книги — это корабли мысли,
+                <br />
+                странствующие по волнам <br />
+                времени и бережно несущие <br />
+                свой драгоценный груз от <br />
+                поколения к поколению.
+              </p>
+              <p className="becon line">Бэкон Ф.</p>
+            </div>
+          )}
+          {location.pathname === '/signup' && (
+            <div className="signupDiv">
+              <h1 className="mainTitleSignUp">Books Reading</h1>
+              <h2 className="titleSignUp">Допоможе вам</h2>
+              <ul>
+                <li className="authFormText">
+                  <sup className="authFormSym">{'>'}</sup>Швидше сформулювати
+                  свою ціль і розпочати читати
+                </li>
+                <li className="authFormText">
+                  <sup className="authFormSym">{'>'}</sup>Пропорційно
+                  розподілити навантаження на кожний день
+                </li>
+                <li className="authFormText">
+                  <sup className="authFormSym">{'>'}</sup>Відстежувати особистий
+                  успіх
+                </li>
+              </ul>
+              <h2 className="titleSignUp">Також ви зможете</h2>
+              <ul>
+                <li className="authFormText">
+                  <sup className="authFormSym">{'>'}</sup>Формувати особисту
+                  думку незалежну від інших
+                </li>
+                <li className="authFormText">
+                  <sup className="authFormSym">{'>'}</sup>Підвищити свої
+                  професійні якості опираючись на нові знання
+                </li>
+                <li className="authFormText last">
+                  <sup className="authFormSym">{'>'}</sup>Стати цікавим
+                  співрозмовником
+                </li>
+              </ul>
+              <button className="buttonSignUp" type="submit">
+                Увійти
+              </button>
+              <button className="buttonSignUp" type="submit">
+                Реєстрація
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </AuthFormStyled>

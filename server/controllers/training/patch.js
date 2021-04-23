@@ -44,9 +44,13 @@ const addRead = async (req, res, next) => {
       });
     }
 
-    const dateLuxon = DateTime.now().setZone('Europe/Kiev').toObject();
+    const dateLuxon = DateTime.now()
+      .setZone('Europe/Kiev')
+      .toFormat('yyyy-LL-dd HH:mm:ss');
 
-    const date = `${dateLuxon.year}-${dateLuxon.month}-${dateLuxon.day} ${dateLuxon.hour}:${dateLuxon.minute}:${dateLuxon.second}`;
+    const date = dateLuxon;
+
+    console.log(date);
 
     training.results.push({ date, pageCount: pages });
 
