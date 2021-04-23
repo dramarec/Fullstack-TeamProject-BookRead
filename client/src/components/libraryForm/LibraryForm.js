@@ -18,7 +18,7 @@ const schema = Yup.object().shape({
     .max(getYear(), 'Не більш, ніж поточний рік')
     .required('Заповніть поле "Рік випуску"')
     .typeError('Введіть число'),
-  numberOfPages: Yup.number()
+  bookPages: Yup.number()
     .min(1, 'Min значення 1')
     .required('Заповніть поле "Кількість сторінок"')
     .typeError('Введіть число'),
@@ -95,7 +95,7 @@ const LibraryForm = () => {
                   <div className="wrapper">
                     <Field
                       className="bookFormInput  input2"
-                      type="text"
+                      type="number"
                       value={values.year}
                       name="year"
                       placeholder="..."
@@ -116,16 +116,16 @@ const LibraryForm = () => {
                   <div className="wrapper">
                     <Field
                       className="bookFormInput input3"
-                      type="text"
-                      value={values.numberOfPages}
-                      name="numberOfPages"
+                      type="number"
+                      value={values.bookPages}
+                      name="bookPages"
                       placeholder="..."
                       autoComplete="off"
                     />
                     <ErrorMessage
                       className="bookFormError"
                       component="div"
-                      name="numberOfPages"
+                      name="bookPages"
                     />
                   </div>
                 </label>
