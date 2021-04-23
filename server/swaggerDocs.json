@@ -932,50 +932,52 @@
             "example": "User"
           },
           "planeToRead": {
-            "type": "object",
-            "description": "Information about books which user planes to read",
-            "properties": {
-              "readPages": {
-                "type": "number",
-                "description": "How many pages you  have read",
-                "example": "0"
-              },
-              "review": {
-                "type": "sting",
-                "description": "Book's review",
-                "example": "null"
-              },
-              "rating": {
-                "type": "sting",
-                "description": "Book's rating",
-                "example": "null"
-              },
-              "_id": {
-                "type": "string",
-                "description": "Book's id",
-                "example": "608170ac715ef491300d3d2e"
-              },
-              "title": {
-                "type": "string",
-                "description": "Book's title",
-                "example": "'Тося Бося и день Суперпапы'"
-              },
-              "author": {
-                "type": "string",
-                "description": "Book's author",
-                "example": "Лина Жутауте"
-              },
-              "year": {
-                "type": "number",
-                "description": "Book's year",
-                "example": "2019"
-              },
-              "numberOfPages": {
-                "type": "number",
-                "description": "Book's numberOfPages",
-                "example": "42"
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "readPages": {
+                  "type": "number",
+                  "description": "How many pages you  have read",
+                  "example": "0"
+                },
+                "review": {
+                  "type": "sting",
+                  "description": "Book's review",
+                  "example": "null"
+                },
+                "rating": {
+                  "type": "sting",
+                  "description": "Book's rating",
+                  "example": "null"
+                },
+                "_id": {
+                  "type": "string",
+                  "description": "Book's id",
+                  "example": "608170ac715ef491300d3d2e"
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Book's title",
+                  "example": "'Тося Бося и день Суперпапы'"
+                },
+                "author": {
+                  "type": "string",
+                  "description": "Book's author",
+                  "example": "Лина Жутауте"
+                },
+                "year": {
+                  "type": "number",
+                  "description": "Book's year",
+                  "example": "2019"
+                },
+                "numberOfPages": {
+                  "type": "number",
+                  "description": "Book's numberOfPages",
+                  "example": "42"
+                }
               }
-            }
+            } 
           },
           "readNow": {
             "type": "object",
