@@ -4,8 +4,7 @@ import ReadingBooks from '../../components/library/readingBooks/ReadingBooks'
 import WillReadBooks from '../../components/library/willReadBooks/WillReadBooks'
 import LibraryForm from '../../components/libraryForm/LibraryForm'
 import LibraryPageStyled from './LibraryPagesStyled'
-import Responsive from 'react-responsive'
-import ReadBookItemMobile from '../../components/library/readBooks/ReadBookItemMobile'
+
 
 const LibraryPage = () => {
     /*const Desktop = props => <Responsive {...props} minWidth={1280} />;

@@ -1,9 +1,18 @@
-import star from '../../../assets/img/star.png'
 import book from '../../../assets/svg/book.svg'
 import ReadBookItemMobileStyled from './ReadBookItemMobileStyled';
 import Star from './Star';
+import modalActions from '../../../redux/actions/modalAction';
+import { useDispatch } from 'react-redux';
+import Modal from '../../modal/Modal';
+import ReviewModal from '../reviewModal/ReviewModal';
 
 const ReadingBookItemMobile = () => {
+    const dispatch = useDispatch();
+
+    const handleClick = () => {
+        dispatch(modalActions.toggleModal());
+        document.body.style.overflow = 'visible';
+    };
     return (
         <ReadBookItemMobileStyled>
         <div className='bookName flex'>
@@ -26,7 +35,8 @@ const ReadingBookItemMobile = () => {
         <p className='title'>Рейтинг:</p>
         <Star/>
         </div>
-        <button type='button'>Резюме</button>
+        <button type='button' className='review-button' onClick={handleClick}>Резюме</button>
+        <Modal><ReviewModal/></Modal>
         </ReadBookItemMobileStyled>
        
     )

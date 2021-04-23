@@ -33,7 +33,7 @@ flex: 2 1 0%;
     line-height: 0px;
 }
 
-button {
+.review-button {
     padding: 0 34px;
     line-height: 38px;
     background-color: #6D7A8D;

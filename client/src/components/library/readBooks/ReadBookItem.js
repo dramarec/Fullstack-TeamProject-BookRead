@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
-
-import book from '../../../assets/svg/book.svg'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import book from '../../../assets/svg/book.svg';
+import modalActions from '../../../redux/actions/modalAction';
 import Modal from '../../modal/Modal';
+import ReviewModal from '../reviewModal/ReviewModal';
 import ReadBookItemStyled from './ReadBookItemStyled';
 import Star from './Star';
 
 const ReadBookItem = () => {
-    const [openModal, setOpenModal] = useState(false);
-    const toggaleModal = () => {
-        setOpenModal(!openModal)
-    }
+    const dispatch = useDispatch();
+
+    const handleClick = () => {
+        dispatch(modalActions.toggleModal());
+        document.body.style.overflow = 'visible';
+    };
     return (
         <ReadBookItemStyled >
         <div className='bookName'>
@@ -21,8 +25,8 @@ const ReadBookItem = () => {
         <p className='pages'>183</p>
         <div className='review'>
         <Star/>
-        {openModal && <Modal/>}
-        <button type='button' onClick={toggaleModal}>Резюме</button>
+        <button type='button' className='review-button' onClick={handleClick}>Резюме</button>
+        <Modal><ReviewModal/></Modal>
         </div>
         </ReadBookItemStyled>
         

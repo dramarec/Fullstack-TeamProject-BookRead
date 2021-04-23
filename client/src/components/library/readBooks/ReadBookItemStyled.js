@@ -49,7 +49,7 @@ p {
     flex: 2 1 0%;
 }
 
-.review button {
+.review-button {
     //padding: 11px 36px;
     background-color: #6D7A8D;
     font-family: 'Montserrat-Medium';
