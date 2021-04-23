@@ -2,8 +2,6 @@ import React, { Suspense } from 'react';
 
 // import Modal from './modal/Modal';
 // import Button from './testButton.js/TestButton';
-// import AuthForm from './auth/AuthForm';
-// import LibraryForm from './libraryForm/LibraryForm';
 // import Chart from './chart/Chart';
 // import LibraryPage from '../pages/library/LibraryPage';
 import AppBar from './appBar/AppBar';
@@ -30,23 +28,15 @@ const App = () => {
           </Switch>
         </Suspense>
       </div>
+      {/* <div>
+        <LibraryPage />
+        <Button />
+        <Modal>
+          <h1>Hello</h1>
+        </Modal>
+      </div> */}
     </>
   );
 };
 
 export default App;
-
-{
-  /* <div>
- <AuthForm />
-<LibraryForm />
-<LibraryPage />
-  <Chart />
-  <Button />
-  <Modal>
-    <h1>Hello</h1>
-  </Modal>
-  <Header />
-  <LibraryPage />
-</div> */
-}

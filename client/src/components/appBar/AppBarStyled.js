@@ -7,17 +7,14 @@ const AppBarStyled = styled.div`
 
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   .container {
-    /* display: flex; */
     width: 100%;
     height: 60px;
     padding: 11px 25px;
-    /* justify-content: center; */
   }
   .navigation {
   }
   .navlist {
     display: flex;
-    /* justify-content: center; */
     align-items: baseline;
   }
   .navListItem {
@@ -46,12 +43,8 @@ const AppBarStyled = styled.div`
   }
 
   .logoDescr {
-    /* display: inline-block; */
     font-size: 20px;
     font-family: 'AbrilFatface-Regular';
-    /* padding-top: 16px;
-    padding-bottom: 17px;
-    padding-left: 25px; */
   }
 
   .titleNameWrap {
@@ -75,6 +68,10 @@ const AppBarStyled = styled.div`
       font-weight: 300;
       font-size: 14px;
       color: #242a37;
+      display: block;
+      @media screen and (max-width: 767px) {
+        display: none;
+      }
     }
   }
 
@@ -85,7 +82,5 @@ const AppBarStyled = styled.div`
       border-bottom: 1px solid #fff;
     }
   }
-  /* @media screen and (max-width: 767px) {
-  } */
 `;
 export default AppBarStyled;

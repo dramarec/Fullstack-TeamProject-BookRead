@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useLocation } from 'react-router-dom';
 import AuthFormStyled from './AuthFormStyled';
@@ -105,7 +106,9 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                   {location.pathname === '/signup' ? 'Реєстрація' : 'Увійти'}
                 </button>
                 <button className="mainButton authFormBtnSec" type="submit">
-                  {location.pathname === '/signup' ? 'Увійти' : 'Реєстрація'}
+                  <Link to="/signup">
+                    {location.pathname === '/signup' ? 'Увійти' : 'Реєстрація'}
+                  </Link>
                 </button>
               </Form>
             )}
@@ -162,9 +165,7 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
               <button className="buttonSignUp" type="submit">
                 Увійти
               </button>
-              <button className="buttonSignUp" type="submit">
-                Реєстрація
-              </button>
+              <button className="buttonSignUp" type="submit"></button>
             </div>
           )}
         </div>
