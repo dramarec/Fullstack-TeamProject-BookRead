@@ -23,7 +23,6 @@ const reg = async (req, res, next) => {
       data: {
         user: {
           email: newUser.email,
-          userId: newUser.id,
           username: newUser.username,
         },
       },
@@ -55,7 +54,12 @@ const login = async (req, res, next) => {
       code: 200,
       data: {
         token,
-        user,
+        user: {
+          username: user.username,
+          email,
+          books: user.books,
+          training: user.training,
+        },
       },
     });
   } catch (e) {

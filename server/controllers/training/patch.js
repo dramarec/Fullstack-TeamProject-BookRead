@@ -59,7 +59,18 @@ const addRead = async (req, res, next) => {
     return res.status(200).json({
       status: 'success',
       code: 200,
-      data: { book, training },
+      data: {
+        book,
+        training: {
+          _id: training._id,
+          start: training.start,
+          end: training.end,
+          duration: training.duration,
+          pagesReadPerDay: training.pagesReadPerDay,
+          books: training.books,
+          results: training.results,
+        },
+      },
     });
   } catch (err) {
     next(err);

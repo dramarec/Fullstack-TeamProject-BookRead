@@ -53,10 +53,20 @@ const getTraining = async (req, res, next) => {
           });
         }
 
+        const { books, _id, start, end, pagesReadPerDay, results } = data;
+
         return res.status(200).json({
           status: 'success',
           code: 200,
-          training: data,
+          training: {
+            _id,
+            start,
+            end,
+            duration,
+            pagesReadPerDay,
+            books,
+            results,
+          },
         });
       });
   } catch (err) {
