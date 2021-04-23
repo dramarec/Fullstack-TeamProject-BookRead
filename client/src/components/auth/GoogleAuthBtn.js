@@ -20,9 +20,9 @@ const GoogleAuthBtn = () => {
   };
 
   return (
-    // <div>
     <>
       <GoogleLogin
+        className="btn-google"
         clientId={google}
         buttonText="Google"
         onSuccess={responseSuccessGoogle}
@@ -30,7 +30,6 @@ const GoogleAuthBtn = () => {
         cookiePolicy={'single_host_origin'}
       />
     </>
-    // </div>
   );
 };
 

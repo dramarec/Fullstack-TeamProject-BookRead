@@ -1,11 +1,11 @@
-import AuthFormContainer from "../../components/auth/AuthFormContainer";
+import AuthFormContainer from '../../components/auth/AuthFormContainer';
 
 const LoginPage = () => {
-    return (
-        <>
-            <AuthFormContainer />
-        </>
-    )
-}
+  return (
+    <>
+      <AuthFormContainer />
+    </>
+  );
+};
 
 export default LoginPage;

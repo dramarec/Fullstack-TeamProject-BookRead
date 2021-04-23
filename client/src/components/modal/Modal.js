@@ -5,45 +5,48 @@ import getModalState from '../../redux/selectors/modalSelector';
 import modalActions from '../../redux/actions/modalAction';
 
 const Modal = ({ children }) => {
-    const modalActive = useSelector(getModalState);
-    const dispatch = useDispatch();
+  const modalActive = useSelector(getModalState);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        window.addEventListener('keydown', handleKeyPress);
-        return () => {
-            window.removeEventListener('keydown', handleKeyPress);
-        };
-    }, []);
-
-    const handleClick = e => {
-        if (e.target.dataset.name !== 'wrapper') {
-            return;
-        }
-        dispatch(modalActions.toggleModal());
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    const handleKeyPress = e => {
-        if (e.code === 'Escape') {
-            dispatch(modalActions.toggleModal());
-        }
-    };
-
-    const closeModal = () => {
-        dispatch(modalActions.toggleModal());
+  const handleClick = e => {
+    if (e.target.dataset.name !== 'wrapper') {
+      return;
     }
+    dispatch(modalActions.toggleModal());
+  };
 
-    return (
-        <>
-            {modalActive.modal && (< ModalWrapper onClick={handleClick} data-name='wrapper'>
-                <div className='modal'>
-                    {children}
-                    <button className='closeButton' type='button' onClick={closeModal}>Cancel</button>
-                </div>
-            </ModalWrapper >)}
-        </>
-    )
+  const handleKeyPress = e => {
+    if (e.code === 'Escape') {
+      dispatch(modalActions.toggleModal());
+    }
+  };
 
+  const closeModal = () => {
+    dispatch(modalActions.toggleModal());
+  };
 
-}
+  return (
+    <>
+      {modalActive.modal && (
+        <ModalWrapper onClick={handleClick} data-name="wrapper">
+          <div className="modal">
+            {children}
+            <button className="closeButton" type="button" onClick={closeModal}>
+              Cancel
+            </button>
+          </div>
+        </ModalWrapper>
+      )}
+    </>
+  );
+};
 
-export default Modal
+export default Modal;
