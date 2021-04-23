@@ -1,21 +1,21 @@
 import styled from 'styled-components';
-import imgMob from './photo/mob.jpg';
-import imgTab from './photo/tab.jpg';
-import imgDec from './photo/desctop.jpg';
+import imgMob from '../../components/auth/photo/mob.jpg';
+import imgTab from '../../components/auth/photo/tab.jpg';
+import imgDec from '../../components/auth/photo/desctop.jpg';
 
-const AuthFormStyled = styled.div`
+const RegisterStyled = styled.div`
  
-    background: #091E3FCC;
-    background:  url(${imgMob}) ;
+    background-color: red;
+   /* // background:  url(${imgMob}) ;
     background-repeat: no-repeat;
     background-size: cover;
-    max-height: 656px;
-.authForm {
+    max-height: 588px;
+   .authForm {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     }
-.btn-google{
+    .btn-google{
     font-weight: bold;
     font-size: 16px;
     line-height: 38px;
@@ -29,19 +29,19 @@ const AuthFormStyled = styled.div`
     margin-top: 30px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
-.authFormText{
+    .authFormText{
         font-family:  Montserrat-Medium;
         font-weight: 600;
         font-size: 14px;
         line-height: 2.3;
         color: #ffffff;
     }
-.authFormStar{
+        .authFormStar{
         color: #FF6B08;
         font-size: 14px;
     }
 
-.authFormBtn {
+    .authFormBtn {
         margin: 0 auto;
         background-color: #FF6B08;
         color: #ffffff;
@@ -50,7 +50,7 @@ const AuthFormStyled = styled.div`
         margin-top: 30px;
         border: none;
     }
-.authFormBtnSec{
+    .authFormBtnSec{
         border: none;
     background: 0;
     color: #FF6B08;
@@ -62,7 +62,7 @@ const AuthFormStyled = styled.div`
     }
     
     
-.authFormFild {
+    .authFormFild {
         position: relative;
         display: flex;
         flex-direction: column;
@@ -72,7 +72,7 @@ const AuthFormStyled = styled.div`
         line-height: 1.21;
         letter-spacing: 0.04em;
     }
-.authFormInput {
+    .authFormInput {
         padding: 5px 0;
         width: 100%;
         font-size: 16px;
@@ -88,11 +88,11 @@ const AuthFormStyled = styled.div`
     }
     
 .div-for-fl{
-    /* width: 316px; */
+   
     width: 100%;
+    height: 186px;
     background: #ffffff;
     margin: 0 auto;
-    /* position: relative; */
 }
 
 .teza{
@@ -107,7 +107,6 @@ const AuthFormStyled = styled.div`
         height:45px;
         display: flex;
     justify-content: center;
-    padding-top: 5px;
     }
 .becon{
     color: #898F9F;
@@ -116,9 +115,7 @@ font-size: 14px;
 line-height: 2.3;
 text-align: center;
 margin-top: 18px;
- padding-bottom: 7px;
 }
-
 .line::before {
     display: block;
     content: "";
@@ -140,11 +137,14 @@ margin-top: 18px;
          background: #091E3FCC;
     background:  url(${imgTab}) ;
     width: 100%;
-    max-height: 796px;
+    max-height: 730px;
     box-sizing: border-box;
     background-repeat: no-repeat;
     background-size: cover;
-   
+    .div-cont{
+        position: relative;
+        padding-top: 60px;
+    }
     .authFormText{
         font-family:  Montserrat-Medium;
         font-weight: 500;
@@ -164,11 +164,10 @@ margin-top: 18px;
     }
       .div-for-fl{
     width: 100%;
-   
+    height: 404px;
     background: #ffffff;
     margin: 0 auto;
    position: relative;
-   
     }
     .svg{
         margin: 0 auto;
@@ -176,8 +175,7 @@ margin-top: 18px;
         height:65px;
         display: flex;
     justify-content: center;
-    padding-top: 62px;
-   
+    
     }
     .teza{
         font-size: 24px;
@@ -204,12 +202,11 @@ font-size: 20px;
 line-height: 2.3;
 text-align: center;
 margin-top: 28px;
-padding-bottom: 62px;
 }
     }
 
     @media (min-width: 1280px){
-        /* width: 565px; */
+        
         max-height: 790px;
         background:  url(${imgDec}) ;
          background-repeat: no-repeat;
@@ -221,9 +218,9 @@ padding-bottom: 62px;
         background-color: white;
         margin:0;
         margin-top: 185px;
-        margin-left: 44px;
+        margin-left: 83px;
         margin-bottom: 185px;
-        /* margin: 0 auto; */
+      
         }
         .div-cont{
             padding-top: 266px;
@@ -277,101 +274,18 @@ margin-top: 28px;
     }
     }
 
-
-/* styles for register information */
-.authFormSym{
-        color: #FF6B08;
-     font-size: 10px;
-     margin-right: 11px;
-    }
-.mainTitleSignUp{
-    text-align: center;
-    font-family: 'AbrilFatface-Regular';
-    font-weight: normal;
-font-size: 34px;
-/* line-height: 1.4px;  */
-padding-top: 30px;
-margin-bottom: 20px;
-}
-.titleSignUp{
-    font-family: 'Montserrat-Medium';
-    font-weight: 500;
-font-size: 20px;
-margin-top: 20px
-
-}
-.authFormText{
-    font-family: 'Montserrat-Medium';
-    font-weight: 500;
-    font-size: 14px;
-    color: #898F9F;
-    margin-top: 14px;
-}
-.buttonSignUp{
-    width: 127px;
-    height: 40px;
-    border: 1px solid #242A37;
-    color: #242A37;
-    margin-top: 31px;
-    margin-bottom: 58px;
-}
-.buttonSignUp:last-child{
-margin-left: 16px;
-}
-.buttonSignUp:hover {
-background: orange;
-color: white;
-border: none;
-}
-.buttonSignUp:focus{
-    background: orange;
-color: white;
-border: none;
-}
-@media (min-width: 768px) and (max-width:1279px){
-    .buttonSignUp{
-        /* opacity: 0; */
-        display: none
-    }
-    .last{
-        padding-bottom: 93px;
-    }
-    .mainTitleSignUp{
-        padding-top: 60px;
-        padding-bottom: 20px;
-    }
-
-}
-@media (min-width: 1280px){
-    .buttonSignUp{
-        /* opacity: 0; */
-        display: none
-    }
-    .last{
-        padding-bottom: 93px;
-    }
-    .mainTitleSignUp{
-        padding-top: 133px;
-        text-align: center;
-        padding-bottom: 32px;
-    }
-    .signupDiv{
-        padding-left: 90px;
-    }
-     /* .authForm {
+ 
+@media screen and (min-width: 480px){
+.container {
     
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    background-color: white;
-    margin: 0;
-    margin-left: 44px;
-     margin-bottom: 92px;
-    margin-top: 92px;
-} */
-
 }
 
-
+.container {
+    overflow: hidden;
+    width: 100%;
+    padding-left: 0; 
+     padding-right: 0;
+}
+} */
 `;
-export default AuthFormStyled;
+export default RegisterStyled;
