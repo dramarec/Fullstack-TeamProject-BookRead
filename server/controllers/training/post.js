@@ -8,23 +8,19 @@ const addTraining = async (req, res, next) => {
 
     const startTime = start.split('-');
     const endTime = end.split('-');
-
     const dateLuxon = DateTime.now()
       .setZone('Europe/Kiev')
       .toFormat('yyyy-LL-dd');
-
     const startDate = DateTime.local(
       Number(startTime[0]),
       Number(startTime[1]),
       Number(startTime[2]),
     );
-
     const endDate = DateTime.local(
       Number(endTime[0]),
       Number(endTime[1]),
       Number(endTime[2]),
     );
-
     const duration = endDate.diff(startDate, 'days').toObject().days;
 
     if (!duration || duration < 1) {
@@ -59,9 +55,18 @@ const addTraining = async (req, res, next) => {
 
       totalPages += book.numberOfPages;
 
-      console.log(book, 'book from console.log');
+      const { _id, title, author, year, numberOfPages, review, rating } = book;
+      const validateBook = {
+        _id,
+        title,
+        author,
+        year,
+        numberOfPages,
+        review,
+        rating,
+      };
 
-      selectedBooks.push(book);
+      selectedBooks.push(validateBook);
     }
 
     const pagesReadPerDay = Math.ceil(totalPages / duration);

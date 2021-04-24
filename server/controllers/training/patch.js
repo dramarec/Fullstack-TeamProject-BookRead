@@ -1,12 +1,10 @@
 const { DateTime } = require('luxon');
-const { Training, Book, User } = require('../../models');
+const { Training, Book } = require('../../models');
 
 const addRead = async (req, res, next) => {
   try {
     const user = req.user;
     let { pages } = req.body;
-    let totalPages = 0;
-    totalPages += pages;
 
     const training = await Training.findOne({ _id: user?.training });
 
@@ -18,37 +16,36 @@ const addRead = async (req, res, next) => {
       });
     }
 
-    let bookout = null;
-    let pagesForTraining = 0;
+    let book = null;
+    let totalPages = 0;
 
     for (let i = 0; i < training.books.length; i++) {
-      let book = null;
+      let arrayBook = null;
 
-      book = await Book.findOne({ _id: training.books[i] });
+      arrayBook = await Book.findOne({ _id: training.books[i] });
 
-      if (book?.numberOfPages === book?.readPages) {
+      if (arrayBook?.numberOfPages === arrayBook?.readPages) {
         continue;
       }
 
-      // book.readPages += pages;
-      book.readPages += totalPages;
+      arrayBook.readPages += pages;
 
-      if (book.readPages > book.numberOfPages) {
-        book.readPages = book.numberOfPages;
+      if (arrayBook.readPages > arrayBook.numberOfPages) {
+        arrayBook.readPages = arrayBook.numberOfPages;
       }
 
-      totalPages = book.readPages;
-      console.log(totalPages, 'pages in cycle');
+      pages = arrayBook.readPages;
+      console.log(pages, 'pages in cycle');
 
-      await book.save();
+      await arrayBook.save();
 
-      bookout = book;
-      pagesForTraining = totalPages;
+      book = arrayBook;
+      totalPages = pages;
 
       break;
     }
 
-    if (!bookout) {
+    if (!book) {
       await Training.deleteOne({ _id: req.user.training });
 
       req.user.training = null;
@@ -58,7 +55,7 @@ const addRead = async (req, res, next) => {
       return res.status(403).json({
         status: 'error',
         code: 403,
-        message: 'you read all the books from this training',
+        message: 'you have read all the books, the training is over',
       });
     }
 
@@ -67,8 +64,7 @@ const addRead = async (req, res, next) => {
       .toFormat('yyyy-LL-dd HH:mm:ss');
 
     const date = dateLuxon;
-
-    pages = pagesForTraining;
+    pages = totalPages;
 
     console.log(pages, 'pages out cycle');
     console.log(date, 'end test');
@@ -81,7 +77,7 @@ const addRead = async (req, res, next) => {
       status: 'success',
       code: 200,
       data: {
-        bookout,
+        book,
         training: {
           _id: training._id,
           start: training.start,

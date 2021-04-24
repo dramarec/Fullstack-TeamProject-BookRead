@@ -11,7 +11,7 @@ const getTraining = async (req, res, next) => {
         if (err) {
           next(err);
         }
-        console.log(data);
+
         if (!data) {
           return res.status(403).json({
             status: 'error',
@@ -24,21 +24,17 @@ const getTraining = async (req, res, next) => {
           .setZone('Europe/Kiev')
           .toFormat('yyyy-LL-dd')
           .split('-');
-
         const endTime = data.end.split('-');
-
         const dateNow = DateTime.local(
           Number(dateLuxon[0]),
           Number(dateLuxon[1]),
           Number(dateLuxon[2]),
         );
-
         const endDate = DateTime.local(
           Number(endTime[0]),
           Number(endTime[1]),
           Number(endTime[2]),
         );
-
         const duration = endDate.diff(dateNow, 'days').toObject().days;
 
         if (!duration || duration < 1) {
