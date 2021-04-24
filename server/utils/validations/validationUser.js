@@ -15,7 +15,7 @@ const validate = (schema, obj, next) => {
   const { error } = schema.validate(obj);
   if (error) {
     const [{ message }] = error.details;
-    return res.status(400).json({
+    return next({
       status: 400,
       message,
       data: 'Bad Request',
