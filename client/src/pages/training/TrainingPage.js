@@ -12,20 +12,20 @@ const TrainingPage = () => {
             <p className="sidebar-descr__item">Моя мета прочитати</p>
           </div>
 
-          <div className="sidebar-wrap">
-            <div>
+          <ul className="sidebar-wrap">
+            <li className="sidebar-wrap__list">
               <div className="sidebar-wrap__item">
                 <span>0</span>
               </div>
               <p className="sidebar-wrap__description">Кількість книжок</p>
-            </div>
-            <div>
+            </li>
+            <li className="sidebar-wrap__list">
               <div className="sidebar-wrap__item">
                 <span>0</span>
               </div>
               <p className="sidebar-wrap__description">Кількість днів</p>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
 
         <div className="baner">

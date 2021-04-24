@@ -3,27 +3,33 @@ import styled from 'styled-components';
 const TrainingPageStyled = styled.div`
   background-color: var(--main-background);
   padding-top: 30px;
+
   .sidebar {
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
+    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
     background-color: #fff;
     width: 270px;
     margin-left: auto;
     margin-right: auto;
-    @media (min-width: 768px) {
+    margin-bottom: 30px;
+
+    @media (min-width: 768px) and (max-width: 1279px) {
+      height: 105px;
       width: 100%;
       display: flex;
+      align-items: stretch;
       margin-bottom: 40px;
-      padding: 22px 45px;
+      padding: 20px 45px 8px;
     }
-
     &-descr {
       padding: 15px 25px;
-      width: 270px;
       height: 60px;
       background: var(--table-title);
-      @media (min-width: 768px) {
+      @media (min-width: 768px) and (max-width: 1279px) {
         width: 275px;
         display: inline-block;
+        margin-right: auto;
+        box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
       }
       &__item {
         text-align: center;
@@ -33,18 +39,24 @@ const TrainingPageStyled = styled.div`
       }
     }
     &-wrap {
-      background-color: #fff;
-      box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-      @media (min-width: 768px) {
-        /* height: 105px; */
-      }
       display: flex;
-      @media (max-width: 767px) {
-        height: 258px;
-        margin-bottom: 30px;
-        padding: 55px 25px;
+      height: 258px;
+      padding: 55px 25px;
+      @media (min-width: 768px) and (max-width: 1279px) {
+        height: 0;
+        padding: 0;
+      }
+      &__list {
+        &:not(:last-child) {
+          margin-right: 20px;
+          @media (min-width: 768px) and (max-width: 1279px) {
+            margin-right: 35px;
+          }
+        }
       }
       &__item {
+        box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+        background-color: var(--box-background);
         font-family: 'OpenSans-Bold';
         text-align: center;
         font-size: 45px;
@@ -52,26 +64,31 @@ const TrainingPageStyled = styled.div`
         height: 100px;
         padding: 20px;
         margin-bottom: 14px;
-        background-color: var(--box-background);
-        box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
-        @media (min-width: 768px) {
+        @media (min-width: 768px) and (max-width: 1279px) {
+          margin-bottom: 4px;
+          font-size: 40px;
           height: 60px;
           padding: 0;
-          font-size: 40px;
         }
       }
       &__description {
-        text-align: center;
         font-size: 14px;
+        text-align: center;
         color: var(--secondary-text);
-        width: 100px;
-        @media (min-width: 768px) {
+        @media (max-width: 767px) {
+          width: 90px;
+        }
+        @media (min-width: 768px) and (max-width: 1279px) {
           font-size: 11px;
         }
       }
     }
   }
+
   .books {
+    @media (min-width: 767px) {
+      display: none;
+    }
     font-weight: 500;
     font-size: 12px;
     line-height: 38px;
@@ -109,6 +126,7 @@ const TrainingPageStyled = styled.div`
       padding-bottom: 15px;
     }
   }
+
   .baner {
     width: 100%;
     height: 60px;

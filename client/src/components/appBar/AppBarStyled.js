@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const AppBarStyled = styled.div`
   z-index: 20;
   position: relative;
+  font-family: 'Montserrat-Regular';
 
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   .container {
@@ -71,7 +72,6 @@ const AppBarStyled = styled.div`
       margin-right: 11px;
     }
     &__name {
-      font-family: 'Montserrat-Regular';
       font-style: normal;
       font-weight: 300;
       font-size: 14px;
@@ -84,6 +84,7 @@ const AppBarStyled = styled.div`
   }
 
   .exit {
+    font-weight: 300;
     order: 1;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
     border-bottom: 1px solid #242a37;
