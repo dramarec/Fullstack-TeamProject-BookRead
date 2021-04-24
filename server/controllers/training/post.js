@@ -55,13 +55,23 @@ const addTraining = async (req, res, next) => {
 
       totalPages += book.numberOfPages;
 
-      const { _id, title, author, year, numberOfPages, review, rating } = book;
+      const {
+        _id,
+        title,
+        author,
+        year,
+        numberOfPages,
+        readPages,
+        review,
+        rating,
+      } = book;
       const validateBook = {
         _id,
         title,
         author,
         year,
         numberOfPages,
+        readPages,
         review,
         rating,
       };

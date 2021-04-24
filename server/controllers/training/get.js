@@ -53,6 +53,34 @@ const getTraining = async (req, res, next) => {
 
         const { books, _id, start, end, pagesReadPerDay, results } = data;
 
+        let validateBooks = [];
+
+        books.forEach(book => {
+          const {
+            _id,
+            title,
+            author,
+            year,
+            numberOfPages,
+            readPages,
+            review,
+            rating,
+          } = book;
+
+          const validateBook = {
+            _id,
+            title,
+            author,
+            year,
+            numberOfPages,
+            readPages,
+            review,
+            rating,
+          };
+
+          validateBooks.push(validateBook);
+        });
+
         return res.status(200).json({
           status: 'success',
           code: 200,
@@ -62,7 +90,7 @@ const getTraining = async (req, res, next) => {
             end,
             duration,
             pagesReadPerDay,
-            books,
+            books: validateBooks,
             results,
           },
         });

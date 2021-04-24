@@ -20,26 +20,48 @@ const addRead = async (req, res, next) => {
     let totalPages = 0;
 
     for (let i = 0; i < training.books.length; i++) {
-      let arrayBook = null;
-
-      arrayBook = await Book.findOne({ _id: training.books[i] });
+      const arrayBook = await Book.findOne({ _id: training.books[i] });
 
       if (arrayBook?.numberOfPages === arrayBook?.readPages) {
         continue;
       }
 
       arrayBook.readPages += pages;
+      console.log(pages, 'no overflow');
 
       if (arrayBook.readPages > arrayBook.numberOfPages) {
         arrayBook.readPages = arrayBook.numberOfPages;
       }
 
-      pages = arrayBook.readPages;
-      console.log(pages, 'pages in cycle');
+      if (pages > arrayBook.readPages) {
+        pages = arrayBook.readPages;
+        console.log(pages, 'overflow');
+      }
+
+      const {
+        _id,
+        title,
+        author,
+        year,
+        numberOfPages,
+        readPages,
+        review,
+        rating,
+      } = arrayBook;
+      const validateBook = {
+        _id,
+        title,
+        author,
+        year,
+        numberOfPages,
+        readPages,
+        review,
+        rating,
+      };
 
       await arrayBook.save();
 
-      book = arrayBook;
+      book = validateBook;
       totalPages = pages;
 
       break;
@@ -66,7 +88,6 @@ const addRead = async (req, res, next) => {
     const date = dateLuxon;
     pages = totalPages;
 
-    console.log(pages, 'pages out cycle');
     console.log(date, 'end test');
 
     training.results.push({ date, pageCount: pages });
