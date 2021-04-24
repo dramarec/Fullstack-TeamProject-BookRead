@@ -6,7 +6,7 @@ import BooksList from '../../components/trainingComponents/BooksList';
 const TrainingPage = () => {
   return (
     <TrainingPageStyled>
-      <div className="container">
+      <div className="container ">
         <div className="sidebar">
           <div className="sidebar-descr">
             <p className="sidebar-descr__item">Моя мета прочитати</p>

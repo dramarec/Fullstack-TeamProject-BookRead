@@ -3,7 +3,8 @@ import styled from 'styled-components';
 const TrainingPageStyled = styled.div`
   background-color: var(--main-background);
   padding-top: 30px;
-
+  @media (min-width: 1279px) {
+  }
   .sidebar {
     /* outline: 1px solid red; */
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
