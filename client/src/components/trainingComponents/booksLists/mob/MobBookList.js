@@ -1,10 +1,11 @@
 import React from 'react';
-import book from '../../assets/svg/book3.svg';
+import book from '../../../../assets/svg/book3.svg';
+import MobBookListStyle from './MobBookListStyle';
 
-export default function BooksList() {
+const MobBookList = () => {
   return (
-    <div className="books">
-      <ul>
+    <MobBookListStyle>
+      <ul className="books">
         <li>
           <img className="books__img" src={book} alt="" />
           <span className="books__item-descr">...</span>
@@ -22,6 +23,7 @@ export default function BooksList() {
           <span className="books__item-descr">...</span>
         </li>
       </ul>
-    </div>
+    </MobBookListStyle>
   );
-}
+};
+export default MobBookList;

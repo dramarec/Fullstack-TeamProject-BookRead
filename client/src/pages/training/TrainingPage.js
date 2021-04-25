@@ -1,8 +1,9 @@
 import React from 'react';
-import Chart from '../../components/chart/Chart';
 import TrainingPageStyled from './TrainingPageStyled';
-// import book from '../../assets/svg/book3.svg';
-import BooksList from '../../components/trainingComponents/BooksList';
+import Chart from '../../components/trainingComponents/chart/Chart';
+import MyTraining from '../../components/trainingComponents/myTraining/MyTraining';
+import MobBookList from '../../components/trainingComponents/booksLists/mob/MobBookList';
+
 const TrainingPage = () => {
   return (
     <TrainingPageStyled>
@@ -28,10 +29,9 @@ const TrainingPage = () => {
           </ul>
         </div>
 
-        <div className="baner">
-          <p className="baner__title">Моє тренування</p>
-        </div>
-        <BooksList />
+        <MyTraining />
+        <MobBookList />
+
         <Chart />
       </div>
     </TrainingPageStyled>
