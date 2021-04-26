@@ -7,7 +7,7 @@ import MobBookList from '../../components/trainingComponents/booksLists/mob/MobB
 const TrainingPage = () => {
   return (
     <TrainingPageStyled>
-      <div className="container ">
+      <div className="container">
         <div className="sidebar">
           <div className="sidebar-descr">
             <p className="sidebar-descr__item">Моя мета прочитати</p>
@@ -29,10 +29,11 @@ const TrainingPage = () => {
           </ul>
         </div>
 
-        <MyTraining />
-        <MobBookList />
-
-        <Chart />
+        <div>
+          <MyTraining />
+          <MobBookList />
+          <Chart />
+        </div>
       </div>
     </TrainingPageStyled>
   );

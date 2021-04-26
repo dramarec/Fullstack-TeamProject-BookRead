@@ -3,16 +3,26 @@ import styled from 'styled-components';
 const TrainingPageStyled = styled.div`
   background-color: var(--main-background);
   padding-top: 30px;
-  @media (min-width: 1279px) {
+  @media (min-width: 1280px) {
+    padding-top: 50px;
+    .container {
+      display: flex;
+      justify-content: space-around;
+    }
   }
+
   .sidebar {
+    order: 1;
     /* outline: 1px solid red; */
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
     background-color: #fff;
     width: 270px;
+    height: 318px;
     margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 30px;
+    @media (max-width: 767px) {
+      margin-right: auto;
+      margin-bottom: 30px;
+    }
 
     @media (min-width: 768px) and (max-width: 1279px) {
       height: 105px;

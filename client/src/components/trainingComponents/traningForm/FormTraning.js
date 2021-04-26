@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Select from 'react-select';
 import InputDatePicker from '../dataPicker/PickerData';
 
 const FormTraning = () => {
@@ -8,6 +8,10 @@ const FormTraning = () => {
       <div className="training-form__wrap">
         <InputDatePicker />
         <InputDatePicker />
+
+        <select name="Обрати книги з бібліотеки">
+          <label>Обрати книги з бібліотеки</label>
+        </select>
       </div>
     </form>
   );
