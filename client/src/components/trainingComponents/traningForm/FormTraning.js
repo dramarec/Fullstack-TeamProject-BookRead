@@ -9,9 +9,9 @@ const FormTraning = () => {
         <InputDatePicker />
         <InputDatePicker />
 
-        <select name="Обрати книги з бібліотеки">
+        {/* <select name="Обрати книги з бібліотеки">
           <label>Обрати книги з бібліотеки</label>
-        </select>
+        </select> */}
       </div>
     </form>
   );
