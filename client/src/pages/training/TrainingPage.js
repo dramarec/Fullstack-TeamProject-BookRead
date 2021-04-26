@@ -1,5 +1,13 @@
+import React from 'react';
+import Chart from '../../components/chart/Chart';
+
 const TrainingPage = () => {
-    <h1>home page</h1>
-}
+  return (
+    <div>
+      <h1>TrainingPage</h1>
+      <Chart />
+    </div>
+  );
+};
 
 export default TrainingPage;
