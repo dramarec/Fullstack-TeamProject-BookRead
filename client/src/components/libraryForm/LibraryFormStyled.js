@@ -7,10 +7,11 @@ const Wrapper = styled.div`
   align-items: center;
   background-color: #f6f7fb;
   padding-top: 52px;
-  padding-bottom: 109px;
+  padding-bottom: 42px;
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     padding-top: 20px;
+    padding-bottom: 40px;
     min-width: 594px;
   }
   @media screen and (min-width: 1280px) {
@@ -66,8 +67,7 @@ const Wrapper = styled.div`
   } */
 
   .bookFormListItemTitle {
-    font-style: normal;
-    font-weight: 400;
+    font-family: 'Montserrat-Medium';
     font-size: 14px;
     line-height: 2.71;
     color: #898f9f;
@@ -79,10 +79,9 @@ const Wrapper = styled.div`
     }
   }
   .bookFormInput {
-    font-style: normal;
-    font-weight: 400;
+    font-family: 'Montserrat-Regular';
     font-size: 14px;
-    line-height: 38px;
+    line-height: 2.71;
     width: 270px;
     border: 1px solid #a6abb9;
     padding: 0px 10px;
@@ -95,6 +94,7 @@ const Wrapper = styled.div`
     box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
   }
   .bookFormError {
+    font-family: 'Montserrat-Regular';
     color: #e63946;
     font-size: 13px;
   }
@@ -120,8 +120,7 @@ const Wrapper = styled.div`
   .bookFormBtn {
     display: flex;
     justify-content: center;
-    font-style: normal;
-    font-weight: 500;
+    font-family: 'Montserrat-Medium';
     font-size: 14px;
     line-height: 2.71;
     padding: 0px 58px;

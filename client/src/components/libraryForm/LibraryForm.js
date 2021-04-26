@@ -32,7 +32,7 @@ const initialState = {
 };
 
 const LibraryForm = () => {
-  const [state, setState] = useState({ ...initialState });
+  const [state /* setState */] = useState({ ...initialState });
 
   const onHandlerSubmit = values => {
     console.log(`values`, values);

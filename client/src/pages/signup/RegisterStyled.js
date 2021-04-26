@@ -4,9 +4,8 @@ import imgTab from '../../components/auth/photo/tab.jpg';
 import imgDec from '../../components/auth/photo/desctop.jpg';
 
 const RegisterStyled = styled.div`
- 
-    background-color: red;
-   /* // background:  url(${imgMob}) ;
+  background-color: red;
+  /* // background:  url(${imgMob}) ;
     background-repeat: no-repeat;
     background-size: cover;
     max-height: 588px;

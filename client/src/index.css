@@ -1,13 +1,12 @@
 :root {
-  --accent-color: #FF6B08;
-  --main-text: #242A37;
-  --secondary-text: #898F9F;
-  --third-text: #A6ABB9;
+  --accent-color: #ff6b08;
+  --main-text: #242a37;
+  --secondary-text: #898f9f;
+  --third-text: #a6abb9;
   --light-text: #ffffff;
-  --main-background: #F6F7FB;
-  --table-title: #B1B5C2;
-  --box-background: #F5F7FA;
-  
+  --main-background: #f6f7fb;
+  --table-title: #b1b5c2;
+  --box-background: #f5f7fa;
 }
 
 html {
@@ -26,7 +25,6 @@ body {
   background-color: white;
   color: black;
 }
-
 
 .container {
   overflow: hidden;
@@ -115,8 +113,7 @@ ul {
   list-style: none;
 }
 
-li
-{
+li {
   list-style: none;
 }
 
@@ -179,4 +176,9 @@ p {
 .secondButton:hover {
   box-shadow: 0px 4px 30px rgba(65, 61, 59, 0.5);
   outline: none;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
 }
