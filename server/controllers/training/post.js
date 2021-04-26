@@ -8,7 +8,9 @@ const addTraining = async (req, res, next) => {
 
     const startTime = start.split('-');
     const endTime = end.split('-');
-
+    const dateLuxon = DateTime.now()
+      .setZone('Europe/Kiev')
+      .toFormat('yyyy-LL-dd');
     const startDate = DateTime.local(
       Number(startTime[0]),
       Number(startTime[1]),
@@ -19,19 +21,18 @@ const addTraining = async (req, res, next) => {
       Number(endTime[1]),
       Number(endTime[2]),
     );
-
     const duration = endDate.diff(startDate, 'days').toObject().days;
 
     if (!duration || duration < 1) {
       return res.status(400).json({
         status: 'error',
         code: 400,
-        message: 'wrong dates',
+        message: 'wrong dates, use YYYY-MM-DD format or select current date',
       });
     }
 
+    let selectedBooks = [];
     let totalPages = 0;
-    let booksCompleted = [];
 
     for (let i = 0; i < books.length; i++) {
       const book = await Book.findOne({ _id: books[i] });
@@ -44,12 +45,51 @@ const addTraining = async (req, res, next) => {
         });
       }
 
+      if (book.readPages !== 0) {
+        return res.status(400).json({
+          status: 'error',
+          code: 400,
+          message: "you can't add book that you've already read",
+        });
+      }
+
       totalPages += book.numberOfPages;
 
-      booksCompleted.push(book);
+      const {
+        _id,
+        title,
+        author,
+        year,
+        numberOfPages,
+        readPages,
+        review,
+        rating,
+      } = book;
+      const validateBook = {
+        _id,
+        title,
+        author,
+        year,
+        numberOfPages,
+        readPages,
+        review,
+        rating,
+      };
+
+      selectedBooks.push(validateBook);
     }
 
     const pagesReadPerDay = Math.ceil(totalPages / duration);
+
+    const training = await Training.findOne({ _id: user?.training });
+
+    if (training) {
+      return res.status(400).json({
+        status: 'error',
+        code: 400,
+        message: 'you have active training',
+      });
+    }
 
     const createTraining = await Training.create({
       start,
@@ -67,13 +107,13 @@ const addTraining = async (req, res, next) => {
       status: 'success',
       code: 201,
       data: {
+        _id: createTraining._id,
         start: createTraining.start,
         end: createTraining.end,
         duration: createTraining.duration,
-        books: booksCompleted,
+        books: selectedBooks,
         pagesReadPerDay: createTraining.pagesReadPerDay,
         results: createTraining.results,
-        _id: createTraining._id,
       },
     });
   } catch (err) {

@@ -38,5 +38,4 @@ const TrainingPage = () => {
     </TrainingPageStyled>
   );
 };
-
 export default TrainingPage;
