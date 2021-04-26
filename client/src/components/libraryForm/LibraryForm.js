@@ -33,8 +33,8 @@ const initialState = {
 };
 
 const LibraryForm = () => {
-  const [state, setState] = useState({ ...initialState });
   const dispatch = useDispatch();
+  const [state /* , setState */] = useState({ ...initialState });
 
   const onHandlerSubmit = values => {
     dispatch(addBookOperation(values));

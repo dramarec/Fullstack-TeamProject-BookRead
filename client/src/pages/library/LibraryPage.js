@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Responsive from 'react-responsive';
-import ReadBooks from '../../components/library/readBooks/ReadBooks';
-import ReadingBooks from '../../components/library/readingBooks/ReadingBooks';
+//import ReadBooks from '../../components/library/readBooks/ReadBooks';
+//import ReadingBooks from '../../components/library/readingBooks/ReadingBooks';
 import WillReadBooks from '../../components/library/willReadBooks/WillReadBooks';
 import LibraryForm from '../../components/libraryForm/LibraryForm';
 import LibraryPageStyled from './LibraryPagesStyled';
