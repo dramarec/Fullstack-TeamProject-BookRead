@@ -1,12 +1,19 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import Responsive from 'react-responsive';
+import modalActions from '../../redux/actions/modalAction';
 import book from '../../assets/svg/book3.svg';
 import vector from '../../assets/svg/vector.svg';
 import flag from '../../assets/svg/flag.svg';
 import LibraryModalStyled from './LibraryModalStyled';
 
 const LibraryModal = () => {
+  const dispatch = useDispatch();
   const Mobile = props => <Responsive {...props} maxWidth={767} />;
+
+  const closeModal = () => {
+    dispatch(modalActions.toggleModal());
+  };
 
   return (
     <LibraryModalStyled>
@@ -41,7 +48,9 @@ const LibraryModal = () => {
         </li>
       </ul>
       <Mobile>
-        <button className="listBtn">Ok</button>
+        <button className="listBtn" type="button" onClick={closeModal}>
+          Ok
+        </button>
       </Mobile>
     </LibraryModalStyled>
   );

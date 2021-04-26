@@ -26,7 +26,11 @@ const WillReadBooks = () => {
         ))}
       </Tablet>
       <Mobile>
-        <WillReadBookItemMobile />
+        <ul>
+          {booksWillRead.map((item, idx) => (
+            <WillReadBookItemMobile book={item} key={idx} />
+          ))}
+        </ul>
       </Mobile>
     </WillReadBooksStyled>
   );

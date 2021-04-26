@@ -1,5 +1,6 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Responsive from 'react-responsive';
 import ReadBooks from '../../components/library/readBooks/ReadBooks';
 import ReadingBooks from '../../components/library/readingBooks/ReadingBooks';
 import WillReadBooks from '../../components/library/willReadBooks/WillReadBooks';
@@ -7,19 +8,37 @@ import LibraryForm from '../../components/libraryForm/LibraryForm';
 import LibraryPageStyled from './LibraryPagesStyled';
 import LibraryModal from '../../components/libraryModal/LibraryModal';
 import { getWillRead } from '../../redux/selectors/bookSelector';
+import Modal from '../../components/modal/Modal';
+import modalActions from '../../redux/actions/modalAction';
 
 const LibraryPage = () => {
+  const dispatch = useDispatch();
   const booksWillRead = useSelector(getWillRead);
-  //getBooksState
-  /*const Desktop = props => <Responsive {...props} minWidth={1280} />;
-    const Tablet = props => (
-        <Responsive {...props} minWidth={768}  />
-    );
-    const Mobile = props => <Responsive {...props} maxWidth={767} />;*/
+  //const modalActive = useSelector(getModalState);
+
+  const Tablet = props => <Responsive {...props} minWidth={768} />;
+
+  const Mobile = props => <Responsive {...props} maxWidth={767} />;
+
+  useEffect(() => {
+    dispatch(modalActions.toggleModal());
+  }, []);
+
   return (
     <LibraryPageStyled>
-      <LibraryForm />
-      {booksWillRead.length > 0 ? <WillReadBooks /> : <LibraryModal />}
+      <Mobile>
+        <LibraryForm />
+        {booksWillRead.length > 0 ? (
+          <WillReadBooks />
+        ) : (
+          <Modal children={<LibraryModal />} />
+        )}
+      </Mobile>
+
+      <Tablet>
+        <LibraryForm />
+        {booksWillRead.length > 0 ? <WillReadBooks /> : <LibraryModal />}
+      </Tablet>
 
       {/* <ReadBooks />
       <ReadingBooks /> */}
