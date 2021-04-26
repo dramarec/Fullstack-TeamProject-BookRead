@@ -2,7 +2,7 @@ import React from 'react'
 import Star from '../readBooks/Star'
 import ReviewModalStyled from './ReviewModalStyled'
 
-const ReviewModal = () => {
+const ReviewModal = ({handleClick}) => {
     return (
         <ReviewModalStyled>
            <p>Обрати рейтинг книги</p> 
@@ -10,8 +10,8 @@ const ReviewModal = () => {
            <p>Резюме</p>
            <textarea class="form-control" rows="5" ></textarea>
            <div className='button-group'>
-           <button className='secondButton'>Назад</button>
-           <button className='mainButton'>Зберегти</button>
+           <button type='button' className='secondButton' onClick={handleClick}>Назад</button>
+           <button type='button' className='mainButton'>Зберегти</button>
            </div>
         </ReviewModalStyled>
     )
