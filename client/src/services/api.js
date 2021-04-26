@@ -49,7 +49,7 @@ class bookReadApi {
   addBook(book) {
     return axios
       .post('/books', book)
-      .then(res => res.data)
+      .then(res => res.data.data)
       .catch(err => {
         throw new Error(err);
       });
@@ -58,7 +58,7 @@ class bookReadApi {
   addReviewToBook(review, id) {
     return axios
       .patch(`/books/${id}`, review)
-      .then(res => res.data)
+      .then(res => res.data.data)
       .catch(err => {
         throw new Error(err);
       });
@@ -68,7 +68,7 @@ class bookReadApi {
   addTraining(training) {
     return axios
       .post('/training', training)
-      .then(res => res.data)
+      .then(res => res.data.data)
       .catch(err => {
         throw new Error(err);
       });
@@ -77,7 +77,7 @@ class bookReadApi {
   addReadPages(pages) {
     return axios
       .patch('/training', pages)
-      .then(res => res.data)
+      .then(res => res.data.data)
       .catch(err => {
         throw new Error(err);
       });
@@ -86,7 +86,7 @@ class bookReadApi {
   getTraining() {
     return axios
       .get('/training')
-      .then(res => res.data)
+      .then(res => res.data.data)
       .catch(err => {
         throw new Error(err);
       });
@@ -96,7 +96,7 @@ class bookReadApi {
   getLibraryInfo() {
     return axios
       .get('/users/user')
-      .then(res => res.data)
+      .then(res => res.data.data)
       .catch(err => {
         throw new Error(err);
       });
