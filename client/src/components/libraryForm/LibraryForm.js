@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-//import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { addBookOperation } from '../../redux/operations/bookOperation';
 import LibraryFormStyled from './LibraryFormStyled';
 
 const getYear = () => {
@@ -14,7 +15,7 @@ const schema = Yup.object().shape({
     .required('Заповніть поле "Назва книги"'),
   author: Yup.string().required('Заповніть поле "Автор книги"'),
   year: Yup.number()
-    .min(1000, 'Повинно бути 4 символу')
+    .min(1500, 'Min значення 1500')
     .max(getYear(), 'Не більш, ніж поточний рік')
     .required('Заповніть поле "Рік випуску"')
     .typeError('Введіть число'),
@@ -28,14 +29,15 @@ const initialState = {
   title: '',
   author: '',
   year: '',
-  bookPages: '',
+  numberOfPages: '',
 };
 
 const LibraryForm = () => {
+  const dispatch = useDispatch();
   const [state /* , setState */] = useState({ ...initialState });
 
   const onHandlerSubmit = values => {
-    console.log(`values`, values);
+    dispatch(addBookOperation(values));
   };
 
   return (
@@ -95,7 +97,7 @@ const LibraryForm = () => {
                   <div className="wrapper">
                     <Field
                       className="bookFormInput  input2"
-                      type="text"
+                      type="number"
                       value={values.year}
                       name="year"
                       placeholder="..."
@@ -116,7 +118,7 @@ const LibraryForm = () => {
                   <div className="wrapper">
                     <Field
                       className="bookFormInput input3"
-                      type="text"
+                      type="number"
                       value={values.numberOfPages}
                       name="numberOfPages"
                       placeholder="..."
