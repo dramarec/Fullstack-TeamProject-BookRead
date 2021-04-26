@@ -4,27 +4,27 @@ import card from '../../../../assets/svg/card.svg';
 import DescBookListStyle from './DescBookListStyle';
 
 const initialstate = [
-  {
-    _id: '60845e4e24523d1ccdc66756',
-    title: 'Harry Potter',
-    author: 'J. K. Rowling',
-    year: 1997,
-    numberOfPages: 123,
-  },
-  {
-    _id: '6084000dc4cfc1a5455ab0ea',
-    title: 'Жизнь и ловля пресноводных рыб',
-    author: 'Сабанеев Л.П.',
-    year: 1875,
-    numberOfPages: 472,
-  },
-  {
-    _id: '608448aa0733e1b53cdad37c',
-    title: 'Как разговаривать с мудаками',
-    author: 'Марк Гоулстон',
-    year: 2016,
-    numberOfPages: 272,
-  },
+  // {
+  //   _id: '60845e4e24523d1ccdc66756',
+  //   title: 'Harry Potter',
+  //   author: 'J. K. Rowling',
+  //   year: 1997,
+  //   numberOfPages: 123,
+  // },
+  // {
+  //   _id: '6084000dc4cfc1a5455ab0ea',
+  //   title: 'Жизнь и ловля пресноводных рыб',
+  //   author: 'Сабанеев Л.П.',
+  //   year: 1875,
+  //   numberOfPages: 472,
+  // },
+  // {
+  //   _id: '608448aa0733e1b53cdad37c',
+  //   title: 'Как разговаривать с мудаками',
+  //   author: 'Марк Гоулстон',
+  //   year: 2016,
+  //   numberOfPages: 272,
+  // },
   {
     _id: '60845e7c24523d1ccdc66758',
     title: 'Romero & Julieta',
@@ -75,11 +75,3 @@ const DescBookList = () => {
 };
 
 export default DescBookList;
-
-// <li key={_id} className="books-library__item">
-//             <img className="books__img" src={book} alt="" />
-//             <p>Scrum. Революционный метод ...</p>
-//             <p>Джефф Сазерленд</p>
-//             <p>2014</p>
-//             <p>15</p>
-//           </li>

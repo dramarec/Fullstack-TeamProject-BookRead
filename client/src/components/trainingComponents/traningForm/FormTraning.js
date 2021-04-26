@@ -1,12 +1,30 @@
-import React from 'react';
-// import Select from 'react-select';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addNewTrainingBook } from '../../../redux/actions/trainingAction';
 import InputDatePicker from '../dataPicker/PickerData';
 import FormTraningStyle from './FormTraningStyle';
 
 const FormTraning = () => {
+  const dispatch = useDispatch();
+  const [books, setBooks] = useState({});
+  console.log('FormTraning ===> books', books);
+
+  const allBooks = useSelector(state => state.training.books);
+
+  const handleChange = e => {
+    const id = e.target.value;
+    const book = allBooks.find(book => book._id === id);
+    setBooks({ books: book });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(addNewTrainingBook(books));
+  };
+
   return (
     <FormTraningStyle>
-      <form className="training-form">
+      <form onSubmit={handleSubmit} className="training-form">
         <div className="training-form__wrap">
           <div className="training-form__pickers">
             <InputDatePicker />
@@ -14,12 +32,16 @@ const FormTraning = () => {
           </div>
 
           <div className="selectwrap">
-            <select className="select" name="select">
-              <option value="Обрати книги з бібліотеки">
+            <select className="select" name="select" onChange={handleChange}>
+              <option value="Обрати книги з бібліотеки" disabled>
                 Обрати книги з бібліотеки
               </option>
-              <option value="26-35">Harry Potter</option>
-              <option value="36+">Жизнь и ловля пресноводных рыб</option>
+
+              {allBooks.map(book => (
+                <option key={book._id} value={book._id}>
+                  {book.title}
+                </option>
+              ))}
             </select>
 
             <button type="submit" className="bookFormBtn">
@@ -34,20 +56,28 @@ const FormTraning = () => {
 
 export default FormTraning;
 
-{
-  /* <p>
-<label className="training-form__select">
-  Обрати книги з бібліотеки
-  <select
-    name="age" 
-  >
-    <option value="" disabled>
-      ...
-    </option>
-    <option value="18-25">18-25</option>
-    <option value="26-35">26-35</option>
-    <option value="36+">36+</option>
-  </select>
-</label>
-</p> */
-}
+// // const onHandleChange = (e) => {
+// //   const { name, value } = e.target;
+// //   setState((prev) => ({ ...prev, [name]: value }));
+// // };
+
+// const initialState = {
+// firstName: "",
+// lastName: "",
+// stack: "HTML",
+// position: "Mentor",
+// };
+
+// const TutorForm = () => {
+// // const isLoading = useSelector((state) => state.tutors.isLoading);
+// const [state, setState] = useState({ ...initialState });
+// const dispatch = useDispatch();
+
+// const onHandleChange = (evt) => {
+//   const { name, value } = evt.target;
+//   setState((prev) => ({ ...prev, [name]: value }));
+// };
+
+// const onHandleSubmit = (e) => {
+//   e.preventDefault();
+//   dispatch(addNew)
