@@ -1,19 +1,58 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addNewTrainingBook } from '../../../redux/actions/trainingAction';
+import { getWillRead } from '../../../redux/selectors/bookSelector';
 import InputDatePicker from '../dataPicker/PickerData';
 import FormTraningStyle from './FormTraningStyle';
 
+// const initialstate = [
+//   {
+//     _id: '60845e4e24523d1ccdc66756',
+//     title: 'Harry Potter',
+//     author: 'J. K. Rowling',
+//     year: 1997,
+//     numberOfPages: 123,
+//   },
+//   {
+//     _id: '6084000dc4cfc1a5455ab0ea',
+//     title: 'Жизнь и ловля пресноводных рыб',
+//     author: 'Сабанеев Л.П.',
+//     year: 1875,
+//     numberOfPages: 472,
+//   },
+//   {
+//     _id: '608448aa0733e1b53cdad37c',
+//     title: 'Как разговаривать с мудаками',
+//     author: 'Марк Гоулстон',
+//     year: 2016,
+//     numberOfPages: 272,
+//   },
+//   {
+//     _id: '60845e7c24523d1ccdc66758',
+//     title: 'Romero & Julieta',
+//     author: 'J. K. Rowling',
+//     year: 1997,
+//     numberOfPages: 123,
+//   },
+// ];
+
 const FormTraning = () => {
+  // const [state] = useState([...initialstate]);
+
   const dispatch = useDispatch();
   const [books, setBooks] = useState({});
-  console.log('FormTraning ===> books', books);
+  // console.log('FormTraning ===> books', books);
 
-  const allBooks = useSelector(state => state.training.books);
+  const allBooks = useSelector(getWillRead);
+  console.log('FormTraning ===> allBooks', allBooks);
 
   const handleChange = e => {
-    const id = e.target.value;
-    const book = allBooks.find(book => book._id === id);
+    const _id = e.target.value;
+    console.log('FormTraning ===> _id', _id);
+
+    const book = allBooks.find(book => book._id === _id);
+    console.log('FormTraning ===> book', book);
+
     setBooks({ books: book });
   };
 
@@ -33,7 +72,7 @@ const FormTraning = () => {
 
           <div className="selectwrap">
             <select className="select" name="select" onChange={handleChange}>
-              <option value="Обрати книги з бібліотеки" disabled>
+              <option value="Обрати книги з бібліотеки">
                 Обрати книги з бібліотеки
               </option>
 

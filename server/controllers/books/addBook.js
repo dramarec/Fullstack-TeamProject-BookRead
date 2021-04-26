@@ -31,12 +31,13 @@ const addNewBook = async (req, res, next) => {
     user?.books.push(newBook);
     await user?.save();
 
+    //return res.status(201).send({ newBook });
     res.status(201).json({
       status: 'success',
       code: 201,
       data: {
         newBook: {
-          id: newBook._id,
+          _id: newBook._id,
           title: newBook.title,
           author: newBook.author,
           year: newBook.year,
