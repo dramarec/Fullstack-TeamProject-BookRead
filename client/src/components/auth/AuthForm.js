@@ -1,9 +1,9 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useLocation, } from 'react-router-dom';
+import { useLocation, Link} from 'react-router-dom';
 import AuthFormStyled from './AuthFormStyled';
 import Two from './icons/two';
-import RegisterStyled from '../../pages/signup/RegisterStyled'
+
 
 const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
     let location = useLocation();
@@ -114,15 +114,19 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                         >
                             {location.pathname === '/signup'
                                 ? 'Реєстрація'
-                                : 'Увійти'}
+                                : 'Увійти'
+                                    }
                             </button>
                             <button
                             className="mainButton authFormBtnSec"
                             type="submit"
                         >
                             {location.pathname === '/signup'
-                                ? 'Увійти'
-                                : 'Реєстрація'}
+                                        ? //'Увійти'
+                                        <Link to="/" className="buttonSignUpMain">Увійти</Link>
+                                        // : 'Реєстрація'
+                                        : <Link to="/signup" className="buttonSignUpMain">Реєстрація</Link>
+                                    }
                             </button>
                             
                     </Form>
@@ -156,10 +160,14 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                                 <li className="authFormText"><sup className="authFormSym">{'>'}</sup>Підвищити свої професійні якості опираючись на нові знання</li>
                                 <li className="authFormText last"><sup className="authFormSym">{'>'}</sup>Стати цікавим співрозмовником</li>
                             </ul>
-                           <button className="buttonSignUp"
+                     
+                            <Link to="/" className="buttonSignUp">Увійти</Link>
+                            <Link to="/signup" className="buttonSignUp">Реєстрація</Link>
+                
+                            {/* <button className="buttonSignUp"
                             type="submit">Увійти</button>
                            <button className="buttonSignUp"
-                            type="submit">Реєстрація</button>
+                            type="submit">Реєстрація</button> */}
                             
                            
                             
