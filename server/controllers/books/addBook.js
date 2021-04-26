@@ -31,6 +31,7 @@ const addNewBook = async (req, res, next) => {
     user?.books.push(newBook);
     await user?.save();
 
+    //return res.status(201).send({ newBook });
     res.status(201).json({
       status: 'success',
       code: 201,
