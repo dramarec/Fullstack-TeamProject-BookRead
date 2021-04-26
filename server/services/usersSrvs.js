@@ -20,7 +20,7 @@ const addUser = async body => {
 
 const updateToken = async (id, token) => {
   const newToken = await User.updateOne({ _id: id }, { token });
-  // console.log('newToken', newToken)
+  // console.log('newToken', newToken);
   return newToken;
 };
 

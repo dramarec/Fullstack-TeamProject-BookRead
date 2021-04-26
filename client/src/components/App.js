@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-
 // import Modal from './modal/Modal';
 // import Button from './testButton.js/TestButton';
 // import Chart from './chart/Chart';

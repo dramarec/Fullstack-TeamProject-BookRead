@@ -19,8 +19,16 @@ const ModalWrapper = styled.div`
     box-shadow: 0px 22px 40px 0px rgba(0, 0, 0, 0.1);
     background-color: #fff;
 }
-
 .closeButton{
+position: absolute;
+top: 0;
+right: 0;
+}
+
+`
+
+export default ModalWrapper;
+/*.closeButton{
   width: 127px;
   height: 40px;
     font-weight: 500;
@@ -30,7 +38,4 @@ const ModalWrapper = styled.div`
     background-color:#FF6B08;
     border-color: transparent;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-}
-`
-
-export default ModalWrapper;
+}*/
