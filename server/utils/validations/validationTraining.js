@@ -10,9 +10,6 @@ const schemaAddTraining = Joi.object({
       if (!validDate) {
         return helpers.error(400, 'invalid format, use YYYY-MM-DD');
       }
-      // if (!validDate) {
-      //   return helpers.message({ custom: 'invalid format, use YYYY-MM-DD' });
-      // }
 
       return value;
     })
@@ -27,9 +24,6 @@ const schemaAddTraining = Joi.object({
       if (!validDate) {
         return helpers.error(400, 'invalid format, use YYYY-MM-DD');
       }
-      // if (!validDate) {
-      //   return helpers.message({ custom: 'invalid format, use YYYY-MM-DD' });
-      // }
 
       return value;
     })
