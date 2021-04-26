@@ -121,6 +121,7 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                             className="mainButton authFormBtnSec"
                             type="submit"
                         >
+                        
                             {location.pathname === '/signup'
                                         ? //'Увійти'
                                         <Link to="/" className="buttonSignUpMain">Увійти</Link>
