@@ -13,7 +13,7 @@ const authPersistConfig = {
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, () => null),
   modal: modalReducer,
-  book: bookReduser,
+  library: bookReduser,
 });
 
 export default rootReducer;

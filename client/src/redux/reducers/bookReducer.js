@@ -6,23 +6,26 @@ import {
 } from '../actions/bookAction';
 
 const initialState = {
-  books: [],
+  willRead: [],
 };
 
-const bookReduser = createReducer(initialState, {
-  [addNewBookRequest]: (state, action) => ({
-    ...state,
-    isLoading: true,
-  }),
-  [addNewBookSuccess]: (state, action) => ({
-    ...state,
-    books: [...state.books, action.payload],
-    isLoading: false,
-  }),
-  [addNewBookError]: (state, action) => ({
-    ...state,
-    error: action.payload,
-  }),
-});
+const bookReduser = createReducer(
+  { ...initialState },
+  {
+    [addNewBookRequest]: (state, action) => ({
+      ...state,
+      isLoading: true,
+    }),
+    [addNewBookSuccess]: (state, action) => ({
+      ...state,
+      willRead: [...state.willRead, action.payload.data.newBook],
+      isLoading: false,
+    }),
+    [addNewBookError]: (state, action) => ({
+      ...state,
+      error: action.payload,
+    }),
+  },
+);
 
 export { bookReduser };

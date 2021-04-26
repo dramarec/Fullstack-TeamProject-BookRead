@@ -15,11 +15,11 @@ const schema = Yup.object().shape({
     .required('Заповніть поле "Назва книги"'),
   author: Yup.string().required('Заповніть поле "Автор книги"'),
   year: Yup.number()
-    .min(1000, 'Повинно бути 4 символу')
+    .min(1500, 'Min значення 1500')
     .max(getYear(), 'Не більш, ніж поточний рік')
     .required('Заповніть поле "Рік випуску"')
     .typeError('Введіть число'),
-  bookPages: Yup.number()
+  numberOfPages: Yup.number()
     .min(1, 'Min значення 1')
     .required('Заповніть поле "Кількість сторінок"')
     .typeError('Введіть число'),
@@ -29,7 +29,7 @@ const initialState = {
   title: '',
   author: '',
   year: '',
-  bookPages: '',
+  numberOfPages: '',
 };
 
 const LibraryForm = () => {
@@ -37,7 +37,6 @@ const LibraryForm = () => {
   const dispatch = useDispatch();
 
   const onHandlerSubmit = values => {
-    console.log(`values`, values);
     dispatch(addBookOperation(values));
   };
 
@@ -120,15 +119,15 @@ const LibraryForm = () => {
                     <Field
                       className="bookFormInput input3"
                       type="number"
-                      value={values.bookPages}
-                      name="bookPages"
+                      value={values.numberOfPages}
+                      name="numberOfPages"
                       placeholder="..."
                       autoComplete="off"
                     />
                     <ErrorMessage
                       className="bookFormError"
                       component="div"
-                      name="bookPages"
+                      name="numberOfPages"
                     />
                   </div>
                 </label>
