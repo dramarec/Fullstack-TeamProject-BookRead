@@ -1,4 +1,3 @@
-import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useLocation, Link } from 'react-router-dom';
 import AuthFormStyled from './AuthFormStyled';
@@ -6,11 +5,13 @@ import Two from './icons/two';
 import GoogleAuthBtn from './GoogleAuthBtn';
 
 const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
-  let location = useLocation();
+  const location = useLocation();
+
   const initialState =
     location.pathname === '/signup'
       ? { username: '', email: '', password: '' }
       : { email: '', password: '' };
+
   return (
     <AuthFormStyled>
       {/* signin */}
@@ -25,12 +26,12 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
           >
             {({ errors, touched }) => (
               <Form className="authForm">
-                {/* <button className="btn-google">Google</button> */}
                 <GoogleAuthBtn />
+
                 {location.pathname === '/signup' && (
                   <label className="authFormFild">
                     <span className="authFormText">
-                      Им'я <sup className="authFormStar">*</sup>
+                      Ім'я <sup className="authFormStar">*</sup>
                     </span>
                     <Field
                       className={`authFormInput ${
@@ -88,11 +89,10 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                       className={`authFormInput ${
                         touched.password && errors.password && 'authInputError'
                       }`}
-                      type="password-true"
-                      name="password-true"
+                      type="password"
+                      name="passwordConfirmation"
                       placeholder="Пароль"
                     />
-
                     <span className="authError">
                       <ErrorMessage name="password" />
                     </span>

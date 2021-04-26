@@ -1,57 +1,92 @@
-import React from 'react';
-// import { useLocation, useHistory } from 'react-router-dom';
-// import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { useLocation, useHistory } from 'react-router-dom';
+import * as Yup from 'yup';
 import AuthForm from './AuthForm';
+import authOperations from '../../redux/operations/authOperation';
 
 const AuthFormContainer = () => {
-  // const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const history = useHistory();
 
-  // const errorMessagesSchemaSignUp = Yup.object().shape({
-  //   username: Yup.string()
-  //     .min(2, 'Минимальное количество символов 2 ')
-  //     .max(20, 'Максимально допустимое количество символов 20')
-  //     .required('Введите имя'),
-  //   email: Yup.string()
-  //     .required('Введите email')
-  //     .matches(regex, 'Введен неверный email'),
+  const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+  const errorMessagesSchemaSignUp = Yup.object().shape({
+    username: Yup.string()
+      .min(2, 'Мінімальна кількість символів 2')
+      .max(30, 'Максимальна кількість символів 30')
+      .required('Введіть ім`я'),
 
-  //   password: Yup.string()
-  //     .min(8, 'Минимальное количество символов 8')
-  //     .max(20, 'Максимально допустимое количество символов 20')
-  //     .required('Введите пароль'),
-  // });
+    email: Yup.string()
+      .required('Введіть email')
+      .matches(regex, 'Формат email невірний'),
 
-  // const errorMessagesSchemaSignIn = Yup.object().shape({
-  //   email: Yup.string()
-  //     .required('Введите email')
-  //     .matches(regex, 'Введен неверный email'),
-  //   password: Yup.string()
-  //     .min(8, 'Минимальное количество символов 8')
-  //     .max(20, 'Максимально допустимое количество символов 20')
-  //     .required('Введите пароль'),
-  // });
+    password: Yup.string()
+      .min(6, 'Мінімальна кількість символів 6')
+      .max(20, 'Максимальна кількість символів 20')
+      .required('Введіть пароль'),
 
-  // const errorMessagesSchema =
-  //   location.pathname === '/signup'
-  //     ? errorMessagesSchemaSignUp
-  //     : errorMessagesSchemaSignIn;
+    passwordConfirmation: Yup.string().oneOf(
+      [Yup.ref('password'), null],
+      'Паролі повинні співпадати',
+    ),
+  });
+  const errorMessagesSchemaSignIn = Yup.object().shape({
+    email: Yup.string()
+      .required('Введіть email')
+      .matches(regex, 'Формат email невірний'),
 
-  // const handleSubmit = values => {
-  //   if (location.pathname === '/signup' && !age) {
-  //     history.push('/');
+    password: Yup.string()
+      .min(6, 'Мінімальна кількість символів 6')
+      .max(20, 'Максимальна кількість символів 20')
+      .required('Введіть пароль'),
+  });
+  const errorMessagesSchema =
+    location.pathname === '/signup'
+      ? errorMessagesSchemaSignUp
+      : errorMessagesSchemaSignIn;
 
-  //     return;
-  //   }
-  //   if (location.pathname === '/signup' && age) {
-  //     signUp(values);
-  //   } else signIn(values);
-  // };
+  const handleSubmit = values => {
+    // if (location.pathname === '/signup') {
+    //   signUp(values);
+    // } else signIn(values);
+    location.pathname === '/signup' ? signUp(values) : signIn(values);
+  };
+
+  const signUp = async values => {
+    try {
+      await dispatch(
+        authOperations.regOperation({
+          username: values.username,
+          email: values.email,
+          password: values.password,
+        }),
+      );
+
+      await dispatch(
+        authOperations.logInOperation({
+          email: values.email,
+          password: values.password,
+        }),
+      );
+    } catch (err) {
+      return;
+    }
+  };
+
+  const signIn = async values => {
+    try {
+      await dispatch(authOperations.logInOperation(values));
+    } catch (error) {
+      return;
+    }
+  };
 
   return (
     <AuthForm
-    // handleSubmit={handleSubmit}
-    // errorMessagesSchema={errorMessagesSchema}
+      handleSubmit={handleSubmit}
+      errorMessagesSchema={errorMessagesSchema}
     />
   );
 };
+
 export default AuthFormContainer;
