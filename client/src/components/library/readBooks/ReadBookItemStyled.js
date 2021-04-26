@@ -48,15 +48,8 @@ p {
     display: flex;
     flex: 2 1 0%;
 }
-.review div{
-    @media screen and (min-width: 768px) {
-        margin-right: 18px; 
-      }
-      @media screen and (min-width: 1280px) {
-          margin-right: 50px; 
-        }
-}
-.review button {
+
+.review-button {
     //padding: 11px 36px;
     background-color: #6D7A8D;
     font-family: 'Montserrat-Medium';

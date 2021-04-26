@@ -524,7 +524,7 @@
           },
           "numberOfPages": {
             "type": "number",
-            "description": "numberOfPages's title",
+            "description": "Number of pages in a book",
             "example": "123"
           }
         }
@@ -554,7 +554,7 @@
           },
           "numberOfPages": {
             "type": "integer",
-            "description": "numberOfPages's title",
+            "description": "Number of pages in a book",
             "example": "123"
           },
           "review": {
@@ -578,7 +578,7 @@
           "review": {
             "type": "string",
             "description": "Book's review",
-            "example": "Harry Potter"
+            "example": "Harry Potter is a good book"
           },
           "rating": {
             "type": "integer",
@@ -591,10 +591,15 @@
         "required": [],
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "description": "Book's id",
+            "example": "608170ac715ef491300d3d2e"
+        },
           "review": {
             "type": "string",
             "description": "Book's review",
-            "example": "Harry Potter"
+            "example": "Harry Potter is a good book"
           },
           "rating": {
             "type": "integer",
