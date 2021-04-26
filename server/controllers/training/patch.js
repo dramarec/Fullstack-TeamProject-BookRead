@@ -27,7 +27,6 @@ const addRead = async (req, res, next) => {
       }
 
       arrayBook.readPages += pages;
-      console.log(pages, 'no overflow');
 
       if (arrayBook.readPages > arrayBook.numberOfPages) {
         arrayBook.readPages = arrayBook.numberOfPages;
@@ -35,7 +34,6 @@ const addRead = async (req, res, next) => {
 
       if (pages > arrayBook.readPages) {
         pages = arrayBook.readPages;
-        console.log(pages, 'overflow');
       }
 
       const {
