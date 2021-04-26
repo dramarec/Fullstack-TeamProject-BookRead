@@ -1,0 +1,171 @@
+[
+  {
+    "_id": {
+      "$oid": "607c5d952c4a9b3164f90ffe"
+    },
+    "title": "Harry Potter",
+    "author": "J.K. Rowling"
+  },
+  {
+    "_id": {
+      "$oid": "607c5c372c4a9b3164f90ff9"
+    },
+    "title": "Harry Potter",
+    "author": "J.K. Rowling"
+  },
+  {
+    "_id": {
+      "$oid": "607c5dad2c4a9b3164f90fff"
+    },
+    "title": "Jurassic Park",
+    "author": "Michael Crichton"
+  },
+  {
+    "_id": {
+      "$oid": "607c6a842c4a9b3164f91001"
+    },
+    "title": "Jurassic Park",
+    "author": "Michael Crichton"
+  },
+  {
+    "_id": {
+      "$oid": "607ef20f795fc15e48f501d0"
+    },
+    "title": "Тося Бося и гном Чистюля",
+    "author": "Лина Жутауте",
+    "year": 2013,
+    "numberOfPages": 37
+  },
+  {
+    "_id": {
+      "$oid": "60816fd9d9c36e9cb8b8330a"
+    },
+    "title": "Тося Бося и гном Чистюля",
+    "author": "Лина Жутауте",
+    "year": 2013,
+    "numberOfPages": 37
+  },
+  {
+    "_id": {
+      "$oid": "6081706a715ef491300d3d2d"
+    },
+    "title": "Тося Бося и пир у Зубной феи",
+    "author": "Лина Жутауте",
+    "year": 2019,
+    "numberOfPages": 40
+  },
+  {
+    "_id": {
+      "$oid": "608170ac715ef491300d3d2e"
+    },
+    "title": "Тося Бося и день Суперпапы",
+    "author": "Лина Жутауте",
+    "year": 2019,
+    "numberOfPages": 42
+  },
+  {
+    "_id": {
+      "$oid": "60827e09c2e369b444ac7410"
+    },
+    "title": "Тося Бося",
+    "author": "Лина Жутауте",
+    "year": 2021,
+    "numberOfPages": 52
+  },
+  {
+    "_id": {
+      "$oid": "60827f0df2ace1b1243a5fbe"
+    },
+    "title": "Тося Бося 0.1",
+    "author": "Лина Жутауте",
+    "year": 2020,
+    "numberOfPages": 52
+  },
+  {
+    "_id": {
+      "$oid": "60827f44bf208292d4828a10"
+    },
+    "title": "Тося Бося 0.2",
+    "author": "Лина Жутауте",
+    "year": 2020,
+    "numberOfPages": 52
+  },
+  {
+    "_id": {
+      "$oid": "608297962864a545d0daf725"
+    },
+    "title": " Gner",
+    "numberOfPages": 162,
+    "year": 2010
+  },
+  {
+    "_id": {
+      "$oid": "6082e141a673926c14a32bb1"
+    },
+    "title": "Today",
+    "numberOfPages": 52,
+    "year": 2010
+  },
+  {
+    "_id": {
+      "$oid": "6082e156a673926c14a32bb2"
+    },
+    "title": "Tomorrow",
+    "numberOfPages": 30,
+    "year": 2010
+  },
+  {
+    "_id": {
+      "$oid": "60830926cb8197a1e877b9b3"
+    },
+    "title": "23-04 Tes Book",
+    "author": "Chub Tes Koki",
+    "year": 2010,
+    "numberOfPages": 30
+  },
+  {
+    "_id": {
+      "$oid": "6083094bcb8197a1e877b9b5"
+    },
+    "title": "23- Tes Book",
+    "author": "Chub Tes Koki",
+    "year": 2010,
+    "numberOfPages": 30
+  },
+  {
+    "_id": {
+      "$oid": "6084000dc4cfc1a5455ab0ea"
+    },
+    "title": "Жизнь и ловля пресноводных рыб",
+    "author": "Сабанеев Л.П.",
+    "year": 1875,
+    "numberOfPages": 472
+  },
+  {
+    "_id": {
+      "$oid": "608448aa0733e1b53cdad37c"
+    },
+    "title": "Как разговаривать с мудаками",
+    "author": "Марк Гоулстон",
+    "year": 2016,
+    "numberOfPages": 272
+  },
+  {
+    "_id": {
+      "$oid": "60845e4e24523d1ccdc66756"
+    },
+    "title": "Harry Potter",
+    "author": "J. K. Rowling",
+    "year": 1997,
+    "numberOfPages": 123
+  },
+  {
+    "_id": {
+      "$oid": "60845e7c24523d1ccdc66758"
+    },
+    "title": "Romero & Julieta",
+    "author": "J. K. Rowling",
+    "year": 1997,
+    "numberOfPages": 123
+  }
+]

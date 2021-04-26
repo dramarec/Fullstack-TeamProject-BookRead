@@ -9,8 +9,8 @@ const AppBar = () => {
       <div className="container">
         <nav className="navigation">
           <ul className="navlist">
-            <li className="link">
-              <NavLink to="/" className="logoDescr link">
+            <li className="logo link">
+              <NavLink to="/" className="logo__descr link">
                 BR
               </NavLink>
             </li>

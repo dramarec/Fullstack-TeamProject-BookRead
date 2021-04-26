@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const AppBarStyled = styled.div`
-  /* outline: 1px solid tomato; */
   z-index: 20;
   position: relative;
+  font-family: 'Montserrat-Regular';
 
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   .container {
@@ -11,9 +11,8 @@ const AppBarStyled = styled.div`
     height: 60px;
     padding: 11px 25px;
   }
-  .navigation {
-  }
   .navlist {
+    /* outline: 1px solid tomato; */
     display: flex;
     align-items: baseline;
   }
@@ -24,7 +23,7 @@ const AppBarStyled = styled.div`
   }
   .rightNav {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
   }
   .navLink {
     display: flex;
@@ -41,8 +40,14 @@ const AppBarStyled = styled.div`
       background-color: #f5f7fa;
     }
   }
+  .logo {
+    flex-grow: 1;
+    @media screen and (min-width: 768px) {
+      flex-grow: 0;
+    }
+  }
 
-  .logoDescr {
+  .logo__descr {
     font-size: 20px;
     font-family: 'AbrilFatface-Regular';
   }
@@ -50,8 +55,12 @@ const AppBarStyled = styled.div`
   .titleNameWrap {
     display: flex;
     align-items: center;
-    margin-right: auto;
-    margin-left: auto;
+    order: 1;
+    @media screen and (min-width: 768px) {
+      order: 0;
+      margin-right: auto;
+      margin-left: auto;
+    }
     &__icon {
       display: flex;
       justify-content: center;
@@ -63,7 +72,6 @@ const AppBarStyled = styled.div`
       margin-right: 11px;
     }
     &__name {
-      font-family: 'Montserrat-Regular';
       font-style: normal;
       font-weight: 300;
       font-size: 14px;
@@ -76,6 +84,8 @@ const AppBarStyled = styled.div`
   }
 
   .exit {
+    font-weight: 300;
+    order: 1;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
     border-bottom: 1px solid #242a37;
     &:hover {
