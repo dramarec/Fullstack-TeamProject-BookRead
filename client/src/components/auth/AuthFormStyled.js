@@ -1,17 +1,34 @@
 import styled from 'styled-components';
 import imgMob from './photo/mob.jpg';
+import bgMob from './photo/mob-bg.png';
 import imgTab from './photo/tab.jpg';
+import bgTab from './photo/tab-bg.png';
 import imgDec from './photo/desctop.jpg';
+import bgDec from './photo/dec-bg.png';
+import img from './photo/pic.png';
 
 const AuthFormStyled = styled.div`
   /* margin-top: 10px;
   outline: 1px solid tomato; */
 
-  background: #091e3fcc;
-  background: url(${imgMob});
+  //background: #091e3fcc;
+  /* background: url(${imgMob});
+ // background-image: linear-gradient(rgba(9, 30, 63, 0.8));
+  //background: linear-gradient(rgba(9, 30, 63, 0.8));
   background-repeat: no-repeat;
   background-size: cover;
+  min-height: 444px;
+  max-height: 656px; */
+  .bg-ph{
+    //background: #091e3fcc;
+  background: url(${bgMob}) , url(${img});
+ // background-image: linear-gradient(rgba(9, 30, 63, 0.8));
+  //background: linear-gradient(rgba(9, 30, 63, 0.8));
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 444px;
   max-height: 656px;
+  }
   .authForm {
     display: flex;
     flex-direction: column;
@@ -100,6 +117,10 @@ const AuthFormStyled = styled.div`
     font-size: 13px;
     margin: 0 auto;
     text-align: center;
+    box-sizing: border-box;
+width: 229px;
+    
+   
   }
   .svg {
     margin: 0 auto;
@@ -137,13 +158,23 @@ const AuthFormStyled = styled.div`
   }
 
   @media (min-width: 768px) and (max-width: 1279px) {
-    background: #091e3fcc;
+    /* background: #091e3fcc;
     background: url(${imgTab});
     width: 100%;
     max-height: 796px;
     box-sizing: border-box;
     background-repeat: no-repeat;
+    background-size: cover; */
+ .bg-ph{
+background: #091e3fcc;
+    background: url(${bgTab}), url(${imgTab});
+    width: 100%;
+    max-height: 796px;
+   // max-height: 1000px;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
     background-size: cover;
+ }
 
     .authFormText {
       font-family: Montserrat-Medium;
@@ -156,7 +187,7 @@ const AuthFormStyled = styled.div`
       display: flex;
       flex-direction: column;
       width: 400px;
-
+      max-height: 610px;
       background-color: white;
       margin: 0 auto;
       margin-top: 70px;
@@ -175,13 +206,20 @@ const AuthFormStyled = styled.div`
       height: 65px;
       display: flex;
       justify-content: center;
-      padding-top: 62px;
+     // padding-top: 62px;
+    }
+    .div-cont{
+          padding-top: 62px;
     }
     .teza {
       font-size: 24px;
       margin: 0 auto;
       text-align: center;
+       
+    box-sizing: border-box;
+width: 526px;
     }
+    
     .line::before {
       display: block;
       content: '';
@@ -202,26 +240,46 @@ const AuthFormStyled = styled.div`
       line-height: 2.3;
       text-align: center;
       margin-top: 28px;
-      padding-bottom: 62px;
+     padding-bottom: 62px;
     }
   }
 
   @media (min-width: 1280px) {
     /* width: 565px; */
-    max-height: 790px;
+    /* max-height: 790px;
+    background: url(${imgDec});
+    background-repeat: no-repeat;
+    position: relative; */
+    /* .bg-ph{
+ max-height: 790px;
     background: url(${imgDec});
     background-repeat: no-repeat;
     position: relative;
+    } */
+    .bg-ph{
+ max-height: 790px;
+ height: 790px;
+    background: url(${bgDec}), url(${imgDec});
+    background-repeat: no-repeat;
+        position: relative;
+    left: 0;
+    width: 100%;
+    }
+
     .authForm {
       display: flex;
       flex-direction: column;
       width: 400px;
       background-color: white;
       margin: 0;
-      margin-top: 185px;
-      margin-left: 44px;
-      margin-bottom: 185px;
-      /* margin: 0 auto; */
+     
+      max-height: 610px;
+      position: absolute;
+    left: 23%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    max-height: 610px;
     }
     .div-cont {
       padding-top: 266px;
@@ -233,8 +291,8 @@ const AuthFormStyled = styled.div`
       /* background: #ffffff; */
       margin: 0 auto;
       position: absolute;
-      left: 565px;
-      top: 0px;
+      left: 48%;
+      top: 6%;
     }
     .svg {
       margin: 0 auto;
@@ -247,6 +305,7 @@ const AuthFormStyled = styled.div`
       font-size: 24px;
       margin: 0 auto;
       text-align: center;
+      width: 397px;
     }
     .line::before {
       display: block;
@@ -288,6 +347,7 @@ const AuthFormStyled = styled.div`
     /* line-height: 1.4px;  */
     padding-top: 30px;
     margin-bottom: 20px;
+    
   }
   .titleSignUp {
     font-family: 'Montserrat-Medium';
@@ -356,6 +416,7 @@ const AuthFormStyled = styled.div`
       padding-top: 133px;
       text-align: center;
       padding-bottom: 32px;
+      margin-right: 90px;
     }
     .signupDiv {
       padding-left: 90px;
