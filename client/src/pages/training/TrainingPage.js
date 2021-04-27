@@ -3,6 +3,7 @@ import TrainingPageStyled from './TrainingPageStyled';
 import Chart from '../../components/trainingComponents/chart/Chart';
 import MyTraining from '../../components/trainingComponents/myTraining/MyTraining';
 import MobBookList from '../../components/trainingComponents/booksLists/mob/MobBookList';
+import StatModal from '../../components/statModal/StatModal';
 
 const TrainingPage = () => {
   return (
@@ -35,6 +36,8 @@ const TrainingPage = () => {
           <Chart />
         </div>
       </div>
+
+      <StatModal />
     </TrainingPageStyled>
   );
 };

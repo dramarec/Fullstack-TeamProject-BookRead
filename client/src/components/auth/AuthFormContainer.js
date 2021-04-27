@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import * as Yup from 'yup';
 import AuthForm from './AuthForm';
 import authOperations from '../../redux/operations/authOperation';
@@ -7,7 +7,6 @@ import authOperations from '../../redux/operations/authOperation';
 const AuthFormContainer = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const history = useHistory();
 
   const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
   const errorMessagesSchemaSignUp = Yup.object().shape({
@@ -46,9 +45,6 @@ const AuthFormContainer = () => {
       : errorMessagesSchemaSignIn;
 
   const handleSubmit = values => {
-    // if (location.pathname === '/signup') {
-    //   signUp(values);
-    // } else signIn(values);
     location.pathname === '/signup' ? signUp(values) : signIn(values);
   };
 
@@ -61,13 +57,6 @@ const AuthFormContainer = () => {
           password: values.password,
         }),
       );
-
-      await dispatch(
-        authOperations.logInOperation({
-          email: values.email,
-          password: values.password,
-        }),
-      );
     } catch (err) {
       return;
     }
@@ -76,7 +65,7 @@ const AuthFormContainer = () => {
   const signIn = async values => {
     try {
       await dispatch(authOperations.logInOperation(values));
-    } catch (error) {
+    } catch (err) {
       return;
     }
   };
