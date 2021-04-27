@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import Responsive from 'react-responsive';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import modalActions from '../../redux/actions/modalAction';
 import { addBookOperation } from '../../redux/operations/bookOperation';
+import back from '../../assets/svg/back.svg';
 import LibraryFormStyled from './LibraryFormStyled';
 
 const getYear = () => {
@@ -30,18 +33,32 @@ const initialState = {
   author: '',
   year: '',
   numberOfPages: '',
+  // onOpen: true,
 };
 
 const LibraryForm = () => {
   const dispatch = useDispatch();
   const [state /* , setState */] = useState({ ...initialState });
 
+  const Mobile = props => <Responsive {...props} maxWidth={767} />;
+
   const onHandlerSubmit = values => {
     dispatch(addBookOperation(values));
+    //setState({state.onOpen: false})
+  };
+
+  const onCloseModal = () => {
+    dispatch(modalActions.toggleModal());
   };
 
   return (
     <LibraryFormStyled>
+      <Mobile>
+        <button className="bookFormBtnBack" onClick={onCloseModal}>
+          <img src={back} alt="" />
+        </button>
+      </Mobile>
+
       <Formik
         initialValues={state}
         validationSchema={schema}

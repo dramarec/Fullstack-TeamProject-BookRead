@@ -22,20 +22,21 @@ const LibraryPage = () => {
   const Mobile = props => <Responsive {...props} maxWidth={767} />;
 
   // useEffect(() => {
-  //   booksWillRead.length < 0 && dispatch(modalActions.toggleModal());
+  //   dispatch(modalActions.toggleModal());
   // }, []);
 
-  const onHandleClick = () => {
+  const openModal = () => {
     dispatch(modalActions.toggleModal());
   };
-
   return (
     <LibraryPageStyled>
       <Mobile>
-        {booksWillRead.length > 0 ? <WillReadBooks /> : <LibraryForm />}
-        {booksWillRead.length > 0 && (
-          <ButtonAdd onHandleClick={onHandleClick} />
+        {booksWillRead.length > 0 ? (
+          <WillReadBooks />
+        ) : (
+          <Modal children={<LibraryModal />} />
         )}
+        {booksWillRead.length > 0 && <ButtonAdd onHandleClick={openModal} />}
         <Modal children={<LibraryForm />} />
       </Mobile>
 

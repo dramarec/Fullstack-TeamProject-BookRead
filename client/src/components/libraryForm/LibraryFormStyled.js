@@ -175,6 +175,12 @@ const Wrapper = styled.div`
       width: 134px;
     }
   }
+
+  .bookFormBtnBack {
+    border: none;
+    outline: none;
+    background-color: inherit;
+  }
 `;
 
 export default Wrapper;
