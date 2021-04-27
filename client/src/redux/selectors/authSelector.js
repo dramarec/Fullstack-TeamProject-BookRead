@@ -1,13 +1,11 @@
-const isAuth = state => state.auth.token;
-const getId = state => state.auth.user.id;
+const isAuthSelect = state => state.auth.token;
 const getUserName = state => state.auth.user.name;
 const getUserEmail = state => state.auth.user.email;
 const getUserLibrary = state => state.auth.user.books;
 const getUserTraining = state => state.auth.user.training;
 
 const authSelectors = {
-  isAuth,
-  getId,
+  isAuthSelect,
   getUserName,
   getUserEmail,
   getUserLibrary,

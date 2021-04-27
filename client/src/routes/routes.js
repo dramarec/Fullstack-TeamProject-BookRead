@@ -4,34 +4,8 @@ import TrangIcon from '../assets/icons/TrangIcon';
 
 const mainRoutes = [
   {
-    path: '/training',
-    name: 'тренировка',
-    exact: true,
-    icon: TrangIcon(),
-    component: lazy(() =>
-      import(
-        '../pages/training/TrainingPage' /* webpackChunkName: "TrainingPage"*/
-      ),
-    ),
-    isPrivate: true,
-    restricted: true,
-  },
-  {
-    path: '/library',
-    name: 'библиотека',
-    exact: true,
-    icon: HomeIcon(),
-    component: lazy(() =>
-      import(
-        '../pages/library/LibraryPage' /* webpackChunkName: "LibraryPage"*/
-      ),
-    ),
-    isPrivate: true,
-    restricted: true,
-  },
-  {
     path: '/',
-    name: 'Вход',
+    name: 'Вхід',
     exact: true,
     component: lazy(() =>
       import('../pages/signin/LoginPage' /* webpackChunkName: "SignInPage"*/),
@@ -41,7 +15,7 @@ const mainRoutes = [
   },
   {
     path: '/signup',
-    name: 'Регистрация',
+    name: 'Регістрація',
     exact: true,
     component: lazy(() =>
       import(
@@ -50,6 +24,32 @@ const mainRoutes = [
     ),
     isPrivate: false,
     restricted: true,
+  },
+  {
+    path: '/library',
+    name: 'бібліотека',
+    exact: true,
+    icon: HomeIcon(),
+    component: lazy(() =>
+      import(
+        '../pages/library/LibraryPage' /* webpackChunkName: "LibraryPage"*/
+      ),
+    ),
+    isPrivate: true,
+    restricted: false,
+  },
+  {
+    path: '/training',
+    name: 'тренування',
+    exact: false,
+    icon: TrangIcon(),
+    component: lazy(() =>
+      import(
+        '../pages/training/TrainingPage' /* webpackChunkName: "TrainingPage"*/
+      ),
+    ),
+    isPrivate: true,
+    restricted: false,
   },
 ];
 

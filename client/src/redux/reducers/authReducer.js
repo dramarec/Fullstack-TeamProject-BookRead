@@ -6,7 +6,6 @@ const initialState = {
   email: '',
   books: [],
   training: {},
-  isAuth: false,
 };
 
 const userReducer = createReducer(initialState, {
@@ -15,15 +14,7 @@ const userReducer = createReducer(initialState, {
     email: payload.user.email,
     books: payload.user.books,
     training: payload.user.training,
-    isAuth: true,
   }),
-  //   [authActions.getCurrentUserSuccess]: (_, { payload }) => ({
-  //     id: payload.id,
-  //     name: payload.name,
-  //     email: payload.email,
-  //     books: payload.books,
-  //     training: payload.training,
-  //   }),
   [authActions.logOutSuccess]: () => initialState,
 });
 
