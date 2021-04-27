@@ -10,7 +10,7 @@ const initialState = {
   };
 const ReviewModal = ({id, handleClick}) => {
 const dispatch = useDispatch()
-   const [book, setBook] = useState({...initialState})
+   const [book, setBook] = useState({id, ...initialState})
 
   const onHandleChange = (e) => {
        const {name, value} = e.target
@@ -24,7 +24,7 @@ const dispatch = useDispatch()
 
     }
     return (
-        <ReviewModalStyled id={book.id} onSubmit={onHandleSubmit}>
+        <ReviewModalStyled  onSubmit={onHandleSubmit}>
            <p>Обрати рейтинг книги</p> 
            <Star value={book.rating}/>
            <p>Резюме</p>

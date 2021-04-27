@@ -28,7 +28,7 @@ const books = createReducer(initialState, {
     rating: null
 }*/
 const onEditBook = (state, action) =>
-  state.map(item =>
+initialState.readFinish.map(item =>
     item.id === action.payload.id ? { ...action.payload } : item,
   );
 

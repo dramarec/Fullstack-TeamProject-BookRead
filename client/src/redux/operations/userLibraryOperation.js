@@ -29,8 +29,8 @@ const getUsersBooksOperetion = () => async dispatch => {
 const changeBookOperation = (info) => async dispatch => {
     dispatch(changeBookRequest());
     try {
-        const response = await axios.patch(`/books/${info._id/*bookId*/}`, info );
-       // console.log(response.data);
+        const response = await axios.patch(`/books/${info.id/*bookId*/}`, info );
+        console.log(info);
         dispatch(changeBookSuccess(info));
     } catch (error) {
         dispatch(changeBookError

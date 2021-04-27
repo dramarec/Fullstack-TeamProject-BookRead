@@ -29,7 +29,7 @@ const ReadBookItem = ({item}) => {
         <div className='review'>
         <Star />
         <button type='button' className='review-button' id={item._id} onClick={handleClick}>Резюме</button>
-        <Modal><ReviewModal  handleClick={handleClick}/></Modal>
+        <Modal><ReviewModal id={item._id} handleClick={handleClick}/></Modal>
         </div>
         </ReadBookItemStyled>
         
