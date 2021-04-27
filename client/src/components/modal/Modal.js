@@ -1,13 +1,7 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import ModalWrapper from './Modal.styled';
-import getModalState from '../../redux/selectors/modalSelector';
-import modalActions from '../../redux/actions/modalAction';
 
-const Modal = ({ children }) => {
-  const modalActive = useSelector(getModalState);
-  const dispatch = useDispatch();
-
+const Modal = ({ children, closeModal }) => {
   useEffect(() => {
     window.addEventListener('keydown', handleKeyPress);
 
@@ -17,37 +11,24 @@ const Modal = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleClick = e => {
-    if (e.target.dataset.name !== 'wrapper') {
+  const handleClick = evt => {
+    if (evt.target.dataset.name !== 'wrapper') {
       return;
     }
 
-    dispatch(modalActions.toggleModal());
+    closeModal();
   };
 
-  const handleKeyPress = e => {
-    if (e.code === 'Escape') {
-      dispatch(modalActions.toggleModal());
+  const handleKeyPress = evt => {
+    if (evt.code === 'Escape') {
+      closeModal();
     }
   };
 
-  // const closeModal = () => {
-  //   dispatch(modalActions.toggleModal());
-  // };
-
   return (
-    <>
-      {modalActive.modal && (
-        <ModalWrapper onClick={handleClick} data-name="wrapper">
-          <div className="modal">
-            {children}
-            {/* <button className="closeButton" type="button" onClick={closeModal}>
-              Cancel
-            </button> */}
-          </div>
-        </ModalWrapper>
-      )}
-    </>
+    <ModalWrapper onClick={handleClick} data-name="wrapper">
+      <div className="modal">{children}</div>
+    </ModalWrapper>
   );
 };
 
