@@ -14,7 +14,6 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
 
   return (
     <AuthFormStyled>
-      {/* signin */}
       <div className="container">
         <div className="bg-ph">
           <Formik
@@ -33,69 +32,80 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                     <span className="authFormText">
                       Ім'я <sup className="authFormStar">*</sup>
                     </span>
-                    <Field
-                      className={`authFormInput ${
-                        touched.username && errors.username && 'authInputError'
-                      }`}
-                      type="text"
-                      name="username"
-                      placeholder=" "
-                    />
+                    <div className="wrapper">
+                      <Field
+                        className={`authFormInput ${
+                          touched.username &&
+                          errors.username &&
+                          'authInputError'
+                        }`}
+                        type="text"
+                        name="username"
+                        placeholder=" "
+                      />
 
-                    <span className="authError">
-                      <ErrorMessage name="username" />
-                    </span>
+                      <span className="authError">
+                        <ErrorMessage name="username" />
+                      </span>
+                    </div>
                   </label>
                 )}
                 <label className="authFormFild">
                   <span className="authFormText">
                     Електронна адреса <sup className="authFormStar">*</sup>
                   </span>
-                  <Field
-                    className={`authFormInput ${
-                      touched.email && errors.email && 'authInputError'
-                    }`}
-                    type="text"
-                    name="email"
-                    placeholder="your@email.com"
-                  />
-
-                  <span className="authError">
-                    <ErrorMessage name="email" />
-                  </span>
+                  <div className="wrapper">
+                    <Field
+                      className={`authFormInput ${
+                        touched.email && errors.email && 'authInputError'
+                      }`}
+                      type="text"
+                      name="email"
+                      placeholder="your@email.com"
+                    />
+                    <span className="authError">
+                      <ErrorMessage name="email" />
+                    </span>
+                  </div>
                 </label>
                 <label className="authFormFild">
                   <span className="authFormText">
                     Пароль <sup className="authFormStar">*</sup>
                   </span>
-                  <Field
-                    className={`authFormInput ${
-                      touched.password && errors.password && 'authInputError'
-                    }`}
-                    type="password"
-                    name="password"
-                    placeholder="Пароль"
-                  />
-                  <span className="authError">
-                    <ErrorMessage name="password" />
-                  </span>
+                  <div className="wrapper">
+                    <Field
+                      className={`authFormInput ${
+                        touched.password && errors.password && 'authInputError'
+                      }`}
+                      type="password"
+                      name="password"
+                      placeholder="Пароль"
+                    />
+                    <span className="authError">
+                      <ErrorMessage name="password" />
+                    </span>
+                  </div>
                 </label>
                 {location.pathname === '/signup' && (
                   <label className="authFormFild">
                     <span className="authFormText">
                       Підтвердіть пароль <sup className="authFormStar">*</sup>
                     </span>
-                    <Field
-                      className={`authFormInput ${
-                        touched.password && errors.password && 'authInputError'
-                      }`}
-                      type="password"
-                      name="passwordConfirmation"
-                      placeholder="Пароль"
-                    />
-                    <span className="authError">
-                      <ErrorMessage name="password" />
-                    </span>
+                    <div className="wrapper">
+                      <Field
+                        className={`authFormInput ${
+                          touched.password &&
+                          errors.password &&
+                          'authInputError'
+                        }`}
+                        type="password"
+                        name="passwordConfirmation"
+                        placeholder="Пароль"
+                      />
+                      <span className="authError">
+                        <ErrorMessage name="passwordConfirmation" />
+                      </span>
+                    </div>
                   </label>
                 )}
                 <button className="mainButton authFormBtn" type="submit">
@@ -122,10 +132,10 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
               <Two />
               <p className="teza">
                 Книги — это корабли мысли,
-                <br />
-                странствующие по волнам <br />
-                времени и бережно несущие <br />
-                свой драгоценный груз от <br />
+                
+                странствующие по волнам 
+                времени и бережно несущие
+                свой драгоценный груз от
                 поколения к поколению.
               </p>
               <p className="becon line">Бэкон Ф.</p>

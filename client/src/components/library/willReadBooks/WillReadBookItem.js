@@ -18,4 +18,24 @@ const WillReadBookItem = ({ book }) => {
   );
 };
 
+
 export default WillReadBookItem;
+
+/*<<<<<<< HEAD
+const WillReadBookItem = ({item}) => {
+   // console.log(item);
+    return (
+        <WillReadBookItemStyled>
+        <div className='bookName'>
+        <img src={book3} alt=''/>
+        <p>{item.title}</p>
+        </div>
+        <p className='author'>{item.author}</p>
+        <p className='publishYear'>{item.year}</p>
+        <p className='pages'>{item.numberOfPages}</p>
+    
+        </WillReadBookItemStyled>
+       
+    )
+}
+=======-*/
