@@ -92,5 +92,69 @@ const AppBarStyled = styled.div`
       border-bottom: 1px solid #fff;
     }
   }
+
+  .exit-modal {
+    width: 270px;
+    height: 223px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    padding-left: 18px;
+    padding-right: 18px;
+
+    p {
+      margin-bottom: 20px;
+      font-family: 'Montserrat-Regular';
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 22px;
+
+      text-align: center;
+
+      color: #242a37;
+    }
+
+    button {
+      width: 97px;
+      height: 40px;
+      padding: 1px, 26px, 1px, 26px;
+      font-family: 'Montserrat-Regular';
+      font-size: 14px;
+      line-height: 38px;
+
+      text-align: center;
+
+      color: #ffffff;
+    }
+
+    .cancel {
+      margin-right: 15px;
+      background-color: white;
+      border: solid 1px;
+      color: rgba(36, 42, 55, 1);
+    }
+
+    .exit {
+      background-color: #ff6b08;
+      border: solid #ff6b08 1px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .exit-modal {
+      width: 390px;
+      height: 206px;
+      padding-left: 50px;
+      padding-right: 50px;
+
+      button {
+        width: 130px;
+        padding: 1px, 37px, 1px, 37px;
+      }
+    }
+  }
 `;
 export default AppBarStyled;
