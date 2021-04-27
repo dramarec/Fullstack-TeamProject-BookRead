@@ -4,26 +4,27 @@ import React, { Suspense } from 'react';
 // import Chart from './chart/Chart';
 // import LibraryPage from '../pages/library/LibraryPage';
 import AppBar from './appBar/AppBar';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
+import Spin from './loader/Spin';
 import mainRoutes from '../routes/routes';
-
-// import { publicRoutes } from '../routes/publicRoutes';
+import PrivateRoutes from './routes/PrivateRoutes';
+import PublicRoutes from './routes/PublicRoutes';
 
 const App = () => {
   return (
     <>
       <AppBar />
       <div>
-        <Suspense fallback={<p>...loading</p>}>
+        <Suspense fallback={<Spin />}>
           <Switch>
-            {mainRoutes.map(({ path, component, exact }) => (
-              <Route
-                key={path}
-                path={path}
-                exact={exact}
-                component={component}
-              />
-            ))}
+            {mainRoutes.map(route =>
+              route.isPrivate ? (
+                <PrivateRoutes {...route} key={route.path} />
+              ) : (
+                <PublicRoutes {...route} key={route.path} />
+              ),
+            )}
+            <Redirect to="/" />
           </Switch>
         </Suspense>
       </div>
