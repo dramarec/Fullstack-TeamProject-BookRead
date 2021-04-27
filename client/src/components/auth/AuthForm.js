@@ -9,7 +9,7 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
 
   const initialState =
     location.pathname === '/signup'
-      ? { username: '', email: '', password: '' }
+      ? { username: '', email: '', password: '', passwordConfirmation: '' }
       : { email: '', password: '' };
 
   return (
