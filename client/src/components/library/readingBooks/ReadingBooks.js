@@ -3,12 +3,11 @@ import ReadingBookItem from './ReadingBookItem';
 import ReadBookItemMobile from './ReadingBookItemMobile';
 import ReadingBooksStyled from './ReadingBooksStyled';
 import Responsive from 'react-responsive'
-import { useSelector } from 'react-redux';
-import librarySelector from '../../../redux/selectors/userLibrarySelector';
 
-const ReadingBooks = ({now}) => {
+
+const ReadingBooks = ({bookNowRead}) => {
   //const  nowArray = useSelector(librarySelector.getUsersreadNow);
-  console.log(now);
+  //console.log(now);
   const Tablet = props => (
     <Responsive {...props} minWidth={768}  />
 );
@@ -25,12 +24,10 @@ const Mobile = props => <Responsive {...props} maxWidth={767} />;
       </div>
       <ul>
     {
-      now.map(book => (
+      bookNowRead.map(book => (
         <ReadingBookItem key={book._id} item={book} />
-
       ))
-    }
-         
+    }    
       </ul>
       </Tablet>
       <Mobile>

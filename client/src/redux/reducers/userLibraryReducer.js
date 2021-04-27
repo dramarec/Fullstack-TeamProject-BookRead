@@ -1,11 +1,11 @@
 
-import { createReducer } from '@reduxjs/toolkit';
+/*import { createReducer } from '@reduxjs/toolkit';
 import { changeBookSuccess } from '../actions/changeBookAction';
    
 import {getUsersBooksSuccess} from '../actions/userLibraryAction';
 
 const initialState = {
-    planeToRead: [],
+    //planeToRead: [],
     readNow: [],
     readFinish: []
 }
@@ -27,7 +27,7 @@ const books = createReducer(initialState, {
     review: '',
     rating: null
 }*/
-const onEditBook = (state, action) =>
+/*const onEditBook = (state, action) =>
 initialState.readFinish.map(item =>
     item.id === action.payload.id ? { ...action.payload } : item,
   );
@@ -37,4 +37,4 @@ const book = createReducer('', {
         
 })
 
-export default books
+export default books*/

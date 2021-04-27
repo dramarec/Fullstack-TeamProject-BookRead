@@ -7,30 +7,12 @@ import WillReadBooks from '../../components/library/willReadBooks/WillReadBooks'
 import LibraryForm from '../../components/libraryForm/LibraryForm';
 import LibraryPageStyled from './LibraryPagesStyled';
 import LibraryModal from '../../components/libraryModal/LibraryModal';
-/*<<<<<<< HEAD
-import librarySelector from '../../redux/selectors/userLibrarySelector'
-import { useDispatch, useSelector } from 'react-redux';
 import { getUsersBooksOperetion } from '../../redux/operations/userLibraryOperation';
-
-const LibraryPage = () => {
-  const dispatch = useDispatch();
-   useEffect(() => {
-     dispatch(getUsersBooksOperetion())
-   }, []);
-
-  const  plan = useSelector(librarySelector.getUsersplaneToRead);
-  const  now = useSelector(librarySelector.getUsersreadNow);
-  const  finish = useSelector(librarySelector.getUsersreadFinish);
-  console.log('userBooks', plan, now, finish);
-  return (
-    <LibraryPageStyled>
-      <LibraryForm />
-      <LibraryModal />
-      {finish.length > 0 &&  <ReadBooks finish={finish} />}
-      {now.length > 0 && <ReadingBooks now={now}   />}
-     {plan.length > 0 && <WillReadBooks plan={plan} /> }
-=======*/
-import { getWillRead } from '../../redux/selectors/bookSelector';
+import { 
+  getWillRead, 
+  getUsersreadNow,
+  getUsersreadFinish 
+} from '../../redux/selectors/bookSelector';
 import Modal from '../../components/modal/Modal';
 import modalActions from '../../redux/actions/modalAction';
 
@@ -38,19 +20,25 @@ const LibraryPage = () => {
   const dispatch = useDispatch();
   const booksWillRead = useSelector(getWillRead);
   //const modalActive = useSelector(getModalState);
-
+  const  bookNowRead = useSelector(getUsersreadNow);
+  const  bookFinished = useSelector(getUsersreadFinish);
+  useEffect(() => {
+    dispatch(getUsersBooksOperetion())
+  }, []);
   const Tablet = props => <Responsive {...props} minWidth={768} />;
 
   const Mobile = props => <Responsive {...props} maxWidth={767} />;
 
-  useEffect(() => {
+  /*useEffect(() => {
     dispatch(modalActions.toggleModal());
-  }, []);
+  }, []);*/
 
   return (
     <LibraryPageStyled>
       <Mobile>
         <LibraryForm />
+       {bookFinished.length > 0 &&  <ReadBooks bookFinished={bookFinished} />}
+       {bookNowRead.length > 0 && <ReadingBooks bookNowRead={bookNowRead}   />}
         {booksWillRead.length > 0 ? (
           <WillReadBooks />
         ) : (
@@ -60,11 +48,10 @@ const LibraryPage = () => {
 
       <Tablet>
         <LibraryForm />
+        {bookFinished.length > 0 &&  <ReadBooks bookFinished={bookFinished} />}
+        {bookNowRead.length > 0 && <ReadingBooks bookNowRead={bookNowRead}   />}
         {booksWillRead.length > 0 ? <WillReadBooks /> : <LibraryModal />}
       </Tablet>
-
-      {/* <ReadBooks />
-      <ReadingBooks /> */}
     </LibraryPageStyled>
   );
 };
