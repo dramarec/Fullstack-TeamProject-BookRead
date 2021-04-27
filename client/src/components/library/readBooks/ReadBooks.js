@@ -4,7 +4,7 @@ import ReadBookItemMobile from './ReadBookItemMobile';
 import ReadBooksStyled from './ReadBooksStyled';
 import Responsive from 'react-responsive'
 
-const ReadBooks = () => {
+const ReadBooks = ({bookFinished}) => {
     const Tablet = props => (
         <Responsive {...props} minWidth={768}  />
     );
@@ -22,8 +22,9 @@ const ReadBooks = () => {
          <p>Рейтинг книги</p>
       </div>
       <ul>
-      <ReadBookItem/>
-      <ReadBookItem/>
+        {bookFinished.map(book => (
+            <ReadBookItem key={book._id} item={book} />
+        )) }
       </ul>
       </Tablet>
       <Mobile>
