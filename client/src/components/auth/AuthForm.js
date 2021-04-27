@@ -14,7 +14,6 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
 
   return (
     <AuthFormStyled>
-      {/* signin */}
       <div className="container">
         <div className="bg-ph">
           <Formik
