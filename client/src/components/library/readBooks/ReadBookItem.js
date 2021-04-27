@@ -12,15 +12,20 @@ const ReadBookItem = ({ item }) => {
   // console.log('readbook', item);
   const dispatch = useDispatch();
   const [data, setData] = useState({});
+  const [isOpen, setisOpen] = useState(false);
   const finishBooks = useSelector(getFinishRead);
 
   const handleClick = e => {
     const id = e.target.id;
     console.log(id);
     setData(finishBooks.find(book => book._id === id));
-    dispatch(modalActions.toggleModal());
-    document.body.style.overflow = 'visible';
+    setisOpen(true)
+    /*dispatch(modalActions.toggleModal());
+    document.body.style.overflow = 'visible';*/
   };
+  const closeModal = () => {
+    setisOpen(false)
+  }
   return (
     <>
       <ReadBookItemStyled>
@@ -43,7 +48,7 @@ const ReadBookItem = ({ item }) => {
           </button>
         </div>
       </ReadBookItemStyled>
-      {/* <Modal><ReviewModal data={data}  handleClick={handleClick}/></Modal> */}
+      {isOpen && <Modal closeModal={closeModal}><ReviewModal closeModal={closeModal} data={data}  /></Modal> }
     </>
   );
 };
@@ -51,3 +56,4 @@ const ReadBookItem = ({ item }) => {
 export default ReadBookItem;
 
 //<Modal openModal={openModal}/>
+//{isOpen && <ReviewModal data={data} />}
