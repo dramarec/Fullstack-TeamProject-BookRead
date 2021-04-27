@@ -1,26 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReadBooks from '../../components/library/readBooks/ReadBooks';
 import ReadingBooks from '../../components/library/readingBooks/ReadingBooks';
 import WillReadBooks from '../../components/library/willReadBooks/WillReadBooks';
 import LibraryForm from '../../components/libraryForm/LibraryForm';
 import LibraryPageStyled from './LibraryPagesStyled';
-// import Responsive from 'react-responsive';
-// import ReadBookItemMobile from '../../components/library/readBooks/ReadBookItemMobile';
 import LibraryModal from '../../components/libraryModal/LibraryModal';
+import librarySelector from '../../redux/selectors/userLibrarySelector'
+import { useDispatch, useSelector } from 'react-redux';
+import { getUsersBooksOperetion } from '../../redux/operations/userLibraryOperation';
 
 const LibraryPage = () => {
-  /*const Desktop = props => <Responsive {...props} minWidth={1280} />;
-    const Tablet = props => (
-        <Responsive {...props} minWidth={768}  />
-    );
-    const Mobile = props => <Responsive {...props} maxWidth={767} />;*/
+  const dispatch = useDispatch();
+   useEffect(() => {
+     dispatch(getUsersBooksOperetion())
+   }, []);
+
+  const  plan = useSelector(librarySelector.getUsersplaneToRead);
+  const  now = useSelector(librarySelector.getUsersreadNow);
+  const  finish = useSelector(librarySelector.getUsersreadFinish);
+  console.log('userBooks', plan, now, finish);
   return (
     <LibraryPageStyled>
       <LibraryForm />
       <LibraryModal />
-      <ReadBooks />
-      <ReadingBooks />
-      <WillReadBooks />
+      {finish.length > 0 &&  <ReadBooks finish={finish} />}
+      {now.length > 0 && <ReadingBooks now={now}   />}
+     {plan.length > 0 && <WillReadBooks plan={plan} /> }
     </LibraryPageStyled>
   );
 };

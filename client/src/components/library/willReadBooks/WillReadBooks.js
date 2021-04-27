@@ -4,7 +4,7 @@ import WillReadBooksStyled from './WillReadBooksStyled';
 import Responsive from 'react-responsive'
 import WillReadBookItemMobile from './WillReadBookItemMobile';
 
-const WillReadBooks = () => {
+const WillReadBooks = ({plan}) => {
   const Tablet = props => (
     <Responsive {...props} minWidth={768}  />
 );
@@ -19,9 +19,14 @@ const Mobile = props => <Responsive {...props} maxWidth={767} />;
          <p>Рік</p>
          <p>Стор.</p>
       </div>
-      <WillReadBookItem/>
-      <WillReadBookItem/>
-      <WillReadBookItem/>
+      <ul>
+        {
+          plan.map( book=> (
+
+            <WillReadBookItem key={book._id} item={book}/>
+          ))
+        }
+      </ul>
       </Tablet> 
       <Mobile> 
       <WillReadBookItemMobile/>

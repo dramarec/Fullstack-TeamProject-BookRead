@@ -3,8 +3,12 @@ import ReadingBookItem from './ReadingBookItem';
 import ReadBookItemMobile from './ReadingBookItemMobile';
 import ReadingBooksStyled from './ReadingBooksStyled';
 import Responsive from 'react-responsive'
+import { useSelector } from 'react-redux';
+import librarySelector from '../../../redux/selectors/userLibrarySelector';
 
-const ReadingBooks = () => {
+const ReadingBooks = ({now}) => {
+  //const  nowArray = useSelector(librarySelector.getUsersreadNow);
+  console.log(now);
   const Tablet = props => (
     <Responsive {...props} minWidth={768}  />
 );
@@ -19,7 +23,15 @@ const Mobile = props => <Responsive {...props} maxWidth={767} />;
          <p>Рік</p>
          <p>Стор.</p>
       </div>
-      <ReadingBookItem/>
+      <ul>
+    {
+      now.map(book => (
+        <ReadingBookItem key={book._id} item={book} />
+
+      ))
+    }
+         
+      </ul>
       </Tablet>
       <Mobile>
       <ReadBookItemMobile/>

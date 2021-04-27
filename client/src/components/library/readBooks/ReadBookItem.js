@@ -7,10 +7,13 @@ import ReviewModal from '../reviewModal/ReviewModal';
 import ReadBookItemStyled from './ReadBookItemStyled';
 import Star from './Star';
 
-const ReadBookItem = () => {
+const ReadBookItem = ({item}) => {
+    console.log('readbook', item);
     const dispatch = useDispatch();
 
-    const handleClick = () => {
+    const handleClick = (e) => {
+        const id = e.target.id
+        console.log(id);
         dispatch(modalActions.toggleModal());
         document.body.style.overflow = 'visible';
     };
@@ -18,15 +21,15 @@ const ReadBookItem = () => {
         <ReadBookItemStyled >
         <div className='bookName'>
         <img src={book} alt=''/>
-        <p>Психбольница в руках пациентов...</p>
+        <p>{item.title}</p>
         </div>
-        <p className='author'>Купер Алан</p>
-        <p className='publishYear'>2009</p>
-        <p className='pages'>183</p>
+        <p className='author'>{item.author}</p>
+        <p className='publishYear'>{item.year}</p>
+        <p className='pages'>{item.numberOfPages}</p>
         <div className='review'>
-        <Star/>
-        <button type='button' className='review-button' onClick={handleClick}>Резюме</button>
-        <Modal><ReviewModal handleClick={handleClick}/></Modal>
+        <Star />
+        <button type='button' className='review-button' id={item._id} onClick={handleClick}>Резюме</button>
+        <Modal><ReviewModal  handleClick={handleClick}/></Modal>
         </div>
         </ReadBookItemStyled>
         

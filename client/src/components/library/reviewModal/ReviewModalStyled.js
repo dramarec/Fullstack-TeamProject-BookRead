@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ReviewModalStyled = styled.div`
+const ReviewModalStyled = styled.form`
 font-family: 'Montserrat-Medium';
 background-color: white;
 width: 270px;

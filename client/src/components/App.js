@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 // import Modal from './modal/Modal';
 // import Button from './testButton.js/TestButton';
 // import Chart from './chart/Chart';
@@ -6,10 +6,16 @@ import React, { Suspense } from 'react';
 import AppBar from './appBar/AppBar';
 import { Switch, Route } from 'react-router-dom';
 import mainRoutes from '../routes/routes';
+//import { getUsersBooks } from '../redux/operations/userLibraryOperation';
+//import { useDispatch } from 'react-redux';
 
 // import { publicRoutes } from '../routes/publicRoutes';
 
 const App = () => {
+ /*  const dispatch = useDispatch();
+   useEffect(() => {
+     dispatch(getUsersBooks())
+   }, dispatch);*/
   return (
     <>
       <AppBar />

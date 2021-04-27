@@ -2,16 +2,17 @@ import React from 'react'
 import bookOrg from '../../../assets/svg/bookOrg.svg'
 import ReadingBookItemStyled from './ReadingBookItemStyled';
 
-const ReadingBookItem = () => {
+const ReadingBookItem = ({item}) => {
+    //console.log('item', item);
     return (
         <ReadingBookItemStyled>
         <div className='bookName'>
         <img src={bookOrg} alt=''/>
-        <p>Разработка ценностных предложений.</p>
+        <p>{item.title}</p>
         </div>
-        <p className='author'>Алекс Остервальдер, Ив Пинье</p>
-        <p className='publishYear'>2013</p>
-        <p className='pages'>368</p>
+        <p className='author'>{item.author}</p>
+        <p className='publishYear'>{item.year}</p>
+        <p className='pages'>{item.numberOfPages}</p>
     
         </ReadingBookItemStyled>
        
