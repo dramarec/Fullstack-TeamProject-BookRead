@@ -10,6 +10,7 @@ import LibraryModal from '../../components/libraryModal/LibraryModal';
 import { getWillRead } from '../../redux/selectors/bookSelector';
 import Modal from '../../components/modal/Modal';
 import modalActions from '../../redux/actions/modalAction';
+import ButtonAdd from '../../components/buttonAdd/ButtonAdd';
 
 const LibraryPage = () => {
   const dispatch = useDispatch();
@@ -20,19 +21,22 @@ const LibraryPage = () => {
 
   const Mobile = props => <Responsive {...props} maxWidth={767} />;
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   booksWillRead.length < 0 && dispatch(modalActions.toggleModal());
+  // }, []);
+
+  const onHandleClick = () => {
     dispatch(modalActions.toggleModal());
-  }, []);
+  };
 
   return (
     <LibraryPageStyled>
       <Mobile>
-        <LibraryForm />
-        {booksWillRead.length > 0 ? (
-          <WillReadBooks />
-        ) : (
-          <Modal children={<LibraryModal />} />
+        {booksWillRead.length > 0 ? <WillReadBooks /> : <LibraryForm />}
+        {booksWillRead.length > 0 && (
+          <ButtonAdd onHandleClick={onHandleClick} />
         )}
+        <Modal children={<LibraryForm />} />
       </Mobile>
 
       <Tablet>
