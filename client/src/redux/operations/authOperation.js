@@ -36,7 +36,7 @@ const logInWithGoogleOperation = userCredentials => async dispatch => {
   dispatch(authActions.logInRequest());
 
   try {
-    const data = await api.logIn(userCredentials);
+    const data = await api.logInWithGoogle(userCredentials);
 
     api.setToken(data.token);
 

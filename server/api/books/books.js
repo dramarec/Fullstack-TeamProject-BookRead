@@ -8,7 +8,7 @@ const { BooksCtrl } = require('../../controllers');
 const guard = require('../../utils/guard');
 
 router.get('/', guard, BooksCtrl.get);
-router.post('/', /* guard, */ schemaCreateBook, BooksCtrl.addNewBook);
+router.post('/', guard, schemaCreateBook, BooksCtrl.addNewBook);
 router.patch('/:bookId', guard, schemaUpdateBook, BooksCtrl.updateOneBook);
 
 module.exports = router;
