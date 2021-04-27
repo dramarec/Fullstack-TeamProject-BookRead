@@ -1,18 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import AuthFormStyled from './AuthFormStyled';
 import Two from './icons/two';
-// import RegisterStyled from '../../pages/signup/RegisterStyled';
 import GoogleAuthBtn from './GoogleAuthBtn';
 
 const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
-  let location = useLocation();
+  const location = useLocation();
+
   const initialState =
     location.pathname === '/signup'
       ? { username: '', email: '', password: '' }
       : { email: '', password: '' };
+
   return (
     <AuthFormStyled>
       {/* signin */}
@@ -28,12 +27,11 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
             {({ errors, touched }) => (
               <Form className="authForm">
                 <GoogleAuthBtn />
-                {/* <button className="btn-google">Google</button> */}
 
                 {location.pathname === '/signup' && (
                   <label className="authFormFild">
                     <span className="authFormText">
-                      Им'я <sup className="authFormStar">*</sup>
+                      Ім'я <sup className="authFormStar">*</sup>
                     </span>
                     <Field
                       className={`authFormInput ${
@@ -77,7 +75,6 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                     type="password"
                     name="password"
                     placeholder="Пароль"
-                    autoComplete="off"
                   />
                   <span className="authError">
                     <ErrorMessage name="password" />
@@ -92,11 +89,10 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                       className={`authFormInput ${
                         touched.password && errors.password && 'authInputError'
                       }`}
-                      type="password-true"
-                      name="password-true"
+                      type="password"
+                      name="passwordConfirmation"
                       placeholder="Пароль"
                     />
-
                     <span className="authError">
                       <ErrorMessage name="password" />
                     </span>
@@ -106,9 +102,15 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                   {location.pathname === '/signup' ? 'Реєстрація' : 'Увійти'}
                 </button>
                 <button className="mainButton authFormBtnSec" type="submit">
-                  <Link to="/signup">
-                    {location.pathname === '/signup' ? 'Увійти' : 'Реєстрація'}
-                  </Link>
+                  {location.pathname === '/signup' ? (
+                    <Link to="/" className="buttonSignUpMain">
+                      Увійти
+                    </Link>
+                  ) : (
+                    <Link to="/signup" className="buttonSignUpMain">
+                      Реєстрація
+                    </Link>
+                  )}
                 </button>
               </Form>
             )}
@@ -162,10 +164,13 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                   співрозмовником
                 </li>
               </ul>
-              <button className="buttonSignUp" type="submit">
+
+              <Link to="/" className="buttonSignUp">
                 Увійти
-              </button>
-              <button className="buttonSignUp" type="submit"></button>
+              </Link>
+              <Link to="/signup" className="buttonSignUp">
+                Реєстрація
+              </Link>
             </div>
           )}
         </div>

@@ -37,8 +37,6 @@ const initialstate = [
 const DescBookList = () => {
   const [state] = useState([...initialstate]);
 
-  console.log('DescBookList ===> state', state);
-
   return (
     <DescBookListStyle>
       <div className="books-titles">

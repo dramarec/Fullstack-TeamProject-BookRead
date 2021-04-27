@@ -310,6 +310,14 @@ const AuthFormStyled = styled.div`
     margin-top: 31px;
     margin-bottom: 58px;
   }
+  .buttonSignUpMain {
+    width: 127px;
+    height: 40px;
+    color: #ff6b08;
+    margin-top: 5px;
+    border: none;
+  }
+
   .buttonSignUp:last-child {
     margin-left: 16px;
   }
