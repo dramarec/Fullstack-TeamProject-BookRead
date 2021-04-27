@@ -1,12 +1,12 @@
 const getWillRead = state => state.library.willRead;
-const getUsersreadNow = state => state.library.readNow
-const getUsersreadFinish = state => state.library.readFinish
+const getNowRead = state => state.library.readNow
+const getFinishRead = state => state.library.readFinish
 
 
 export { 
     getWillRead,
-    getUsersreadNow,
-    getUsersreadFinish
+    getNowRead,
+    getFinishRead
 
 
 };

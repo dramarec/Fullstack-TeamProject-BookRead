@@ -33,7 +33,7 @@ const bookReduser = createReducer(
       },
 
     [changeBookSuccess]: (state, {payload}) =>
-     { initialState.readFinish.map(item =>
+     { state.readFinish.map(item =>
           item.id === payload.id ? { ...payload } : item,
       )},
 

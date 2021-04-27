@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
 
-export const changeBookRequest = createAction('userLibrary/changeBookRequest');
-export const changeBookSuccess = createAction('userLibrary/changeBookSuccess');
-export const changeBookError = createAction('userLibrary/changeBookError');
+export const changeBookRequest = createAction('@book/changeBookRequest');
+export const changeBookSuccess = createAction('@book/changeBookSuccess');
+export const changeBookError = createAction('@book/changeBookError');
 

@@ -7,21 +7,21 @@ import WillReadBooks from '../../components/library/willReadBooks/WillReadBooks'
 import LibraryForm from '../../components/libraryForm/LibraryForm';
 import LibraryPageStyled from './LibraryPagesStyled';
 import LibraryModal from '../../components/libraryModal/LibraryModal';
-import { getUsersBooksOperetion } from '../../redux/operations/userLibraryOperation';
+import { getUsersBooksOperetion } from '../../redux/operations/bookOperation';
 import { 
   getWillRead, 
-  getUsersreadNow,
-  getUsersreadFinish 
+  getNowRead,
+  getFinishRead 
 } from '../../redux/selectors/bookSelector';
 import Modal from '../../components/modal/Modal';
-import modalActions from '../../redux/actions/modalAction';
+//import modalActions from '../../redux/actions/modalAction';
 
 const LibraryPage = () => {
   const dispatch = useDispatch();
   const booksWillRead = useSelector(getWillRead);
   //const modalActive = useSelector(getModalState);
-  const  bookNowRead = useSelector(getUsersreadNow);
-  const  bookFinished = useSelector(getUsersreadFinish);
+  const  bookNowRead = useSelector(getNowRead);
+  const  bookFinished = useSelector(getFinishRead);
   useEffect(() => {
     dispatch(getUsersBooksOperetion())
   }, []);
@@ -32,7 +32,7 @@ const LibraryPage = () => {
   /*useEffect(() => {
     dispatch(modalActions.toggleModal());
   }, []);*/
-
+  
   return (
     <LibraryPageStyled>
       <Mobile>
