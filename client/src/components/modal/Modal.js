@@ -10,6 +10,7 @@ const Modal = ({ children }) => {
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyPress);
+
     return () => {
       window.removeEventListener('keydown', handleKeyPress);
     };
@@ -20,6 +21,7 @@ const Modal = ({ children }) => {
     if (e.target.dataset.name !== 'wrapper') {
       return;
     }
+
     dispatch(modalActions.toggleModal());
   };
 
@@ -29,9 +31,9 @@ const Modal = ({ children }) => {
     }
   };
 
-  const closeModal = () => {
-    dispatch(modalActions.toggleModal());
-  };
+  // const closeModal = () => {
+  //   dispatch(modalActions.toggleModal());
+  // };
 
   return (
     <>
@@ -39,9 +41,9 @@ const Modal = ({ children }) => {
         <ModalWrapper onClick={handleClick} data-name="wrapper">
           <div className="modal">
             {children}
-            <button className="closeButton" type="button" onClick={closeModal}>
+            {/* <button className="closeButton" type="button" onClick={closeModal}>
               Cancel
-            </button>
+            </button> */}
           </div>
         </ModalWrapper>
       )}
