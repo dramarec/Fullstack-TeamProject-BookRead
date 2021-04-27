@@ -5,12 +5,14 @@ import Wrapper from './PickerDataStyle';
 
 const InputDatePicker = () => {
   const [startDate, setStartDate] = useState(new Date());
+
   return (
     <Wrapper>
       <DatePicker
         selected={startDate}
         onChange={date => setStartDate(date)}
         placeholderText="Початок"
+        className="data-picker"
       />
     </Wrapper>
   );

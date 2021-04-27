@@ -1,9 +1,29 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import mainRoutes from '../../routes/routes';
 import AppBarStyled from './AppBarStyled';
+import Modal from '../modal/Modal';
+import modalActions from '../../redux/actions/modalAction';
+import authOperations from '../../redux/operations/authOperation';
 
 const AppBar = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleClick = () => {
+    dispatch(modalActions.toggleModal());
+    document.body.style.overflow = 'visible';
+  };
+  const closeModal = () => {
+    dispatch(modalActions.toggleModal());
+  };
+
+  const logOut = () => {
+    dispatch(authOperations.logOutOperation());
+    history.push('/');
+  };
+
   return (
     <AppBarStyled>
       <div className="container">
@@ -37,13 +57,27 @@ const AppBar = () => {
             </li>
 
             <li className="exit link">
-              <Link to="/" className="link">
+              <button type="button" onClick={handleClick}>
                 Вихід
-              </Link>
+              </button>
             </li>
           </ul>
         </nav>
       </div>
+
+      <Modal>
+        <div className="exit-modal">
+          <p>Якщо Ви вийдете з програми незбережені дані будуть втрачені</p>
+          <div className="btn-wrapper">
+            <button type="button" className="cancel" onClick={closeModal}>
+              Відміна
+            </button>
+            <button type="button" className="exit" onClick={logOut}>
+              Вийти
+            </button>
+          </div>
+        </div>
+      </Modal>
     </AppBarStyled>
   );
 };

@@ -1,21 +1,21 @@
-import React from 'react'
-import book3 from '../../../assets/svg/book3.svg'
+import React from 'react';
+import book3 from '../../../assets/svg/book3.svg';
 import WillReadBookItemStyled from './WillReadBookItemStyled';
 
-const WillReadBookItem = () => {
-    return (
-        <WillReadBookItemStyled>
-        <div className='bookName'>
-        <img src={book3} alt=''/>
-        <p>Разработка ценностных предложений.</p>
+const WillReadBookItem = ({ book }) => {
+  return (
+    <WillReadBookItemStyled>
+      <li className="listItem" key={book.id}>
+        <div className="bookName">
+          <img src={book3} alt="" />
+          <p>{book.title}</p>
         </div>
-        <p className='author'>Алекс Остервальдер, Ив Пинье</p>
-        <p className='publishYear'>2013</p>
-        <p className='pages'>368</p>
-    
-        </WillReadBookItemStyled>
-       
-    )
-}
+        <p className="author">{book.author}</p>
+        <p className="publishYear">{book.year}</p>
+        <p className="pages">{book.numberOfPages}</p>
+      </li>
+    </WillReadBookItemStyled>
+  );
+};
 
-export default WillReadBookItem
+export default WillReadBookItem;
