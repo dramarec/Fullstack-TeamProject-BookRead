@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Responsive from 'react-responsive';
 import ReadBooks from '../../components/library/readBooks/ReadBooks';
@@ -18,17 +18,22 @@ import modalActions from '../../redux/actions/modalAction';
 import ButtonAdd from '../../components/buttonAdd/ButtonAdd';
 //import modalActions from '../../redux/actions/modalAction';
 
+const initialState = {
+  isOpen: true,
+};
+
 const LibraryPage = () => {
   const dispatch = useDispatch();
   const booksWillRead = useSelector(getWillRead);
-  //const modalActive = useSelector(getModalState);
   const bookNowRead = useSelector(getNowRead);
   const bookFinished = useSelector(getFinishRead);
+  const [state, setState] = useState({ ...initialState });
+
   useEffect(() => {
     dispatch(getUsersBooksOperetion());
   }, []);
-  const Tablet = props => <Responsive {...props} minWidth={768} />;
 
+  const Tablet = props => <Responsive {...props} minWidth={768} />;
   const Mobile = props => <Responsive {...props} maxWidth={767} />;
 
   const openModal = () => {
