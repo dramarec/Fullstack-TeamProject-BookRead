@@ -4,15 +4,15 @@ import StarIcon from '../StarIcon'
 import StarStyled from './StarStyled'
 
 
-const Star = () => {
-    const [rating, setRating] = useState(null)
+const Star = (props) => {
+    const [rating, changeRating] = useState(null)
     return (
             <StarStyled>
                 {[...Array(5)].map((star, i) => {
                     const ratingValue= i+1;
                     return (
                     <label key={i}>
-                        <input  type='radio' value={ratingValue} name='rating' onClick={()=>(setRating(ratingValue))}/>
+                        <input  type='radio' value={ratingValue} name='rating' onClick={()=>(changeRating(ratingValue))}/>
                     <StarIcon  className='star' width={17} fill={ratingValue <= rating ? '#FF6B08' : 'white' } />
                     </label>
                     )   
