@@ -1,9 +1,19 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import mainRoutes from '../../routes/routes';
 import AppBarStyled from './AppBarStyled';
+import authOperations from '../../redux/operations/authOperation';
 
 const AppBar = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const logOut = () => {
+    dispatch(authOperations.logOutOperation());
+    history.push('/');
+  };
+
   return (
     <AppBarStyled>
       <div className="container">
@@ -37,9 +47,9 @@ const AppBar = () => {
             </li>
 
             <li className="exit link">
-              <Link to="/" className="link">
+              <button type="button" onClick={logOut}>
                 Вихід
-              </Link>
+              </button>
             </li>
           </ul>
         </nav>

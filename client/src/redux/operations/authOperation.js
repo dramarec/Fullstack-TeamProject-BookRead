@@ -46,7 +46,10 @@ const logInWithGoogleOperation = userCredentials => async dispatch => {
   }
 };
 
-const logOutOperation = () => async dispatch => {
+const logOutOperation = () => async (dispatch, getState) => {
+  const accessToken = getState().auth.token;
+  api.setToken(accessToken);
+
   dispatch(authActions.logOutRequest());
 
   try {
