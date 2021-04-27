@@ -11,10 +11,19 @@ const AuthFormStyled = styled.div`
   /* margin-top: 10px;
   outline: 1px solid tomato; */
 
-  //background: #091e3fcc;
-  /* background: url(${imgMob});
- // background-image: linear-gradient(rgba(9, 30, 63, 0.8));
-  //background: linear-gradient(rgba(9, 30, 63, 0.8));
+
+  .authError {
+    font-family: 'Montserrat-Regular';
+    color: #e63946;
+    font-size: 13px;
+  }
+
+  .wrapper {
+    display: grid;
+    height: 30px;
+  }
+
+  background: #091e3fcc;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 444px;
@@ -92,6 +101,7 @@ const AuthFormStyled = styled.div`
     letter-spacing: 0.04em;
   }
   .authFormInput {
+    margin-bottom: 5px;
     padding: 5px 0;
     width: 100%;
     font-size: 16px;

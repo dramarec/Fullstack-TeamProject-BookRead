@@ -25,7 +25,7 @@ const AuthFormContainer = () => {
       .required('Введіть пароль'),
 
     passwordConfirmation: Yup.string().oneOf(
-      [Yup.ref('password'), null],
+      [Yup.ref('password')],
       'Паролі повинні співпадати',
     ),
   });
