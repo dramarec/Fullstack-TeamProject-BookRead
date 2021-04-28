@@ -13,10 +13,6 @@ import {
   getNowRead,
   getFinishRead,
 } from '../../redux/selectors/bookSelector';
-import Modal from '../../components/modal/Modal';
-import modalActions from '../../redux/actions/modalAction';
-import ButtonAdd from '../../components/buttonAdd/ButtonAdd';
-//import modalActions from '../../redux/actions/modalAction';
 
 const LibraryPage = () => {
   const dispatch = useDispatch();

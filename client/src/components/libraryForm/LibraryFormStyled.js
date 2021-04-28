@@ -5,7 +5,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f6f7fb;
   padding-top: 52px;
   padding-bottom: 42px;
   /* height: 90vh;
@@ -19,11 +18,27 @@ const Wrapper = styled.div`
   @media screen and (min-width: 1280px) {
     min-width: 1117px;
   }
+  .libraryFormTitle {
+    @media screen and (max-width: 767px) {
+      font-family: 'Montserrat-Regular';
+      font-size: 19px;
+      line-height: 2;
+      color: #242a37;
+      margin-bottom: 20px;
+    }
+  }
+
+  .libraryFormTitle.hidden {
+    visibility: hidden;
+    display: none;
+  }
 
   .bookForm {
     @media screen and (max-width: 767px) {
-      height: 90vh;
-      width: 100vw;
+      height: 73vh;
+      width: 73vw;
+      margin: 0 auto;
+      margin-top: 15px;
     }
 
     @media screen and (min-width: 768px) and (max-width: 1279px) {
@@ -37,9 +52,21 @@ const Wrapper = styled.div`
       width: 1117px;
     }
   }
+
+  .bookFormModal {
+    /* display: flex;
+    flex-direction: column; */
+    //align-items: center;
+    background-color: #f6f7fb;
+    padding: 25px;
+    min-width: 320px;
+  }
+
   .bookFormList {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    /* margin-top: 15px; */
 
     @media screen and (min-width: 768px) {
     }
@@ -184,6 +211,7 @@ const Wrapper = styled.div`
   }
 
   .bookFormBtnBack {
+    display: flex;
     border: none;
     outline: none;
     background-color: inherit;

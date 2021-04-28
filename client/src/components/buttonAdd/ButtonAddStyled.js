@@ -3,9 +3,6 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   .addBtn {
     @media screen and (max-width: 767px) {
-      /* position: absolute;
-      left: 45%;
-      bottom: -160px; */
       display: block;
       margin: 0 auto;
       font-family: 'Montserrat-Regular';

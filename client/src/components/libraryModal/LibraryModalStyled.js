@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   width: 270px;
   background: #ffffff;
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-  padding: 31px 15px 0px 15px;
+  //padding: 31px 15px 0px 15px;
   margin: 0px auto;
 
   @media screen and (min-width: 768px) {
@@ -14,6 +14,16 @@ const Wrapper = styled.div`
     height: 270px;
     padding-top: 15px;
     padding-left: 30px;
+  }
+
+  .libraryModal {
+    display: flex;
+    flex-direction: column;
+    width: 270px;
+    background: #ffffff;
+    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+    padding: 31px 15px 0px 15px;
+    margin: 0px auto;
   }
 
   .listItem {
