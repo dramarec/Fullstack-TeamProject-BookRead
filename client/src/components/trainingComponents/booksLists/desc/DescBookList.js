@@ -1,17 +1,20 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import book from '../../../../assets/svg/book3.svg';
 import card from '../../../../assets/svg/card.svg';
 import DescBookListStyle from './DescBookListStyle';
 import trainingBooks from '../../../../redux/selectors/trainingSelector';
+import { operationAddNewBook } from '../../../../redux/operations/trainingOperation';
 
 const DescBookList = () => {
-    // const [state] = useState([...initialstate]);
-    // const selector = useSelector();
+    const dispatch = useDispatch();
 
     const books = useSelector(trainingBooks);
     console.log('DescBookList ===> books', books);
 
+    const onHandleClick = () => {
+        dispatch(operationAddNewBook());
+    };
     return (
         <DescBookListStyle>
             <div className="books-titles">
@@ -60,7 +63,9 @@ const DescBookList = () => {
                 </ul>
             </div>
             <div>
-                <button className="bookFormBtn">Почати тренування</button>
+                <button onClick={onHandleClick} className="bookFormBtn">
+                    Почати тренування
+                </button>
             </div>
         </DescBookListStyle>
     );

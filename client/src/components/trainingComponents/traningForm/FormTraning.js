@@ -8,18 +8,14 @@ import FormTraningStyle from './FormTraningStyle';
 const FormTraning = () => {
     const dispatch = useDispatch();
     const [books, setBooks] = useState({});
-    console.log('FormTraning ===> books', books);
 
-    const allBooks = useSelector(getWillRead);
-    console.log('FormTraning ===> allBooks', allBooks);
+    const booksWillRead = useSelector(getWillRead);
+    console.log('FormTraning ===> booksWillRead', booksWillRead);
 
     const handleChange = e => {
         const _id = e.target.value;
-        console.log('FormTraning ===> _id', _id);
-
-        const book = allBooks.find(book => book._id === _id);
+        const book = booksWillRead.find(book => book._id === _id);
         console.log('FormTraning ===> book', book);
-
         setBooks({ books: book });
     };
 
@@ -47,7 +43,7 @@ const FormTraning = () => {
                                 Обрати книги з бібліотеки
                             </option>
 
-                            {allBooks.map(book => (
+                            {booksWillRead.map(book => (
                                 <option key={book._id} value={book._id}>
                                     {book.title}
                                 </option>
