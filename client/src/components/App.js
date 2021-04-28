@@ -5,6 +5,7 @@ import React, { Suspense, useEffect } from 'react';
 // import LibraryPage from '../pages/library/LibraryPage';
 import AppBar from './appBar/AppBar';
 import { Switch, Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Spin from './loader/Spin';
 import mainRoutes from '../routes/routes';
 //import { getUsersBooks } from '../redux/operations/userLibraryOperation';
@@ -12,15 +13,18 @@ import mainRoutes from '../routes/routes';
 // import { publicRoutes } from '../routes/publicRoutes';
 import PrivateRoutes from './routes/PrivateRoutes';
 import PublicRoutes from './routes/PublicRoutes';
-
+import loadingSelectors from '../redux/selectors/loadingSelector';
 
 const App = () => {
- /*  const dispatch = useDispatch();
+  /*  const dispatch = useDispatch();
    useEffect(() => {
      dispatch(getUsersBooks())
    }, dispatch);*/
+  const isLoading = useSelector(loadingSelectors.getLoading);
+
   return (
     <>
+      {isLoading && <Spin />}
       <AppBar />
       <div>
         <Suspense fallback={<Spin />}>
