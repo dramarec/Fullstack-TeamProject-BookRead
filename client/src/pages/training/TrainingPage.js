@@ -4,10 +4,15 @@ import Chart from '../../components/trainingComponents/chart/Chart';
 import MyTraining from '../../components/trainingComponents/myTraining/MyTraining';
 import MobBookList from '../../components/trainingComponents/booksLists/mob/MobBookList';
 import StatModal from '../../components/statModal/StatModal';
+import TimersSet from '../../components/timer/TimersSet';
+
 
 const TrainingPage = () => {
+
   return (
     <TrainingPageStyled>
+      <TimersSet/>
+      
       <div className="container">
         <div className="sidebar">
           <div className="sidebar-descr">
