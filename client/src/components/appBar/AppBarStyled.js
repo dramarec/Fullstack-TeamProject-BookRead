@@ -84,12 +84,22 @@ const AppBarStyled = styled.div`
   }
 
   .exit {
-    font-weight: 300;
-    order: 1;
-    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    border-bottom: 1px solid #242a37;
+    font-family: 'Montserrat-Regular';
+    font-size: 14px;
+    line-height: 2.71;
+    text-decoration-line: underline;
+    text-underline-offset: 1px;
+    text-decoration-thickness: 1px;
+    color: var(--main-text);
+    background-color: transparent;
+    border: 0;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    &:focus,
     &:hover {
-      border-bottom: 1px solid #fff;
+      color: #f25137;
+    }
+    @media screen and (max-width: 767px) {
+      margin-left: 14px;
     }
   }
 
