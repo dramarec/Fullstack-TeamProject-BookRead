@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import book from '../../../assets/svg/book.svg';
-import modalActions from '../../../redux/actions/modalAction';
 import Modal from '../../modal/Modal';
 import ReviewModal from '../reviewModal/ReviewModal';
 import ReadBookItemStyled from './ReadBookItemStyled';
-import Star from './Star';
 import { getFinishRead } from '../../../redux/selectors/bookSelector';
+import StarRatings from 'react-star-ratings';
 
 const ReadBookItem = ({ item }) => {
   // console.log('readbook', item);
@@ -37,7 +36,15 @@ const ReadBookItem = ({ item }) => {
         <p className="publishYear">{item.year}</p>
         <p className="pages">{item.numberOfPages}</p>
         <div className="review">
-          <Star />
+        <StarRatings 
+        rating={item.rating}
+        starRatedColor="#FF6B08"
+        starEmptyColor="white"
+        starSpacing="1px"
+        starDimension="17px"
+        numberOfStars={5}
+        name='rating'
+        />
           <button
             type="button"
             className="review-button"
