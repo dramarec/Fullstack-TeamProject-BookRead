@@ -57,13 +57,13 @@ const getUsersBooksOperetion = () => async (dispatch, getState) => {
   }
 };
 
-const changeBookOperation = (book) => async (dispatch) => {
-  const bookId = book._id
+const changeBookOperation = (id, book) => async (dispatch) => {
+  //const bookId = book._id
   dispatch(changeBookRequest());
   try {
-       await axios.patch(`/books/${bookId}`, book );
-      console.log('OperBook', book);
-      dispatch(changeBookSuccess(...book));
+       await axios.patch(`/books/${id}`, book );
+      //console.log('OperBook', book);
+      dispatch(changeBookSuccess({...book}));
   } catch (error) {
       dispatch(changeBookError
           (error.message));

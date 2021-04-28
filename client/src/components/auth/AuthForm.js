@@ -132,7 +132,6 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
               <Two />
               <p className="teza">
                 Книги — это корабли мысли,
-                
                 странствующие по волнам 
                 времени и бережно несущие
                 свой драгоценный груз от
@@ -174,7 +173,7 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                   співрозмовником
                 </li>
               </ul>
-
+              
               <Link to="/" className="buttonSignUp">
                 Увійти
               </Link>

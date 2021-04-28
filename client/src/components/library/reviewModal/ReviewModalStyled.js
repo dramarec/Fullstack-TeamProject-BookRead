@@ -15,8 +15,13 @@ font-size: 16px;
     padding: 17px 30px 48px 30px;
 }
 
+.star-container svg {
+    stroke: #FF6B08;
+}
+
 .form-control {
 width: 210px;
+border: 1px solid gray;
 @media screen and (min-width: 768px){
 width: 510px;
 }
