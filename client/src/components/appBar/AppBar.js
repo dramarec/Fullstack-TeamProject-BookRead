@@ -13,6 +13,7 @@ const AppBar = () => {
 
   const isAuth = useSelector(state => state.auth.token);
   const name = useSelector(authSelectors.getUserName);
+  console.log(name);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -89,7 +90,7 @@ const AppBar = () => {
               <button type="button" className="cancel" onClick={closeModal}>
                 Відміна
               </button>
-              <button type="button" className="exit" onClick={logOut}>
+              <button type="button" className="exitBtn" onClick={logOut}>
                 Вийти
               </button>
             </div>
