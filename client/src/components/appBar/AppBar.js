@@ -68,7 +68,7 @@ const AppBar = () => {
       </div>
 
       {showModal && (
-        <Modal onToggleModal={(handleClick, closeModal)}>
+        <Modal onToggleModal={closeModal}>
           <div className="exit-modal">
             <p>Якщо Ви вийдете з програми незбережені дані будуть втрачені</p>
             <div className="btn-wrapper">
