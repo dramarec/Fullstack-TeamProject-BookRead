@@ -7,10 +7,15 @@ background-color: var(--light-text);
 line-height: 38px;
 padding: 18px 20px 31px 25px;
 box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+margin-bottom: 15px;
 .flex {
     display: flex;
     align-items: center;
 }
+.star-container svg {
+    stroke: #FF6B08;
+}
+
 .bookName {
     padding: 0 61px 0 20px;
 }
@@ -31,6 +36,9 @@ flex: 2 1 0%;
     }
 .review {
     line-height: 0px;
+}
+.star-ratings {
+    flex: 2 1 0%;
 }
 
 .review-button {
