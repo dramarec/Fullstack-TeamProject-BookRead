@@ -26,7 +26,6 @@ const Wrapper = styled.div`
     line-height: 1.38;
     color: #242a37;
   }
-
   .statModalBtn {
     display: flex;
     justify-content: center;
@@ -42,6 +41,12 @@ const Wrapper = styled.div`
     height: 40px;
     @media screen and (min-width: 768px) {
       padding: 1px 54px 1px 55px;
+    }
+    .statModalBtn:hover,
+    .statModalBtn:focus {
+      color: #ff6b08;
+      background-color: #ffffff;
+      border: 1px solid #ff6b08;
     }
   }
 `;
