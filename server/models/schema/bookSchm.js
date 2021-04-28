@@ -36,7 +36,7 @@ const bookSchema = new Schema(
     },
     rating: {
       type: Number,
-      default: null,
+      //default: null,
       min: 0,
       max: 5,
     },

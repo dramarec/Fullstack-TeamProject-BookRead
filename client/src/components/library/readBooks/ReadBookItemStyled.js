@@ -20,6 +20,12 @@ margin-bottom: 10px;
     align-items: center;  
     flex: 2 1 0%;
 }
+.star-ratings {
+    margin-right: 18px;
+}
+.star-container svg {
+    stroke: #FF6B08;
+}
 .bookName img {
     margin-right: 18px; 
 }
@@ -47,6 +53,7 @@ p {
 .review{
     display: flex;
     flex: 2 1 0%;
+    align-items: center;
 }
 
 .review-button {
