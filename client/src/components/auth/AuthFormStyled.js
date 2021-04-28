@@ -5,13 +5,8 @@ import imgTab from './photo/tab.jpg';
 import bgTab from './photo/tab-bg.png';
 import imgDec from './photo/desctop.jpg';
 import bgDec from './photo/dec-bg.png';
-import img from './photo/pic.png';
 
 const AuthFormStyled = styled.div`
-  /* margin-top: 10px;
-  outline: 1px solid tomato; */
-
-
   .authError {
     font-family: 'Montserrat-Regular';
     color: #e63946;
@@ -23,14 +18,10 @@ const AuthFormStyled = styled.div`
     height: 30px;
   }
 
-  background: #091e3fcc;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 444px;
-  max-height: 656px; */
+
   .bg-ph{
     //background: #091e3fcc;
-  background: url(${bgMob}) , url(${img});
+  background: url(${bgMob}) , url(${imgMob});
  // background-image: linear-gradient(rgba(9, 30, 63, 0.8));
   //background: linear-gradient(rgba(9, 30, 63, 0.8));
   background-repeat: no-repeat;
