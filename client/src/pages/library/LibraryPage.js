@@ -18,16 +18,11 @@ import modalActions from '../../redux/actions/modalAction';
 import ButtonAdd from '../../components/buttonAdd/ButtonAdd';
 //import modalActions from '../../redux/actions/modalAction';
 
-const initialState = {
-  isOpen: true,
-};
-
 const LibraryPage = () => {
   const dispatch = useDispatch();
   const booksWillRead = useSelector(getWillRead);
   const bookNowRead = useSelector(getNowRead);
   const bookFinished = useSelector(getFinishRead);
-  const [state, setState] = useState({ ...initialState });
 
   useEffect(() => {
     dispatch(getUsersBooksOperetion());
@@ -36,22 +31,25 @@ const LibraryPage = () => {
   const Tablet = props => <Responsive {...props} minWidth={768} />;
   const Mobile = props => <Responsive {...props} maxWidth={767} />;
 
-  const openModal = () => {
-    dispatch(modalActions.toggleModal());
-  };
+  const openModal = () => {};
 
   return (
     <LibraryPageStyled>
       <Mobile>
-        {bookFinished.length > 0 && <ReadBooks bookFinished={bookFinished} />}
-        {bookNowRead.length > 0 && <ReadingBooks bookNowRead={bookNowRead} />}
+        {/* {bookFinished.length > 0 && <ReadBooks bookFinished={bookFinished} />} */}
+        {/* {bookNowRead.length > 0 && <ReadingBooks bookNowRead={bookNowRead} />} */}
         {booksWillRead.length > 0 ? (
           <WillReadBooks />
         ) : (
-          <Modal children={<LibraryModal />} />
+          <LibraryModal />
+          // <Modal
+          //   closeModal={closeModal}
+          //   children={<LibraryModal onCloseModal={closeModal} />}
+          // />
         )}
-        {booksWillRead.length > 0 && <ButtonAdd onHandleClick={openModal} />}
-        <Modal children={<LibraryForm />} />
+        {/* {booksWillRead.length > 0 && <ButtonAdd onHandleClick={openModal} />} */}
+        {/* <Modal children={<LibraryForm />} /> */}
+        <ButtonAdd onHandleClick={openModal} />
       </Mobile>
 
       <Tablet>
