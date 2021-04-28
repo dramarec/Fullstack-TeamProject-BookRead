@@ -146,7 +146,7 @@ const AppBarStyled = styled.div`
       color: rgba(36, 42, 55, 1);
     }
 
-    .exit {
+    .exitBtn {
       background-color: #ff6b08;
       border: solid #ff6b08 1px;
       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
