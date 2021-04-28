@@ -65,6 +65,7 @@ const changeBookOperation = (id, book) => async dispatch => {
         await axios.patch(`/books/${id}`, book);
         //console.log('OperBook', book);
         dispatch(changeBookSuccess({ ...book }));
+        dispatch(getUsersBooksOperetion());
     } catch (error) {
         dispatch(changeBookError(error.message));
         throw error;
