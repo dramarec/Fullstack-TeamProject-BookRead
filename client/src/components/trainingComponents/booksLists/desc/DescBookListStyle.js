@@ -105,6 +105,8 @@ const DescBookListStyle = styled.div`
             flex-grow: 1;
         }
         &__card {
+            border: none;
+            background-color: inherit;
         }
     }
     .bookFormBtn {

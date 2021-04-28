@@ -1,19 +1,17 @@
 import api from '../../services/api';
-import {
-    addNewTrainingBook,
-    addNewTrainingSuccess,
-    addNewTrainingError,
-} from '../actions/trainingAction';
+import trainingActions from '../actions/trainingAction';
 
-const operationAddNewBook = training => async dispatch => {
-    dispatch(addNewTrainingBook());
+const operationAddNewBook = (start, end, books) => async dispatch => {
+    dispatch(trainingActions.addNewTrainingRequest());
     try {
-        const response = await api.addTraining(training);
+        const response = await api.addTraining(start, end, books);
         console.log('response', response);
-        dispatch(addNewTrainingSuccess(response));
+        dispatch(trainingActions.addNewTrainingSuccess(response));
     } catch (error) {
-        dispatch(addNewTrainingError(error));
+        dispatch(trainingActions.addNewTrainingError(error));
     }
 };
 
-export { operationAddNewBook };
+const trainingOperation = { operationAddNewBook };
+
+export default trainingOperation;

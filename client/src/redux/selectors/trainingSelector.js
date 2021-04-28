@@ -1,3 +1,3 @@
-const trainingBooks = state => state.training.books;
+const trainingBooksList = state => state.training.books;
 
-export default trainingBooks;
+export default trainingBooksList;

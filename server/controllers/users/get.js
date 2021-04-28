@@ -2,7 +2,7 @@ const { User } = require('../../models');
 
 const getUserInfo = async (req, res, next) => {
   try {
-    const { email, username, _id } = req.user;
+    const { email, username, _id, books, training } = req.user;
     await User.findOne(_id)
       .populate('books')
       .exec(async (err, data) => {
@@ -31,6 +31,8 @@ const getUserInfo = async (req, res, next) => {
           data: {
             email,
             username,
+            books,
+            training,
             planeToRead,
             readNow,
             readFinish,

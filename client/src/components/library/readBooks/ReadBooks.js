@@ -27,7 +27,9 @@ const ReadBooks = ({ bookFinished }) => {
             </Tablet>
             <Mobile>
                 <ul>
-                    <ReadBookItemMobile />
+                    {bookFinished.map(book => (
+                        <ReadBookItemMobile key={book._id} item={book} />
+                    ))}
                 </ul>
             </Mobile>
         </ReadBooksStyled>

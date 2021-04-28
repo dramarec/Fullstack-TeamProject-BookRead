@@ -1,19 +1,24 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import book from '../../../../assets/svg/book3.svg';
-import card from '../../../../assets/svg/card.svg';
 import DescBookListStyle from './DescBookListStyle';
-import trainingBooks from '../../../../redux/selectors/trainingSelector';
-import { operationAddNewBook } from '../../../../redux/operations/trainingOperation';
-
+import trainingBooksList from '../../../../redux/selectors/trainingSelector';
+import trainingOperation from '../../../../redux/operations/trainingOperation';
+import BookListItem from '../item/BookListItem';
+import trainingActions from '../../../../redux/actions/trainingAction';
 const DescBookList = () => {
     const dispatch = useDispatch();
 
-    const books = useSelector(trainingBooks);
+    const books = useSelector(trainingBooksList);
     console.log('DescBookList ===> books', books);
 
-    const onHandleClick = () => {
-        dispatch(operationAddNewBook());
+    const onHandleDeleteBook = e => {
+        const { id } = e.currentTarget.dataset;
+        console.log('DescBookList ===> id', id);
+        dispatch(trainingActions.removeBookFromTraining(id));
+    };
+
+    const onHandleAddTraining = () => {
+        dispatch(trainingOperation.operationAddNewBook());
     };
     return (
         <DescBookListStyle>
@@ -36,34 +41,17 @@ const DescBookList = () => {
 
             <div className="books-library">
                 <ul className="books-library__list">
-                    {books.map(
-                        ({ _id, title, author, year, numberOfPages }) => (
-                            <li key={_id} className="books-library__item">
-                                <img
-                                    className="books-library__img"
-                                    src={book}
-                                    alt=""
-                                />
-                                <p className="books-library__title">{title}</p>
-                                <p className="books-library__author">
-                                    {author}
-                                </p>
-                                <p className="books-library__year">{year}</p>
-                                <p className="books-library__page">
-                                    {numberOfPages}
-                                </p>
-                                <img
-                                    className="books-library__card"
-                                    src={card}
-                                    alt=""
-                                />
-                            </li>
-                        ),
-                    )}
+                    {books.map(books => (
+                        <BookListItem
+                            key={books._id}
+                            {...books}
+                            onDeleteBook={onHandleDeleteBook}
+                        />
+                    ))}
                 </ul>
             </div>
             <div>
-                <button onClick={onHandleClick} className="bookFormBtn">
+                <button onClick={onHandleAddTraining} className="bookFormBtn">
                     Почати тренування
                 </button>
             </div>

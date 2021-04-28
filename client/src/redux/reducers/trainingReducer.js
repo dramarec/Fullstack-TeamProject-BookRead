@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { addNewTrainingBook, getTrainingBook } from '../actions/trainingAction';
+import trainingActions from '../actions/trainingAction';
 
 const initialState = {
     start: '',
@@ -12,19 +12,35 @@ const initialState = {
 const trainingReducer = createReducer(
     { ...initialState },
     {
-        [addNewTrainingBook]: (state, action) => {
+        [trainingActions.addBookInTraining]: (state, action) => {
             console.log('action', action);
             return {
                 ...state.books,
                 books: [...state.books, action.payload.books],
             };
         },
+        [trainingActions.removeBookFromTraining]: (state, action) => {
+            console.log('action', action);
+            return {
+                ...state.books,
+                books: [
+                    ...state.books.filter(book => book._id !== action.payload),
+                ],
+            };
+        },
 
-        [getTrainingBook]: (state, action) => {
+        [trainingActions.setStartDateTraining]: (state, action) => {
             console.log('state', state);
             return {
                 ...state,
-                books: [...action.payload],
+                start: action.payload,
+            };
+        },
+        [trainingActions.setEndDateTraining]: (state, action) => {
+            console.log('state', state);
+            return {
+                ...state,
+                end: action.payload,
             };
         },
     },

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addNewTrainingBook } from '../../../redux/actions/trainingAction';
+import trainingActions from '../../../redux/actions/trainingAction';
 import { getWillRead } from '../../../redux/selectors/bookSelector';
 import InputDatePicker from '../dataPicker/PickerData';
 import FormTraningStyle from './FormTraningStyle';
@@ -21,7 +21,7 @@ const FormTraning = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(addNewTrainingBook(books));
+        dispatch(trainingActions.addBookInTraining(books));
     };
 
     return (
