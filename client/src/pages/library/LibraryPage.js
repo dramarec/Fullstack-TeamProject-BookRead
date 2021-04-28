@@ -31,32 +31,32 @@ const LibraryPage = () => {
   const Tablet = props => <Responsive {...props} minWidth={768} />;
   const Mobile = props => <Responsive {...props} maxWidth={767} />;
 
-  const openModal = () => {};
-
   return (
     <LibraryPageStyled>
       <Mobile>
-        {/* {bookFinished.length > 0 && <ReadBooks bookFinished={bookFinished} />} */}
-        {/* {bookNowRead.length > 0 && <ReadingBooks bookNowRead={bookNowRead} />} */}
-        {booksWillRead.length > 0 ? (
-          <WillReadBooks />
+        {bookFinished.length > 0 && <ReadBooks bookFinished={bookFinished} />}
+        {bookNowRead.length > 0 && <ReadingBooks bookNowRead={bookNowRead} />}
+        {booksWillRead.length > 0 ||
+        bookNowRead.length > 0 ||
+        bookFinished.length > 0 ? (
+          !!booksWillRead.length && <WillReadBooks />
         ) : (
           <LibraryModal />
-          // <Modal
-          //   closeModal={closeModal}
-          //   children={<LibraryModal onCloseModal={closeModal} />}
-          // />
         )}
-        {/* {booksWillRead.length > 0 && <ButtonAdd onHandleClick={openModal} />} */}
-        {/* <Modal children={<LibraryForm />} /> */}
-        <ButtonAdd onHandleClick={openModal} />
+        <LibraryForm />
       </Mobile>
 
       <Tablet>
         <LibraryForm />
         {bookFinished.length > 0 && <ReadBooks bookFinished={bookFinished} />}
         {bookNowRead.length > 0 && <ReadingBooks bookNowRead={bookNowRead} />}
-        {booksWillRead.length > 0 ? <WillReadBooks /> : <LibraryModal />}
+        {booksWillRead.length > 0 ||
+        bookNowRead.length > 0 ||
+        bookFinished.length > 0 ? (
+          !!booksWillRead.length && <WillReadBooks />
+        ) : (
+          <LibraryModal />
+        )}
       </Tablet>
     </LibraryPageStyled>
   );

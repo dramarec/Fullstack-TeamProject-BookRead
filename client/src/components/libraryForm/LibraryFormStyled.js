@@ -8,6 +8,8 @@ const Wrapper = styled.div`
   background-color: #f6f7fb;
   padding-top: 52px;
   padding-bottom: 42px;
+  /* height: 90vh;
+  width: 100vw; */
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     padding-top: 20px;
@@ -19,6 +21,11 @@ const Wrapper = styled.div`
   }
 
   .bookForm {
+    @media screen and (max-width: 767px) {
+      height: 90vh;
+      width: 100vw;
+    }
+
     @media screen and (min-width: 768px) and (max-width: 1279px) {
       //margin: 0px 87px 693px;
       width: 594px;

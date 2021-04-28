@@ -7,6 +7,8 @@ import modalActions from '../../redux/actions/modalAction';
 import { addBookOperation } from '../../redux/operations/bookOperation';
 import back from '../../assets/svg/back.svg';
 import LibraryFormStyled from './LibraryFormStyled';
+import Modal from '../modal/Modal';
+import ButtonAdd from '../buttonAdd/ButtonAdd';
 
 const getYear = () => {
   return new Date().getFullYear();
@@ -33,129 +35,242 @@ const initialState = {
   author: '',
   year: '',
   numberOfPages: '',
-  // onOpen: true,
 };
 
 const LibraryForm = () => {
   const dispatch = useDispatch();
   const [state /* , setState */] = useState({ ...initialState });
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const Mobile = props => <Responsive {...props} maxWidth={767} />;
+  const Tablet = props => <Responsive {...props} minWidth={768} />;
 
   const onHandlerSubmit = values => {
     dispatch(addBookOperation(values));
-    //setState({state.onOpen: false})
+    setIsOpenModal(false);
   };
 
-  const onCloseModal = () => {
-    dispatch(modalActions.toggleModal());
+  const closeModal = () => {
+    setIsOpenModal(false);
+  };
+
+  const openModal = () => {
+    setIsOpenModal(true);
   };
 
   return (
     <LibraryFormStyled>
       <Mobile>
-        <button className="bookFormBtnBack" onClick={onCloseModal}>
-          <img src={back} alt="" />
-        </button>
+        <ButtonAdd onHandleClick={openModal} />
+        {isOpenModal && (
+          <Modal closeModal={closeModal}>
+            <button className="bookFormBtnBack" onClick={closeModal}>
+              <img src={back} alt="" />
+            </button>
+            <Formik
+              initialValues={state}
+              validationSchema={schema}
+              onSubmit={(values, actions) => {
+                onHandlerSubmit({ ...values });
+
+                actions.resetForm({ ...state });
+              }}
+            >
+              {({ values }) => (
+                <Form className="bookForm">
+                  <div className="bookFormList ">
+                    <label className="bookFormListItem">
+                      <span className="bookFormListItemTitle">Назва книги</span>
+                      <div className="wrapper">
+                        <Field
+                          className="bookFormInput input0"
+                          type="text"
+                          value={values.title}
+                          name="title"
+                          placeholder="..."
+                          autoComplete="off"
+                        />
+                        <ErrorMessage
+                          className="bookFormError"
+                          component="div"
+                          name="title"
+                        />
+                      </div>
+                    </label>
+                    <div className="bookFormhelpers">
+                      <label className="bookFormListItem">
+                        <span className="bookFormListItemTitle">
+                          Автор книги
+                        </span>
+                        <div className="wrapper">
+                          <Field
+                            className="bookFormInput input1"
+                            type="text"
+                            value={values.author}
+                            name="author"
+                            placeholder="..."
+                            autoComplete="off"
+                          />
+                          <ErrorMessage
+                            className="bookFormError"
+                            component="div"
+                            name="author"
+                          />
+                        </div>
+                      </label>
+
+                      <label className="bookFormListItem">
+                        <span className="bookFormListItemTitle">
+                          Рік випуску
+                        </span>
+                        <div className="wrapper">
+                          <Field
+                            className="bookFormInput  input2"
+                            type="number"
+                            value={values.year}
+                            name="year"
+                            placeholder="..."
+                            autoComplete="off"
+                          />
+                          <ErrorMessage
+                            className="bookFormError"
+                            component="div"
+                            name="year"
+                          />
+                        </div>
+                      </label>
+
+                      <label className="bookFormListItem">
+                        <span className="bookFormListItemTitle">
+                          Кількість сторінок
+                        </span>
+                        <div className="wrapper">
+                          <Field
+                            className="bookFormInput input3"
+                            type="number"
+                            value={values.numberOfPages}
+                            name="numberOfPages"
+                            placeholder="..."
+                            autoComplete="off"
+                          />
+                          <ErrorMessage
+                            className="bookFormError"
+                            component="div"
+                            name="numberOfPages"
+                          />
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                  <button type="submit" className="bookFormBtn">
+                    Додати
+                  </button>
+                </Form>
+              )}
+            </Formik>
+          </Modal>
+        )}
       </Mobile>
 
-      <Formik
-        initialValues={state}
-        validationSchema={schema}
-        onSubmit={(values, actions) => {
-          onHandlerSubmit({ ...values });
+      <Tablet>
+        <Formik
+          initialValues={state}
+          validationSchema={schema}
+          onSubmit={(values, actions) => {
+            onHandlerSubmit({ ...values });
 
-          actions.resetForm({ ...state });
-        }}
-      >
-        {({ values }) => (
-          <Form className="bookForm">
-            <div className="bookFormList ">
-              <label className="bookFormListItem">
-                <span className="bookFormListItemTitle">Назва книги</span>
-                <div className="wrapper">
-                  <Field
-                    className="bookFormInput input0"
-                    type="text"
-                    value={values.title}
-                    name="title"
-                    placeholder="..."
-                    autoComplete="off"
-                  />
-                  <ErrorMessage
-                    className="bookFormError"
-                    component="div"
-                    name="title"
-                  />
-                </div>
-              </label>
-              <div className="bookFormhelpers">
+            actions.resetForm({ ...state });
+          }}
+        >
+          {({ values }) => (
+            <Form className="bookForm">
+              <div className="bookFormList ">
                 <label className="bookFormListItem">
-                  <span className="bookFormListItemTitle">Автор книги</span>
+                  <span className="bookFormListItemTitle">Назва книги</span>
                   <div className="wrapper">
                     <Field
-                      className="bookFormInput input1"
+                      className="bookFormInput input0"
                       type="text"
-                      value={values.author}
-                      name="author"
+                      value={values.title}
+                      name="title"
                       placeholder="..."
                       autoComplete="off"
                     />
                     <ErrorMessage
                       className="bookFormError"
                       component="div"
-                      name="author"
+                      name="title"
                     />
                   </div>
                 </label>
+                <div className="bookFormhelpers">
+                  <label className="bookFormListItem">
+                    <span className="bookFormListItemTitle">Автор книги</span>
+                    <div className="wrapper">
+                      <Field
+                        className="bookFormInput input1"
+                        type="text"
+                        value={values.author}
+                        name="author"
+                        placeholder="..."
+                        autoComplete="off"
+                      />
+                      <ErrorMessage
+                        className="bookFormError"
+                        component="div"
+                        name="author"
+                      />
+                    </div>
+                  </label>
 
-                <label className="bookFormListItem">
-                  <span className="bookFormListItemTitle">Рік випуску</span>
-                  <div className="wrapper">
-                    <Field
-                      className="bookFormInput  input2"
-                      type="number"
-                      value={values.year}
-                      name="year"
-                      placeholder="..."
-                      autoComplete="off"
-                    />
-                    <ErrorMessage
-                      className="bookFormError"
-                      component="div"
-                      name="year"
-                    />
-                  </div>
-                </label>
+                  <label className="bookFormListItem">
+                    <span className="bookFormListItemTitle">Рік випуску</span>
+                    <div className="wrapper">
+                      <Field
+                        className="bookFormInput  input2"
+                        type="number"
+                        value={values.year}
+                        name="year"
+                        placeholder="..."
+                        autoComplete="off"
+                      />
+                      <ErrorMessage
+                        className="bookFormError"
+                        component="div"
+                        name="year"
+                      />
+                    </div>
+                  </label>
 
-                <label className="bookFormListItem">
-                  <span className="bookFormListItemTitle">
-                    Кількість сторінок
-                  </span>
-                  <div className="wrapper">
-                    <Field
-                      className="bookFormInput input3"
-                      type="number"
-                      value={values.numberOfPages}
-                      name="numberOfPages"
-                      placeholder="..."
-                      autoComplete="off"
-                    />
-                    <ErrorMessage
-                      className="bookFormError"
-                      component="div"
-                      name="numberOfPages"
-                    />
-                  </div>
-                </label>
+                  <label className="bookFormListItem">
+                    <span className="bookFormListItemTitle">
+                      Кількість сторінок
+                    </span>
+                    <div className="wrapper">
+                      <Field
+                        className="bookFormInput input3"
+                        type="number"
+                        value={values.numberOfPages}
+                        name="numberOfPages"
+                        placeholder="..."
+                        autoComplete="off"
+                      />
+                      <ErrorMessage
+                        className="bookFormError"
+                        component="div"
+                        name="numberOfPages"
+                      />
+                    </div>
+                  </label>
+                </div>
               </div>
-            </div>
-            <button type="submit" className="bookFormBtn">
-              Додати
-            </button>
-          </Form>
-        )}
-      </Formik>
+              <button type="submit" className="bookFormBtn">
+                Додати
+              </button>
+            </Form>
+          )}
+        </Formik>
+      </Tablet>
     </LibraryFormStyled>
   );
 };

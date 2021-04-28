@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Responsive from 'react-responsive';
 import modalActions from '../../redux/actions/modalAction';
 import book from '../../assets/svg/book3.svg';
@@ -11,6 +11,7 @@ import Modal from '../modal/Modal';
 const LibraryModal = ({ onCloseModal }) => {
   const dispatch = useDispatch();
   const [isOpenModal, setIsOpenModal] = useState(true);
+
   const Mobile = props => <Responsive {...props} maxWidth={767} />;
   const Tablet = props => <Responsive {...props} minWidth={768} />;
 
