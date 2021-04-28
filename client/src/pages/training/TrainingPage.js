@@ -12,6 +12,7 @@ const TrainingPage = () => {
     useEffect(() => {
         dispatch(getUsersBooksOperetion());
     }, []);
+
     return (
         <TrainingPageStyled>
             <div className="container">

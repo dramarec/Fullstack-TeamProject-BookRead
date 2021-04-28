@@ -6,17 +6,17 @@ const removeBookFromTraining = createAction('@training/removeBookFromTraining');
 const setStartDateTraining = createAction('@training/setStartDateTraining');
 const setEndDateTraining = createAction('@training/setEndDateTraining');
 
-const addNewTrainingRequest = createAction('@training/addNewTrainingRequest');
-const addNewTrainingSuccess = createAction('@training/addNewTrainingSuccess');
-const addNewTrainingError = createAction('@training/addNewTrainingError');
+const newTrainingRequest = createAction('@training/newTrainingRequest');
+const newTrainingSuccess = createAction('@training/newTrainingSuccess');
+const newTrainingError = createAction('@training/newTrainingError');
 
 const trainingActions = {
     addBookInTraining,
     removeBookFromTraining,
 
-    addNewTrainingRequest,
-    addNewTrainingSuccess,
-    addNewTrainingError,
+    newTrainingRequest,
+    newTrainingSuccess,
+    newTrainingError,
 
     setStartDateTraining,
     setEndDateTraining,

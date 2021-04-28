@@ -4,8 +4,6 @@ import trainingActions from '../actions/trainingAction';
 const initialState = {
     start: '',
     end: '',
-    duration: 0,
-    pagesReadPerDay: 0,
     books: [],
 };
 
@@ -13,14 +11,13 @@ const trainingReducer = createReducer(
     { ...initialState },
     {
         [trainingActions.addBookInTraining]: (state, action) => {
-            console.log('action', action);
             return {
                 ...state.books,
                 books: [...state.books, action.payload.books],
             };
         },
+
         [trainingActions.removeBookFromTraining]: (state, action) => {
-            console.log('action', action);
             return {
                 ...state.books,
                 books: [
@@ -30,17 +27,32 @@ const trainingReducer = createReducer(
         },
 
         [trainingActions.setStartDateTraining]: (state, action) => {
-            console.log('state', state);
+            // console.log(
+            //     '=> action => trainingActions.setStartDateTraining =>',
+            //     action.payload,
+            // );
             return {
                 ...state,
                 start: action.payload,
             };
         },
-        [trainingActions.setEndDateTraining]: (state, action) => {
-            console.log('state', state);
+        [trainingActions.setEndDateTraining]: (state, { payload }) => {
+            // console.log(
+            //     'action trainingActions.setEndDateTraining =>',
+            //     action.payload,
+            // );
             return {
                 ...state,
-                end: action.payload,
+                end: payload,
+            };
+        },
+
+        [trainingActions.newTrainingRequest]: (state, { payload }) => {
+            return {
+                ...state,
+                start: payload.start,
+                end: payload.end,
+                books: payload.books,
             };
         },
     },
