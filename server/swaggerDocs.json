@@ -14,8 +14,12 @@
       "url": "http://localhost:5000/api"
     }
   ],
-  "consumes": ["application/json"],
-  "produces": ["application/json"],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
   "tags": [
     {
       "name": "Auth",
@@ -37,7 +41,9 @@
   "paths": {
     "/users/auth/register": {
       "post": {
-        "tags": ["Auth"],
+        "tags": [
+          "Auth"
+        ],
         "summary": "User registration",
         "security": [],
         "parameters": [],
@@ -76,7 +82,9 @@
     },
     "/users/auth/login": {
       "post": {
-        "tags": ["Auth"],
+        "tags": [
+          "Auth"
+        ],
         "summary": "User authentication",
         "security": [],
         "parameters": [],
@@ -115,7 +123,9 @@
     },
     "/users/auth/logout": {
       "post": {
-        "tags": ["Auth"],
+        "tags": [
+          "Auth"
+        ],
         "summary": "User logout",
         "security": [
           {
@@ -144,7 +154,9 @@
     },
     "/books": {
       "post": {
-        "tags": ["Books"],
+        "tags": [
+          "Books"
+        ],
         "summary": "Add a book",
         "security": [
           {
@@ -191,7 +203,9 @@
     },
     "/books/{bookId}": {
       "patch": {
-        "tags": ["Books"],
+        "tags": [
+          "Books"
+        ],
         "summary": "Update a book",
         "security": [
           {
@@ -245,7 +259,9 @@
     },
     "/training": {
       "post": {
-        "tags": ["Training"],
+        "tags": [
+          "Training"
+        ],
         "summary": "Add training",
         "security": [
           {
@@ -290,7 +306,9 @@
         }
       },
       "patch": {
-        "tags": ["Training"],
+        "tags": [
+          "Training"
+        ],
         "summary": "Add read pages",
         "security": [
           {
@@ -339,7 +357,9 @@
         }
       },
       "get": {
-        "tags": ["Training"],
+        "tags": [
+          "Training"
+        ],
         "summary": "Get training",
         "security": [
           {
@@ -379,7 +399,9 @@
     },
     "/users/user": {
       "get": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "Get user info",
         "security": [
           {
@@ -414,7 +436,11 @@
     "schemas": {
       "RegistrationRequest": {
         "type": "object",
-        "required": ["username", "email", "password"],
+        "required": [
+          "username",
+          "email",
+          "password"
+        ],
         "properties": {
           "username": {
             "type": "string",
@@ -450,7 +476,10 @@
       },
       "LoginRequest": {
         "type": "object",
-        "required": ["email", "password"],
+        "required": [
+          "email",
+          "password"
+        ],
         "properties": {
           "email": {
             "type": "string",
@@ -489,7 +518,7 @@
               "books": {
                 "type": "array",
                 "items": {
-                  "type": "sting",
+                  "type": "string",
                   "description": "Book's id",
                   "example": "608170ac715ef491300d3d2e"
                 }
@@ -504,7 +533,10 @@
         }
       },
       "AddingBookRequest": {
-        "required": ["title", "numberOfPages"],
+        "required": [
+          "title",
+          "numberOfPages"
+        ],
         "type": "object",
         "properties": {
           "title": {
@@ -595,7 +627,7 @@
             "type": "string",
             "description": "Book's id",
             "example": "608170ac715ef491300d3d2e"
-        },
+          },
           "review": {
             "type": "string",
             "description": "Book's review",
@@ -610,7 +642,11 @@
       },
       "AddTrainingRequest": {
         "type": "object",
-        "required": ["start", "end", "books"],
+        "required": [
+          "start",
+          "end",
+          "books"
+        ],
         "properties": {
           "start": {
             "type": "string",
@@ -628,7 +664,9 @@
               "type": "string",
               "description": "book id (could be more than one)"
             },
-            "example": ["6081734321739d6fac75857e"]
+            "example": [
+              "6081734321739d6fac75857e"
+            ]
           }
         }
       },
@@ -717,7 +755,9 @@
         }
       },
       "ReadPagesRequest": {
-        "required": ["pages"],
+        "required": [
+          "pages"
+        ],
         "type": "object",
         "properties": {
           "pages": {
@@ -960,6 +1000,19 @@
             "type": "string",
             "description": "User's name",
             "example": "User"
+          },
+          "books": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Book's id",
+              "example": "608170ac715ef491300d3d2e"
+            }
+          },
+          "training": {
+            "type": "string",
+            "description": "Training's id",
+            "example": "608170fb715ef491300d3d2f"
           },
           "planeToRead": {
             "type": "object",
