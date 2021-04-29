@@ -6,10 +6,10 @@ import trainingSelector from '../../../../redux/selectors/trainingSelector';
 import BookListItem from '../item/BookListItem';
 import AddTrainingBtn from '../../trainingBtn/AddTrainingBtn';
 
-const DescBookList = () => {
+const DescBookList = ({ books }) => {
     const dispatch = useDispatch();
 
-    const books = useSelector(trainingSelector.trainingBooksList);
+    // const books = useSelector(trainingSelector.trainingBooksList);
 
     const onHandleDeleteBook = e => {
         const { id } = e.currentTarget.dataset;
@@ -45,7 +45,6 @@ const DescBookList = () => {
                     ))}
                 </ul>
             </div>
-            <AddTrainingBtn />
         </DescBookListStyle>
     );
 };

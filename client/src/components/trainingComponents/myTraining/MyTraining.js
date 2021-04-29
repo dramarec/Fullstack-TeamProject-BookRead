@@ -9,7 +9,7 @@ const MyTraining = () => {
                 <p className="baner__title">Моє тренування</p>
             </div>
             <FormTraning />
-            <DescBookList />
+            {/* <DescBookList /> */}
         </div>
     );
 };

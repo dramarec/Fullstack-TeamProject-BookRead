@@ -86,7 +86,7 @@ class bookReadApi {
     getTraining() {
         return axios
             .get('/training')
-            .then(res => res.data.data)
+            .then(res => res.data.training)
             .catch(err => {
                 throw new Error(err);
             });

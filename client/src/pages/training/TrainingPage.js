@@ -7,16 +7,16 @@ import MobBookList from '../../components/trainingComponents/booksLists/mob/MobB
 import StatModal from '../../components/statModal/StatModal';
 import { getUsersBooksOperetion } from '../../redux/operations/bookOperation';
 import TimersSet from '../../components/timer/TimersSet';
+
 const TrainingPage = () => {
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getUsersBooksOperetion());
-    }, []);
+    // useEffect(() => {
+    //     dispatch(getUsersBooksOperetion());
+    // }, []);
 
     return (
         <TrainingPageStyled>
             <TimersSet />
-
             <div className="container">
                 <div className="sidebar">
                     <div className="sidebar-descr">
