@@ -1,38 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getWillRead } from '../../../redux/selectors/bookSelector';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import InputDatePicker from '../dataPicker/PickerData';
 import FormTraningStyle from './FormTraningStyle';
-// import trainingActions from '../../../redux/actions/trainingAction';
-// import trainingSelector from '../../../redux/selectors/trainingSelector';
-import AddTrainingBtn from '../trainingBtn/AddTrainingBtn';
 import moment from 'moment';
 import Select from './selectBooks/Selector';
 import { useFormik } from 'formik';
 import trainingOperation from '../../../redux/operations/trainingOperation';
 import DescBookList from '../booksLists/desc/DescBookList';
+
 const FormTraning = () => {
+    const dispatch = useDispatch();
+
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
     const [booksArr, setBooks] = useState([]);
-    const dispatch = useDispatch();
     console.log(start, 'START');
     console.log(end, 'END');
     console.log(booksArr, 'BOOK STATE!!');
-
-    // useEffect(() => {
-    //     formik.setFieldValue('start', start);
-    //     formik.setFieldValue('end', end);
-    // }, []);
 
     const formik = useFormik({
         initialValues: {
             start: '',
             end: '',
-            book: {},
+            book: '',
         },
         onSubmit: values => {
-            console.log(values, 'ALERT');
             if (booksArr.some(item => item._id === values.book._id)) {
                 alert('kiss my ass!');
                 return;
@@ -58,10 +50,8 @@ const FormTraning = () => {
         // console.log(value, 'BOOK!');
     };
 
-    // const handleSubmit = e => {
-    //     e.preventDefault();
-    // };
     const books = booksArr.map(book => book._id);
+
     const onHandleAddTraining = () => {
         dispatch(
             trainingOperation.operationAddNewTraining({
