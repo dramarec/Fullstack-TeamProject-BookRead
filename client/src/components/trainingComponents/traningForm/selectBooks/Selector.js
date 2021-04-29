@@ -11,13 +11,13 @@ const Selector = ({ value, onChange }) => {
         label: book.title,
         value: book.title,
     }));
-    console.log(bookSelect, 'book1');
+    // console.log(bookSelect, 'book1');
 
     return (
         <Select
             className="selectorBooks"
             placeholder="Обрати книги з бібліотеки"
-            value={value}
+            // value={value}
             options={bookSelect}
             onChange={value => onChange(value)}
         />

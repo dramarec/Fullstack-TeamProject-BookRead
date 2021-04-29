@@ -10,9 +10,9 @@ import TimersSet from '../../components/timer/TimersSet';
 
 const TrainingPage = () => {
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getUsersBooksOperetion());
-    }, []);
+    // useEffect(() => {
+    //     dispatch(getUsersBooksOperetion());
+    // }, []);
 
     return (
         <TrainingPageStyled>
