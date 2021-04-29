@@ -1,85 +1,53 @@
-import React, { useState } from 'react';
-import book from '../../../../assets/svg/book3.svg';
-import card from '../../../../assets/svg/card.svg';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import DescBookListStyle from './DescBookListStyle';
-
-const initialstate = [
-  {
-    _id: '60845e4e24523d1ccdc66756',
-    title: 'Harry Potter',
-    author: 'J. K. Rowling',
-    year: 1997,
-    numberOfPages: 123,
-  },
-  {
-    _id: '6084000dc4cfc1a5455ab0ea',
-    title: 'Жизнь и ловля пресноводных рыб',
-    author: 'Сабанеев Л.П.',
-    year: 1875,
-    numberOfPages: 472,
-  },
-  {
-    _id: '608448aa0733e1b53cdad37c',
-    title: 'Как разговаривать с мудаками',
-    author: 'Марк Гоулстон',
-    year: 2016,
-    numberOfPages: 272,
-  },
-  {
-    _id: '60845e7c24523d1ccdc66758',
-    title: 'Romero & Julieta',
-    author: 'J. K. Rowling',
-    year: 1997,
-    numberOfPages: 123,
-  },
-];
+import trainingActions from '../../../../redux/actions/trainingAction';
+import trainingSelector from '../../../../redux/selectors/trainingSelector';
+import BookListItem from '../item/BookListItem';
+import AddTrainingBtn from '../../trainingBtn/AddTrainingBtn';
 
 const DescBookList = () => {
-  const [state] = useState([...initialstate]);
+    const dispatch = useDispatch();
 
-  return (
-    <DescBookListStyle>
-      <div className="books-titles">
-        <ul className="books-titles__list">
-          <li>
-            <p className="books-titles__item">Назва книги</p>
-          </li>
-          <li>
-            <p className="books-titles__item">Автор</p>
-          </li>
-          <li>
-            <p className="books-titles__item">Рік</p>
-          </li>
-          <li>
-            <p className="books-titles__item">Стор.</p>
-          </li>
-        </ul>
-      </div>
+    const books = useSelector(trainingSelector.trainingBooksList);
 
-      <div className="books-library">
-        <ul className="books-library__list">
-          {state.map(({ _id, title, author, year, numberOfPages }) => (
-            <li key={_id} className="books-library__item">
-              <img className="books-library__img" src={book} alt="" />
-              <p className="books-library__title">{title}</p>
-              <p className="books-library__author">{author}</p>
-              <p className="books-library__year">{year}</p>
-              <p className="books-library__page">{numberOfPages}</p>
-              <img className="books-library__card" src={card} alt="" />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </DescBookListStyle>
-  );
+    const onHandleDeleteBook = e => {
+        const { id } = e.currentTarget.dataset;
+        dispatch(trainingActions.removeBookFromTraining(id));
+    };
+
+    return (
+        <DescBookListStyle>
+            <div className="books-titles">
+                <ul className="books-titles__list">
+                    <li className="books-titles__item">
+                        <p>Назва книги</p>
+                    </li>
+                    <li className="books-titles__item">
+                        <p>Автор</p>
+                    </li>
+                    <li className="books-titles__item">
+                        <p>Рік</p>
+                    </li>
+                    <li className="books-titles__item">
+                        <p>Стор.</p>
+                    </li>
+                </ul>
+            </div>
+            <div className="books-library">
+                <ul className="books-library__list">
+                    {books.map(books => (
+                        <BookListItem
+                            key={books._id}
+                            {...books}
+                            onDeleteBook={onHandleDeleteBook}
+                        />
+                    ))}
+                </ul>
+            </div>
+            <AddTrainingBtn />
+        </DescBookListStyle>
+    );
 };
 
 export default DescBookList;
-
-// <li key={_id} className="books-library__item">
-//             <img className="books__img" src={book} alt="" />
-//             <p>Scrum. Революционный метод ...</p>
-//             <p>Джефф Сазерленд</p>
-//             <p>2014</p>
-//             <p>15</p>
-//           </li>
