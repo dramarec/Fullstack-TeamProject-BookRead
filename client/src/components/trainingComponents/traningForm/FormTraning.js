@@ -3,27 +3,46 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getWillRead } from '../../../redux/selectors/bookSelector';
 import InputDatePicker from '../dataPicker/PickerData';
 import FormTraningStyle from './FormTraningStyle';
-import trainingActions from '../../../redux/actions/trainingAction';
-import trainingSelector from '../../../redux/selectors/trainingSelector';
-// import { DateTime } from 'luxon';
+// import trainingActions from '../../../redux/actions/trainingAction';
+// import trainingSelector from '../../../redux/selectors/trainingSelector';
+
 import moment from 'moment';
+import Select from './selectBooks/Selector';
+import { useFormik } from 'formik';
 
 const FormTraning = () => {
+    // const [state, setState] = useState({
+    //     start: '',
+    //     end: '',
+    //     books: [],
+    // });
     const dispatch = useDispatch();
-    const [books, setBooks] = useState({});
-
+    const [books, setBooks] = useState([]);
+    const [start, setStart] = useState('');
+    const [end, setEnd] = useState('');
     const booksWillRead = useSelector(getWillRead);
-    const startDate = useSelector(trainingSelector.getStartDate);
-    const endDate = useSelector(trainingSelector.getEndDate);
+
+    // const startDate = useSelector(trainingSelector.getStartDate);
+    // const endDate = useSelector(trainingSelector.getEndDate);
+
+    const formik = useFormik({
+        initialValues: {
+            start: '',
+            end: '',
+            books: [],
+        },
+        onSubmit: values => {
+            handleSubmit(values);
+        },
+    });
 
     const handleStartDate = date => {
-        const startDate = moment(date).format('YYYY-MM-DD');
-        dispatch(trainingActions.setStartDateTraining(startDate));
+        const start = moment(date).format('YYYY-MM-DD');
+        setStart(start);
     };
-
     const handleEndDate = date => {
-        const endDate = moment(date).format('YYYY-MM-DD');
-        dispatch(trainingActions.setEndDateTraining(endDate));
+        const end = moment(date).format('YYYY-MM-DD');
+        setEnd(end);
     };
 
     const handleChange = e => {
@@ -34,48 +53,30 @@ const FormTraning = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(trainingActions.addBookInTraining(books, startDate, endDate));
     };
 
     return (
         <FormTraningStyle>
-            <form onSubmit={handleSubmit} className="training-form">
+            <form onSubmit={formik.handleSubmit} className="training-form">
                 <div className="training-form__wrap">
                     <div className="training-form__pickers">
                         <InputDatePicker
+                            value={formik.values.start}
                             placeholderText="Початок"
                             onChange={handleStartDate}
-                            pickedDate={startDate ? new Date(startDate) : ''}
+                            pickedDate={start ? new Date(start) : ''}
                         />
-
                         <InputDatePicker
+                            value={formik.values.end}
                             placeholderText="Завершення"
                             onChange={handleEndDate}
-                            pickedDate={endDate ? new Date(endDate) : ''}
+                            pickedDate={end ? new Date(end) : ''}
                         />
                     </div>
-
-                    <div className="selectwrap">
-                        <select
-                            className="select"
-                            name="select"
-                            onChange={handleChange}
-                        >
-                            <option value="Обрати книги з бібліотеки">
-                                Обрати книги з бібліотеки
-                            </option>
-
-                            {booksWillRead.map(book => (
-                                <option key={book._id} value={book._id}>
-                                    {book.title}
-                                </option>
-                            ))}
-                        </select>
-
-                        <button type="submit" className="bookFormBtn">
-                            Додати
-                        </button>
-                    </div>
+                    <Select
+                        value={formik.values.books}
+                        onChange={handleChange}
+                    />
                 </div>
             </form>
         </FormTraningStyle>
@@ -83,6 +84,15 @@ const FormTraning = () => {
 };
 
 export default FormTraning;
+
+// const handleStartDate = date => {
+//     const startDate = moment(date).format('YYYY-MM-DD');
+//     dispatch(trainingActions.setStartDateTraining(startDate));
+// };
+// const handleEndDate = date => {
+//     const endDate = moment(date).format('YYYY-MM-DD');
+//     dispatch(trainingActions.setEndDateTraining(endDate));
+// };
 
 // // const onHandleChange = (e) => {
 // //   const { name, value } = e.target;
