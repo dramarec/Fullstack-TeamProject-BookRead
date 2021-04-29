@@ -64,7 +64,7 @@ const AppBar = () => {
                 </ul>
               </li>
 
-              <li className=" link">
+              <li className="link link-btn">
                 <button className="exit" type="button" onClick={handleClick}>
                   Вихід
                 </button>

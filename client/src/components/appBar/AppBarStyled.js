@@ -12,9 +12,8 @@ const AppBarStyled = styled.div`
     padding: 11px 25px;
   }
   .navlist {
-    /* outline: 1px solid tomato; */
     display: flex;
-    align-items: baseline;
+    align-items: center;
   }
   .navListItem {
     content: '';
@@ -83,6 +82,11 @@ const AppBarStyled = styled.div`
     }
   }
 
+  .link-btn {
+    order: 1;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   .exit {
     font-family: 'Montserrat-Regular';
     font-size: 14px;
@@ -97,9 +101,6 @@ const AppBarStyled = styled.div`
     &:focus,
     &:hover {
       color: #f25137;
-    }
-    @media screen and (max-width: 767px) {
-      margin-left: 14px;
     }
   }
 

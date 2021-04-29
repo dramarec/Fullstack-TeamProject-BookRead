@@ -5,6 +5,7 @@ import Chart from '../../components/trainingComponents/chart/Chart';
 import MyTraining from '../../components/trainingComponents/myTraining/MyTraining';
 import MobBookList from '../../components/trainingComponents/booksLists/mob/MobBookList';
 import StatModal from '../../components/statModal/StatModal';
+<<<<<<< HEAD
 import { getUsersBooksOperetion } from '../../redux/operations/bookOperation';
 
 const TrainingPage = () => {
@@ -12,6 +13,22 @@ const TrainingPage = () => {
     useEffect(() => {
         dispatch(getUsersBooksOperetion());
     }, []);
+=======
+import TimersSet from '../../components/timer/TimersSet';
+
+
+const TrainingPage = () => {
+
+  return (
+    <TrainingPageStyled>
+      <TimersSet/>
+      
+      <div className="container">
+        <div className="sidebar">
+          <div className="sidebar-descr">
+            <p className="sidebar-descr__item">Моя мета прочитати</p>
+          </div>
+>>>>>>> dev
 
     return (
         <TrainingPageStyled>

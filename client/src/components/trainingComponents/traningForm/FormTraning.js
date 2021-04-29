@@ -16,7 +16,7 @@ const FormTraning = () => {
     //     end: '',
     //     books: [],
     // });
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const [books, setBooks] = useState([]);
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
