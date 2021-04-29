@@ -12,8 +12,8 @@ const ReadingBooks = ({ bookNowRead }) => {
     const Mobile = props => <Responsive {...props} maxWidth={767} />;
     return (
         <ReadingBooksStyled className="container">
-            <h2>Читаю</h2>
             <Tablet>
+                <h2>Читаю</h2>
                 <div className="table-title">
                     <p>Назва книги</p>
                     <p>Автор</p>
@@ -27,7 +27,14 @@ const ReadingBooks = ({ bookNowRead }) => {
                 </ul>
             </Tablet>
             <Mobile>
-                <ReadBookItemMobile />
+                <div className="readingNowMobil">
+                    <h2>Читаю</h2>
+                    <ul>
+                        {bookNowRead.map((item, idx) => (
+                            <ReadBookItemMobile book={item} key={idx} />
+                        ))}
+                    </ul>
+                </div>
             </Mobile>
         </ReadingBooksStyled>
     );

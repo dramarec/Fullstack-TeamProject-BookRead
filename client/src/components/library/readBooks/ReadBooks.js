@@ -10,8 +10,8 @@ const ReadBooks = ({ bookFinished }) => {
     const Mobile = props => <Responsive {...props} maxWidth={767} />;
     return (
         <ReadBooksStyled className="container">
-            <h2>Прочитано</h2>
             <Tablet>
+                <h2>Прочитано</h2>
                 <div className="table-title">
                     <p>Назва книги</p>
                     <p>Автор</p>
@@ -26,11 +26,14 @@ const ReadBooks = ({ bookFinished }) => {
                 </ul>
             </Tablet>
             <Mobile>
-                <ul>
-                    {bookFinished.map(book => (
-                        <ReadBookItemMobile key={book._id} item={book} />
-                    ))}
-                </ul>
+                <div className="readMobil">
+                    <h2>Прочитано</h2>
+                    <ul>
+                        {bookFinished.map(book => (
+                            <ReadBookItemMobile key={book._id} item={book} />
+                        ))}
+                    </ul>
+                </div>
             </Mobile>
         </ReadBooksStyled>
     );
