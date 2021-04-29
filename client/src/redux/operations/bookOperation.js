@@ -7,23 +7,23 @@ import {
 import {
   getUsersBooksRequest,
   getUsersBooksSuccess,
-  getUsersBooksError
+  getUsersBooksError,
 } from '../actions/userLibraryAction';
 
 import {
   changeBookSuccess,
   changeBookRequest,
-  changeBookError
-} from '../actions/changeBookAction'
+  changeBookError,
+} from '../actions/changeBookAction';
 
 axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 
 const token = {
   set(token) {
-      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
-      axios.defaults.headers.common.Authorization = '';
+    axios.defaults.headers.common.Authorization = '';
   },
 };
 
@@ -45,37 +45,30 @@ const addBookOperation = book => async dispatch => {
 const getUsersBooksOperetion = () => async (dispatch, getState) => {
   const accessToken = getState().auth.token;
 
-  token.set(accessToken)
+  token.set(accessToken);
   dispatch(getUsersBooksRequest());
   try {
-      const response = await axios.get("/users/user");
-     // console.log(response.data);
-      dispatch(getUsersBooksSuccess(response.data.data));
+    const response = await axios.get('/users/user');
+    // console.log(response.data);
+    dispatch(getUsersBooksSuccess(response.data.data));
   } catch (error) {
-      dispatch(getUsersBooksError(error.message));
-      throw error;
+    dispatch(getUsersBooksError(error.message));
+    throw error;
   }
 };
 
-const changeBookOperation = (id, book) => async (dispatch) => {
+const changeBookOperation = (id, book) => async dispatch => {
   //const bookId = book._id
   dispatch(changeBookRequest());
   try {
-       await axios.patch(`/books/${id}`, book );
-      //console.log('OperBook', book);
-      dispatch(changeBookSuccess({...book}));
-      dispatch(getUsersBooksOperetion())
+    await axios.patch(`/books/${id}`, book);
+    //console.log('OperBook', book);
+    dispatch(changeBookSuccess({ ...book }));
+    dispatch(getUsersBooksOperetion());
   } catch (error) {
-      dispatch(changeBookError
-          (error.message));
-      throw error;
+    dispatch(changeBookError(error.message));
+    throw error;
   }
 };
 
-
-
-export { 
-  addBookOperation,
-  getUsersBooksOperetion,
-  changeBookOperation 
-};
+export { addBookOperation, getUsersBooksOperetion, changeBookOperation };

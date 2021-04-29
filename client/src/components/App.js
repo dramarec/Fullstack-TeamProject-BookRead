@@ -12,9 +12,14 @@ import mainRoutes from '../routes/routes';
 // import { publicRoutes } from '../routes/publicRoutes';
 import PrivateRoutes from './routes/PrivateRoutes';
 import PublicRoutes from './routes/PublicRoutes';
+//import { getUsersBooksOperetion } from '../redux/operations/bookOperation';
 import loadingSelectors from '../redux/selectors/loadingSelector';
 
 const App = () => {
+   /* const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUsersBooksOperetion())
+  }, []);*/
   /*  const dispatch = useDispatch();
    useEffect(() => {
      dispatch(getUsersBooks())
