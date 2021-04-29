@@ -17,10 +17,11 @@ const FormTraning = () => {
     //     books: [],
     // });
     // const dispatch = useDispatch();
-    const [books, setBooks] = useState([]);
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
-    const booksWillRead = useSelector(getWillRead);
+    const [books, setBooks] = useState([]);
+
+    // const booksWillRead = useSelector(getWillRead);
 
     // const startDate = useSelector(trainingSelector.getStartDate);
     // const endDate = useSelector(trainingSelector.getEndDate);
@@ -29,31 +30,35 @@ const FormTraning = () => {
         initialValues: {
             start: '',
             end: '',
-            books: [],
+            book: {},
         },
         onSubmit: values => {
-            handleSubmit(values);
+            setBooks(values);
         },
     });
 
     const handleStartDate = date => {
         const start = moment(date).format('YYYY-MM-DD');
+        formik.setFieldValue('start', date);
         setStart(start);
     };
     const handleEndDate = date => {
         const end = moment(date).format('YYYY-MM-DD');
+        formik.setFieldValue('end', date);
         setEnd(end);
     };
 
-    const handleChange = e => {
-        const _id = e.target.value;
-        const book = booksWillRead.find(book => book._id === _id);
-        setBooks({ books: book });
+    const handleBook = value => {
+        formik.setFieldValue('book', value);
+        setBooks(value);
+        // const _id = e.target.value;
+        // const book = booksWillRead.find(book => book._id === _id);
+        // setBooks({ books: book });
     };
 
-    const handleSubmit = e => {
-        e.preventDefault();
-    };
+    // const handleSubmit = e => {
+    //     e.preventDefault();
+    // };
 
     return (
         <FormTraningStyle>
@@ -73,10 +78,10 @@ const FormTraning = () => {
                             pickedDate={end ? new Date(end) : ''}
                         />
                     </div>
-                    <Select
-                        value={formik.values.books}
-                        onChange={handleChange}
-                    />
+                    <Select value={formik.values.books} onChange={handleBook} />
+                    <button type="submit" className="bookFormBtn">
+                        Додати
+                    </button>
                 </div>
             </form>
         </FormTraningStyle>
