@@ -14,9 +14,15 @@ const FormTraning = () => {
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
     const [booksArr, setBooks] = useState([]);
-    console.log(start, 'START');
-    console.log(end, 'END');
-    console.log(booksArr, 'BOOK STATE!!');
+    //console.log(start, 'START');
+    //console.log(end, 'END');
+    //console.log(booksArr, 'BOOK STATE!!');
+
+    const onHandleDeleteBook = e => {
+        const { id } = e.currentTarget.dataset;
+
+        setBooks(prev => prev.filter(book => book._id !== id));
+    };
 
     const formik = useFormik({
         initialValues: {
@@ -91,9 +97,12 @@ const FormTraning = () => {
                     </button>
                 </div>
             </form>
-            <DescBookList books={booksArr} />
+            <DescBookList
+                onHandleDeleteBook={onHandleDeleteBook}
+                books={booksArr}
+            />
             <div>
-                <button onClick={onHandleAddTraining} className="bookFormBtn">
+                <button onClick={onHandleAddTraining} className="FormBtn">
                     Почати тренування
                 </button>
             </div>

@@ -11,6 +11,7 @@ import PublicRoutes from './routes/PublicRoutes';
 import { getUsersBooksOperetion } from '../redux/operations/bookOperation';
 import loadingSelectors from '../redux/selectors/loadingSelector';
 import authOperations from '../redux/operations/authOperation';
+import trainingOperation from '../redux/operations/trainingOperation';
 
 const App = () => {
     const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const App = () => {
 
     useEffect(() => {
         dispatch(getUsersBooksOperetion());
+        dispatch(trainingOperation.getTrainingOperation());
     }, []);
 
     const isLoading = useSelector(loadingSelectors.getLoading);

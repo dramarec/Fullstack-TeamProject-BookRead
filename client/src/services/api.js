@@ -74,9 +74,9 @@ class bookReadApi {
             });
     }
 
-    addReadPages(pages) {
+    addReadPages(trainingCredentials) {
         return axios
-            .patch('/training', pages)
+            .patch('/training', trainingCredentials)
             .then(res => res.data.data)
             .catch(err => {
                 throw new Error(err);

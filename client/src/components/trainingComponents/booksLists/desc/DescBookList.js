@@ -5,34 +5,27 @@ import trainingActions from '../../../../redux/actions/trainingAction';
 import trainingSelector from '../../../../redux/selectors/trainingSelector';
 import BookListItem from '../item/BookListItem';
 import AddTrainingBtn from '../../trainingBtn/AddTrainingBtn';
+import book from '../../../../assets/svg/book3.svg';
 
-const DescBookList = ({ books }) => {
+const DescBookList = ({ books, onHandleDeleteBook }) => {
     const dispatch = useDispatch();
 
     // const books = useSelector(trainingSelector.trainingBooksList);
 
-    const onHandleDeleteBook = e => {
-        const { id } = e.currentTarget.dataset;
-        dispatch(trainingActions.removeBookFromTraining(id));
-    };
+    // const onHandleDeleteBook = e => {
+    //     const { id } = e.currentTarget.dataset;
+    //     dispatch(trainingActions.removeBookFromTraining(id));
+    // };
 
     return (
         <DescBookListStyle>
             <div className="books-titles">
-                <ul className="books-titles__list">
-                    <li className="books-titles__item">
-                        <p>Назва книги</p>
-                    </li>
-                    <li className="books-titles__item">
-                        <p>Автор</p>
-                    </li>
-                    <li className="books-titles__item">
-                        <p>Рік</p>
-                    </li>
-                    <li className="books-titles__item">
-                        <p>Стор.</p>
-                    </li>
-                </ul>
+                <div className="books-titles__list">
+                    <p>Назва книги</p>
+                    <p>Автор</p>
+                    <p>Рік</p>
+                    <p>Стор.</p>
+                </div>
             </div>
             <div className="books-library">
                 <ul className="books-library__list">
@@ -43,6 +36,10 @@ const DescBookList = ({ books }) => {
                             onDeleteBook={onHandleDeleteBook}
                         />
                     ))}
+                    <li className="helpers">
+                        <img src={book} alt="" className="helpersImg" />
+                        <p>...</p>
+                    </li>
                 </ul>
             </div>
         </DescBookListStyle>
