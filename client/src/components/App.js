@@ -14,16 +14,26 @@ import PrivateRoutes from './routes/PrivateRoutes';
 import PublicRoutes from './routes/PublicRoutes';
 import { getUsersBooksOperetion } from '../redux/operations/bookOperation';
 import loadingSelectors from '../redux/selectors/loadingSelector';
+import authOperations from '../redux/operations/authOperation';
+import { useLocation } from 'react-router-dom';
 
 const App = () => {
+    function useQuery() {
+        return new URLSearchParams(useLocation().search);
+    }
+    const query = useQuery();
+    console.log('App ===> query', query);
+    const googleToken = {
+        accessToken: query.get('accessToken'),
+    };
+    console.log('App ===> googleToken', googleToken.accessToken);
+
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getUsersBooksOperetion());
+        dispatch(authOperations.logInWithGoogleOperation());
     }, []);
-    /*  const dispatch = useDispatch();
-   useEffect(() => {
-     dispatch(getUsersBooks())
-   }, dispatch);*/
+
     const isLoading = useSelector(loadingSelectors.getLoading);
 
     return (
