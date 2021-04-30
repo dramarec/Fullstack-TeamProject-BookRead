@@ -18,6 +18,7 @@ const addRead = async (req, res, next) => {
 
     let book = null;
     let totalPages = 0;
+    
 
     for (let i = 0; i < training.books.length; i++) {
       const arrayBook = await Book.findOne({ _id: training.books[i] });
@@ -25,16 +26,20 @@ const addRead = async (req, res, next) => {
       if (arrayBook?.numberOfPages === arrayBook?.readPages) {
         continue;
       }
-
       arrayBook.readPages += pages;
+      arrayBook.readPages += training.rest;
+      training.rest=0
+      
 
       if (arrayBook.readPages > arrayBook.numberOfPages) {
+        training.rest = arrayBook.readPages - arrayBook.numberOfPages;
         arrayBook.readPages = arrayBook.numberOfPages;
       }
-
+      
       if (pages > arrayBook.readPages) {
         pages = arrayBook.readPages;
       }
+      await training.save()
 
       const {
         _id,
