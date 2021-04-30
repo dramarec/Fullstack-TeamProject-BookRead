@@ -14,18 +14,15 @@ import PrivateRoutes from './routes/PrivateRoutes';
 import PublicRoutes from './routes/PublicRoutes';
 import { getUsersBooksOperetion } from '../redux/operations/bookOperation';
 import loadingSelectors from '../redux/selectors/loadingSelector';
-// import trainingOperation from '../redux/operations/trainingOperation';
+import trainingOperation from '../redux/operations/trainingOperation';
 
 const App = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getUsersBooksOperetion());
-        // dispatch(trainingOperation.addReadPagesOperation('2021-04-30', 15));
+        dispatch(trainingOperation.getTrainingOperation());
     }, []);
-    /*  const dispatch = useDispatch();
-   useEffect(() => {
-     dispatch(getUsersBooks())
-   }, dispatch);*/
+
     const isLoading = useSelector(loadingSelectors.getLoading);
 
     return (
