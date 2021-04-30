@@ -26,7 +26,7 @@ class bookReadApi {
 
     logInWithGoogle(userCredentials) {
         return axios
-            .post('/users/auth/google', userCredentials)
+            .post('/users/auth/google-login', userCredentials)
             .then(res => res.data.data)
             .catch(error => {
                 throw new Error(error);
