@@ -1,1151 +1,1116 @@
 {
-  "openapi": "3.0.1",
-  "info": {
-    "version": "1.0.0",
-    "title": "Fullstack-TeamProject-BookRead API docs",
-    "description": "API documentation for Fullstack-TeamProject-BookRead. [backend GitHub repository](https://github.com/dramarec/Fullstack-TeamProject-BookRead/tree/dev/server)",
-    "license": {
-      "name": "MIT",
-      "url": "https://opensource.org/licenses/MIT"
-    }
-  },
-  "servers": [
-    {
-      "url": "http://localhost:5000/api"
-    }
-  ],
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
-  "tags": [
-    {
-      "name": "Auth",
-      "description": "Authorization ENDPOINTS"
+    "openapi": "3.0.1",
+    "info": {
+        "version": "1.0.0",
+        "title": "Fullstack-TeamProject-BookRead API docs",
+        "description": "API documentation for Fullstack-TeamProject-BookRead. [backend GitHub repository](https://github.com/dramarec/Fullstack-TeamProject-BookRead/tree/dev/server)",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
     },
-    {
-      "name": "Books",
-      "description": "Books ENDPOINTS"
-    },
-    {
-      "name": "Training",
-      "description": "Training ENDPOINTS"
-    },
-    {
-      "name": "User",
-      "description": "User ENDPOINTS"
-    }
-  ],
-  "paths": {
-    "/users/auth/register": {
-      "post": {
-        "tags": [
-          "Auth"
-        ],
-        "summary": "User registration",
-        "security": [],
-        "parameters": [],
-        "requestBody": {
-          "description": "Registration's object",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegistrationRequest"
-              }
-            }
-          }
+    "servers": [
+        {
+            "url": "http://localhost:5000/api"
+        }
+    ],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "tags": [
+        {
+            "name": "Auth",
+            "description": "Authorization ENDPOINTS"
         },
-        "responses": {
-          "201": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RegistrationResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request (invalid request boby)",
-            "content": {}
-          },
-          "409": {
-            "description": "Provided email already exists",
-            "content": {}
-          }
-        }
-      }
-    },
-    "/users/auth/login": {
-      "post": {
-        "tags": [
-          "Auth"
-        ],
-        "summary": "User authentication",
-        "security": [],
-        "parameters": [],
-        "requestBody": {
-          "description": "Authentication's object",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
-              }
-            }
-          }
+        {
+            "name": "Books",
+            "description": "Books ENDPOINTS"
         },
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LoginResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request (invalid request boby)",
-            "content": {}
-          },
-          "401": {
-            "description": "Email or password is wrong",
-            "content": {}
-          }
-        }
-      }
-    },
-    "/users/auth/logout": {
-      "post": {
-        "tags": [
-          "Auth"
-        ],
-        "summary": "User logout",
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
-        "parameters": [],
-        "responses": {
-          "204": {
-            "description": "Successful operation"
-          },
-          "400": {
-            "description": "No token provided",
-            "content": {}
-          },
-          "401": {
-            "description": "Unauthorized (invalid access token)",
-            "content": {}
-          },
-          "404": {
-            "description": "Invalid user / Invalid session",
-            "content": {}
-          }
-        }
-      }
-    },
-    "/books": {
-      "post": {
-        "tags": [
-          "Books"
-        ],
-        "summary": "Add a book",
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
-        "parameters": [],
-        "requestBody": {
-          "description": "Info about a book",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddingBookRequest"
-              }
-            }
-          }
+        {
+            "name": "Training",
+            "description": "Training ENDPOINTS"
         },
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddingBookResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request (invalid id) / No token provided",
-            "content": {}
-          },
-          "401": {
-            "description": "Unauthorized (invalid access token)",
-            "content": {}
-          },
-          "404": {
-            "description": "Invalid user / Invalid session",
-            "content": {}
-          }
+        {
+            "name": "User",
+            "description": "User ENDPOINTS"
         }
-      }
-    },
-    "/books/{bookId}": {
-      "patch": {
-        "tags": [
-          "Books"
-        ],
-        "summary": "Update a book",
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "bookId",
-            "in": "path",
-            "description": "Book's id ('id' field in book's object)",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "requestBody": {
-          "description": "Book object",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PatchBookRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PatchBookResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request (invalid id) / No token provided",
-            "content": {}
-          },
-          "401": {
-            "description": "Unauthorized (invalid access token)",
-            "content": {}
-          },
-          "404": {
-            "description": "Book not found / Invalid user / Invalid session",
-            "content": {}
-          }
-        }
-      }
-    },
-    "/training": {
-      "post": {
-        "tags": [
-          "Training"
-        ],
-        "summary": "Add training",
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
-        "parameters": [],
-        "requestBody": {
-          "description": "Training's object",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddTrainingRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddTrainingResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "wrong dates / wrong book id",
-            "content": {}
-          },
-          "401": {
-            "description": "Unauthorized (invalid access token)",
-            "content": {}
-          },
-          "404": {
-            "description": "Invalid user / Invalid session",
-            "content": {}
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "Training"
-        ],
-        "summary": "Add read pages",
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
-        "parameters": [],
-        "requestBody": {
-          "description": "Pages object",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ReadPagesRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ReadPagesResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request (invalid id) / No token provided",
-            "content": {}
-          },
-          "401": {
-            "description": "Unauthorized (invalid access token)",
-            "content": {}
-          },
-          "403": {
-            "description": "no active training / you have read all the books, the training is over",
-            "content": {}
-          },
-          "404": {
-            "description": "Invalid user / Invalid session",
-            "content": {}
-          }
-        }
-      },
-      "get": {
-        "tags": [
-          "Training"
-        ],
-        "summary": "Get training",
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetTraining"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request (invalid id) / No token provided",
-            "content": {}
-          },
-          "401": {
-            "description": "Unauthorized (invalid access token)",
-            "content": {}
-          },
-          "403": {
-            "description": "no active training / training is over",
-            "content": {}
-          },
-          "404": {
-            "description": "Invalid user / Invalid session",
-            "content": {}
-          }
-        }
-      }
-    },
-    "/users/user": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "summary": "Get user info",
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetUserInfo"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "No token provided",
-            "content": {}
-          },
-          "404": {
-            "description": "Invalid user / Invalid session",
-            "content": {}
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "RegistrationRequest": {
-        "type": "object",
-        "required": [
-          "username",
-          "email",
-          "password"
-        ],
-        "properties": {
-          "username": {
-            "type": "string",
-            "description": "User's name",
-            "example": "User"
-          },
-          "email": {
-            "type": "string",
-            "description": "User's email",
-            "format": "email"
-          },
-          "password": {
-            "type": "string",
-            "description": "User's password",
-            "example": "qwerty123"
-          }
-        }
-      },
-      "RegistrationResponse": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "type": "string",
-            "description": "User's name",
-            "example": "User"
-          },
-          "email": {
-            "type": "string",
-            "description": "User's email",
-            "format": "email"
-          }
-        }
-      },
-      "LoginRequest": {
-        "type": "object",
-        "required": [
-          "email",
-          "password"
-        ],
-        "properties": {
-          "email": {
-            "type": "string",
-            "description": "User's email",
-            "format": "email"
-          },
-          "password": {
-            "type": "string",
-            "description": "User's password",
-            "example": "qwerty123"
-          }
-        }
-      },
-      "LoginResponse": {
-        "type": "object",
-        "properties": {
-          "token": {
-            "type": "string",
-            "description": "User's token",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxZDk5MTkyOGE0ODM2NGY2ODdkMiIsImlhdCI6MTYxOTAwOTI2NywiZXhwIjoxNjIxNjAxMjY3fQ.LPz3owBfisJKIbdU-q9vjt7sGSFDSw_Otd9zSnBRuvU"
-          },
-          "user": {
-            "type": "object",
-            "description": "Information about user",
-            "properties": {
-              "username": {
-                "type": "string",
-                "description": "User's name",
-                "example": "User"
-              },
-              "email": {
-                "type": "string",
-                "description": "User's email",
-                "example": "user@example.com"
-              },
-              "books": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "description": "Book's id",
-                  "example": "608170ac715ef491300d3d2e"
-                }
-              },
-              "training": {
-                "type": "string",
-                "description": "Training's id",
-                "example": "608170fb715ef491300d3d2f"
-              }
-            }
-          }
-        }
-      },
-      "AddingBookRequest": {
-        "required": [
-          "title",
-          "numberOfPages"
-        ],
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "string",
-            "description": "Book's title",
-            "example": "Harry Potter"
-          },
-          "author": {
-            "type": "string",
-            "description": "Book's author",
-            "example": "J. K. Rowling"
-          },
-          "year": {
-            "type": "number",
-            "description": "Book's year",
-            "example": "1997"
-          },
-          "numberOfPages": {
-            "type": "number",
-            "description": "Number of pages in a book",
-            "example": "123"
-          }
-        }
-      },
-      "AddingBookResponse": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Book's id",
-            "example": "07ef3f4358b773378699381"
-          },
-          "title": {
-            "type": "string",
-            "description": "Book's title",
-            "example": "Harry Porter"
-          },
-          "author": {
-            "type": "string",
-            "description": "Book's author",
-            "example": "J. K. Rowling"
-          },
-          "year": {
-            "type": "integer",
-            "description": "Book's year",
-            "example": "1997"
-          },
-          "numberOfPages": {
-            "type": "integer",
-            "description": "Number of pages in a book",
-            "example": "123"
-          },
-          "review": {
-            "type": "string",
-            "description": "rewiew",
-            "example": ""
-          },
-          "rating": {
-            "type": "integer",
-            "description": "rating",
-            "minimum": 0,
-            "maximum": 5,
-            "example": null
-          }
-        }
-      },
-      "PatchBookRequest": {
-        "required": [],
-        "type": "object",
-        "properties": {
-          "review": {
-            "type": "string",
-            "description": "Book's review",
-            "example": "Harry Potter is a good book"
-          },
-          "rating": {
-            "type": "integer",
-            "description": "Book's rating",
-            "example": "4"
-          }
-        }
-      },
-      "PatchBookResponse": {
-        "required": [],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Book's id",
-            "example": "608170ac715ef491300d3d2e"
-          },
-          "review": {
-            "type": "string",
-            "description": "Book's review",
-            "example": "Harry Potter is a good book"
-          },
-          "rating": {
-            "type": "integer",
-            "description": "Book's rating",
-            "example": "4"
-          }
-        }
-      },
-      "AddTrainingRequest": {
-        "type": "object",
-        "required": [
-          "start",
-          "end",
-          "books"
-        ],
-        "properties": {
-          "start": {
-            "type": "string",
-            "description": "start date training",
-            "example": "2021-04-22"
-          },
-          "end": {
-            "type": "string",
-            "description": "end date training",
-            "example": "2021-04-25"
-          },
-          "books": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "description": "book id (could be more than one)"
-            },
-            "example": [
-              "6081734321739d6fac75857e"
-            ]
-          }
-        }
-      },
-      "AddTrainingResponse": {
-        "type": "object",
-        "properties": {
-          "_id": {
-            "type": "string",
-            "description": "training id",
-            "example": "6081759c95df4f709eb06438"
-          },
-          "start": {
-            "type": "string",
-            "example": "2021-04-22",
-            "description": "start date training"
-          },
-          "end": {
-            "type": "string",
-            "example": "2021-04-25",
-            "description": "end date training"
-          },
-          "duration": {
-            "type": "integer",
-            "description": "duration",
-            "example": 3
-          },
-          "books": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "_id": {
-                  "type": "string",
-                  "description": "book id",
-                  "example": "6081734321739d6fac75857e"
-                },
-                "title": {
-                  "type": "string",
-                  "description": "book title",
-                  "example": "22-04 Book"
-                },
-                "author": {
-                  "type": "string",
-                  "description": "Book's author",
-                  "example": "Chub 22-04"
-                },
-                "year": {
-                  "type": "integer",
-                  "description": "publish year",
-                  "example": 1920
-                },
-                "numberOfPages": {
-                  "type": "integer",
-                  "description": "book pages",
-                  "example": 45
-                },
-                "readPages": {
-                  "type": "integer",
-                  "description": "read pages",
-                  "example": 0
-                },
-                "review": {
-                  "type": "string",
-                  "description": "rewiew",
-                  "example": ""
-                },
-                "rating": {
-                  "type": "integer",
-                  "description": "rating",
-                  "minimum": 0,
-                  "maximum": 5,
-                  "example": null
-                }
-              }
-            }
-          },
-          "pagesReadPerDay": {
-            "type": "integer",
-            "description": "number of pages per day",
-            "example": 15
-          },
-          "results": {
-            "type": "array",
-            "example": []
-          }
-        }
-      },
-      "ReadPagesRequest": {
-        "required": [
-          "pages"
-        ],
-        "type": "object",
-        "properties": {
-          "pages": {
-            "type": "integer",
-            "example": 7,
-            "description": "read pages"
-          }
-        }
-      },
-      "ReadPagesResponse": {
-        "type": "object",
-        "properties": {
-          "book": {
-            "type": "object",
-            "properties": {
-              "_id": {
-                "type": "string",
-                "description": "book id",
-                "example": "6081734321739d6fac75857e"
-              },
-              "title": {
-                "type": "string",
-                "description": "book title",
-                "example": "22-04 Book"
-              },
-              "author": {
-                "type": "string",
-                "description": "Book's author",
-                "example": "Chub 22-04"
-              },
-              "year": {
-                "type": "integer",
-                "description": "publish year",
-                "example": 1920
-              },
-              "numberOfPages": {
-                "type": "integer",
-                "description": "book pages",
-                "example": 45
-              },
-              "readPages": {
-                "type": "integer",
-                "description": "read pages",
-                "example": 0
-              },
-              "review": {
-                "type": "string",
-                "description": "rewiew",
-                "example": ""
-              },
-              "rating": {
-                "type": "integer",
-                "description": "rating",
-                "minimum": 0,
-                "maximum": 5,
-                "example": null
-              }
-            }
-          },
-          "training": {
-            "type": "object",
-            "properties": {
-              "_id": {
-                "type": "string",
-                "description": "training id",
-                "example": "6081759c95df4f709eb06438"
-              },
-              "start": {
-                "type": "string",
-                "description": "start date training",
-                "example": "2021-04-22"
-              },
-              "end": {
-                "type": "string",
-                "description": "end date training",
-                "example": "2021-04-25"
-              },
-              "duration": {
-                "type": "integer",
-                "description": "duration",
-                "example": 3
-              },
-              "pagesReadPerDay": {
-                "type": "integer",
-                "description": "number of pages per day",
-                "example": 15
-              },
-              "books": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "description": "book id",
-                  "example": "6081734321739d6fac75857e"
-                }
-              },
-              "results": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "_id": {
-                      "type": "string",
-                      "description": "training period id",
-                      "example": "608185d3797104748da4ce35"
-                    },
-                    "date": {
-                      "type": "string",
-                      "description": "training period day date",
-                      "example": "2021-04-22 17:18:59"
-                    },
-                    "pageCount": {
-                      "type": "integer",
-                      "description": "number of pages read ",
-                      "example": 7
+    ],
+    "paths": {
+        "/users/auth/register": {
+            "post": {
+                "tags": ["Auth"],
+                "summary": "User registration",
+                "security": [],
+                "parameters": [],
+                "requestBody": {
+                    "description": "Registration's object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegistrationRequest"
+                            }
+                        }
                     }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "GetTraining": {
-        "type": "object",
-        "properties": {
-          "training": {
-            "type": "object",
-            "properties": {
-              "_id": {
-                "type": "string",
-                "description": "training id",
-                "example": "6081759c95df4f709eb06438"
-              },
-              "start": {
-                "type": "string",
-                "example": "2021-04-22",
-                "description": "start date training"
-              },
-              "end": {
-                "type": "string",
-                "example": "2021-04-25",
-                "description": "end date training"
-              },
-              "duration": {
-                "type": "integer",
-                "description": "duration",
-                "example": 3
-              },
-              "pagesReadPerDay": {
-                "type": "integer",
-                "description": "number of pages per day",
-                "example": 15
-              },
-              "books": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "_id": {
-                      "type": "string",
-                      "description": "book id",
-                      "example": "6081734321739d6fac75857e"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RegistrationResponse"
+                                }
+                            }
+                        }
                     },
+                    "400": {
+                        "description": "Bad request (invalid request boby)",
+                        "content": {}
+                    },
+                    "409": {
+                        "description": "Provided email already exists",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "/users/auth/login": {
+            "post": {
+                "tags": ["Auth"],
+                "summary": "User authentication",
+                "security": [],
+                "parameters": [],
+                "requestBody": {
+                    "description": "Authentication's object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoginResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request (invalid request boby)",
+                        "content": {}
+                    },
+                    "401": {
+                        "description": "Email or password is wrong",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "/users/auth/logout": {
+            "post": {
+                "tags": ["Auth"],
+                "summary": "User logout",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "No token provided",
+                        "content": {}
+                    },
+                    "401": {
+                        "description": "Unauthorized (invalid access token)",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Invalid user / Invalid session",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "/books": {
+            "post": {
+                "tags": ["Books"],
+                "summary": "Add a book",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "description": "Info about a book",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddingBookRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AddingBookResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request (invalid id) / No token provided",
+                        "content": {}
+                    },
+                    "401": {
+                        "description": "Unauthorized (invalid access token)",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Invalid user / Invalid session",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "/books/{bookId}": {
+            "patch": {
+                "tags": ["Books"],
+                "summary": "Update a book",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "bookId",
+                        "in": "path",
+                        "description": "Book's id ('id' field in book's object)",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Book object",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PatchBookRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PatchBookResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request (invalid id) / No token provided",
+                        "content": {}
+                    },
+                    "401": {
+                        "description": "Unauthorized (invalid access token)",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Book not found / Invalid user / Invalid session",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "/training": {
+            "post": {
+                "tags": ["Training"],
+                "summary": "Add training",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "description": "Training's object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddTrainingRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AddTrainingResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "wrong dates / wrong book id",
+                        "content": {}
+                    },
+                    "401": {
+                        "description": "Unauthorized (invalid access token)",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Invalid user / Invalid session",
+                        "content": {}
+                    }
+                }
+            },
+            "patch": {
+                "tags": ["Training"],
+                "summary": "Add read pages",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "description": "Pages object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ReadPagesRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ReadPagesResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request (invalid id) / No token provided",
+                        "content": {}
+                    },
+                    "401": {
+                        "description": "Unauthorized (invalid access token)",
+                        "content": {}
+                    },
+                    "403": {
+                        "description": "no active training / you have read all the books, the training is over",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Invalid user / Invalid session",
+                        "content": {}
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Training"],
+                "summary": "Get training",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetTraining"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request (invalid id) / No token provided",
+                        "content": {}
+                    },
+                    "401": {
+                        "description": "Unauthorized (invalid access token)",
+                        "content": {}
+                    },
+                    "403": {
+                        "description": "no active training / training is over",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Invalid user / Invalid session",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "/users/user": {
+            "get": {
+                "tags": ["User"],
+                "summary": "Get user info",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetUserInfo"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "No token provided",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Invalid user / Invalid session",
+                        "content": {}
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "RegistrationRequest": {
+                "type": "object",
+                "required": ["username", "email", "password"],
+                "properties": {
+                    "username": {
+                        "type": "string",
+                        "description": "User's name",
+                        "example": "User"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "User's email",
+                        "format": "email"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "User's password",
+                        "example": "qwerty123"
+                    }
+                }
+            },
+            "RegistrationResponse": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string",
+                        "description": "User's name",
+                        "example": "User"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "User's email",
+                        "format": "email"
+                    }
+                }
+            },
+            "LoginRequest": {
+                "type": "object",
+                "required": ["email", "password"],
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "User's email",
+                        "format": "email"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "User's password",
+                        "example": "qwerty123"
+                    }
+                }
+            },
+            "LoginResponse": {
+                "type": "object",
+                "properties": {
+                    "token": {
+                        "type": "string",
+                        "description": "User's token",
+                        "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODAxZDk5MTkyOGE0ODM2NGY2ODdkMiIsImlhdCI6MTYxOTAwOTI2NywiZXhwIjoxNjIxNjAxMjY3fQ.LPz3owBfisJKIbdU-q9vjt7sGSFDSw_Otd9zSnBRuvU"
+                    },
+                    "user": {
+                        "type": "object",
+                        "description": "Information about user",
+                        "properties": {
+                            "username": {
+                                "type": "string",
+                                "description": "User's name",
+                                "example": "User"
+                            },
+                            "email": {
+                                "type": "string",
+                                "description": "User's email",
+                                "example": "user@example.com"
+                            },
+                            "books": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "description": "Book's id",
+                                    "example": "608170ac715ef491300d3d2e"
+                                }
+                            },
+                            "training": {
+                                "type": "string",
+                                "description": "Training's id",
+                                "example": "608170fb715ef491300d3d2f"
+                            }
+                        }
+                    }
+                }
+            },
+            "AddingBookRequest": {
+                "required": ["title", "numberOfPages"],
+                "type": "object",
+                "properties": {
                     "title": {
-                      "type": "string",
-                      "description": "book title",
-                      "example": "22-04 Book"
+                        "type": "string",
+                        "description": "Book's title",
+                        "example": "Harry Potter"
                     },
                     "author": {
-                      "type": "string",
-                      "description": "Book's author",
-                      "example": "Chub 22-04"
+                        "type": "string",
+                        "description": "Book's author",
+                        "example": "J. K. Rowling"
                     },
                     "year": {
-                      "type": "integer",
-                      "description": "publish year",
-                      "example": 1920
+                        "type": "number",
+                        "description": "Book's year",
+                        "example": "1997"
                     },
                     "numberOfPages": {
-                      "type": "integer",
-                      "description": "book pages",
-                      "example": 45
+                        "type": "number",
+                        "description": "Number of pages in a book",
+                        "example": "123"
+                    }
+                }
+            },
+            "AddingBookResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Book's id",
+                        "example": "07ef3f4358b773378699381"
                     },
-                    "readPages": {
-                      "type": "integer",
-                      "description": "read pages",
-                      "example": 0
+                    "title": {
+                        "type": "string",
+                        "description": "Book's title",
+                        "example": "Harry Porter"
+                    },
+                    "author": {
+                        "type": "string",
+                        "description": "Book's author",
+                        "example": "J. K. Rowling"
+                    },
+                    "year": {
+                        "type": "integer",
+                        "description": "Book's year",
+                        "example": "1997"
+                    },
+                    "numberOfPages": {
+                        "type": "integer",
+                        "description": "Number of pages in a book",
+                        "example": "123"
                     },
                     "review": {
-                      "type": "string",
-                      "description": "rewiew",
-                      "example": ""
+                        "type": "string",
+                        "description": "rewiew",
+                        "example": ""
                     },
                     "rating": {
-                      "type": "integer",
-                      "description": "rating",
-                      "minimum": 0,
-                      "maximum": 5,
-                      "example": null
+                        "type": "integer",
+                        "description": "rating",
+                        "minimum": 0,
+                        "maximum": 5,
+                        "example": null
                     }
-                  }
                 }
-              },
-              "results": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
+            },
+            "PatchBookRequest": {
+                "required": [],
+                "type": "object",
+                "properties": {
+                    "review": {
+                        "type": "string",
+                        "description": "Book's review",
+                        "example": "Harry Potter is a good book"
+                    },
+                    "rating": {
+                        "type": "integer",
+                        "description": "Book's rating",
+                        "example": "4"
+                    }
+                }
+            },
+            "PatchBookResponse": {
+                "required": [],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Book's id",
+                        "example": "608170ac715ef491300d3d2e"
+                    },
+                    "review": {
+                        "type": "string",
+                        "description": "Book's review",
+                        "example": "Harry Potter is a good book"
+                    },
+                    "rating": {
+                        "type": "integer",
+                        "description": "Book's rating",
+                        "example": "4"
+                    }
+                }
+            },
+            "AddTrainingRequest": {
+                "type": "object",
+                "required": ["start", "end", "books"],
+                "properties": {
+                    "start": {
+                        "type": "string",
+                        "description": "start date training",
+                        "example": "2021-04-22"
+                    },
+                    "end": {
+                        "type": "string",
+                        "description": "end date training",
+                        "example": "2021-04-25"
+                    },
+                    "books": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "description": "book id (could be more than one)"
+                        },
+                        "example": ["6081734321739d6fac75857e"]
+                    }
+                }
+            },
+            "AddTrainingResponse": {
+                "type": "object",
+                "properties": {
                     "_id": {
-                      "type": "string",
-                      "description": "training period id",
-                      "example": "608185d3797104748da4ce35"
+                        "type": "string",
+                        "description": "training id",
+                        "example": "6081759c95df4f709eb06438"
                     },
-                    "date": {
-                      "type": "string",
-                      "description": "training period day date",
-                      "example": "2021-04-22 17:18:59"
+                    "start": {
+                        "type": "string",
+                        "example": "2021-04-22",
+                        "description": "start date training"
                     },
-                    "pageCount": {
-                      "type": "integer",
-                      "description": "number of pages read ",
-                      "example": 7
+                    "end": {
+                        "type": "string",
+                        "example": "2021-04-25",
+                        "description": "end date training"
+                    },
+                    "duration": {
+                        "type": "integer",
+                        "description": "duration",
+                        "example": 3
+                    },
+                    "books": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "_id": {
+                                    "type": "string",
+                                    "description": "book id",
+                                    "example": "6081734321739d6fac75857e"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "description": "book title",
+                                    "example": "22-04 Book"
+                                },
+                                "author": {
+                                    "type": "string",
+                                    "description": "Book's author",
+                                    "example": "Chub 22-04"
+                                },
+                                "year": {
+                                    "type": "integer",
+                                    "description": "publish year",
+                                    "example": 1920
+                                },
+                                "numberOfPages": {
+                                    "type": "integer",
+                                    "description": "book pages",
+                                    "example": 45
+                                },
+                                "readPages": {
+                                    "type": "integer",
+                                    "description": "read pages",
+                                    "example": 0
+                                },
+                                "review": {
+                                    "type": "string",
+                                    "description": "rewiew",
+                                    "example": ""
+                                },
+                                "rating": {
+                                    "type": "integer",
+                                    "description": "rating",
+                                    "minimum": 0,
+                                    "maximum": 5,
+                                    "example": null
+                                }
+                            }
+                        }
+                    },
+                    "pagesReadPerDay": {
+                        "type": "integer",
+                        "description": "number of pages per day",
+                        "example": 15
+                    },
+                    "results": {
+                        "type": "array",
+                        "example": []
                     }
-                  }
                 }
-              }
+            },
+            "ReadPagesRequest": {
+                "required": ["date", "pages"],
+                "type": "object",
+                "properties": {
+                    "date": {
+                        "type": "string",
+                        "example": "2021-04-27",
+                        "description": "read pages"
+                    },
+                    "pages": {
+                        "type": "integer",
+                        "example": 7,
+                        "description": "read pages"
+                    }
+                }
+            },
+            "ReadPagesResponse": {
+                "type": "object",
+                "properties": {
+                    "book": {
+                        "type": "object",
+                        "properties": {
+                            "_id": {
+                                "type": "string",
+                                "description": "book id",
+                                "example": "6081734321739d6fac75857e"
+                            },
+                            "title": {
+                                "type": "string",
+                                "description": "book title",
+                                "example": "22-04 Book"
+                            },
+                            "author": {
+                                "type": "string",
+                                "description": "Book's author",
+                                "example": "Chub 22-04"
+                            },
+                            "year": {
+                                "type": "integer",
+                                "description": "publish year",
+                                "example": 1920
+                            },
+                            "numberOfPages": {
+                                "type": "integer",
+                                "description": "book pages",
+                                "example": 45
+                            },
+                            "readPages": {
+                                "type": "integer",
+                                "description": "read pages",
+                                "example": 0
+                            },
+                            "review": {
+                                "type": "string",
+                                "description": "rewiew",
+                                "example": ""
+                            },
+                            "rating": {
+                                "type": "integer",
+                                "description": "rating",
+                                "minimum": 0,
+                                "maximum": 5,
+                                "example": null
+                            }
+                        }
+                    },
+                    "training": {
+                        "type": "object",
+                        "properties": {
+                            "_id": {
+                                "type": "string",
+                                "description": "training id",
+                                "example": "6081759c95df4f709eb06438"
+                            },
+                            "start": {
+                                "type": "string",
+                                "description": "start date training",
+                                "example": "2021-04-22"
+                            },
+                            "end": {
+                                "type": "string",
+                                "description": "end date training",
+                                "example": "2021-04-25"
+                            },
+                            "duration": {
+                                "type": "integer",
+                                "description": "duration",
+                                "example": 3
+                            },
+                            "pagesReadPerDay": {
+                                "type": "integer",
+                                "description": "number of pages per day",
+                                "example": 15
+                            },
+                            "books": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "description": "book id",
+                                    "example": "6081734321739d6fac75857e"
+                                }
+                            },
+                            "results": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_id": {
+                                            "type": "string",
+                                            "description": "training period id",
+                                            "example": "608185d3797104748da4ce35"
+                                        },
+                                        "date": {
+                                            "type": "string",
+                                            "description": "training period day date",
+                                            "example": "2021-04-27"
+                                        },
+                                        "pageCount": {
+                                            "type": "integer",
+                                            "description": "number of pages read ",
+                                            "example": 7
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetTraining": {
+                "type": "object",
+                "properties": {
+                    "training": {
+                        "type": "object",
+                        "properties": {
+                            "_id": {
+                                "type": "string",
+                                "description": "training id",
+                                "example": "6081759c95df4f709eb06438"
+                            },
+                            "start": {
+                                "type": "string",
+                                "example": "2021-04-22",
+                                "description": "start date training"
+                            },
+                            "end": {
+                                "type": "string",
+                                "example": "2021-04-25",
+                                "description": "end date training"
+                            },
+                            "duration": {
+                                "type": "integer",
+                                "description": "duration",
+                                "example": 3
+                            },
+                            "pagesReadPerDay": {
+                                "type": "integer",
+                                "description": "number of pages per day",
+                                "example": 15
+                            },
+                            "books": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_id": {
+                                            "type": "string",
+                                            "description": "book id",
+                                            "example": "6081734321739d6fac75857e"
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "description": "book title",
+                                            "example": "22-04 Book"
+                                        },
+                                        "author": {
+                                            "type": "string",
+                                            "description": "Book's author",
+                                            "example": "Chub 22-04"
+                                        },
+                                        "year": {
+                                            "type": "integer",
+                                            "description": "publish year",
+                                            "example": 1920
+                                        },
+                                        "numberOfPages": {
+                                            "type": "integer",
+                                            "description": "book pages",
+                                            "example": 45
+                                        },
+                                        "readPages": {
+                                            "type": "integer",
+                                            "description": "read pages",
+                                            "example": 0
+                                        },
+                                        "review": {
+                                            "type": "string",
+                                            "description": "rewiew",
+                                            "example": ""
+                                        },
+                                        "rating": {
+                                            "type": "integer",
+                                            "description": "rating",
+                                            "minimum": 0,
+                                            "maximum": 5,
+                                            "example": null
+                                        }
+                                    }
+                                }
+                            },
+                            "results": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_id": {
+                                            "type": "string",
+                                            "description": "training period id",
+                                            "example": "608185d3797104748da4ce35"
+                                        },
+                                        "date": {
+                                            "type": "string",
+                                            "description": "training period day date",
+                                            "example": "2021-04-22 17:18:59"
+                                        },
+                                        "pageCount": {
+                                            "type": "integer",
+                                            "description": "number of pages read ",
+                                            "example": 7
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetUserInfo": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "User's email",
+                        "example": "user@example.com"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "User's name",
+                        "example": "User"
+                    },
+                    "books": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "description": "Book's id",
+                            "example": "608170ac715ef491300d3d2e"
+                        }
+                    },
+                    "training": {
+                        "type": "string",
+                        "description": "Training's id",
+                        "example": "608170fb715ef491300d3d2f"
+                    },
+                    "planeToRead": {
+                        "type": "object",
+                        "description": "Information about books which user planes to read",
+                        "properties": {
+                            "review": {
+                                "type": "sting",
+                                "description": "Book's review",
+                                "example": "null"
+                            },
+                            "rating": {
+                                "type": "sting",
+                                "description": "Book's rating",
+                                "example": "null"
+                            },
+                            "_id": {
+                                "type": "string",
+                                "description": "Book's id",
+                                "example": "608170ac715ef491300d3d2e"
+                            },
+                            "title": {
+                                "type": "string",
+                                "description": "Book's title",
+                                "example": "'Тося Бося и день Суперпапы'"
+                            },
+                            "author": {
+                                "type": "string",
+                                "description": "Book's author",
+                                "example": "Лина Жутауте"
+                            },
+                            "year": {
+                                "type": "number",
+                                "description": "Book's year",
+                                "example": "2019"
+                            },
+                            "numberOfPages": {
+                                "type": "number",
+                                "description": "Book's numberOfPages",
+                                "example": "42"
+                            }
+                        }
+                    },
+                    "readNow": {
+                        "type": "object",
+                        "description": "Information about books which user reading now",
+                        "properties": {
+                            "review": {
+                                "type": "sting",
+                                "description": "Book's review",
+                                "example": "null"
+                            },
+                            "rating": {
+                                "type": "sting",
+                                "description": "Book's rating",
+                                "example": "null"
+                            },
+                            "_id": {
+                                "type": "string",
+                                "description": "Book's id",
+                                "example": "6081706a715ef491300d3d2d"
+                            },
+                            "title": {
+                                "type": "string",
+                                "description": "Book's title",
+                                "example": "'Тося Бося и пир у Зубной феи'"
+                            },
+                            "author": {
+                                "type": "string",
+                                "description": "Book's author",
+                                "example": "Лина Жутауте"
+                            },
+                            "year": {
+                                "type": "number",
+                                "description": "Book's year",
+                                "example": "2019"
+                            },
+                            "numberOfPages": {
+                                "type": "number",
+                                "description": "Book's numberOfPages",
+                                "example": "40"
+                            }
+                        }
+                    },
+                    "readFinish": {
+                        "type": "object",
+                        "description": "Information about books which user finished reading",
+                        "properties": {
+                            "review": {
+                                "type": "sting",
+                                "description": "Book's review",
+                                "example": "null"
+                            },
+                            "rating": {
+                                "type": "sting",
+                                "description": "Book's rating",
+                                "example": "null"
+                            },
+                            "_id": {
+                                "type": "string",
+                                "description": "Book's id",
+                                "example": "60816fd9d9c36e9cb8b8330a"
+                            },
+                            "title": {
+                                "type": "string",
+                                "description": "Book's title",
+                                "example": "'Тося Бося и гном Чистюля'"
+                            },
+                            "author": {
+                                "type": "string",
+                                "description": "Book's author",
+                                "example": "Лина Жутауте"
+                            },
+                            "year": {
+                                "type": "number",
+                                "description": "Book's year",
+                                "example": "2013"
+                            },
+                            "numberOfPages": {
+                                "type": "number",
+                                "description": "Book's numberOfPages",
+                                "example": "37"
+                            }
+                        }
+                    }
+                }
             }
-          }
+        },
+        "securitySchemes": {
+            "Bearer": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
         }
-      },
-      "GetUserInfo": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "description": "User's email",
-            "example": "user@example.com"
-          },
-          "username": {
-            "type": "string",
-            "description": "User's name",
-            "example": "User"
-          },
-          "books": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "description": "Book's id",
-              "example": "608170ac715ef491300d3d2e"
-            }
-          },
-          "training": {
-            "type": "string",
-            "description": "Training's id",
-            "example": "608170fb715ef491300d3d2f"
-          },
-          "planeToRead": {
-            "type": "object",
-            "description": "Information about books which user planes to read",
-            "properties": {
-              "review": {
-                "type": "sting",
-                "description": "Book's review",
-                "example": "null"
-              },
-              "rating": {
-                "type": "sting",
-                "description": "Book's rating",
-                "example": "null"
-              },
-              "_id": {
-                "type": "string",
-                "description": "Book's id",
-                "example": "608170ac715ef491300d3d2e"
-              },
-              "title": {
-                "type": "string",
-                "description": "Book's title",
-                "example": "'Тося Бося и день Суперпапы'"
-              },
-              "author": {
-                "type": "string",
-                "description": "Book's author",
-                "example": "Лина Жутауте"
-              },
-              "year": {
-                "type": "number",
-                "description": "Book's year",
-                "example": "2019"
-              },
-              "numberOfPages": {
-                "type": "number",
-                "description": "Book's numberOfPages",
-                "example": "42"
-              }
-            }
-          },
-          "readNow": {
-            "type": "object",
-            "description": "Information about books which user reading now",
-            "properties": {
-              "review": {
-                "type": "sting",
-                "description": "Book's review",
-                "example": "null"
-              },
-              "rating": {
-                "type": "sting",
-                "description": "Book's rating",
-                "example": "null"
-              },
-              "_id": {
-                "type": "string",
-                "description": "Book's id",
-                "example": "6081706a715ef491300d3d2d"
-              },
-              "title": {
-                "type": "string",
-                "description": "Book's title",
-                "example": "'Тося Бося и пир у Зубной феи'"
-              },
-              "author": {
-                "type": "string",
-                "description": "Book's author",
-                "example": "Лина Жутауте"
-              },
-              "year": {
-                "type": "number",
-                "description": "Book's year",
-                "example": "2019"
-              },
-              "numberOfPages": {
-                "type": "number",
-                "description": "Book's numberOfPages",
-                "example": "40"
-              }
-            }
-          },
-          "readFinish": {
-            "type": "object",
-            "description": "Information about books which user finished reading",
-            "properties": {
-              "review": {
-                "type": "sting",
-                "description": "Book's review",
-                "example": "null"
-              },
-              "rating": {
-                "type": "sting",
-                "description": "Book's rating",
-                "example": "null"
-              },
-              "_id": {
-                "type": "string",
-                "description": "Book's id",
-                "example": "60816fd9d9c36e9cb8b8330a"
-              },
-              "title": {
-                "type": "string",
-                "description": "Book's title",
-                "example": "'Тося Бося и гном Чистюля'"
-              },
-              "author": {
-                "type": "string",
-                "description": "Book's author",
-                "example": "Лина Жутауте"
-              },
-              "year": {
-                "type": "number",
-                "description": "Book's year",
-                "example": "2013"
-              },
-              "numberOfPages": {
-                "type": "number",
-                "description": "Book's numberOfPages",
-                "example": "37"
-              }
-            }
-          }
-        }
-      }
-    },
-    "securitySchemes": {
-      "Bearer": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
-      }
     }
-  }
 }
