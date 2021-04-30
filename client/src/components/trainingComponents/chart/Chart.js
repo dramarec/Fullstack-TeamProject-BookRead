@@ -12,7 +12,6 @@ import { getTraining } from '../../../redux/selectors/bookSelector';
 import ChartWrapper from './Chart.styled';
 import { useSelector } from 'react-redux';
 
-
 /*const data = [
   { name: 'Day 1', ПЛАН: 570, ФАКТ: 400 },
   { name: 'Day 2', ПЛАН: 290, ФАКТ: 450 },
@@ -21,12 +20,12 @@ import { useSelector } from 'react-redux';
 ];*/
 
 const data = [];
-for (let num=0; num <= 10; num++) {
-  data.push({
-    name: num,
-    ПЛАН: 34,
-    ФАКТ: 0
-  })
+for (let num = 0; num <= 10; num++) {
+    data.push({
+        name: num,
+        ПЛАН: 34,
+        ФАКТ: 0,
+    });
 }
 
 const style = {
@@ -38,25 +37,25 @@ const style = {
 };
 
 const Chart = () => {
-  const training = useSelector(getTraining)
-  const result = training.results.map(item => {
-    console.log(item, "item from RESULTS");
-    return [item.pageCount];
-});
-console.log("training", result);
- 
-  const data = [];
-  for (let num=0; num <= training.duration; num++) {
-    data.push({
-      name: num,
-      ПЛАН: 34,
-      ФАКТ: result[num]
-    })
-  }
-  const [opacity, setOpacity] = useState({
-    ПЛАН: 1,
-    ФАКТ: 1,
-  });
+    const training = useSelector(getTraining);
+    const result = training.results.map(item => {
+        console.log(item, 'item from RESULTS');
+        return [item.pageCount];
+    });
+    console.log('training', result);
+
+    const data = [];
+    for (let num = 0; num <= training.duration; num++) {
+        data.push({
+            name: num,
+            ПЛАН: 34,
+            ФАКТ: result[num],
+        });
+    }
+    const [opacity, setOpacity] = useState({
+        ПЛАН: 1,
+        ФАКТ: 1,
+    });
 
     const start = training.start;
     const end = training.end;
@@ -83,17 +82,17 @@ console.log("training", result);
         'TRAINinG!',
     );
 
-    const data = [
-        { name: 'Training', ПЛАН: 570, ФАКТ: 400 },
-        { name: 'Day 2', ПЛАН: 290, ФАКТ: 450 },
-        { name: 'Day 3', ПЛАН: 880, ФАКТ: 720 },
-        { name: 'Day 4', ПЛАН: 260, ФАКТ: 390 },
-    ];
+    // const data = [
+    //     { name: 'Training', ПЛАН: 570, ФАКТ: 400 },
+    //     { name: 'Day 2', ПЛАН: 290, ФАКТ: 450 },
+    //     { name: 'Day 3', ПЛАН: 880, ФАКТ: 720 },
+    //     { name: 'Day 4', ПЛАН: 260, ФАКТ: 390 },
+    // ];
 
-    const [opacity, setOpacity] = useState({
-        ПЛАН: 1,
-        ФАКТ: 1,
-    });
+    // const [opacity, setOpacity] = useState({
+    //     ПЛАН: 1,
+    //     ФАКТ: 1,
+    // });
 
     const handleMouseEnter = useCallback(
         o => {
