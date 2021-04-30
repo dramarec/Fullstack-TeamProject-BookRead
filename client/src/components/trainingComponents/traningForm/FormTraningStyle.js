@@ -55,14 +55,44 @@ const FormTraningStyle = styled.div`
         outline: none;
         height: 42px;
 
-        /* @media screen and (min-width: 1280px) {
-      margin: 36px 0px 0px 41px;
-    } */
+        @media screen and (min-width: 768px) {
+            //margin-top: 40px;
+        }
+        @media screen and (min-width: 1280px) {
+            margin-top: 40px;
+        }
+
         &:hover,
         &:focus {
             color: #f6f7fb;
             background-color: #ff6b08;
             border: 1px solid #f6f7fb;
+            outline: none;
+        }
+    }
+
+    .FormBtn {
+        display: flex;
+        justify-content: center;
+        font-family: 'Montserrat-Medium';
+        font-size: 14px;
+        line-height: 2.71;
+        padding: 0px 58px;
+        margin: 0 auto;
+        color: #f6f7fb;
+        background-color: #ff6b08;
+        border: none;
+        outline: none;
+        height: 42px;
+
+        @media screen and (min-width: 768px) {
+            margin-top: 40px;
+        }
+        &:hover,
+        &:focus {
+            border: 1px solid #ff6b08;
+            background-color: #f6f7fb;
+            color: #ff6b08;
             outline: none;
         }
     }

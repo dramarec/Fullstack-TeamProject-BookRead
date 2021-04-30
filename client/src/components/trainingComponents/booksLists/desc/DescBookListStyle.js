@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
 const DescBookListStyle = styled.div`
-    width: 880px;
     @media (max-width: 767px) {
         display: none;
+    }
+
+    @media (min-width: 1280px) {
+        width: 880px;
+        margin-buttom: 0px;
     }
     /* outline: 1px solid red; */
     .books-titles {
@@ -78,10 +82,11 @@ const DescBookListStyle = styled.div`
                 height: 38px;
             }
             display: flex;
-            align-items: center;
+
             //padding-right: 40px;
-            @media (min-width: 1279px) {
+            @media (min-width: 1280px) {
                 padding-right: 25px;
+                align-items: center;
             }
             &:not(:last-child) {
                 margin-bottom: 20px;
@@ -112,31 +117,39 @@ const DescBookListStyle = styled.div`
     }
 
     .books-titles__list p:nth-child(1) {
-        /* flex: 4.4 1 0%; */
-        margin-right: 280px;
+        @media screen and (min-width: 768px) {
+            //flex: 1.3 1 0%;
+            margin-right: 171px;
+        }
+        @media screen and (min-width: 1280px) {
+            /* flex: 4.4 1 0%; */
+            margin-right: 280px;
+        }
     }
     .books-titles__list p:nth-child(2) {
-        /* @media screen and (min-width: 768px) {
-            flex: 1.3 1 0%;
-        } */
+        @media screen and (min-width: 768px) {
+            /* flex: 1.3 1 0%; */
+            margin-right: 146px;
+        }
         @media screen and (min-width: 1280px) {
             /* flex: 2 1 0%; */
             margin-right: 175px;
         }
     }
     .books-titles__list p:nth-child(3) {
-        /* @media screen and (min-width: 768px) {
-            flex: 0.5 1 0%;
-        } */
+        @media screen and (min-width: 768px) {
+            // flex: 0.5 1 0%;
+            margin-right: 55px;
+        }
         @media screen and (min-width: 1280px) {
             /* flex: 1 1 0%; */
             margin-right: 90px;
         }
     }
     .books-titles__list p:nth-child(4) {
-        /* @media screen and (min-width: 768px) {
+        @media screen and (min-width: 768px) {
             flex: 0.4 0 0%;
-        } */
+        }
         @media screen and (min-width: 1280px) {
             /* flex: 1 1 0%; */
         }

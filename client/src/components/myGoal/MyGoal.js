@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MyGoalStyled from './MyGoalStyled';
 
 const MyGoal = () => {
-    const [startTraning, setStartTraning] = useState(false);
+    const [startTraning, setStartTraning] = useState(true);
     return (
         <MyGoalStyled startTraning={startTraning}>
             <div className="statistic-title">

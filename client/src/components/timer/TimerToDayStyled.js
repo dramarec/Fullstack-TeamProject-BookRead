@@ -3,8 +3,16 @@ import styled from 'styled-components';
 const TimerToDayStyled = styled.section`
     display: flex;
     justify-content: center;
-    margin-bottom: 41px;
-    width: 886px;
+    @media screen and (min-width: 768px) {
+        margin: 30px auto 0px;
+        width: 610px;
+    }
+    @media screen and (min-width: 1280px) {
+        margin-top: 0px;
+        margin-bottom: 41px;
+        width: 886px;
+    }
+
     .timerYear {
         margin-right: 68px;
     }

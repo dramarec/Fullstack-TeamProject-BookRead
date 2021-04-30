@@ -93,7 +93,7 @@ const FormTraning = () => {
             </form>
             <DescBookList books={booksArr} />
             <div>
-                <button onClick={onHandleAddTraining} className="bookFormBtn">
+                <button onClick={onHandleAddTraining} className="FormBtn">
                     Почати тренування
                 </button>
             </div>

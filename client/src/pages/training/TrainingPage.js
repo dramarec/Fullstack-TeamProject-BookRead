@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Responsive from 'react-responsive';
 import TrainingPageStyled from './TrainingPageStyled';
 import Chart from '../../components/trainingComponents/chart/Chart';
 import MyTraining from '../../components/trainingComponents/myTraining/MyTraining';
@@ -17,22 +18,40 @@ const TrainingPage = () => {
     const training = useSelector(authSelectors.getUserTraining);
     const trainingBooksList = useSelector(trainingSelector.trainingBooksList);
 
+    const Desktop = props => <Responsive {...props} minWidth={1280} />;
+    const Tablet = props => <Responsive {...props} maxWidth={1279} />;
+    const Mobile = props => <Responsive {...props} maxWidth={767} />;
+
     // useEffect(() => {
     //     dispatch(getUsersBooksOperetion());
     // }, []);
 
     return (
         <TrainingPageStyled className="container">
-            {!training.length && <MyTraining />}
-            {!training.length && <MyGoal />}
-            {!training.length && <Chart />}
+            <Desktop>
+                {!training.length && <MyTraining />}
+                {!training.length && <MyGoal />}
+                {!training.length && <Chart />}
 
-            <div className="leftSide">
-                {training.length && <TimersSet />}
-                {training.length && <DescBookList books={trainingBooksList} />}
+                <div className="leftSide">
+                    {training.length && <TimersSet />}
+                    {training.length && (
+                        <DescBookList books={trainingBooksList} />
+                    )}
+                    {training.length && <Chart />}
+                </div>
+                <div className="rigthSide">{training.length && <MyGoal />}</div>
+            </Desktop>
+            <Tablet>
+                {training.length && <MyGoal />}
+                {training.length && <MyTraining />}
                 {training.length && <Chart />}
-            </div>
-            <div className="rigthSide">{training.length && <MyGoal />}</div>
+
+                {!training.length && <TimersSet />}
+                {!training.length && <MyGoal />}
+                {!training.length && <DescBookList books={trainingBooksList} />}
+                {!training.length && <Chart />}
+            </Tablet>
 
             {/* <TimersSet />
             <div className="container">

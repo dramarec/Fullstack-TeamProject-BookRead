@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 const MyGoalStyled = styled.div`
-    margin-top: 50px;
-    margin-bottom: 100px;
     width: 270px;
     height: 318px;
     background-color: #ffffff;
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
     margin-left: auto;
     @media screen and (min-width: 768px) and (max-width: 1279px) {
+        margin-top: 30px;
+        margin-bottom: 30px;
         height: ${props => (props.startTraning ? '125px' : '105px')};
         width: 678px;
         padding: 23px 45px 11px 45px;
@@ -19,7 +19,9 @@ const MyGoalStyled = styled.div`
             props.startTraning ? 'space-around' : 'space-between'};
     }
     @media screen and (min-width: 1280px) {
+        margin-top: 50px;
         width: 275px;
+        margin-bottom: 100px;
     }
 
     .statistic-title {
@@ -91,6 +93,7 @@ const MyGoalStyled = styled.div`
             display: flex;
             flex-direction: row;
             font-size: 11px;
+            margin-top: 2px;
         }
     }
     .statistic-reading .statistic__text {
