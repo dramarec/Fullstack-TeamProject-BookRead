@@ -14,8 +14,8 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
 
   return (
     <AuthFormStyled>
-      <div className="container">
-        <div className="bg-ph">
+      <div className='auth-container'>
+        <div className="container bg-ph">
           <Formik
             initialValues={{ ...initialState }}
             validationSchema={errorMessagesSchema}
@@ -109,16 +109,16 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                   </label>
                 )}
                 <button className="mainButton authFormBtn" type="submit">
-                  {location.pathname === '/signup' ? 'Реєстрація' : 'Увійти'}
+                  {location.pathname === '/signup' ? 'Зареєструватися' : 'Увійти'}
                 </button>
                 <button className="mainButton authFormBtnSec" type="submit">
                   {location.pathname === '/signup' ? (
                     <Link to="/" className="buttonSignUpMain">
-                      Увійти
+                      <p className='buttonSignUpMain__text'>Вже з нами? <span className='buttonSignUpMain__link'> Увійти </span> </p>
                     </Link>
                   ) : (
                     <Link to="/signup" className="buttonSignUpMain">
-                      Реєстрація
+                     <span className='buttonSignUpMain__link'>Реєстрація</span> 
                     </Link>
                   )}
                 </button>
@@ -126,7 +126,7 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
             )}
           </Formik>
         </div>
-        <div className="div-for-fl">
+        <div className="div-for-fl container">
           {location.pathname === '/' && (
             <div className="div-cont">
               <Two />
@@ -146,40 +146,45 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
               <h2 className="titleSignUp">Допоможе вам</h2>
               <ul>
                 <li className="authFormText">
-                  <sup className="authFormSym">{'>'}</sup>Швидше сформулювати
-                  свою ціль і розпочати читати
+                  <sup className="authFormSym">{'>'}</sup>
+                  <p className='instraction'>Швидше сформулювати свою ціль і розпочати читати</p>
                 </li>
                 <li className="authFormText">
-                  <sup className="authFormSym">{'>'}</sup>Пропорційно
-                  розподілити навантаження на кожний день
+                  <sup className="authFormSym">{'>'}</sup>
+                  <p className='instraction'>Пропорційно розподілити навантаження на кожний день</p>
                 </li>
                 <li className="authFormText">
-                  <sup className="authFormSym">{'>'}</sup>Відстежувати особистий
-                  успіх
+                  <sup className="authFormSym">{'>'}</sup>
+                  <p className='instraction'>Відстежувати особистий успіх</p>
                 </li>
               </ul>
               <h2 className="titleSignUp">Також ви зможете</h2>
               <ul>
-                <li className="authFormText">
-                  <sup className="authFormSym">{'>'}</sup>Формувати особисту
-                  думку незалежну від інших
+                <li className="authFormText ">
+                  <sup className="authFormSym">{'>'}</sup>
+                  <p className='instraction'>Формувати особисту думку незалежну від інших</p>
                 </li>
                 <li className="authFormText">
-                  <sup className="authFormSym">{'>'}</sup>Підвищити свої
-                  професійні якості опираючись на нові знання
+                  <sup className="authFormSym">{'>'}</sup>
+                  <p className='instraction'>Підвищити свої професійні якості опираючись на нові знання</p>
                 </li>
                 <li className="authFormText last">
-                  <sup className="authFormSym">{'>'}</sup>Стати цікавим
-                  співрозмовником
+                  <sup className="authFormSym">{'>'}</sup>
+                  <p className='instraction'>Стати цікавим співрозмовником</p>
                 </li>
               </ul>
-              
-              <Link to="/" className="buttonSignUp">
+              <div className='sign'>
+              <button className="buttonSign in">
+              <Link to="/" >
                 Увійти
               </Link>
-              <Link to="/signup" className="buttonSignUp">
+              </button>
+              <button className="buttonSign up">
+              <Link to="/signup" >
                 Реєстрація
               </Link>
+              </button>
+              </div>
             </div>
           )}
         </div>

@@ -1,3 +1,4 @@
+
 import styled from 'styled-components';
 import imgMob from './photo/mob.jpg';
 import bgMob from './photo/mob-bg.png';
@@ -5,8 +6,40 @@ import imgTab from './photo/tab.jpg';
 import bgTab from './photo/tab-bg.png';
 import imgDec from './photo/desctop.jpg';
 import bgDec from './photo/dec-bg.png';
+import picTest from './photo/picTest.jpg';
 
 const AuthFormStyled = styled.div`
+  
+  .auth-container {
+    @media (max-width: 1279px) {
+      display: block;
+    }
+    @media  (min-width: 1280px) {
+    display: flex;
+    }
+  }
+  .div-for-fl {
+    flex: 3 1 0;
+  }
+  .bg-ph {
+    flex: 2 1 0;
+    @media  (min-width: 1280px) {
+    padding: 185px 83px;
+    }
+  }
+  .buttonSignUpMain__text {
+    color: var(--#898f9f);
+  }
+  .buttonSignUpMain__link {
+    text-decoration: underline;
+    color: var(--accent-color);
+  }
+  .signupDiv {
+    @media and (min-width: 768px) and (max-width: 1279px)
+    {
+      padding: 0 110px;
+    }
+  }
   .authError {
     font-family: 'Montserrat-Regular';
     color: #e63946;
@@ -17,27 +50,24 @@ const AuthFormStyled = styled.div`
     display: grid;
     height: 30px;
   }
-
-
   .bg-ph{
-    //background: #091e3fcc;
+  
   background: url(${bgMob}) , url(${imgMob});
- // background-image: linear-gradient(rgba(9, 30, 63, 0.8));
-  //background: linear-gradient(rgba(9, 30, 63, 0.8));
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 444px;
+  //min-height: 444px;
   max-height: 656px;
+  width: 100%;
   }
   .authForm {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
+   
   }
   .btn-google {
     font-weight: bold;
     font-size: 16px;
-    /* line-height: 38px; */
+    
     text-align: center;
     color: #707375;
     background: #f5f7fa;
@@ -50,10 +80,11 @@ const AuthFormStyled = styled.div`
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
   .authFormText {
+    display: flex;
+    align-items: center;
     font-family: Montserrat-Medium;
-    font-weight: 600;
     font-size: 14px;
-    line-height: 2.3;
+    line-height: 2.71;
     color: #ffffff;
   }
   .authFormStar {
@@ -69,20 +100,22 @@ const AuthFormStyled = styled.div`
     height: 60px;
     margin-top: 30px;
     border: none;
+    font-family: 'Montserrat-SemiBold';
+    font-size: 16px;
   }
   .authFormBtnSec {
     border: none;
     background: 0;
     color: #ff6b08;
     font-size: 13px;
-    width: 76px;
+    //width: 76px;
     height: 38px;
     margin: 0 auto;
     margin-bottom: 25px;
   }
 
   .authFormFild {
-    position: relative;
+    
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -90,12 +123,15 @@ const AuthFormStyled = styled.div`
     font-size: 14px;
     line-height: 1.21;
     letter-spacing: 0.04em;
+ 
   }
   .authFormInput {
+    font-family: 'Montserrat-Regular';
     margin-bottom: 5px;
     padding: 5px 0;
+    padding-left: 13px;
     width: 100%;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.21;
     letter-spacing: 0.04em;
     border: none;
@@ -105,13 +141,13 @@ const AuthFormStyled = styled.div`
     width: 270px;
     height: 42px;
   }
+   
 
   .div-for-fl {
-    /* width: 316px; */
-    width: 100%;
+    width: fit-content;
     background: #ffffff;
     margin: 0 auto;
-    /* position: relative; */
+   
   }
 
   .teza {
@@ -119,9 +155,8 @@ const AuthFormStyled = styled.div`
     margin: 0 auto;
     text-align: center;
     box-sizing: border-box;
-width: 229px;
-    
-   
+    //width: 229px;
+    font-family: 'Montserrat-Medium';
   }
   .svg {
     margin: 0 auto;
@@ -149,39 +184,31 @@ width: 229px;
     margin: 0 auto;
     width: 100px;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    position: absolute;
-    left: 0;
-    right: 0;
+    
     text-align: center;
   }
-  .bg-ph {
+  .bg {
     display: flex;
   }
 
   @media (min-width: 768px) and (max-width: 1279px) {
-    /* background: #091e3fcc;
-    background: url(${imgTab});
-    width: 100%;
-    max-height: 796px;
-    box-sizing: border-box;
-    background-repeat: no-repeat;
-    background-size: cover; */
+   
  .bg-ph{
 background: #091e3fcc;
     background: url(${bgTab}), url(${imgTab});
     width: 100%;
     max-height: 796px;
-   // max-height: 1000px;
+  
     box-sizing: border-box;
     background-repeat: no-repeat;
     background-size: cover;
  }
 
     .authFormText {
-      font-family: Montserrat-Medium;
+      font-family: 'Montserrat-Medium';
       font-weight: 500;
       font-size: 14px;
-      line-height: 2.3;
+      line-height: 2.71;
       color: #898f9f;
     }
     .authForm {
@@ -195,11 +222,10 @@ background: #091e3fcc;
       margin-bottom: 70px;
     }
     .div-for-fl {
-      width: 100%;
-
+      width: fit-content;
       background: #ffffff;
       margin: 0 auto;
-      position: relative;
+      
     }
     .svg {
       margin: 0 auto;
@@ -207,7 +233,7 @@ background: #091e3fcc;
       height: 65px;
       display: flex;
       justify-content: center;
-     // padding-top: 62px;
+     
     }
     .div-cont{
           padding-top: 62px;
@@ -215,10 +241,11 @@ background: #091e3fcc;
     .teza {
       font-size: 24px;
       margin: 0 auto;
-      text-align: center;
-       
-    box-sizing: border-box;
-width: 526px;
+      text-align: center;  
+      box-sizing: border-box;
+     width: 526px;
+    line-height: 1.58;
+    font-family: 'Montserrat-Medium';
     }
     
     .line::before {
@@ -229,16 +256,15 @@ width: 526px;
       margin: 0 auto;
       width: 150px;
       transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-      position: absolute;
-      left: 0;
-      right: 0;
+      
       text-align: center;
     }
     .becon {
       color: #898f9f;
       font-weight: 500;
       font-size: 20px;
-      line-height: 2.3;
+      font-family: 'Montserrat-Medium';
+      line-height: 1.9;
       text-align: center;
       margin-top: 28px;
      padding-bottom: 62px;
@@ -246,24 +272,13 @@ width: 526px;
   }
 
   @media (min-width: 1280px) {
-    /* width: 565px; */
-    /* max-height: 790px;
-    background: url(${imgDec});
-    background-repeat: no-repeat;
-    position: relative; */
-    /* .bg-ph{
- max-height: 790px;
-    background: url(${imgDec});
-    background-repeat: no-repeat;
-    position: relative;
-    } */
+    
     .bg-ph{
  max-height: 790px;
  height: 790px;
-    background: url(${bgDec}), url(${imgDec});
+    background: url(${bgDec}), url(${picTest});
     background-repeat: no-repeat;
-        position: relative;
-    left: 0;
+     
     width: 100%;
     }
 
@@ -272,14 +287,9 @@ width: 526px;
       flex-direction: column;
       width: 400px;
       background-color: white;
-      margin: 0;
+    
      
       max-height: 610px;
-      position: absolute;
-    left: 23%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
     max-height: 610px;
     }
     .div-cont {
@@ -289,11 +299,9 @@ width: 526px;
     .div-for-fl {
       width: 715px;
       height: 790px;
-      /* background: #ffffff; */
+      width: 100%;
       margin: 0 auto;
-      position: absolute;
-      left: 48%;
-      top: 6%;
+    
     }
     .svg {
       margin: 0 auto;
@@ -307,6 +315,8 @@ width: 526px;
       margin: 0 auto;
       text-align: center;
       width: 397px;
+      line-height: 1.58;
+      font-family: 'Montserrat-Medium';
     }
     .line::before {
       display: block;
@@ -316,9 +326,6 @@ width: 526px;
       margin: 0 auto;
       width: 150px;
       transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-      position: absolute;
-      left: 0;
-      right: 0;
       text-align: center;
     }
     .becon {
@@ -328,16 +335,17 @@ width: 526px;
       line-height: 2.3;
       text-align: center;
       margin-top: 28px;
+      font-family: 'Montserrat-Medium';
     }
     .authFormText {
       color: #898f9f;
     }
   }
 
-  /* styles for register information */
+ 
   .authFormSym {
     color: #ff6b08;
-    font-size: 10px;
+    font-size: 17px;
     margin-right: 11px;
   }
   .mainTitleSignUp {
@@ -345,7 +353,7 @@ width: 526px;
     font-family: 'AbrilFatface-Regular';
     font-weight: normal;
     font-size: 34px;
-    /* line-height: 1.4px;  */
+   
     padding-top: 30px;
     margin-bottom: 20px;
     
@@ -356,29 +364,60 @@ width: 526px;
     font-size: 20px;
     margin-top: 20px;
   }
-  .authFormText {
+  .instraction {
     font-family: 'Montserrat-Medium';
     font-weight: 500;
     font-size: 14px;
     color: #898f9f;
-    margin-top: 14px;
+    line-height: 2.71;
+   
   }
-  .buttonSignUp {
+  .sign {
+    width: fit-content;
+    margin: 0 auto;
+  }
+  .buttonSign {
     width: 127px;
     height: 40px;
-    border: 1px solid #242a37;
-    color: #242a37;
+    border: none;
     margin-top: 31px;
     margin-bottom: 58px;
+   
   }
+  .buttonSign.in {
+    border: 1px solid var( --main-text);
+    background-color: transparent;
+    margin-right: 16px;
+  }
+  .buttonSign.up {
+   background-color: var(--accent-color);
+  }
+  .buttonSign a {
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'Montserrat-Regular';
+    line-height: 2.71;
+  }
+  .buttonSign.up a {
+     color: var(--light-text);
+   }
+   .buttonSign.in a {
+    color: var( --main-text);
+  }
+
   .buttonSignUpMain {
     width: 127px;
     height: 40px;
     color: #ff6b08;
     margin-top: 5px;
     border: none;
+    text-decoration: none;
+    font-family: 'Montserrat-Medium';
   }
 
+  .buttonSignUpMain__text {
+    color: var(--secondary-text);
+  }
   .buttonSignUp:last-child {
     margin-left: 16px;
   }
@@ -393,8 +432,7 @@ width: 526px;
     border: none;
   }
   @media (min-width: 768px) and (max-width: 1279px) {
-    .buttonSignUp {
-      /* opacity: 0; */
+    .sign {
       display: none;
     }
     .last {
@@ -406,8 +444,7 @@ width: 526px;
     }
   }
   @media (min-width: 1280px) {
-    .buttonSignUp {
-      /* opacity: 0; */
+    .buttonSign {
       display: none;
     }
     .last {
@@ -421,18 +458,9 @@ width: 526px;
     }
     .signupDiv {
       padding-left: 90px;
+}
     }
-    /* .authForm {
-    
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    background-color: white;
-    margin: 0;
-    margin-left: 44px;
-     margin-bottom: 92px;
-    margin-top: 92px;
-} */
+   
   }
 `;
 export default AuthFormStyled;
