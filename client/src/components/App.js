@@ -14,11 +14,13 @@ import PrivateRoutes from './routes/PrivateRoutes';
 import PublicRoutes from './routes/PublicRoutes';
 import { getUsersBooksOperetion } from '../redux/operations/bookOperation';
 import loadingSelectors from '../redux/selectors/loadingSelector';
+import trainingOperation from '../redux/operations/trainingOperation';
 
 const App = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getUsersBooksOperetion());
+        dispatch(trainingOperation.getTrainingOperation());
     }, []);
     /*  const dispatch = useDispatch();
    useEffect(() => {

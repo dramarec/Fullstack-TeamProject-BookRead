@@ -6,12 +6,23 @@ const TrainingPageStyled = styled.div`
     background-color: var(--main-background);
 
     @media (min-width: 1280px) {
-        padding-top: 50px;
+        //padding-top: 50px;
     }
-
+    .leftSide {
+        display: flex;
+        flex-direction: column;
+        margin-top: 15px;
+    }
+    .rigthSide {
+        display: flex;
+        flex-direction: column;
+        margin-left: 41px;
+        margin-top: 50px;
+    }
     .training {
         width: 886px;
         margin-right: 40px;
+        margin-top: 50px;
     }
     /* background-color: var(--main-background);
   padding-top: 30px;

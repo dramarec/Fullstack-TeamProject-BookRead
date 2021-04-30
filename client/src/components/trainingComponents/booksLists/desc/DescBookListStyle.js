@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const DescBookListStyle = styled.div`
+    width: 880px;
     @media (max-width: 767px) {
         display: none;
     }

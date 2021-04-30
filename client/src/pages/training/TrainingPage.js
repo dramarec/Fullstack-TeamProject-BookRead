@@ -9,23 +9,30 @@ import { getUsersBooksOperetion } from '../../redux/operations/bookOperation';
 import TimersSet from '../../components/timer/TimersSet';
 import authSelectors from '../../redux/selectors/authSelector';
 import MyGoal from '../../components/myGoal/MyGoal';
+import DescBookList from '../../components/trainingComponents/booksLists/desc/DescBookList';
+import trainingSelector from '../../redux/selectors/trainingSelector';
 
 const TrainingPage = () => {
     const dispatch = useDispatch();
-    const training = useSelector(authSelectors.getUserTraining); // useEffect(() => {
+    const training = useSelector(authSelectors.getUserTraining);
+    const trainingBooksList = useSelector(trainingSelector.trainingBooksList);
+
+    // useEffect(() => {
     //     dispatch(getUsersBooksOperetion());
     // }, []);
 
     return (
         <TrainingPageStyled className="container">
-            {training.length && <MyTraining />}
-            {training.length && <MyGoal />}
-            {training.length && <Chart />}
+            {!training.length && <MyTraining />}
+            {!training.length && <MyGoal />}
+            {!training.length && <Chart />}
 
-            {/* {training.length && <TimersSet />}
-            {training.length && <MyGoal />}
-            {training.length && <MobBookList />}
-            {training.length && <Chart />} */}
+            <div className="leftSide">
+                {training.length && <TimersSet />}
+                {training.length && <DescBookList books={trainingBooksList} />}
+                {training.length && <Chart />}
+            </div>
+            <div className="rigthSide">{training.length && <MyGoal />}</div>
 
             {/* <TimersSet />
             <div className="container">

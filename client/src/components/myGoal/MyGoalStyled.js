@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const MyGoalStyled = styled.div`
+    margin-top: 50px;
     margin-bottom: 100px;
     width: 270px;
     height: 318px;
