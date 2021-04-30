@@ -1,15 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { Suspense, useEffect } from 'react';
-// import Modal from './modal/Modal';
-// import Button from './testButton.js/TestButton';
-// import Chart from './chart/Chart';
-// import LibraryPage from '../pages/library/LibraryPage';
 import AppBar from './appBar/AppBar';
 import { Switch, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Spin from './loader/Spin';
 import mainRoutes from '../routes/routes';
 import { useDispatch } from 'react-redux';
-// import { publicRoutes } from '../routes/publicRoutes';
 import PrivateRoutes from './routes/PrivateRoutes';
 import PublicRoutes from './routes/PublicRoutes';
 import { getUsersBooksOperetion } from '../redux/operations/bookOperation';
@@ -53,13 +49,6 @@ const App = () => {
                     </Switch>
                 </Suspense>
             </div>
-            {/* <div>
-        <LibraryPage />
-        <Button />
-        <Modal>
-          <h1>Hello</h1>
-        </Modal>
-      </div> */}
         </>
     );
 };
