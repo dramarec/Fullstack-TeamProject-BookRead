@@ -18,6 +18,10 @@ const trainingSchema = new Schema(
       },
     ],
     pagesReadPerDay: Number,
+    rest: {
+      type: Number,
+      default: 0,
+    },
     results: [
       {
         date: {

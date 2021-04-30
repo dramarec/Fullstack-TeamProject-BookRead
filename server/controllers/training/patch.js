@@ -27,14 +27,18 @@ const addRead = async (req, res, next) => {
             }
 
             arrayBook.readPages += pages;
+            arrayBook.readPages += training.rest;
+            training.rest=0
 
             if (arrayBook.readPages > arrayBook.numberOfPages) {
+                training.rest = arrayBook.readPages - arrayBook.numberOfPages;
                 arrayBook.readPages = arrayBook.numberOfPages;
             }
 
             if (pages > arrayBook.readPages) {
                 pages = arrayBook.readPages;
             }
+            await training.save()
 
             const {
                 _id,
