@@ -95,6 +95,7 @@ const addTraining = async (req, res, next) => {
             duration,
             books,
             pagesReadPerDay,
+            totalPages,
         });
 
         user.training = createTraining._id;
@@ -111,6 +112,7 @@ const addTraining = async (req, res, next) => {
                 duration: createTraining.duration,
                 books: selectedBooks,
                 pagesReadPerDay: createTraining.pagesReadPerDay,
+                totalPages: createTraining.totalPages,
                 results: createTraining.results,
             },
         });

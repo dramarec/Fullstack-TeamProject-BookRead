@@ -9,7 +9,7 @@ const operationAddNewTraining = (start, end, books) => async dispatch => {
         console.log('response', response);
         dispatch(trainingActions.newTrainingSuccess(response));
     } catch (error) {
-        dispatch(trainingActions.newTrainingError(error));
+        dispatch(trainingActions.newTrainingError(error.message));
     }
 };
 
@@ -18,11 +18,11 @@ const addReadPagesOperation = (date, pages) => async dispatch => {
 
     try {
         const { training } = await api.addReadPages(date, pages);
-        console.log(training, 'RES DATA PATCH TRAINING');
+
         dispatch(trainingActions.addReadPagesSuccess(training));
         dispatch(getTrainingOperation());
     } catch (err) {
-        dispatch(trainingActions.addReadPagesError(err.maessage));
+        dispatch(trainingActions.addReadPagesError(err.message));
     }
 };
 
