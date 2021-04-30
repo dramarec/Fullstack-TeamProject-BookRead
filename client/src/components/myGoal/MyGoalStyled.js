@@ -9,14 +9,15 @@ const MyGoalStyled = styled.div`
     @media screen and (min-width: 768px) and (max-width: 1279px) {
         margin-top: 30px;
         margin-bottom: 30px;
-        height: ${props => (props.startTraning ? '125px' : '105px')};
+        height: ${props => (props.startTraining ? '125px' : '105px')};
         width: 678px;
         padding: 23px 45px 11px 45px;
-        padding: ${props => (props.startTraning ? '0' : '23px 45px 11px 45px')};
+        padding: ${props =>
+            props.startTraining ? '0' : '23px 45px 11px 45px'};
         display: flex;
         align-items: center;
         justify-content: ${props =>
-            props.startTraning ? 'space-around' : 'space-between'};
+            props.startTraining ? 'space-around' : 'space-between'};
     }
     @media screen and (min-width: 1280px) {
         margin-top: 50px;
@@ -40,7 +41,7 @@ const MyGoalStyled = styled.div`
         display: flex;
         justify-content: center;
         @media screen and (min-width: 768px) and (max-width: 1279px) {
-            margin-top: ${props => (props.startTraning ? '15px' : '0')};
+            margin-top: ${props => (props.startTraining ? '15px' : '0')};
         }
     }
     .statistic-book {
@@ -48,19 +49,19 @@ const MyGoalStyled = styled.div`
         //flex: 2 1 0;
     }
     .statistic-day {
-        margin-right: ${props => (props.startTraning ? '20px' : '0px')};
+        margin-right: ${props => (props.startTraining ? '20px' : '0px')};
         //flex: 2 1 0;
     }
     .statistic__cell {
-        margin-top: ${props => (props.startTraning ? '72px' : '55px')};
+        margin-top: ${props => (props.startTraining ? '72px' : '55px')};
         margin-bottom: 15px;
-        width: ${props => (props.startTraning ? '66px' : '100px')};
-        height: ${props => (props.startTraning ? '66px' : '100px')};
-        padding-top: ${props => (props.startTraning ? '14px' : '24px')};
-        padding-bottom: ${props => (props.startTraning ? '14px' : '24px')};
+        width: ${props => (props.startTraining ? '66px' : '100px')};
+        height: ${props => (props.startTraining ? '66px' : '100px')};
+        padding-top: ${props => (props.startTraining ? '14px' : '24px')};
+        padding-bottom: ${props => (props.startTraining ? '14px' : '24px')};
         font-family: 'OpenSans-Bold';
-        font-size: ${props => (props.startTraning ? '36px' : '45px')};
-        line-height: ${props => (props.startTraning ? '1.08' : '0.84')};
+        font-size: ${props => (props.startTraining ? '36px' : '45px')};
+        line-height: ${props => (props.startTraining ? '1.08' : '0.84')};
         background-color: var(--box-background);
         box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
         @media screen and (min-width: 768px) and (max-width: 1279px) {
@@ -87,7 +88,7 @@ const MyGoalStyled = styled.div`
         flex-direction: column;
         text-align: center;
         font-family: 'Montserrat-Medium';
-        font-size: ${props => (props.startTraning ? '12px' : '14px')};
+        font-size: ${props => (props.startTraining ? '12px' : '14px')};
         color: var(--secondary-text);
         @media screen and (min-width: 768px) and (max-width: 1279px) {
             display: flex;
