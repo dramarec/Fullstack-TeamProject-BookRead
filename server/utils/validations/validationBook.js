@@ -11,7 +11,7 @@ const schemaCreateBook = Joi.object({
 });
 
 const schemaUpdateBook = Joi.object({
-  //review: Joi.string().max(3000),
+  review: Joi.string().min(0).max(3000),
 
   rating: Joi.number().min(0).max(5),
 });
