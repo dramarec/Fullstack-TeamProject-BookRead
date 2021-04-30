@@ -1,7 +1,38 @@
 import styled from 'styled-components';
 
 const TrainingPageStyled = styled.div`
-  background-color: var(--main-background);
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--main-background);
+
+    @media (min-width: 1280px) {
+        //padding-top: 50px;
+    }
+    .leftSide {
+        @media (min-width: 1280px) {
+            display: flex;
+            flex-direction: column;
+            margin-top: 15px;
+        }
+    }
+    .rigthSide {
+        @media (min-width: 1280px) {
+            display: flex;
+            flex-direction: column;
+            margin-left: 41px;
+            //margin-top: 50px;
+        }
+    }
+    .training {
+        width: 678px;
+        margin-top: 40px;
+        @media (min-width: 1280px) {
+            width: 886px;
+            margin-right: 40px;
+            margin-top: 50px;
+        }
+    }
+    /* background-color: var(--main-background);
   padding-top: 30px;
   @media (min-width: 1280px) {
     padding-top: 50px;
@@ -12,9 +43,9 @@ const TrainingPageStyled = styled.div`
   }
 
   .sidebar {
-    order: 1;
+    order: 1; */
     /* outline: 1px solid red; */
-    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+    /* box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
     background-color: #fff;
     width: 270px;
     height: 318px;
@@ -94,25 +125,25 @@ const TrainingPageStyled = styled.div`
         }
       }
     }
-  }
+  }*/
 
-  .baner {
-    width: 100%;
-    height: 60px;
-    color: #fff;
-    font-family: 'Montserrat-Medium';
-    font-size: 20px;
+    .baner {
+        width: 100%;
+        height: 60px;
+        color: #fff;
+        font-family: 'Montserrat-Medium';
+        font-size: 20px;
 
-    /* font-weight: 600; */
-    text-align: center;
-    padding: 15px 200px;
-    background-color: var(--table-title);
-    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-    margin-bottom: 32px;
-    @media (max-width: 767px) {
-      display: none;
+        /* font-weight: 600; */
+        text-align: center;
+        padding: 15px 200px;
+        background-color: var(--table-title);
+        box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+        margin-bottom: 32px;
+        @media (max-width: 767px) {
+            display: none;
+        }
     }
-  }
 `;
 
 export default TrainingPageStyled;

@@ -102,7 +102,7 @@ const FormTraning = () => {
                 books={booksArr}
             />
             <div>
-                <button onClick={onHandleAddTraining} className="bookFormBtn">
+                <button onClick={onHandleAddTraining} className="FormBtn">
                     Почати тренування
                 </button>
             </div>
