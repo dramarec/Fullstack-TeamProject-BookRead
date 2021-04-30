@@ -59,7 +59,7 @@ const FormTraningStyle = styled.div`
             //margin-top: 40px;
         }
         @media screen and (min-width: 1280px) {
-            margin-top: 40px;
+            //margin-top: 40px;
         }
 
         &:hover,
@@ -88,6 +88,7 @@ const FormTraningStyle = styled.div`
         @media screen and (min-width: 768px) {
             margin-top: 40px;
         }
+
         &:hover,
         &:focus {
             border: 1px solid #ff6b08;
