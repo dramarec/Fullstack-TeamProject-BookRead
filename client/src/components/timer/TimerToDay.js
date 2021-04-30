@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import TimerToDayStyled from './TimerToDayStyled';
+//import TimerToDayStyled from './TimerToDayStyled';
 
-const TimerToDay = ({ data }) => {
+const TimerToDay = ({ data, dataStart }) => {
     const [timerDays, setTimerDays] = useState('00');
     const [timerHours, setTimerHours] = useState('00');
     const [timerMinutes, setTimerMinutes] = useState('00');
@@ -11,9 +11,11 @@ const TimerToDay = ({ data }) => {
     /*new Date().getFullYear(), 11, 31 'December 31, 2021 00:00:00:00'*/
     const startTimer = () => {
         const countDownDate = new Date(data).getTime();
+        //console.log('countDownDate', countDownDate);
 
         interval = setInterval(() => {
             const now = new Date().getTime();
+            //console.log('now', now );
             const distance = countDownDate - now;
 
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));

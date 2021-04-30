@@ -14,9 +14,9 @@ const FormTraning = () => {
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
     const [booksArr, setBooks] = useState([]);
-    console.log(start, 'START');
-    console.log(end, 'END');
-    console.log(booksArr, 'BOOK STATE!!');
+    //console.log(start, 'START');
+    //console.log(end, 'END');
+    //console.log(booksArr, 'BOOK STATE!!');
 
     const formik = useFormik({
         initialValues: {
