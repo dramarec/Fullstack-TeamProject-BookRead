@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, /*useSelector*/ } from 'react-redux';
 import { changeBookOperation } from '../../../redux/operations/bookOperation';
 import ReviewModalStyled from './ReviewModalStyled'
 import StarRatings from 'react-star-ratings';
