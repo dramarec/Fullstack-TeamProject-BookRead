@@ -1,28 +1,27 @@
-import bookOrg from '../../../assets/svg/bookOrg.svg'
+import bookOrg from '../../../assets/svg/bookOrg.svg';
 import ReadBookItemMobileStyled from './ReadingBookItemMobileStyled';
 
-const ReadBookItemMobile = () => {
+const ReadBookItemMobile = ({ book }) => {
     return (
         <ReadBookItemMobileStyled>
-        <div className='bookName flex'>
-        <img src={bookOrg} alt=''/>
-        <p>Психбольница в руках пациентов...</p>
-        </div>
-        <div className='author flex'>
-        <p className='title'>Автор:</p>
-        <p className='text'>Купер Алан</p>
-        </div>
-        <div className='publishYear flex'>
-        <p className='title'>Рік:</p>
-        <p className='text'>2009</p>
-        </div>
-        <div className='pages flex'>
-        <p className='title'>Стор.:</p>
-        <p className='text'>183</p>
-        </div>
+            <div className="bookName flex">
+                <img src={bookOrg} alt="" />
+                <p>{book.title}</p>
+            </div>
+            <div className="author flex">
+                <p className="title">Автор:</p>
+                <p className="text">{book.author}</p>
+            </div>
+            <div className="publishYear flex">
+                <p className="title">Рік:</p>
+                <p className="text">{book.year}</p>
+            </div>
+            <div className="pages flex">
+                <p className="title">Стор.:</p>
+                <p className="text">{book.numberOfPages}</p>
+            </div>
         </ReadBookItemMobileStyled>
-       
-    )
-}
+    );
+};
 
-export default ReadBookItemMobile
+export default ReadBookItemMobile;

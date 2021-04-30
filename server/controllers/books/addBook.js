@@ -37,7 +37,7 @@ const addNewBook = async (req, res, next) => {
       code: 201,
       data: {
         newBook: {
-          id: newBook._id,
+          _id: newBook._id,
           title: newBook.title,
           author: newBook.author,
           year: newBook.year,
