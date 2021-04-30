@@ -65,7 +65,7 @@ const googleRedirect = async (req, res, next) => {
             await userServices.addUser({ email, username, password });
         }
 
-        const id = user.id;
+        const id = user._id;
         const payload = { id };
         const accessToken = jwt.sign(payload, process.env.JWT_SECRET_KEY, {
             expiresIn: '30d',
