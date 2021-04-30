@@ -12,6 +12,16 @@ const Selector = ({ value, onChange }) => {
         value: book.title,
     }));
     // console.log(bookSelect, 'book1');
+    const customStyles = {
+        input: (provided, state) => ({
+            ...provided,
+            height: '32px',
+        }),
+        menu: (provided, state) => ({
+            ...provided,
+            marginTop: '0px',
+        }),
+    };
 
     return (
         <Select
@@ -20,6 +30,7 @@ const Selector = ({ value, onChange }) => {
             // value={value}
             options={bookSelect}
             onChange={value => onChange(value)}
+            styles={customStyles}
         />
     );
 };
