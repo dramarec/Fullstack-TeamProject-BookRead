@@ -8,6 +8,7 @@ import TimersSet from '../../components/timer/TimersSet';
 import MyGoal from '../../components/myGoal/MyGoal';
 import DescBookList from '../../components/trainingComponents/booksLists/desc/DescBookList';
 import trainingSelector from '../../redux/selectors/trainingSelector';
+import Result from '../../components/result/Result';
 
 const TrainingPage = () => {
     const training = useSelector(trainingSelector.getTraining);
@@ -28,6 +29,7 @@ const TrainingPage = () => {
                 {training.length && <MyGoal />}
                 {training.length && <DescBookList books={trainingBooksList} />}
                 {training.length && <Chart />}
+                {training.length && <Result />}
             </Tablet>
             <Desktop>
                 {!training.length && <MyTraining />}
@@ -41,7 +43,11 @@ const TrainingPage = () => {
                     )}
                     {training.length && <Chart />}
                 </div>
-                <div className="rigthSide">{training.length && <MyGoal />}</div>
+                <div className="rigthSide">
+                    {training.length && <MyGoal />}
+                    {training.length && <MyGoal />}
+                    {training.length && <Result />}
+                </div>
             </Desktop>
         </TrainingPageStyled>
     );

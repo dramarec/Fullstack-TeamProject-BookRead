@@ -14,6 +14,10 @@ const getTrainingRequest = createAction('@training/getTrainingRequest');
 const getTrainingSuccess = createAction('@training/getTrainingSuccess');
 const getTrainingError = createAction('@training/getTrainingError');
 
+const addReadPagesRequest = createAction('@training/addReadPagesRequest');
+const addReadPagesSuccess = createAction('@training/addReadPagesSuccess');
+const addReadPagesError = createAction('@training/addReadPagesError');
+
 const trainingActions = {
     addBookInTraining,
     removeBookFromTraining,
@@ -25,6 +29,10 @@ const trainingActions = {
     getTrainingRequest,
     getTrainingSuccess,
     getTrainingError,
+
+    addReadPagesRequest,
+    addReadPagesSuccess,
+    addReadPagesError,
 
     setStartDateTraining,
     setEndDateTraining,

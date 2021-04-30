@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const schemaCreateBook = Joi.object({
-  title: Joi.string().min(3).max(30).required(),
+  title: Joi.string().min(3).max(100).required(),
 
   author: Joi.string().min(3).max(30),
 
@@ -11,7 +11,7 @@ const schemaCreateBook = Joi.object({
 });
 
 const schemaUpdateBook = Joi.object({
-  review: Joi.string().max(3000),
+  //review: Joi.string().max(3000),
 
   rating: Joi.number().min(0).max(5),
 });

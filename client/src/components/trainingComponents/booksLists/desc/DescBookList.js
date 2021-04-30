@@ -7,15 +7,15 @@ import BookListItem from '../item/BookListItem';
 import AddTrainingBtn from '../../trainingBtn/AddTrainingBtn';
 import book from '../../../../assets/svg/book3.svg';
 
-const DescBookList = ({ books }) => {
+const DescBookList = ({ books, onHandleDeleteBook }) => {
     const dispatch = useDispatch();
 
     // const books = useSelector(trainingSelector.trainingBooksList);
 
-    const onHandleDeleteBook = e => {
-        const { id } = e.currentTarget.dataset;
-        dispatch(trainingActions.removeBookFromTraining(id));
-    };
+    // const onHandleDeleteBook = e => {
+    //     const { id } = e.currentTarget.dataset;
+    //     dispatch(trainingActions.removeBookFromTraining(id));
+    // };
 
     return (
         <DescBookListStyle>

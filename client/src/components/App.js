@@ -22,10 +22,7 @@ const App = () => {
         dispatch(getUsersBooksOperetion());
         dispatch(trainingOperation.getTrainingOperation());
     }, []);
-    /*  const dispatch = useDispatch();
-   useEffect(() => {
-     dispatch(getUsersBooks())
-   }, dispatch);*/
+
     const isLoading = useSelector(loadingSelectors.getLoading);
 
     return (
