@@ -12,6 +12,8 @@ import MyGoal from '../../components/myGoal/MyGoal';
 import { getUsersBooksOperetion } from '../../redux/operations/bookOperation';
 import trainingOperation from '../../redux/operations/trainingOperation';
 
+import Result from '../../components/result/Result';
+
 const TrainingPage = () => {
     //const dispatch = useDispatch();
     // useEffect(() => {
@@ -31,43 +33,16 @@ const TrainingPage = () => {
             {isTraining.duration !==0 && <TimersSet/>}
             <MyGoal startTraining={isTraining.duration !==0} training={isTraining}/>
             <div className="container">
-              
-
                 <div>
                     <MyTraining />
                     <MobBookList />
                     <Chart />
                 </div>
+                <Result />
             </div>
 
-            <StatModal />
+            {/* <StatModal /> */}
         </TrainingPageStyled>
     );
 };
 export default TrainingPage;
-/*<div className="sidebar">
-                    <div className="sidebar-descr">
-                        <p className="sidebar-descr__item">
-                            Моя мета прочитати
-                        </p>
-                    </div>
-
-                    <ul className="sidebar-wrap">
-                        <li className="sidebar-wrap__list">
-                            <div className="sidebar-wrap__item">
-                                <span>0</span>
-                            </div>
-                            <p className="sidebar-wrap__description">
-                                Кількість книжок
-                            </p>
-                        </li>
-                        <li className="sidebar-wrap__list">
-                            <div className="sidebar-wrap__item">
-                                <span>0</span>
-                            </div>
-                            <p className="sidebar-wrap__description">
-                                Кількість днів
-                            </p>
-                        </li>
-                    </ul>
-                </div>*/
