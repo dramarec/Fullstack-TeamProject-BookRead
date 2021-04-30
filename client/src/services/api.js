@@ -24,9 +24,9 @@ class bookReadApi {
             });
     }
 
-    logInWithGoogle() {
+    logInWithGoogle(userCredentials) {
         return axios
-            .post('/users/auth/google-login')
+            .post('/users/auth/google-login', userCredentials)
             .then(res => res.data.data)
             .catch(error => {
                 throw new Error(error);

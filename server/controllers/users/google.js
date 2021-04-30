@@ -1,13 +1,7 @@
 const axios = require('axios');
 const queryString = require('query-string');
-const { v4 } = require('uuid');
-
-const { User } = require('../../models');
 const jwt = require('jsonwebtoken');
 const { userServices } = require('../../services');
-
-// process.env.GOOGLE_CLIENT_SECRET,
-// const client = process.env.GOOGLE_CLIENT_ID;
 
 const googleAuth = async (req, res, next) => {
     try {
@@ -66,11 +60,10 @@ const googleRedirect = async (req, res, next) => {
         const username = userData.data.name;
 
         const user = await userServices.findUserByEmail(email);
-        const password = email + process.env.JWT_SECRET_KEY;
+        const password = process.env.JWT_SECRET_KEY;
         if (!user) {
             await userServices.addUser({ email, username, password });
         }
-        console.log('googleRedirect ===> user', user);
 
         const id = user.id;
         const payload = { id };
@@ -81,7 +74,6 @@ const googleRedirect = async (req, res, next) => {
         await userServices.updateToken(id, accessToken);
 
         return res.redirect(
-            // `${process.env.FRONTEND_URL}/google-redirect/?accessToken=${accessToken}`,
             `${process.env.FRONTEND_URL}/?accessToken=${accessToken}`,
         );
     } catch (err) {
@@ -90,9 +82,9 @@ const googleRedirect = async (req, res, next) => {
 };
 
 const googleLogin = async (req, res, next) => {
-    console.log('googleLogin ===> req.body', req.body);
-    const { token } = req.body;
     try {
+        const token = req.body.accessToken;
+
         if (!token) {
             return res.status(400).json({
                 code: 400,
@@ -100,6 +92,13 @@ const googleLogin = async (req, res, next) => {
             });
         }
         const user = await userServices.findUserByToken(token);
+
+        if (!user) {
+            return res.status(401).json({
+                message: 'Wrong token!',
+            });
+        }
+        console.log('googleLogin ===> user', user);
 
         const id = user.id;
         const payload = { id };

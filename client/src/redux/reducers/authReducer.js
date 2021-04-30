@@ -16,6 +16,12 @@ const userReducer = createReducer(initialState, {
         books: payload.user.books,
         training: payload.user.training,
     }),
+    [authActions.logInGoogleSuccess]: (_, { payload }) => ({
+        name: payload.user.username,
+        email: payload.user.email,
+        books: payload.user.books,
+        training: payload.user.training,
+    }),
     [getUsersBooksSuccess]: (_, { payload }) => ({
         name: payload.username,
         email: payload.email,
@@ -23,16 +29,11 @@ const userReducer = createReducer(initialState, {
         training: payload.training,
     }),
     [authActions.logOutSuccess]: () => initialState,
-    [authActions.logInGoogleSuccess]: (_, { payload }) => ({
-        name: payload.user.username,
-        email: payload.user.email,
-        books: payload.user.books,
-        training: payload.user.training,
-    }),
 });
 
 const tokenReducer = createReducer(null, {
     [authActions.logInSuccess]: (_, { payload }) => payload.token,
+    [authActions.logInGoogleSuccess]: (_, { payload }) => payload.token,
     [authActions.logOutSuccess]: () => null,
 });
 

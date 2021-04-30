@@ -26,6 +26,7 @@ const updateToken = async (id, token) => {
 
 const findUserByToken = async token => {
     const user = await User.findOne({ token });
+    // console.log('user', user);
     return user;
 };
 
