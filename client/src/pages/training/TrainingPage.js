@@ -7,7 +7,7 @@ import MobBookList from '../../components/trainingComponents/booksLists/mob/MobB
 import StatModal from '../../components/statModal/StatModal';
 import { getUsersBooksOperetion } from '../../redux/operations/bookOperation';
 import TimersSet from '../../components/timer/TimersSet';
-
+import Result from '../../components/result/Result';
 const TrainingPage = () => {
     const dispatch = useDispatch();
     // useEffect(() => {
@@ -50,9 +50,10 @@ const TrainingPage = () => {
                     <MobBookList />
                     <Chart />
                 </div>
+                <Result />
             </div>
 
-            <StatModal />
+            {/* <StatModal /> */}
         </TrainingPageStyled>
     );
 };

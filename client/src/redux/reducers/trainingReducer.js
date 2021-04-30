@@ -19,6 +19,11 @@ const trainingReducer = createReducer(initialState, {
             books: payload.books,
         };
     },
+    [trainingActions.addReadPagesSuccess]: (_, { payload }) => {
+        return {
+            results: payload.results,
+        };
+    },
     [trainingActions.getTrainingSuccess]: (_, { payload }) => {
         return {
             _id: payload._id,
