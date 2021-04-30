@@ -2,27 +2,38 @@ import { createReducer } from '@reduxjs/toolkit';
 import authActions from '../actions/authActions';
 import { addNewBookRequest, addNewBookError } from '../actions/bookAction';
 import {
-  changeBookRequest,
-  changeBookError,
+    changeBookRequest,
+    changeBookError,
 } from '../actions/changeBookAction';
 import {
-  getUsersBooksRequest,
-  getUsersBooksError,
+    getUsersBooksRequest,
+    getUsersBooksError,
 } from '../actions/userLibraryAction';
 
+import trainingActions from '../actions/trainingAction';
+
 export const errorReducer = createReducer(null, {
-  [authActions.logInError]: (_, { payload }) => payload,
-  [authActions.logInRequest]: () => null,
+    [authActions.logInError]: (_, { payload }) => payload,
+    [authActions.logInRequest]: () => null,
 
-  [authActions.logOutError]: (_, { payload }) => payload,
-  [authActions.logOutRequest]: () => null,
+    [authActions.logOutError]: (_, { payload }) => payload,
+    [authActions.logOutRequest]: () => null,
 
-  [addNewBookError]: (_, { payload }) => payload,
-  [addNewBookRequest]: () => null,
+    [addNewBookError]: (_, { payload }) => payload,
+    [addNewBookRequest]: () => null,
 
-  [changeBookError]: (_, { payload }) => payload,
-  [changeBookRequest]: () => null,
+    [changeBookError]: (_, { payload }) => payload,
+    [changeBookRequest]: () => null,
 
-  [getUsersBooksError]: (_, { payload }) => payload,
-  [getUsersBooksRequest]: () => null,
+    [getUsersBooksError]: (_, { payload }) => payload,
+    [getUsersBooksRequest]: () => null,
+
+    [trainingActions.newTrainingError]: (_, { payload }) => payload,
+    [trainingActions.newTrainingRequest]: () => null,
+
+    [trainingActions.addReadPagesError]: (_, { payload }) => payload,
+    [trainingActions.addReadPagesRequest]: () => null,
+
+    [trainingActions.getTrainingError]: (_, { payload }) => payload,
+    [trainingActions.getTrainingRequest]: () => null,
 });
