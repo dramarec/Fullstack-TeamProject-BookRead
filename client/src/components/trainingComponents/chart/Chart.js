@@ -38,7 +38,7 @@ const style = {
 
 const Chart = () => {
     const training = useSelector(getTraining);
-    const result = training.results.map(item => {
+    const result = training.results?.map(item => {
         console.log(item, 'item from RESULTS');
         return [item.pageCount];
     });
@@ -63,7 +63,7 @@ const Chart = () => {
     const pagesReadPerDay = training.pagesReadPerDay;
     const totalPages = training.totalPages;
     const books = training.books;
-    const results = training.results.map(item => {
+    const results = training.results?.map(item => {
         console.log(item, 'item from RESULTS');
         return {
             date: item.date,

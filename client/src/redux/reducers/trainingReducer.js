@@ -15,13 +15,19 @@ const initialState = {
 const trainingReducer = createReducer(initialState, {
     [trainingActions.newTrainingSuccess]: (_, { payload }) => {
         return {
+            _id: payload._id,
             start: payload.start,
             end: payload.end,
+            duration: payload.duration,
+            pagesReadPerDay: payload.pagesReadPerDay,
+            totalPages: payload.totalPages,
             books: payload.books,
+            results: payload.results,
         };
     },
-    [trainingActions.addReadPagesSuccess]: (_, { payload }) => {
+    [trainingActions.addReadPagesSuccess]: (state, { payload }) => {
         return {
+            ...state,
             results: payload.results,
         };
     },
