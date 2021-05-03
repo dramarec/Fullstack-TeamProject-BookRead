@@ -26,7 +26,7 @@ const App = () => {
     };
 
     useEffect(() => {
-        googleToken &&
+        googleToken?.accessToken &&
             dispatch(authOperations.logInWithGoogleOperation(googleToken));
     }, [googleToken]);
 
