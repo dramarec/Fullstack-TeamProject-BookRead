@@ -21,7 +21,7 @@ const addReadPagesOperation = (date, pages) => async dispatch => {
         const { training } = await api.addReadPages(date, pages);
 
         dispatch(trainingActions.addReadPagesSuccess(training));
-        // dispatch(getTrainingOperation());
+        dispatch(getTrainingOperation());
     } catch (err) {
         dispatch(trainingActions.addReadPagesError(err.message));
     }

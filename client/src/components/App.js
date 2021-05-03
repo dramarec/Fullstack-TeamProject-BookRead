@@ -33,8 +33,8 @@ const App = () => {
     const initialAction = async () => {
         try {
             await dispatch(getUsersBooksOperetion());
-            training._id !== '' &&
-                (await dispatch(trainingOperation.getTrainingOperation()));
+            // training._id !== '' &&
+            await dispatch(trainingOperation.getTrainingOperation());
         } catch (err) {
             return;
         }
@@ -48,20 +48,19 @@ const App = () => {
         <>
             {isLoading && <Spin />}
             <AppBar />
-            <div>
-                <Suspense fallback={<Spin />}>
-                    <Switch>
-                        {mainRoutes.map(route =>
-                            route.isPrivate ? (
-                                <PrivateRoutes {...route} key={route.path} />
-                            ) : (
-                                <PublicRoutes {...route} key={route.path} />
-                            ),
-                        )}
-                        <Redirect to="/" />
-                    </Switch>
-                </Suspense>
-            </div>
+
+            <Suspense fallback={<Spin />}>
+                <Switch>
+                    {mainRoutes.map(route =>
+                        route.isPrivate ? (
+                            <PrivateRoutes {...route} key={route.path} />
+                        ) : (
+                            <PublicRoutes {...route} key={route.path} />
+                        ),
+                    )}
+                    <Redirect to="/" />
+                </Switch>
+            </Suspense>
         </>
     );
 };
