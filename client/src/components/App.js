@@ -22,11 +22,8 @@ const App = () => {
     };
 
     useEffect(() => {
-        googleToken &&
+        googleToken?.accessToken &&
             dispatch(authOperations.logInWithGoogleOperation(googleToken));
-    }, [googleToken]);
-
-    useEffect(() => {
         dispatch(getUsersBooksOperetion());
         dispatch(trainingOperation.getTrainingOperation());
     }, []);
