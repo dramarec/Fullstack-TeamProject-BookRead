@@ -5,7 +5,8 @@ const MyGoalStyled = styled.div`
     height: 318px;
     background-color: #ffffff;
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-    margin-left: auto;
+    //margin-left: auto;
+    margin: 0 auto;
     @media screen and (min-width: 768px) and (max-width: 1279px) {
         margin-top: 30px;
         margin-bottom: 30px;

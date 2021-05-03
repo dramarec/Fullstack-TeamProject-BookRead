@@ -11,6 +11,8 @@ import trainingSelector from '../../redux/selectors/trainingSelector';
 import Result from '../../components/result/Result';
 import trainingOperation from '../../redux/operations/trainingOperation';
 import { getTraining } from '../../redux/selectors/bookSelector';
+import book from '../../assets/svg/book3.svg';
+import MobBookList from '../../components/trainingComponents/booksLists/mob/MobBookList';
 
 const TrainingPage = () => {
     // const training = useSelector(trainingSelector.getTraining);
@@ -25,34 +27,11 @@ const TrainingPage = () => {
     // console.log('isUserTraining',isUserTraining);
 
     const Desktop = props => <Responsive {...props} minWidth={1280} />;
-    const Tablet = props => <Responsive {...props} maxWidth={1279} />;
-    //const Mobile = props => <Responsive {...props} maxWidth={767} />;
+    const Tablet = props => <Responsive {...props} minWidth={768} />;
+    const Mobile = props => <Responsive {...props} maxWidth={767} />;
 
     return (
         <TrainingPageStyled className="container">
-            <Tablet>
-                {isTraining.duration !== 0 ? (
-                    <>
-                        <TimersSet />
-                        <MyGoal
-                            startTraining={isTraining.duration !== 0}
-                            training={isTraining}
-                        />
-                        <DescBookList books={trainingBooksList} />
-                        <Chart />
-                        <Result />
-                    </>
-                ) : (
-                    <>
-                        <MyGoal
-                            startTraining={isTraining.duration !== 0}
-                            training={isTraining}
-                        />
-                        <MyTraining />
-                        <Chart />
-                    </>
-                )}
-            </Tablet>
             <Desktop>
                 {isTraining.duration !== 0 ? (
                     <>
@@ -81,6 +60,37 @@ const TrainingPage = () => {
                     </>
                 )}
             </Desktop>
+            <Tablet>
+                {isTraining.duration !== 0 ? (
+                    <>
+                        <TimersSet />
+                        <MyGoal
+                            startTraining={isTraining.duration !== 0}
+                            training={isTraining}
+                        />
+                        <DescBookList books={trainingBooksList} />
+                        <Chart />
+                        <Result />
+                    </>
+                ) : (
+                    <>
+                        <MyGoal
+                            startTraining={isTraining.duration !== 0}
+                            training={isTraining}
+                        />
+                        <MyTraining />
+                        <Chart />
+                    </>
+                )}
+            </Tablet>
+            <Mobile>
+                <MyGoal
+                    startTraining={isTraining.duration !== 0}
+                    training={isTraining}
+                />
+                <MobBookList />
+                <Chart />
+            </Mobile>
         </TrainingPageStyled>
     );
 };

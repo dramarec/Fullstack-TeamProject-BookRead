@@ -1,14 +1,18 @@
 import styled from 'styled-components';
 
 const ChartWrapper = styled.div`
-    margin-bottom: 36px;
-    margin-top: 40px;
-    padding: 14px 22px 12px 22px;
+    margin: 0 auto 46px;
+    //width: 270px;
+    width: 270px;
+    padding: 14px 21px 5px 22px;
     background: #ffffff;
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
 
     @media screen and (min-width: 768px) {
+        margin-bottom: 36px;
+        margin-top: 40px;
         width: 678px;
+        padding: 14px 22px 12px 22px;
         .title {
             margin-bottom: 12px;
         }
@@ -52,12 +56,15 @@ const ChartWrapper = styled.div`
         width: 50px;
         height: 30px;
         padding: 5px 10px;
-        font-size: '12px';
-        line-height: '24px';
+        font-size: 12px;
+        line-height: 32px;
         background-color: #f5f7fa;
         /* color: #091E3F; */
         box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
     }
+    /* .recharts-default-legend {
+        margin: 40px;
+    } */
     .text-x-line {
         margin-top: -30px;
         padding-right: 20px;
