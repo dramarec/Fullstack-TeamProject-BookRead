@@ -1,29 +1,26 @@
 import styled from 'styled-components';
 
 const FormTraningStyle = styled.div`
+    position: relative;
     .training-form {
+        &__wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            height: 42px;
+        }
+
         &__pickers {
             display: flex;
             justify-content: center;
         }
-    }
-    .training-form__wrap {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 25px;
-        height: 42px;
-    }
-
-    .selectwrap {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 25px;
     }
 
     .selectorBooks {
         width: 669px;
         margin-right: 46px;
     }
+
     .select {
         font-family: 'Montserrat-Regular';
         color: var(--third-text);
@@ -96,6 +93,32 @@ const FormTraningStyle = styled.div`
             color: #ff6b08;
             outline: none;
         }
+    }
+    .error {
+        font-family: 'Montserrat-Regular';
+        color: #e63946;
+        font-size: 11px;
+    }
+    .error.start {
+        position: absolute;
+        left: 100px;
+        top: 42px;
+        @media screen and (min-width: 1280px) {
+            left: 200px;
+        }
+    }
+    .error.end {
+        position: absolute;
+        top: 42px;
+        right: 80px;
+        @media screen and (min-width: 1280px) {
+            right: 185px;
+        }
+    }
+    .error.book {
+        position: absolute;
+        bottom: 195px;
+        left: 0;
     }
 `;
 

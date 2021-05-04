@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
     position: relative;
-    &:not(:last-child) {
+    &:first-child {
         margin-right: 45px;
     }
     & svg {

@@ -39,10 +39,10 @@ const style = {
 const Chart = () => {
     const training = useSelector(getTraining);
     const result = training.results?.map(item => {
-        console.log(item, 'item from RESULTS');
+        // console.log(item, 'item from RESULTS');
         return [item.pageCount];
     });
-    console.log('training', result);
+    // console.log('training', result);
 
     const data = [];
     for (let num = 0; num <= training.duration; num++) {
@@ -57,30 +57,30 @@ const Chart = () => {
         ФАКТ: 1,
     });
 
-    const start = training.start;
-    const end = training.end;
-    const duration = training.duration;
     const pagesReadPerDay = training.pagesReadPerDay;
-    const totalPages = training.totalPages;
-    const books = training.books;
-    const results = training.results?.map(item => {
-        console.log(item, 'item from RESULTS');
-        return {
-            date: item.date,
-            pageCount: item.pageCount,
-        };
-    });
+    // const start = training.start;
+    // const end = training.end;
+    // const duration = training.duration;
+    // const totalPages = training.totalPages;
+    // const books = training.books;
+    // const results = training.results?.map(item => {
+    //     console.log(item, 'item from RESULTS');
+    //     return {
+    //         date: item.date,
+    //         pageCount: item.pageCount,
+    //     };
+    // });
 
-    console.log(
-        start,
-        end,
-        duration,
-        pagesReadPerDay,
-        totalPages,
-        books,
-        results,
-        'TRAINinG!',
-    );
+    // console.log(
+    //     start,
+    //     end,
+    //     duration,
+    //     pagesReadPerDay,
+    //     totalPages,
+    //     books,
+    //     results,
+    //     'TRAINinG!',
+    // );
 
     // const data = [
     //     { name: 'Training', ПЛАН: 570, ФАКТ: 400 },

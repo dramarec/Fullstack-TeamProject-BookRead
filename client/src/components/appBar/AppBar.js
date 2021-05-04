@@ -13,7 +13,7 @@ const AppBar = () => {
 
   const isAuth = useSelector(state => state.auth.token);
   const name = useSelector(authSelectors.getUserName);
-  console.log(name);
+  // console.log(name);
 
   const [showModal, setShowModal] = useState(false);
 
