@@ -34,7 +34,11 @@ const App = () => {
     const initialAction = async () => {
         try {
             await dispatch(getUsersBooksOperetion());
-            training &&
+            console.log(training, 'NULL or NOT!');
+            // if (training !== null || training !== '') {
+            //     await dispatch(trainingOperation.getTrainingOperation());
+            // }
+            training !== null &&
                 (await dispatch(trainingOperation.getTrainingOperation()));
         } catch (err) {
             return;

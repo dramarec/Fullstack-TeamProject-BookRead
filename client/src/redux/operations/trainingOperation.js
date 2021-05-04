@@ -1,5 +1,6 @@
 import api from '../../services/api';
 import trainingActions from '../actions/trainingActions';
+// import { getUsersBooksOperetion } from '../operations/bookOperation';
 
 const operationAddNewTraining = (start, end, books) => async dispatch => {
     dispatch(trainingActions.newTrainingRequest());
@@ -9,6 +10,7 @@ const operationAddNewTraining = (start, end, books) => async dispatch => {
         console.log('response', response);
         dispatch(trainingActions.newTrainingSuccess(response));
         // dispatch(getTrainingOperation());
+        // dispatch(getUsersBooksOperetion());
     } catch (error) {
         dispatch(trainingActions.newTrainingError(error.message));
     }

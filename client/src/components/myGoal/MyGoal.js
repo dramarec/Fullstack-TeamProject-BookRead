@@ -6,7 +6,7 @@ const MyGoal = ({ startTraining, training }) => {
     //console.log('startTraining', startTraining);
     let bookRead = 0;
     let booksLeft;
-    for (let i = 0; i < training.books.length; i++) {
+    for (let i = 0; i < training.books?.length; i++) {
         if (training.books[i].numberOfPages === training.books[i].readPages) {
             bookRead += 1;
         }
@@ -23,7 +23,7 @@ const MyGoal = ({ startTraining, training }) => {
                 <div className="statistic-book">
                     <div className="statistic__cell">
                         <span className="statistic__number">
-                            {training.books.length}
+                            {training.books?.length}
                         </span>
                     </div>
                     <p className="statistic__text">
