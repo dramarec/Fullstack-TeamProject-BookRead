@@ -1,14 +1,14 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+//import { useSelector, useDispatch } from 'react-redux';
 import DescBookListStyle from './DescBookListStyle';
-import trainingActions from '../../../../redux/actions/trainingAction';
-import trainingSelector from '../../../../redux/selectors/trainingSelector';
+//import trainingActions from '../../../../redux/actions/trainingAction';
+//import trainingSelector from '../../../../redux/selectors/trainingSelector';
 import BookListItem from '../item/BookListItem';
-import AddTrainingBtn from '../../trainingBtn/AddTrainingBtn';
+//import AddTrainingBtn from '../../trainingBtn/AddTrainingBtn';
 import book from '../../../../assets/svg/book3.svg';
 
 const DescBookList = ({ books, onHandleDeleteBook }) => {
-    const dispatch = useDispatch();
+  //  const dispatch = useDispatch();
 
     // const books = useSelector(trainingSelector.trainingBooksList);
 

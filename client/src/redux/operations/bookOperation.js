@@ -50,8 +50,8 @@ const getUsersBooksOperetion = () => async (dispatch, getState) => {
     dispatch(getUsersBooksRequest());
     try {
         const response = await axios.get('/users/user');
-        // console.log(response.data);
         dispatch(getUsersBooksSuccess(response.data.data));
+        // console.log(response.data);
     } catch (error) {
         dispatch(getUsersBooksError(error.message));
         throw error;
@@ -63,11 +63,13 @@ const changeBookOperation = (id, book) => async dispatch => {
     dispatch(changeBookRequest());
     try {
         await axios.patch(`/books/${id}`, book);
-        //console.log('OperBook', book);
         dispatch(changeBookSuccess({ ...book }));
-        dispatch(getUsersBooksOperetion());
+        //
+        console.log('response.data', book);
+        //dispatch(getUsersBooksOperetion());
     } catch (error) {
-        dispatch(changeBookError(error.message));
+        //console.log('error',error.response.data.message );
+        dispatch(changeBookError(error.response.data.message));
         throw error;
     }
 };

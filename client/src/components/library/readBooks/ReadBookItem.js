@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {/* useDispatch,*/ useSelector } from 'react-redux';
 import book from '../../../assets/svg/book.svg';
 import Modal from '../../modal/Modal';
 import ReviewModal from '../reviewModal/ReviewModal';
@@ -9,7 +9,7 @@ import StarRatings from 'react-star-ratings';
 
 const ReadBookItem = ({ item }) => {
     // console.log('readbook', item);
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
     const [data, setData] = useState({});
     const [isOpen, setisOpen] = useState(false);
     const finishBooks = useSelector(getFinishRead);

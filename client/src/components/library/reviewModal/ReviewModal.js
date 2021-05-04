@@ -13,8 +13,9 @@ const initialState = {
 const ReviewModal = ({data, closeModal}) => {
 const dispatch = useDispatch()
 const [book, setBook] = useState({...data, ...initialState })
-const [rating, setRating] = useState()
-console.log(rating);
+  const [rating, setRating] = useState()
+
+//console.log('book', book);
 
 
   const onHandleChange = (e) => {
@@ -23,24 +24,21 @@ console.log(rating);
        setBook({...book, [name]: value})
     } 
     const onHandleSubmit = (e) => {
-      
         e.preventDefault();
         dispatch(changeBookOperation(  book._id, {review:  book.review, rating: rating} ))
         setBook({...data, ...initialState })
 
-    }
+  }
+  
     const changeRating = ( newRating ) =>{
      setRating(newRating)
       }
     
     return (
-        <ReviewModalStyled onSubmit={onHandleSubmit} >
-           <p>Обрати рейтинг книги</p> 
-           
+        <ReviewModalStyled  onSubmit={onHandleSubmit} >
+        <p>Обрати рейтинг книги</p> 
         <StarRatings 
-        style="fill:blue; width: 17px"
         rating={rating}
-        starSpacing="5px"
         starRatedColor="#FF6B08"
         starEmptyColor="white"
         starSpacing="1px"

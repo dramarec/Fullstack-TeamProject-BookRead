@@ -4,7 +4,7 @@ import imgMob from './photo/mob.jpg';
 import bgMob from './photo/mob-bg.png';
 import imgTab from './photo/tab.jpg';
 import bgTab from './photo/tab-bg.png';
-import imgDec from './photo/desctop.jpg';
+//import imgDec from './photo/desctop.jpg';
 import bgDec from './photo/dec-bg.png';
 import picTest from './photo/picTest.jpg';
 
@@ -81,7 +81,7 @@ const AuthFormStyled = styled.div`
   }
   .authFormText {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     font-family: Montserrat-Medium;
     font-size: 14px;
     line-height: 2.71;
@@ -123,6 +123,7 @@ const AuthFormStyled = styled.div`
     font-size: 14px;
     line-height: 1.21;
     letter-spacing: 0.04em;
+    margin-bottom: 25px;
  
   }
   .authFormInput {
@@ -206,6 +207,7 @@ background: #091e3fcc;
 
     .authFormText {
       font-family: 'Montserrat-Medium';
+       align-items: center;
       font-weight: 500;
       font-size: 14px;
       line-height: 2.71;
@@ -272,13 +274,16 @@ background: #091e3fcc;
   }
 
   @media (min-width: 1280px) {
-    
+    .container.bg-ph{
+      background-size: cover;
+    }
     .bg-ph{
- max-height: 790px;
- height: 790px;
+    max-height: 100%;
+    margin-bottom: -200px;
+ //max-height: 790px;
+ //height: 790px;
     background: url(${bgDec}), url(${picTest});
     background-repeat: no-repeat;
-     
     width: 100%;
     }
 
@@ -338,6 +343,7 @@ background: #091e3fcc;
       font-family: 'Montserrat-Medium';
     }
     .authFormText {
+      align-items: center;
       color: #898f9f;
     }
   }

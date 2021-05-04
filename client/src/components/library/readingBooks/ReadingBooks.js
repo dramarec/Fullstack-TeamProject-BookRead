@@ -5,7 +5,7 @@ import ReadingBooksStyled from './ReadingBooksStyled';
 import Responsive from 'react-responsive';
 
 const ReadingBooks = ({ bookNowRead }) => {
-    console.log('ReadingBooks ===> bookNowRead', bookNowRead);
+    //console.log('ReadingBooks ===> bookNowRead', bookNowRead);
     //const  nowArray = useSelector(librarySelector.getUsersreadNow);
     //console.log(now);
     const Tablet = props => <Responsive {...props} minWidth={768} />;
