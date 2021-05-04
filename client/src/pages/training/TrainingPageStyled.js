@@ -152,7 +152,7 @@ const TrainingPageStyled = styled.div`
         @media (min-width: 768px) {
             width: 100%;
             padding: 15px 200px;
-            margin-bottom: 32px;
+            margin: 0px auto 32px;
         }
     }
     .trainingModal {
