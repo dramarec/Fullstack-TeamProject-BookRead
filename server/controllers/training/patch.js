@@ -28,17 +28,16 @@ const addRead = async (req, res, next) => {
 
             arrayBook.readPages += pages;
             arrayBook.readPages += training.rest;
-            training.rest=0
+            console.log((training.rest, 'RESULT'));
+            training.rest = 0;
 
-            if (arrayBook.readPages > arrayBook.numberOfPages) {
+            if (arrayBook.readPages >= arrayBook.numberOfPages) {
                 training.rest = arrayBook.readPages - arrayBook.numberOfPages;
                 arrayBook.readPages = arrayBook.numberOfPages;
+                training.readBooks += 1;
             }
 
-            if (pages > arrayBook.readPages) {
-                pages = arrayBook.readPages;
-            }
-            await training.save()
+            await training.save();
 
             const {
                 _id,
@@ -69,7 +68,7 @@ const addRead = async (req, res, next) => {
             break;
         }
 
-        if (!book) {
+        if (training.books.length === training.readBooks) {
             await Training.deleteOne({ _id: req.user.training });
 
             req.user.training = null;
