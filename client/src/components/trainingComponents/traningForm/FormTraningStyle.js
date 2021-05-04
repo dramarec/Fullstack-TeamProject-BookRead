@@ -1,17 +1,35 @@
 import styled from 'styled-components';
 
 const FormTraningStyle = styled.div`
+    @media (max-width: 767px) {
+        height: 73vh;
+        width: 73vw;
+    }
     .training-form {
+        width: 270px;
         &__pickers {
-            display: flex;
-            justify-content: center;
+            @media (max-width: 767px) {
+                display: flex;
+                flex-direction: column;
+            }
+            @media (min-width: 768px) {
+                display: flex;
+                justify-content: center;
+            }
         }
     }
     .training-form__wrap {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 25px;
-        height: 42px;
+        @media (max-width: 767px) {
+            display: flex;
+            flex-direction: column;
+            width: 270px;
+        }
+        @media (min-width: 768px) {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            height: 42px;
+        }
     }
 
     .selectwrap {
@@ -28,8 +46,9 @@ const FormTraningStyle = styled.div`
         font-family: 'Montserrat-Regular';
         color: var(--third-text);
         font-size: 14px;
+        width: 270px;
 
-        @media (min-width: 767px) {
+        @media (min-width: 768px) {
             width: 482px;
         }
         @media (min-width: 1279px) {

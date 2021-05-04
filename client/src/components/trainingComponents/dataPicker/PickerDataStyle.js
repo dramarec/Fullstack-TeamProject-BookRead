@@ -2,16 +2,22 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
     position: relative;
-    &:not(:last-child) {
-        margin-right: 45px;
+
+    @media (max-width: 767px) {
+        //display: none;
+        display: flex;
+        //justify-content: center;
+    }
+
+    @media (mmin-width: 768px) {
+        &:not(:last-child) {
+            margin-right: 45px;
+        }
     }
     & svg {
         position: absolute;
         left: 25px;
         top: 12px;
-    }
-    @media (max-width: 767px) {
-        display: none;
     }
     .data-picker {
         border: 1px solid #a6abb9;
@@ -19,7 +25,7 @@ const Wrapper = styled.div`
         padding: 10px 60px;
         outline: none;
         height: 42px;
-        width: 100%;
+        width: 270px;
         /* text-align: center; */
         color: var(--third-text);
         @media (min-width: 768px) {
