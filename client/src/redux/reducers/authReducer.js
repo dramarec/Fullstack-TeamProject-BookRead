@@ -1,12 +1,13 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit';
 import authActions from '../actions/authActions';
 import { getUsersBooksSuccess } from '../actions/userLibraryAction';
+import trainingActions from '../actions/trainingActions';
 
 const initialState = {
     name: '',
     email: '',
     books: [],
-    training: {},
+    training: '',
 };
 
 const userReducer = createReducer(initialState, {
@@ -27,6 +28,10 @@ const userReducer = createReducer(initialState, {
         email: payload.email,
         books: payload.books,
         training: payload.training,
+    }),
+    [trainingActions.newTrainingSuccess]: (state, { payload }) => ({
+        ...state,
+        training: payload._id,
     }),
     [authActions.logOutSuccess]: () => initialState,
 });

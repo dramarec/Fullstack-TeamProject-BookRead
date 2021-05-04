@@ -22,7 +22,6 @@ const Result = () => {
         },
         validationSchema,
         onSubmit: values => {
-            console.log(values.pages, 'ХОЧУ УВИДЕТЬ ЧИСЛО СТРАНИЦ');
             patchTraining(values);
         },
     });

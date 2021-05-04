@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import DescBookListStyle from './DescBookListStyle';
-import trainingActions from '../../../../redux/actions/trainingAction';
+import trainingActions from '../../../../redux/actions/trainingActions';
 import trainingSelector from '../../../../redux/selectors/trainingSelector';
 import BookListItem from '../item/BookListItem';
 import AddTrainingBtn from '../../trainingBtn/AddTrainingBtn';
@@ -29,7 +29,7 @@ const DescBookList = ({ books, onHandleDeleteBook }) => {
             </div>
             <div className="books-library">
                 <ul className="books-library__list">
-                    {books.map(books => (
+                    {books?.map(books => (
                         <BookListItem
                             key={books._id}
                             {...books}

@@ -6,7 +6,11 @@ const addRead = async (req, res, next) => {
         const user = req.user;
         let { date, pages } = req.body;
 
-        const training = await Training.findOne({ _id: user?.training });
+        const training = await Training.findOne({
+            _id: user?.training,
+        }).populate('books');
+
+        console.log(training.books, 'BOOKS FROM TRAINING!!!');
 
         if (!training) {
             return res.status(403).json({
@@ -109,6 +113,7 @@ const addRead = async (req, res, next) => {
                     end: training.end,
                     duration: training.duration,
                     pagesReadPerDay: training.pagesReadPerDay,
+                    totalPages: training.totalPages,
                     books: training.books,
                     results: training.results,
                 },
