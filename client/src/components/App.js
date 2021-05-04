@@ -10,7 +10,7 @@ import PrivateRoutes from './routes/PrivateRoutes';
 import PublicRoutes from './routes/PublicRoutes';
 import { getUsersBooksOperetion } from '../redux/operations/bookOperation';
 import loadingSelectors from '../redux/selectors/loadingSelector';
-import trainingSelector from '../redux/selectors/trainingSelector';
+// import trainingSelector from '../redux/selectors/trainingSelector';
 import authOperations from '../redux/operations/authOperation';
 import trainingOperation from '../redux/operations/trainingOperation';
 
@@ -29,12 +29,12 @@ const App = () => {
     useEffect(() => {
         googleToken?.accessToken &&
             dispatch(authOperations.logInWithGoogleOperation(googleToken));
-    }, [googleToken]);
+    }, []);
 
     const initialAction = async () => {
         try {
             await dispatch(getUsersBooksOperetion());
-            console.log(training, 'NULL or NOT!');
+            // console.log(training, 'NULL or NOT!');
             // if (training !== null || training !== '') {
             //     await dispatch(trainingOperation.getTrainingOperation());
             // }
@@ -53,20 +53,19 @@ const App = () => {
         <>
             {isLoading && <Spin />}
             <AppBar />
-            <div>
-                <Suspense fallback={<Spin />}>
-                    <Switch>
-                        {mainRoutes.map(route =>
-                            route.isPrivate ? (
-                                <PrivateRoutes {...route} key={route.path} />
-                            ) : (
-                                <PublicRoutes {...route} key={route.path} />
-                            ),
-                        )}
-                        <Redirect to="/" />
-                    </Switch>
-                </Suspense>
-            </div>
+
+            <Suspense fallback={<Spin />}>
+                <Switch>
+                    {mainRoutes.map(route =>
+                        route.isPrivate ? (
+                            <PrivateRoutes {...route} key={route.path} />
+                        ) : (
+                            <PublicRoutes {...route} key={route.path} />
+                        ),
+                    )}
+                    <Redirect to="/" />
+                </Switch>
+            </Suspense>
         </>
     );
 };
