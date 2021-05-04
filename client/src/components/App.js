@@ -18,7 +18,8 @@ const App = () => {
     const dispatch = useDispatch();
     const isLoading = useSelector(loadingSelectors.getLoading);
     const isAuth = useSelector(state => state.auth.token);
-    const training = useSelector(trainingSelector.getTraining);
+    // const training = useSelector(trainingSelector.getTraining);
+    const training = useSelector(state => state.auth.user.training);
 
     const urlParams = new URLSearchParams(window.location.search);
     const googleToken = {
@@ -33,7 +34,7 @@ const App = () => {
     const initialAction = async () => {
         try {
             await dispatch(getUsersBooksOperetion());
-            training._id !== '' &&
+            training &&
                 (await dispatch(trainingOperation.getTrainingOperation()));
         } catch (err) {
             return;

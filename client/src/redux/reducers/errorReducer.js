@@ -10,7 +10,7 @@ import {
     getUsersBooksError,
 } from '../actions/userLibraryAction';
 
-import trainingActions from '../actions/trainingAction';
+import trainingActions from '../actions/trainingActions';
 
 export const errorReducer = createReducer(null, {
     [authActions.logInError]: (_, { payload }) => payload,

@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import trainingActions from '../actions/trainingAction';
+import trainingActions from '../actions/trainingActions';
 
 const initialState = {
     _id: '',
