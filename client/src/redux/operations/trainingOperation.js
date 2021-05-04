@@ -1,5 +1,6 @@
 import api from '../../services/api';
-import trainingActions from '../actions/trainingAction';
+import trainingActions from '../actions/trainingActions';
+// import { getUsersBooksOperetion } from '../operations/bookOperation';
 
 const operationAddNewTraining = (start, end, books) => async dispatch => {
     dispatch(trainingActions.newTrainingRequest());
@@ -8,6 +9,8 @@ const operationAddNewTraining = (start, end, books) => async dispatch => {
         const response = await api.addTraining(start, end, books);
         console.log('response', response);
         dispatch(trainingActions.newTrainingSuccess(response));
+        // dispatch(getTrainingOperation());
+        // dispatch(getUsersBooksOperetion());
     } catch (error) {
         dispatch(trainingActions.newTrainingError(error.message));
     }
@@ -33,8 +36,8 @@ const getTrainingOperation = () => async dispatch => {
         const data = await api.getTraining();
 
         dispatch(trainingActions.getTrainingSuccess(data));
-    } catch (err) {
-        dispatch(trainingActions.getTrainingError(err.message));
+    } catch (error) {
+        dispatch(trainingActions.getTrainingError(error.message));
     }
 };
 

@@ -16,7 +16,7 @@ const ReadBookItem = ({ item }) => {
 
     const handleClick = e => {
         const id = e.target.id;
-        console.log(id);
+        // console.log(id);
         setData(finishBooks.find(book => book._id === id));
         setisOpen(true);
         /*dispatch(modalActions.toggleModal());

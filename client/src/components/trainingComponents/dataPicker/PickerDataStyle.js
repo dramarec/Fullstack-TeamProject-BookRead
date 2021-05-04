@@ -10,7 +10,10 @@ const Wrapper = styled.div`
     }
 
     @media (mmin-width: 768px) {
-        &:not(:last-child) {
+        /* &:not(:last-child) {
+            margin-right: 45px;
+        } */
+        &:first-child {
             margin-right: 45px;
         }
     }

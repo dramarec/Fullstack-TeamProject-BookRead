@@ -14,7 +14,7 @@ const ReviewModal = ({data, closeModal}) => {
 const dispatch = useDispatch()
 const [book, setBook] = useState({...data, ...initialState })
 const [rating, setRating] = useState()
-console.log(rating);
+// console.log(rating);
 
 
   const onHandleChange = (e) => {

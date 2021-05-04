@@ -23,9 +23,6 @@ const TrainingPage = () => {
     const trainingBooksList = useSelector(trainingSelector.trainingBooksList);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(trainingOperation.getTrainingOperation());
-    }, []);
     const isTraining = useSelector(getTraining);
     //const isUserTraining = useSelector(getUserTraining)
     // console.log('isTraining',isTraining);

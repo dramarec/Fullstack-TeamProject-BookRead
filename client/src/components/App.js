@@ -10,11 +10,16 @@ import PrivateRoutes from './routes/PrivateRoutes';
 import PublicRoutes from './routes/PublicRoutes';
 import { getUsersBooksOperetion } from '../redux/operations/bookOperation';
 import loadingSelectors from '../redux/selectors/loadingSelector';
+// import trainingSelector from '../redux/selectors/trainingSelector';
 import authOperations from '../redux/operations/authOperation';
 import trainingOperation from '../redux/operations/trainingOperation';
 
 const App = () => {
     const dispatch = useDispatch();
+    const isLoading = useSelector(loadingSelectors.getLoading);
+    const isAuth = useSelector(state => state.auth.token);
+    // const training = useSelector(trainingSelector.getTraining);
+    const training = useSelector(state => state.auth.user.training);
 
     const urlParams = new URLSearchParams(window.location.search);
     const googleToken = {
@@ -24,30 +29,43 @@ const App = () => {
     useEffect(() => {
         googleToken?.accessToken &&
             dispatch(authOperations.logInWithGoogleOperation(googleToken));
-        dispatch(getUsersBooksOperetion());
-        dispatch(trainingOperation.getTrainingOperation());
     }, []);
 
-    const isLoading = useSelector(loadingSelectors.getLoading);
+    const initialAction = async () => {
+        try {
+            await dispatch(getUsersBooksOperetion());
+            // console.log(training, 'NULL or NOT!');
+            // if (training !== null || training !== '') {
+            //     await dispatch(trainingOperation.getTrainingOperation());
+            // }
+            training !== null &&
+                (await dispatch(trainingOperation.getTrainingOperation()));
+        } catch (err) {
+            return;
+        }
+    };
+
+    useEffect(() => {
+        isAuth && initialAction();
+    }, []);
 
     return (
         <>
             {isLoading && <Spin />}
             <AppBar />
-            <div>
-                <Suspense fallback={<Spin />}>
-                    <Switch>
-                        {mainRoutes.map(route =>
-                            route.isPrivate ? (
-                                <PrivateRoutes {...route} key={route.path} />
-                            ) : (
-                                <PublicRoutes {...route} key={route.path} />
-                            ),
-                        )}
-                        <Redirect to="/" />
-                    </Switch>
-                </Suspense>
-            </div>
+
+            <Suspense fallback={<Spin />}>
+                <Switch>
+                    {mainRoutes.map(route =>
+                        route.isPrivate ? (
+                            <PrivateRoutes {...route} key={route.path} />
+                        ) : (
+                            <PublicRoutes {...route} key={route.path} />
+                        ),
+                    )}
+                    <Redirect to="/" />
+                </Switch>
+            </Suspense>
         </>
     );
 };

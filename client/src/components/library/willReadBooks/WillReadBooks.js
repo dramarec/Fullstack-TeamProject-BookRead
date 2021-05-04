@@ -40,7 +40,7 @@ const Mobile = props => <Responsive {...props} maxWidth={767} />;
 =======*/
 const WillReadBooks = () => {
     const booksWillRead = useSelector(getWillRead);
-    console.log('WillReadBooks ===> booksWillRead', booksWillRead);
+    // console.log('WillReadBooks ===> booksWillRead', booksWillRead);
 
     const Tablet = props => <Responsive {...props} minWidth={768} />;
     const Mobile = props => <Responsive {...props} maxWidth={767} />;

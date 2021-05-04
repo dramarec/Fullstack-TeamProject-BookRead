@@ -6,7 +6,11 @@ const addRead = async (req, res, next) => {
         const user = req.user;
         let { date, pages } = req.body;
 
-        const training = await Training.findOne({ _id: user?.training });
+        const training = await Training.findOne({
+            _id: user?.training,
+        }).populate('books');
+
+        console.log(training.books, 'BOOKS FROM TRAINING!!!');
 
         if (!training) {
             return res.status(403).json({
@@ -28,17 +32,16 @@ const addRead = async (req, res, next) => {
 
             arrayBook.readPages += pages;
             arrayBook.readPages += training.rest;
-            training.rest=0
+            console.log((training.rest, 'RESULT'));
+            training.rest = 0;
 
-            if (arrayBook.readPages > arrayBook.numberOfPages) {
+            if (arrayBook.readPages >= arrayBook.numberOfPages) {
                 training.rest = arrayBook.readPages - arrayBook.numberOfPages;
                 arrayBook.readPages = arrayBook.numberOfPages;
+                training.readBooks += 1;
             }
 
-            if (pages > arrayBook.readPages) {
-                pages = arrayBook.readPages;
-            }
-            await training.save()
+            await training.save();
 
             const {
                 _id,
@@ -69,7 +72,7 @@ const addRead = async (req, res, next) => {
             break;
         }
 
-        if (!book) {
+        if (training.books.length === training.readBooks) {
             await Training.deleteOne({ _id: req.user.training });
 
             req.user.training = null;
@@ -110,6 +113,7 @@ const addRead = async (req, res, next) => {
                     end: training.end,
                     duration: training.duration,
                     pagesReadPerDay: training.pagesReadPerDay,
+                    totalPages: training.totalPages,
                     books: training.books,
                     results: training.results,
                 },
