@@ -28,13 +28,13 @@ const App = () => {
     useEffect(() => {
         googleToken?.accessToken &&
             dispatch(authOperations.logInWithGoogleOperation(googleToken));
-    }, [googleToken]);
+    }, []);
 
     const initialAction = async () => {
         try {
             await dispatch(getUsersBooksOperetion());
-            // training._id !== '' &&
-            await dispatch(trainingOperation.getTrainingOperation());
+            training._id &&
+                (await dispatch(trainingOperation.getTrainingOperation()));
         } catch (err) {
             return;
         }
