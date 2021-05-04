@@ -159,6 +159,7 @@ const TrainingPageStyled = styled.div`
         display: flex;
         flex-direction: column;
         padding: 25px;
+        background-color: #f6f7fb;
     }
     .bookFormBtnBack {
         display: flex;

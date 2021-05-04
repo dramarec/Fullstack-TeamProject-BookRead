@@ -116,6 +116,7 @@ const FormTraning = () => {
                     </button>
                 </div>
             </form>
+
             <DescBookList
                 onHandleDeleteBook={onHandleDeleteBook}
                 books={booksArr}

@@ -23,6 +23,8 @@ const TrainingPage = () => {
     const trainingBooksList = useSelector(trainingSelector.trainingBooksList);
     const dispatch = useDispatch();
 
+    console.log(`trainingBooksList`, trainingBooksList);
+
     const isTraining = useSelector(getTraining);
     //const isUserTraining = useSelector(getUserTraining)
     // console.log('isTraining',isTraining);
@@ -96,12 +98,28 @@ const TrainingPage = () => {
                 )}
             </Tablet>
             <Mobile>
-                <MyGoal
-                    startTraining={isTraining.duration !== 0}
-                    training={isTraining}
-                />
-                <MobBookList />
-                <Chart />
+                {isTraining.duration !== 0 ? (
+                    <>
+                        <TimersSet />
+                        <MyGoal
+                            startTraining={isTraining.duration !== 0}
+                            training={isTraining}
+                        />
+                        <MobBookList books={trainingBooksList} />
+                        <Chart />
+                        <Result />
+                    </>
+                ) : (
+                    <>
+                        <MyGoal
+                            startTraining={isTraining.duration !== 0}
+                            training={isTraining}
+                        />
+                        <MobBookList />
+                        <Chart />
+                    </>
+                )}
+
                 <ButtonAdd onHandleClick={openModal} />
                 {isOpenModal && (
                     <Modal closeModal={closeModal}>

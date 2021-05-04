@@ -1,14 +1,21 @@
 import styled from 'styled-components';
 
 const FormTraningStyle = styled.div`
- position: relative;
- 
+    position: relative;
+
     @media (max-width: 767px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         height: 73vh;
         width: 73vw;
     }
+
     .training-form {
-        width: 270px;
+        @media (max-width: 767px) {
+            width: 270px;
+        }
+
         &__pickers {
             @media (max-width: 767px) {
                 display: flex;
@@ -32,9 +39,7 @@ const FormTraningStyle = styled.div`
             margin-bottom: 25px;
             height: 42px;
         }
-    }
-   
-    
+
         &__pickers {
             display: flex;
             justify-content: center;
@@ -42,6 +47,14 @@ const FormTraningStyle = styled.div`
     }
 
     .selectorBooks {
+        @media (max-width: 767px) {
+            width: 270px;
+            font-family: 'Montserrat-Regular';
+            font-size: 14px;
+            line-height: 2.71;
+            color: #a6abb9;
+        }
+
         width: 669px;
         margin-right: 46px;
     }
@@ -78,6 +91,10 @@ const FormTraningStyle = styled.div`
         outline: none;
         height: 42px;
 
+        @media screen and (max-width: 767px) {
+            margin-top: 35px;
+        }
+
         @media screen and (min-width: 768px) {
             //margin-top: 40px;
         }
@@ -107,6 +124,10 @@ const FormTraningStyle = styled.div`
         border: none;
         outline: none;
         height: 42px;
+
+        @media screen and (max-width: 767px) {
+            display: none;
+        }
 
         @media screen and (min-width: 768px) {
             margin-top: 40px;

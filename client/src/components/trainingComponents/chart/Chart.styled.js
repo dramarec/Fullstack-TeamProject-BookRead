@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 const ChartWrapper = styled.div`
+    @media screen and (max-width: 767px) {
+        margin: 0 auto 30px;
+    }
     margin: 0 auto 46px;
     //width: 270px;
     width: 270px;

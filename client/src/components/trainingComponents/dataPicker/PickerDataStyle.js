@@ -13,9 +13,9 @@ const Wrapper = styled.div`
         /* &:not(:last-child) {
             margin-right: 45px;
         } */
-        &:first-child {
+        /* &:first-child {
             margin-right: 45px;
-        }
+        } */
     }
     & svg {
         position: absolute;
@@ -30,9 +30,20 @@ const Wrapper = styled.div`
         height: 42px;
         width: 270px;
         /* text-align: center; */
+        font-family: 'Montserrat-Regular';
+        font-size: 14px;
+        line-height: 2.71;
         color: var(--third-text);
+
+        @media (max-width: 767px) {
+            margin-bottom: 20px;
+        }
+
         @media (min-width: 768px) {
             width: 250px;
+            &:first-child {
+                margin-right: 45px;
+            }
         }
         &:focus {
             box-shadow: inset 1px 1px 1px rgba(30, 30, 30, 0.1);
