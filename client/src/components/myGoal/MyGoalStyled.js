@@ -38,7 +38,7 @@ const MyGoalStyled = styled.div`
         color: var(--light-text);
         text-align: center;
         @media screen and (min-width: 768px) and (max-width: 1279px) {
-            margin-top: 23px;
+            margin-top: ${props => (props.startTraining ? '23px' : '0px')};
             padding: 11px 28px;
         }
     }

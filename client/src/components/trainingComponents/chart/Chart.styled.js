@@ -4,7 +4,7 @@ const ChartWrapper = styled.div`
     @media screen and (max-width: 767px) {
         margin: 0 auto 30px;
     }
-    margin: 0 auto 46px;
+    /* margin: 0 auto 46px; */
     //width: 270px;
     width: 270px;
     padding: 14px 21px 5px 22px;

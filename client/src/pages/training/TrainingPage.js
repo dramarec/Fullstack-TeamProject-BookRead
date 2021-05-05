@@ -117,27 +117,26 @@ const TrainingPage = () => {
                         />
                         <MobBookList />
                         <Chart />
+                        <ButtonAdd onHandleClick={openModal} />
+                        {isOpenModal && (
+                            <Modal closeModal={closeModal}>
+                                <div className="trainingModal">
+                                    <button
+                                        className="bookFormBtnBack"
+                                        onClick={closeModal}
+                                    >
+                                        <img
+                                            src={back}
+                                            alt=""
+                                            width="24px"
+                                            height="11.62px"
+                                        />
+                                    </button>
+                                    <MyTraining />
+                                </div>
+                            </Modal>
+                        )}
                     </>
-                )}
-
-                <ButtonAdd onHandleClick={openModal} />
-                {isOpenModal && (
-                    <Modal closeModal={closeModal}>
-                        <div className="trainingModal">
-                            <button
-                                className="bookFormBtnBack"
-                                onClick={closeModal}
-                            >
-                                <img
-                                    src={back}
-                                    alt=""
-                                    width="24px"
-                                    height="11.62px"
-                                />
-                            </button>
-                            <MyTraining />
-                        </div>
-                    </Modal>
                 )}
             </Mobile>
         </TrainingPageStyled>

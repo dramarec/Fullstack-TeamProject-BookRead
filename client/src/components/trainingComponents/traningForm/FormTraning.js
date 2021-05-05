@@ -121,11 +121,13 @@ const FormTraning = () => {
                 onHandleDeleteBook={onHandleDeleteBook}
                 books={booksArr}
             />
-            <div>
-                <button onClick={onHandleAddTraining} className="FormBtn">
-                    Почати тренування
-                </button>
-            </div>
+            {booksArr.length > 0 && (
+                <div>
+                    <button onClick={onHandleAddTraining} className="FormBtn">
+                        Почати тренування
+                    </button>
+                </div>
+            )}
         </FormTraningStyle>
     );
 };
