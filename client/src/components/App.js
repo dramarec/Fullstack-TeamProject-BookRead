@@ -16,7 +16,7 @@ import trainingOperation from '../redux/operations/trainingOperation';
 const App = () => {
     const dispatch = useDispatch();
 
-    const urlParams = new URLSearchParams(window.location.search);
+   /* const urlParams = new URLSearchParams(window.location.search);
     const googleToken = {
         accessToken: urlParams.get('accessToken'),
     };
@@ -24,7 +24,7 @@ const App = () => {
     useEffect(() => {
         googleToken &&
             dispatch(authOperations.logInWithGoogleOperation(googleToken));
-    }, [googleToken]);
+    }, [googleToken]);*/
 
     useEffect(() => {
         dispatch(getUsersBooksOperetion());

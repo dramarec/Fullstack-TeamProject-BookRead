@@ -5,7 +5,7 @@ import ReadBooksStyled from './ReadBooksStyled';
 import Responsive from 'react-responsive';
 
 const ReadBooks = ({ bookFinished }) => {
-   // console.log('ReadBooks ===> bookFinished', bookFinished);
+    console.log('ReadBooks ===> bookFinished', bookFinished);
     const Tablet = props => <Responsive {...props} minWidth={768} />;
     const Mobile = props => <Responsive {...props} maxWidth={767} />;
     return (

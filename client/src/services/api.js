@@ -51,6 +51,7 @@ class bookReadApi {
             .post('/books', book)
             .then(res => res.data.data)
             .catch(err => {
+                 
                 throw new Error(err);
             });
     }
@@ -70,6 +71,7 @@ class bookReadApi {
             .post('/training', training)
             .then(res => res.data.data)
             .catch(err => {
+                console.log(err.response);
                 throw new Error(err);
             });
     }

@@ -1,18 +1,21 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { getTraining } from '../../redux/selectors/bookSelector';
 import MyGoalStyled from './MyGoalStyled';
 
 const MyGoal = ({ startTraining, training }) => {
     //const [startTraning, setStartTraning] = useState(false)
     //console.log('startTraining', startTraining);
+    const isTraining = useSelector(getTraining);
     let bookRead = 0;
     let booksLeft;
-    for (let i = 0; i < training.books.length; i++) {
-        if (training.books[i].numberOfPages === training.books[i].readPages) {
+    for (let i = 0; i < isTraining.books?.length; i++) {
+        if (isTraining.books[i].numberOfPages === isTraining.books[i].readPages) {
             bookRead += 1;
         }
-        booksLeft = training.books.length - bookRead;
+        booksLeft = isTraining.books.length - bookRead;
     }
-    //console.log('book', bookRead);
+    console.log('book', isTraining);
     //console.log('array', booksLeft);
     return (
         <MyGoalStyled startTraining={startTraining}>
@@ -23,7 +26,7 @@ const MyGoal = ({ startTraining, training }) => {
                 <div className="statistic-book">
                     <div className="statistic__cell">
                         <span className="statistic__number">
-                            {training.books.length}
+                            {isTraining.books.length}
                         </span>
                     </div>
                     <p className="statistic__text">
@@ -33,7 +36,7 @@ const MyGoal = ({ startTraining, training }) => {
                 <div className="statistic-day">
                     <div className="statistic__cell">
                         <span className="statistic__number">
-                            {training.duration}
+                            {isTraining.duration}
                         </span>
                     </div>
                     <p className="statistic__text">

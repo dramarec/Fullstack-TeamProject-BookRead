@@ -22,7 +22,7 @@ const TrainingPage = () => {
     const isTraining = useSelector(getTraining);
     //const isUserTraining = useSelector(getUserTraining)
     // console.log('isTraining',isTraining);
-    // console.log('isUserTraining',isUserTraining);
+     console.log('isTraining',isTraining);
 
     const Desktop = props => <Responsive {...props} minWidth={1280} />;
     const Tablet = props => <Responsive {...props} maxWidth={1279} />;
@@ -36,7 +36,7 @@ const TrainingPage = () => {
                         <TimersSet />
                         <MyGoal
                             startTraining={isTraining.duration !== 0}
-                            training={isTraining}
+                            
                         />
                         <DescBookList books={trainingBooksList} />
                         <Chart />
@@ -46,7 +46,7 @@ const TrainingPage = () => {
                     <>
                         <MyGoal
                             startTraining={isTraining.duration !== 0}
-                            training={isTraining}
+                            
                         />
                         <MyTraining />
                         <Chart />
@@ -65,7 +65,7 @@ const TrainingPage = () => {
                         <div className="rigthSide">
                             <MyGoal
                                 startTraining={isTraining.duration !== 0}
-                                training={isTraining}
+                                
                             />
                             <Result />
                         </div>
