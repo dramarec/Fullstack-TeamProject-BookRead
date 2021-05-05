@@ -2,8 +2,13 @@ import styled from 'styled-components';
 
 const TimerToDayStyled = styled.section`
     display: flex;
-    justify-content: center;
+
+    @media screen and (max-width: 767px) {
+        flex-direction: column;
+        margin: 0 auto;
+    }
     @media screen and (min-width: 768px) {
+        justify-content: center;
         margin: 30px auto 0px;
         width: 610px;
     }
@@ -14,7 +19,13 @@ const TimerToDayStyled = styled.section`
     }
 
     .timerYear {
-        margin-right: 68px;
+        @media screen and (max-width: 767px) {
+            margin-top: 15px;
+        }
+
+        @media screen and (min-width: 768px) {
+            margin-right: 68px;
+        }
     }
     .timer-title {
         font-family: 'Montserrat-Regular';

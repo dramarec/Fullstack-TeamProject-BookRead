@@ -24,8 +24,16 @@ const TrainingPageStyled = styled.div`
         }
     }
     .training {
-        width: 678px;
-        margin-top: 40px;
+        @media (max-width: 767px) {
+            //padding: 25px;
+            min-width: 320px;
+        }
+
+        @media (min-width: 768px) {
+            width: 678px;
+            margin-top: 40px;
+        }
+
         @media (min-width: 1280px) {
             width: 886px;
             margin-right: 40px;
@@ -128,21 +136,36 @@ const TrainingPageStyled = styled.div`
   }*/
 
     .baner {
-        width: 100%;
+        width: 270px;
         height: 60px;
         color: #fff;
         font-family: 'Montserrat-Medium';
         font-size: 20px;
 
-        /* font-weight: 600; */
+        line-height: 1.9;
         text-align: center;
-        padding: 15px 200px;
+        padding: 11px 47px;
         background-color: var(--table-title);
         box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-        margin-bottom: 32px;
-        @media (max-width: 767px) {
-            display: none;
+        margin: 62px auto 20px;
+
+        @media (min-width: 768px) {
+            width: 100%;
+            padding: 15px 200px;
+            margin: 0px auto 32px;
         }
+    }
+    .trainingModal {
+        display: flex;
+        flex-direction: column;
+        padding: 25px;
+        background-color: #f6f7fb;
+    }
+    .bookFormBtnBack {
+        display: flex;
+        border: none;
+        outline: none;
+        background-color: inherit;
     }
 `;
 

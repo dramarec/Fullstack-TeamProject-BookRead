@@ -2,8 +2,38 @@ import styled from 'styled-components';
 
 const FormTraningStyle = styled.div`
     position: relative;
+
+    @media (max-width: 767px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 73vh;
+        width: 73vw;
+    }
+
     .training-form {
-        &__wrap {
+        @media (max-width: 767px) {
+            width: 270px;
+        }
+
+        &__pickers {
+            @media (max-width: 767px) {
+                display: flex;
+                flex-direction: column;
+            }
+            @media (min-width: 768px) {
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+    .training-form__wrap {
+        @media (max-width: 767px) {
+            display: flex;
+            flex-direction: column;
+            width: 270px;
+        }
+        @media (min-width: 768px) {
             display: flex;
             justify-content: center;
             margin-bottom: 25px;
@@ -17,6 +47,14 @@ const FormTraningStyle = styled.div`
     }
 
     .selectorBooks {
+        @media (max-width: 767px) {
+            width: 270px;
+            font-family: 'Montserrat-Regular';
+            font-size: 14px;
+            line-height: 2.71;
+            color: #a6abb9;
+        }
+
         width: 669px;
         margin-right: 46px;
     }
@@ -25,8 +63,9 @@ const FormTraningStyle = styled.div`
         font-family: 'Montserrat-Regular';
         color: var(--third-text);
         font-size: 14px;
+        width: 270px;
 
-        @media (min-width: 767px) {
+        @media (min-width: 768px) {
             width: 482px;
         }
         @media (min-width: 1279px) {
@@ -51,6 +90,10 @@ const FormTraningStyle = styled.div`
         background-color: #f6f7fb;
         outline: none;
         height: 42px;
+
+        @media screen and (max-width: 767px) {
+            margin-top: 35px;
+        }
 
         @media screen and (min-width: 768px) {
             //margin-top: 40px;
@@ -81,6 +124,10 @@ const FormTraningStyle = styled.div`
         border: none;
         outline: none;
         height: 42px;
+
+        @media screen and (max-width: 767px) {
+            display: none;
+        }
 
         @media screen and (min-width: 768px) {
             margin-top: 40px;
