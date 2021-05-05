@@ -90,7 +90,8 @@ class bookReadApi {
             .get('/training')
             .then(res => res.data.training)
             .catch(err => {
-                throw new Error(err);
+                // throw new Error(err);
+                return err;
             });
     }
 

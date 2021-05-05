@@ -42,9 +42,9 @@ const TimerToDay = ({ data, dataStart }) => {
 
     useEffect(() => {
         startTimer();
-        return () => 
+        return () => {
             clearInterval(interval);
-        
+        };
     });
   
 

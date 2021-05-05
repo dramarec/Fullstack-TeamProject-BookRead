@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import InputDatePicker from '../dataPicker/PickerData';
-import FormTraningStyle from './FormTraningStyle';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import moment from 'moment';
 import Select from './selectBooks/Selector';
-import { useFormik } from 'formik';
-import trainingOperation from '../../../redux/operations/trainingOperation';
+
 import DescBookList from '../booksLists/desc/DescBookList';
+import InputDatePicker from '../dataPicker/PickerData';
+import FormTraningStyle from './FormTraningStyle';
+import trainingOperation from '../../../redux/operations/trainingOperation';
 
 const FormTraning = () => {
     const dispatch = useDispatch();
@@ -14,15 +16,20 @@ const FormTraning = () => {
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
     const [booksArr, setBooks] = useState([]);
-    //console.log(start, 'START');
-    //console.log(end, 'END');
-    //console.log(booksArr, 'BOOK STATE!!');
+    // console.log(start, 'FormTraning => START');
+    // console.log(end, 'FormTraning => END');
+    // console.log(booksArr, 'FormTraning => BOOK STATE!!');
 
     const onHandleDeleteBook = e => {
         const { id } = e.currentTarget.dataset;
-
         setBooks(prev => prev.filter(book => book._id !== id));
     };
+
+    const validationSchema = Yup.object().shape({
+        start: Yup.string().required('Вкажіть дату початку тренування'),
+        end: Yup.string().required('Вкажіть дату завершення тренування'),
+        book: Yup.object().required('Ви не обрали книжку'),
+    });
 
     const formik = useFormik({
         initialValues: {
@@ -30,6 +37,7 @@ const FormTraning = () => {
             end: '',
             book: '',
         },
+        validationSchema,
         onSubmit: values => {
             if (booksArr.some(item => item._id === values.book._id)) {
                 alert('kiss my ass!');
@@ -53,7 +61,6 @@ const FormTraning = () => {
 
     const handleBook = value => {
         formik.setFieldValue('book', value);
-        // console.log(value, 'BOOK!');
     };
 
     const books = booksArr.map(book => book._id);
@@ -66,7 +73,6 @@ const FormTraning = () => {
                 books,
             }),
         );
-        // console.log(start, end, booksArr);
     };
 
     return (
@@ -80,32 +86,48 @@ const FormTraning = () => {
                             onChange={handleStartDate}
                             pickedDate={start ? new Date(start) : ''}
                         />
+                        {formik.touched.start && formik.errors.start ? (
+                            <p className="error start">{formik.errors.start}</p>
+                        ) : null}
+
                         <InputDatePicker
                             value={formik.values.end}
                             placeholderText="Завершення"
                             onChange={handleEndDate}
                             pickedDate={end ? new Date(end) : ''}
                         />
+                        {formik.touched.end && formik.errors.end ? (
+                            <p className="error end">{formik.errors.end}</p>
+                        ) : null}
                     </div>
                 </div>
             </form>
+
             <form onSubmit={formik.handleSubmit} className="training-form">
                 <div className="training-form__wrap">
                     <Select value={formik.values.book} onChange={handleBook} />
+
+                    {formik.touched.book && formik.errors.book ? (
+                        <p className="error book">{formik.errors.book}</p>
+                    ) : null}
+
                     <button type="submit" className="bookFormBtn">
                         Додати
                     </button>
                 </div>
             </form>
+
             <DescBookList
                 onHandleDeleteBook={onHandleDeleteBook}
                 books={booksArr}
             />
-            <div>
-                <button onClick={onHandleAddTraining} className="FormBtn">
-                    Почати тренування
-                </button>
-            </div>
+            {booksArr.length > 0 && (
+                <div>
+                    <button onClick={onHandleAddTraining} className="FormBtn">
+                        Почати тренування
+                    </button>
+                </div>
+            )}
         </FormTraningStyle>
     );
 };

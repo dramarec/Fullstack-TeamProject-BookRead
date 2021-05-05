@@ -1,35 +1,71 @@
 import styled from 'styled-components';
 
 const FormTraningStyle = styled.div`
+    position: relative;
+
+    @media (max-width: 767px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 73vh;
+        width: 73vw;
+    }
+
     .training-form {
+        @media (max-width: 767px) {
+            width: 270px;
+        }
+
+        &__pickers {
+            @media (max-width: 767px) {
+                display: flex;
+                flex-direction: column;
+            }
+            @media (min-width: 768px) {
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+    .training-form__wrap {
+        @media (max-width: 767px) {
+            display: flex;
+            flex-direction: column;
+            width: 270px;
+        }
+        @media (min-width: 768px) {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            height: 42px;
+        }
+
         &__pickers {
             display: flex;
             justify-content: center;
         }
     }
-    .training-form__wrap {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 25px;
-        height: 42px;
-    }
-
-    .selectwrap {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 25px;
-    }
 
     .selectorBooks {
+        @media (max-width: 767px) {
+            width: 270px;
+            font-family: 'Montserrat-Regular';
+            font-size: 14px;
+            line-height: 2.71;
+            color: #a6abb9;
+        }
+
         width: 669px;
         margin-right: 46px;
     }
+
     .select {
         font-family: 'Montserrat-Regular';
         color: var(--third-text);
         font-size: 14px;
+        width: 270px;
 
-        @media (min-width: 767px) {
+        @media (min-width: 768px) {
             width: 482px;
         }
         @media (min-width: 1279px) {
@@ -54,6 +90,10 @@ const FormTraningStyle = styled.div`
         background-color: #f6f7fb;
         outline: none;
         height: 42px;
+
+        @media screen and (max-width: 767px) {
+            margin-top: 35px;
+        }
 
         @media screen and (min-width: 768px) {
             //margin-top: 40px;
@@ -85,6 +125,10 @@ const FormTraningStyle = styled.div`
         outline: none;
         height: 42px;
 
+        @media screen and (max-width: 767px) {
+            display: none;
+        }
+
         @media screen and (min-width: 768px) {
             margin-top: 40px;
         }
@@ -96,6 +140,32 @@ const FormTraningStyle = styled.div`
             color: #ff6b08;
             outline: none;
         }
+    }
+    .error {
+        font-family: 'Montserrat-Regular';
+        color: #e63946;
+        font-size: 11px;
+    }
+    .error.start {
+        position: absolute;
+        left: 100px;
+        top: 42px;
+        @media screen and (min-width: 1280px) {
+            left: 200px;
+        }
+    }
+    .error.end {
+        position: absolute;
+        top: 42px;
+        right: 80px;
+        @media screen and (min-width: 1280px) {
+            right: 185px;
+        }
+    }
+    .error.book {
+        position: absolute;
+        bottom: 195px;
+        left: 0;
     }
 `;
 

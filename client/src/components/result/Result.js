@@ -22,7 +22,6 @@ const Result = () => {
         },
         validationSchema,
         onSubmit: values => {
-            console.log(values);
             patchTraining(values);
         },
     });
