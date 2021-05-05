@@ -119,7 +119,8 @@ const DescBookListStyle = styled.div`
     .books-titles__list p:nth-child(1) {
         @media screen and (min-width: 768px) {
             //flex: 1.3 1 0%;
-            margin-right: 171px;
+            white-space: nowrap;
+            margin-right: 165px;
         }
         @media screen and (min-width: 1280px) {
             /* flex: 4.4 1 0%; */
@@ -156,6 +157,7 @@ const DescBookListStyle = styled.div`
     }
     .books-library__item p:nth-child(2) {
         flex: 3 1 0%;
+        margin-right: 13px;
     }
     .books-library__item p:nth-child(3) {
         /* @media screen and (min-width: 768px) {
