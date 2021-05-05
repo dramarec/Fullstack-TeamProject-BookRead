@@ -7,6 +7,8 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import 'react-datepicker/dist/react-datepicker.css';
 import trainingOperation from '../../redux/operations/trainingOperation';
+import Statistics from '../statistic/Statistics';
+
 
 const Result = () => {
     const dispatch = useDispatch();
@@ -96,6 +98,7 @@ const Result = () => {
                     Додати результат
                 </button>
             </form>
+            <Statistics />
         </ResultStyled>
     );
 };
