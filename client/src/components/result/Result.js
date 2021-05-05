@@ -9,6 +9,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import trainingOperation from '../../redux/operations/trainingOperation';
 import trainingSelector from '../../redux/selectors/trainingSelector';
 // import trainingActions from '../../redux/actions/trainingActions';
+import Statistics from '../statistic/Statistics';
 
 const Result = () => {
     const dispatch = useDispatch();
@@ -105,6 +106,7 @@ const Result = () => {
                     Додати результат
                 </button>
             </form>
+            <Statistics />
         </ResultStyled>
     );
 };

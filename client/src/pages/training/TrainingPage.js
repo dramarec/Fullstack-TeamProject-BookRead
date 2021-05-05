@@ -1,4 +1,4 @@
-import React, { useEffect, memo } from 'react';
+import React, { useEffect, useState, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Responsive from 'react-responsive';
 import TrainingPageStyled from './TrainingPageStyled';
@@ -11,12 +11,21 @@ import trainingSelector from '../../redux/selectors/trainingSelector';
 import Result from '../../components/result/Result';
 import trainingOperation from '../../redux/operations/trainingOperation';
 import { getTraining } from '../../redux/selectors/bookSelector';
+import MobBookList from '../../components/trainingComponents/booksLists/mob/MobBookList';
+import ButtonAdd from '../../components/buttonAdd/ButtonAdd';
+import Modal from '../../components/modal/Modal';
+import back from '../../assets/svg/back.svg';
 
 const TrainingPage = memo(() => {
     const trainingBooksList = useSelector(trainingSelector.trainingBooksList);
     const dispatch = useDispatch();
     const training = useSelector(state => state.auth.user.training);
     const isAuth = useSelector(state => state.auth.token);
+    // const training = useSelector(trainingSelector.getTraining);
+    const [isOpenModal, setIsOpenModal] = useState(false);
+
+    console.log(`trainingBooksList`, trainingBooksList);
+
     const isTraining = useSelector(getTraining);
 
     const trainingAction = async () => {
@@ -34,34 +43,21 @@ const TrainingPage = memo(() => {
     }, []);
 
     const Desktop = props => <Responsive {...props} minWidth={1280} />;
-    const Tablet = props => <Responsive {...props} maxWidth={1279} />;
-    //const Mobile = props => <Responsive {...props} maxWidth={767} />;
+    const Tablet = props => (
+        <Responsive {...props} minWidth={768} maxWidth={1279} />
+    );
+    const Mobile = props => <Responsive {...props} maxWidth={767} />;
+
+    const openModal = () => {
+        setIsOpenModal(true);
+    };
+
+    const closeModal = () => {
+        setIsOpenModal(false);
+    };
 
     return (
         <TrainingPageStyled className="container">
-            <Tablet>
-                {isTraining.duration !== 0 ? (
-                    <>
-                        <TimersSet />
-                        <MyGoal
-                            startTraining={isTraining.duration !== 0}
-                            training={isTraining}
-                        />
-                        <DescBookList books={trainingBooksList} />
-                        <Chart />
-                        <Result />
-                    </>
-                ) : (
-                    <>
-                        <MyGoal
-                            startTraining={isTraining.duration !== 0}
-                            training={isTraining}
-                        />
-                        <MyTraining />
-                        <Chart />
-                    </>
-                )}
-            </Tablet>
             <Desktop>
                 {isTraining.duration !== 0 ? (
                     <>
@@ -90,6 +86,71 @@ const TrainingPage = memo(() => {
                     </>
                 )}
             </Desktop>
+            <Tablet>
+                {isTraining.duration !== 0 ? (
+                    <>
+                        <TimersSet />
+                        <MyGoal
+                            startTraining={isTraining.duration !== 0}
+                            training={isTraining}
+                        />
+                        <DescBookList books={trainingBooksList} />
+                        <Chart />
+                        <Result />
+                    </>
+                ) : (
+                    <>
+                        <MyGoal
+                            startTraining={isTraining.duration !== 0}
+                            training={isTraining}
+                        />
+                        <MyTraining />
+                        <Chart />
+                    </>
+                )}
+            </Tablet>
+            <Mobile>
+                {isTraining.duration !== 0 ? (
+                    <>
+                        <TimersSet />
+                        <MyGoal
+                            startTraining={isTraining.duration !== 0}
+                            training={isTraining}
+                        />
+                        <MobBookList books={trainingBooksList} />
+                        <Chart />
+                        <Result />
+                    </>
+                ) : (
+                    <>
+                        <MyGoal
+                            startTraining={isTraining.duration !== 0}
+                            training={isTraining}
+                        />
+                        <MobBookList />
+                        <Chart />
+                        <ButtonAdd onHandleClick={openModal} />
+                        {isOpenModal && (
+                            <Modal closeModal={closeModal}>
+                                <div className="trainingModal">
+                                    <button
+                                        className="bookFormBtnBack"
+                                        onClick={closeModal}
+                                    >
+                                        <img
+                                            src={back}
+                                            alt=""
+                                            width="24px"
+                                            height="11.62px"
+                                        />
+                                    </button>
+                                    <MyTraining />
+                                </div>
+                            </Modal>
+                        )}
+                    </>
+                )}
+            </Mobile>
         </TrainingPageStyled>
     );
 });

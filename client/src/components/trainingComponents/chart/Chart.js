@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import Responsive from 'react-responsive';
 import {
     ResponsiveContainer,
     LineChart,
@@ -37,6 +38,8 @@ const style = {
 };
 
 const Chart = () => {
+    const Tablet = props => <Responsive {...props} minWidth={768} />;
+    const Mobile = props => <Responsive {...props} maxWidth={767} />;
     const training = useSelector(getTraining);
     const result = training.results?.map(item => {
         // console.log(item, 'item from RESULTS');
@@ -115,19 +118,25 @@ const Chart = () => {
     };
 
     return (
-        <div /* className="container" */>
-            <ChartWrapper>
-                <div className="title-wrap">
-                    <h2 className="title">кiлькiсть сторiнок / день</h2>
-                    <div className="page-wrap">
-                        <span className="pages">{pagesReadPerDay}</span>
-                    </div>
+        // <div >
+        <ChartWrapper>
+            <div className="title-wrap">
+                <h2 className="title">кiлькiсть сторiнок / день</h2>
+                <div className="page-wrap">
+                    <span className="pages">{pagesReadPerDay}</span>
                 </div>
+            </div>
+            <Tablet>
                 <div className="chart-box">
                     <ResponsiveContainer width="100%" height={290}>
                         <LineChart
                             data={data}
-                            margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+                            margin={{
+                                top: 5,
+                                right: 20,
+                                bottom: 5,
+                                left: 0,
+                            }}
                         >
                             <Line
                                 type="monotone"
@@ -165,8 +174,58 @@ const Chart = () => {
 
                     <p className="text-x-line">час</p>
                 </div>
-            </ChartWrapper>
-        </div>
+            </Tablet>
+            <Mobile>
+                <div className="chart-box">
+                    <ResponsiveContainer width="100%" height={190}>
+                        <LineChart
+                            data={data}
+                            margin={{
+                                top: 5,
+                                right: 20,
+                                bottom: 0,
+                                left: 0,
+                            }}
+                        >
+                            <Line
+                                type="monotone"
+                                dataKey="ПЛАН"
+                                stroke="#091E3F"
+                                fill="#091E3F"
+                                strokeOpacity={opacity.ПЛАН}
+                                strokeWidth={2}
+                                activeDot={{ r: 8 }}
+                            />
+                            <Line
+                                type="monotone"
+                                dataKey="ФАКТ"
+                                stroke="#FF6B08"
+                                fill="#FF6B08"
+                                strokeOpacity={opacity.ФАКТ}
+                                strokeWidth={2}
+                                activeDot={{ r: 8 }}
+                            />
+                            <CartesianGrid horizontal={false} stroke="#ccc" />
+                            <XAxis dataKey="none" tickLine={false}></XAxis>
+                            <Tooltip />
+
+                            <Legend
+                                onMouseEnter={handleMouseEnter}
+                                onMouseLeave={handleMouseLeave}
+                                iconSize={0}
+                                layout="vertical"
+                                verticalAlign="middle"
+                                wrapperStyle={style}
+                                formatter={renderColorfulLegendText}
+                            />
+                        </LineChart>
+                    </ResponsiveContainer>
+
+                    <p className="text-x-line">час</p>
+                </div>
+            </Mobile>
+        </ChartWrapper>
+        // </div>
     );
 };
 
