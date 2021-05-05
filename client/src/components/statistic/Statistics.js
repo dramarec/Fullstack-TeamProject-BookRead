@@ -1,29 +1,18 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import {CSSTransition, TransitionGroup} from 'react-transition-group'
-import trainingSelector from '../../redux/selectors/trainingSelector';
 import StatisticsStyled from './StatisticsStyled';
-import StatisticList from './StatisticList'
 
 const Statistics = () => {
-    const statistic = useSelector(trainingSelector)
-    const statisticSorted = statistic
-    ?.slice()
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-
-    return (
-        <StatisticsStyled>
-           <TransitionGroup component="ul" className="statisticList">
-        {statisticSorted?.map(item => (
-          <CSSTransition
-            key={item._id}
-            timeout={250}
-            classNames="statisticListItem"
-          >
-            <StatisticList {...item} />
-          </CSSTransition>
-        ))}
-      </TransitionGroup>
+ 
+  return (
+    <StatisticsStyled>
+      <h1 className="statisticTitle">Статистика</h1>
+      <ul className="statisticList"> 
+        <li className="statisticItem">
+          <span className="date">05.05.2021</span>
+          <span className="pagesCount">25</span>
+          <span className="pagesText">стор.</span>
+        </li>
+      </ul>
     </StatisticsStyled>
 )
 }
