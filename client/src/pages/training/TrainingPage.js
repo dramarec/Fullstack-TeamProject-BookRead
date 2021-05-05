@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Responsive from 'react-responsive';
 import TrainingPageStyled from './TrainingPageStyled';
@@ -12,15 +12,26 @@ import Result from '../../components/result/Result';
 import trainingOperation from '../../redux/operations/trainingOperation';
 import { getTraining } from '../../redux/selectors/bookSelector';
 
-const TrainingPage = () => {
-    // const training = useSelector(trainingSelector.getTraining);
+const TrainingPage = memo(() => {
     const trainingBooksList = useSelector(trainingSelector.trainingBooksList);
     const dispatch = useDispatch();
-
+    const training = useSelector(state => state.auth.user.training);
+    const isAuth = useSelector(state => state.auth.token);
     const isTraining = useSelector(getTraining);
-    //const isUserTraining = useSelector(getUserTraining)
-    // console.log('isTraining',isTraining);
-    // console.log('isUserTraining',isUserTraining);
+
+    const trainingAction = async () => {
+        try {
+            training !== null &&
+                (await dispatch(trainingOperation.getTrainingOperation()));
+        } catch (err) {
+            return;
+        }
+    };
+
+    useEffect(() => {
+        isAuth && trainingAction();
+        // eslint-disable-next-line
+    }, []);
 
     const Desktop = props => <Responsive {...props} minWidth={1280} />;
     const Tablet = props => <Responsive {...props} maxWidth={1279} />;
@@ -81,5 +92,5 @@ const TrainingPage = () => {
             </Desktop>
         </TrainingPageStyled>
     );
-};
+});
 export default TrainingPage;

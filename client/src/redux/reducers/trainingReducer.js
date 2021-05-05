@@ -25,17 +25,16 @@ const trainingReducer = createReducer(initialState, {
             results: payload.results,
         };
     },
-    [trainingActions.addReadPagesSuccess]: (state, { payload }) => {
-        console.log(payload, 'PAYLOAD 3456');
+    [trainingActions.addReadPagesSuccess]: (_, { payload }) => {
         return {
-            _id: payload._id,
-            start: payload.start,
-            end: payload.end,
-            duration: payload.duration,
-            pagesReadPerDay: payload.pagesReadPerDay,
-            totalPages: payload.totalPages,
-            books: payload.books,
-            results: payload.results,
+            _id: payload.training._id,
+            start: payload.training.start,
+            end: payload.training.end,
+            duration: payload.training.duration,
+            pagesReadPerDay: payload.training.pagesReadPerDay,
+            totalPages: payload.training.totalPages,
+            books: payload.training.books,
+            results: payload.training.results,
         };
     },
     [trainingActions.getTrainingSuccess]: (_, { payload }) => {
