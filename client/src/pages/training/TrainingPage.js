@@ -15,7 +15,6 @@ import MobBookList from '../../components/trainingComponents/booksLists/mob/MobB
 import TrainingModal from '../../components/trainingComponents/myTraining/TrainingModal';
 
 const TrainingPage = memo(() => {
-    const trainingBooksList = useSelector(trainingSelector.trainingBooksList);
     const dispatch = useDispatch();
     const training = useSelector(state => state.auth.user.training);
     const isAuth = useSelector(state => state.auth.token);

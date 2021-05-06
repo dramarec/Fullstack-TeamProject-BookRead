@@ -40,6 +40,10 @@ const addRead = async (req, res, next) => {
                 arrayBook.readPages = arrayBook.numberOfPages;
             }
 
+            if (training.totalReadPages > training.totalPages) {
+                training.totalReadPages = training.totalPages;
+            }
+
             await training.save();
 
             const {
