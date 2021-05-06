@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const TraningMadalStyled = styled.div`
     position: relative;
+    margin: 0 auto;
     .training {
         @media (max-width: 767px) {
             display: flex;
@@ -148,7 +149,8 @@ const TraningMadalStyled = styled.div`
         height: 42px;
 
         @media screen and (max-width: 767px) {
-            display: none;
+            //display: none;
+            margin-bottom: 40px;
         }
 
         @media screen and (min-width: 768px) {

@@ -82,6 +82,7 @@ const TrainingModal = () => {
             }),
         );
     };
+    console.log(`booksArr`, booksArr);
 
     return (
         <TraningMadalStyled>
