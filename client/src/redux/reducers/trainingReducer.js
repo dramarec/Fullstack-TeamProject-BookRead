@@ -1,5 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import trainingActions from '../actions/trainingActions';
+import authActions from '../actions/authActions';
 
 const initialState = {
     _id: '',
@@ -55,14 +56,7 @@ const trainingReducer = createReducer(initialState, {
             results: payload.results ? payload.results : [],
         };
     },
-    [trainingActions.addTotalReadPages]: (state, { payload }) => {
-        // console.log(payload, 'PAGES FROM Result');
-        console.log(state.totalReadPages, 'STATE TOTALA');
-        return {
-            ...state,
-            totalReadPages: payload,
-        };
-    },
+    [authActions.logOutSuccess]: () => initialState,
 });
 
 export default trainingReducer;
