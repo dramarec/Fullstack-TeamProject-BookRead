@@ -12,6 +12,7 @@ import { getUsersBooksOperetion } from '../redux/operations/bookOperation';
 import loadingSelectors from '../redux/selectors/loadingSelector';
 // import trainingSelector from '../redux/selectors/trainingSelector';
 import authOperations from '../redux/operations/authOperation';
+import EndTrainingModal from './endTrainingMdl/EndTrainingModal';
 // import trainingOperation from '../redux/operations/trainingOperation';
 
 const App = () => {
@@ -47,6 +48,7 @@ const App = () => {
         <>
             {isLoading && <Spin />}
             <AppBar />
+            <EndTrainingModal />
 
             <Suspense fallback={<Spin />}>
                 <Switch>
