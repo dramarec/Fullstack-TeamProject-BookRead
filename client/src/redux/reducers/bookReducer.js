@@ -1,48 +1,34 @@
 import { createReducer } from '@reduxjs/toolkit';
-import {
-  addNewBookRequest,
-  addNewBookSuccess,
-  addNewBookError,
-} from '../actions/bookAction';
+import { addNewBookSuccess } from '../actions/bookAction';
 import { changeBookSuccess } from '../actions/changeBookAction';
 import { getUsersBooksSuccess } from '../actions/userLibraryAction';
+import authActions from '../actions/authActions';
 
 const initialState = {
-  willRead: [],
-  readNow: [],
-  readFinish: []
+    willRead: [],
+    readNow: [],
+    readFinish: [],
 };
 
-const bookReduser = createReducer(
-  { ...initialState },
-  {
-    [addNewBookRequest]: (state, action) => ({
-      ...state,
-      isLoading: true,
-    }),
+const bookReduser = createReducer(initialState, {
     [addNewBookSuccess]: (state, action) => ({
-      ...state,
-      willRead: [...state.willRead, action.payload.data.newBook],
-      isLoading: false,
+        ...state,
+        willRead: [...state.willRead, action.payload.data.newBook],
     }),
-    [getUsersBooksSuccess]: (state, {payload}) => {
-      return { ...state,
-          willRead: payload.planeToRead,
-          readNow: payload.readNow,
-          readFinish: payload.readFinish}
-      },
-
-    [changeBookSuccess]: (state, {payload}) =>
-     { state.readFinish.map(item =>
-          item.id === payload.id ? { ...payload } : item,
-      )},
-
-    [addNewBookError]: (state, action) => ({
-      ...state,
-      error: action.payload,
-    }),
-  },
-);
+    [getUsersBooksSuccess]: (state, { payload }) => {
+        return {
+            ...state,
+            willRead: payload.planeToRead,
+            readNow: payload.readNow,
+            readFinish: payload.readFinish,
+        };
+    },
+    [changeBookSuccess]: (state, { payload }) => {
+        state.readFinish.map(item =>
+            item.id === payload.id ? { ...payload } : item,
+        );
+    },
+    [authActions.logOutSuccess]: () => initialState,
+});
 
 export { bookReduser };
-
