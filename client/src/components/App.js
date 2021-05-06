@@ -25,7 +25,6 @@ const App = () => {
     const googleToken = {
         accessToken: urlParams.get('accessToken'),
     };
-
     useEffect(() => {
         googleToken?.accessToken &&
             dispatch(authOperations.logInWithGoogleOperation(googleToken));

@@ -15,6 +15,7 @@ const Result = () => {
     const dispatch = useDispatch();
     const totalReadPages = useSelector(trainingSelector.getTotalReadPages);
     const totalPages = useSelector(state => state.training.totalPages);
+    //const result = useSelector(state => state.training.results);
 
     const validationSchema = yup.object({
         date: yup.string().required('Виберіть дату'),
@@ -111,3 +112,11 @@ const Result = () => {
     );
 };
 export default Result;
+
+/* <ul className="statisticList"> 
+            {
+                result.map(item => 
+                    <Statistics key={item.id} item={item} />
+                    )
+                }
+                </ul>*/
