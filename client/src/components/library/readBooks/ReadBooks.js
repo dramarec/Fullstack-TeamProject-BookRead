@@ -1,13 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import ReadBookItem from './ReadBookItem';
 import ReadBookItemMobile from './ReadBookItemMobile';
 import ReadBooksStyled from './ReadBooksStyled';
 import Responsive from 'react-responsive';
+import { getFinishRead } from '../../../redux/selectors/bookSelector';
 
-const ReadBooks = ({ bookFinished }) => {
-    // console.log('ReadBooks ===> bookFinished', bookFinished);
+const ReadBooks = (/*{ bookFinished }*/) => {
     const Tablet = props => <Responsive {...props} minWidth={768} />;
     const Mobile = props => <Responsive {...props} maxWidth={767} />;
+    const bookFinished = useSelector(getFinishRead);
+    console.log('ReadBooks ===> bookFinished', bookFinished);
     return (
         <ReadBooksStyled className="container">
             <Tablet>

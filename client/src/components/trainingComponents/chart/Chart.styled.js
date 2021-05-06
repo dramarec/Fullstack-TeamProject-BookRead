@@ -40,6 +40,10 @@ const ChartWrapper = styled.div`
         margin-bottom: 9px;
         font-weight: 500;
     }
+    .text-x-line {
+        display: block;
+        margin-top: 5px;
+    }
     .title,
     .pages {
         font-size: 12px;
@@ -69,7 +73,7 @@ const ChartWrapper = styled.div`
         margin: 40px;
     } */
     .text-x-line {
-        margin-top: -30px;
+        margin-top: -10px;
         padding-right: 20px;
         text-align: right;
         font-weight: 600;

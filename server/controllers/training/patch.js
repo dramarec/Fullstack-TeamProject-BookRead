@@ -74,7 +74,7 @@ const addRead = async (req, res, next) => {
             await Training.deleteOne({ _id: req.user.training });
 
             req.user.training = null;
-
+           // console.log(req.user.training);
             await req.user.save();
 
             res.status(200).json({

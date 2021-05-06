@@ -9,6 +9,7 @@ import DescBookList from '../booksLists/desc/DescBookList';
 import InputDatePicker from '../dataPicker/PickerData';
 import FormTraningStyle from './FormTraningStyle';
 import trainingOperation from '../../../redux/operations/trainingOperation';
+    
 
 const FormTraning = () => {
     const dispatch = useDispatch();
@@ -39,7 +40,7 @@ const FormTraning = () => {
         },
         validationSchema,
         onSubmit: values => {
-            if (booksArr.some(item => item._id === values.book._id)) {
+            if (booksArr.some(item => item._id === values.book._id)) {             
                 alert('kiss my ass!');
                 return;
             } else {
