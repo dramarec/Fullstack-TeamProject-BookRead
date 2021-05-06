@@ -15,7 +15,7 @@ const MyGoal = ({ startTraining, training }) => {
         }
         booksLeft = isTraining.books.length - bookRead;
     }
-    console.log('book', isTraining);
+    //console.log('book', isTraining);
     //console.log('array', booksLeft);
     return (
         <MyGoalStyled startTraining={startTraining}>

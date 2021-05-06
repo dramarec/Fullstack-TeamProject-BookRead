@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { /*useEffect,*/ useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Responsive from 'react-responsive';
 import TrainingPageStyled from './TrainingPageStyled';
@@ -9,9 +9,9 @@ import MyGoal from '../../components/myGoal/MyGoal';
 import DescBookList from '../../components/trainingComponents/booksLists/desc/DescBookList';
 import trainingSelector from '../../redux/selectors/trainingSelector';
 import Result from '../../components/result/Result';
-import trainingOperation from '../../redux/operations/trainingOperation';
+//import trainingOperation from '../../redux/operations/trainingOperation';
 import { getTraining } from '../../redux/selectors/bookSelector';
-import book from '../../assets/svg/book3.svg';
+//import book from '../../assets/svg/book3.svg';
 import MobBookList from '../../components/trainingComponents/booksLists/mob/MobBookList';
 import ButtonAdd from '../../components/buttonAdd/ButtonAdd';
 import Modal from '../../components/modal/Modal';
@@ -21,14 +21,14 @@ const TrainingPage = () => {
     // const training = useSelector(trainingSelector.getTraining);
     const [isOpenModal, setIsOpenModal] = useState(false);
     const trainingBooksList = useSelector(trainingSelector.trainingBooksList);
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
     /*useEffect(() => {
         dispatch(trainingOperation.getTrainingOperation());
     }, []);*/
     const isTraining = useSelector(getTraining);
     //const isUserTraining = useSelector(getUserTraining)
     // console.log('isTraining',isTraining);
-     console.log('isTraining',isTraining);
+     console.log('TrainingPage');
 
     const Desktop = props => <Responsive {...props} minWidth={1280} />;
     const Tablet = props => (

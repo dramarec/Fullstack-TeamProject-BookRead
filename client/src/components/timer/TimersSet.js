@@ -12,7 +12,7 @@ const TimersSet = () => {
     //const isTraining = useSelector(getTraining)
     //const dataEnd ={isTraining.end}
     //console.log('dataStart', dataStart);
-     console.log('endDate', endDate);
+     //console.log('endDate', endDate);
     return (
         <TimerToDayStyled>
             <div className="timerYear">

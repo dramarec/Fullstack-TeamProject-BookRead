@@ -1,4 +1,4 @@
-import React, { /*useEffect, useState*/ } from 'react';
+import React, { memo/*useEffect, useState*/ } from 'react';
 import { /*useDispatch,*/ useSelector } from 'react-redux';
 import Responsive from 'react-responsive';
 import ReadBooks from '../../components/library/readBooks/ReadBooks';
@@ -14,12 +14,12 @@ import {
     getFinishRead,
 } from '../../redux/selectors/bookSelector';
 
-const LibraryPage = () => {
+const LibraryPage = memo(() => {
   //  const dispatch = useDispatch();
     const booksWillRead = useSelector(getWillRead);
     const bookNowRead = useSelector(getNowRead);
     const bookFinished = useSelector(getFinishRead);
-
+    console.log('LP');
     // useEffect(() => {
     //   dispatch(getUsersBooksOperetion());
     // }, []);
@@ -31,10 +31,10 @@ const LibraryPage = () => {
         <LibraryPageStyled>
             <Mobile>
                 {bookFinished.length > 0 && (
-                    <ReadBooks bookFinished={bookFinished} />
+                    <ReadBooks  />
                 )}
                 {bookNowRead.length > 0 && (
-                    <ReadingBooks bookNowRead={bookNowRead} />
+                    <ReadingBooks  />
                 )}
                 {booksWillRead.length > 0 ||
                 bookNowRead.length > 0 ||
@@ -49,10 +49,10 @@ const LibraryPage = () => {
             <Tablet>
                 <LibraryForm />
                 {bookFinished.length > 0 && (
-                    <ReadBooks bookFinished={bookFinished} />
+                    <ReadBooks  />
                 )}
                 {bookNowRead.length > 0 && (
-                    <ReadingBooks bookNowRead={bookNowRead} />
+                    <ReadingBooks  />
                 )}
                 {booksWillRead.length > 0 ||
                 bookNowRead.length > 0 ||
@@ -64,6 +64,6 @@ const LibraryPage = () => {
             </Tablet>
         </LibraryPageStyled>
     );
-};
+})
 
 export default LibraryPage;

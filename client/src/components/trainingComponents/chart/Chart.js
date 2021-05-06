@@ -7,7 +7,7 @@ import {
     CartesianGrid,
     XAxis,
     YAxis,
-    Tooltip,
+    //Tooltip,
     Legend,
 } from 'recharts';
 import { getTraining } from '../../../redux/selectors/bookSelector';
@@ -119,12 +119,14 @@ const Chart = () => {
                                 activeDot={{ r: 8 }}
                             />
                             <CartesianGrid horizontal={false} stroke="#ccc" />
-                            <XAxis dataKey="none" tickLine={false}></XAxis>
-                            <Tooltip />
+                            <XAxis padding={{ l: 10 }} dataKey="name" tickLine={false}></XAxis>
+                            <YAxis/>
+
+                           
 
                             <Legend
-                                onMouseEnter={handleMouseEnter}
-                                onMouseLeave={handleMouseLeave}
+                                //onMouseEnter={handleMouseEnter}
+                                //onMouseLeave={handleMouseLeave}
                                 iconSize={0}
                                 layout="vertical"
                                 verticalAlign="middle"
@@ -134,7 +136,8 @@ const Chart = () => {
                         </LineChart>
                     </ResponsiveContainer>
 
-                    <p className="text-x-line">час</p>
+                    <p className="text-x-line">день</p>
+                   
                 </div>
             </Tablet>
             <Mobile>
@@ -170,10 +173,10 @@ const Chart = () => {
                             <CartesianGrid horizontal={false} stroke="#ccc" />
                             <XAxis dataKey="name" tickLine={false}></XAxis>
                             <YAxis />
-                            <Tooltip />
+                            
 
                             <Legend
-                                //onMouseEnter={handleMouseEnter}
+                               //onMouseEnter={handleMouseEnter}
                                 //onMouseLeave={handleMouseLeave}
                                 iconSize={0}
                                 layout="vertical"
