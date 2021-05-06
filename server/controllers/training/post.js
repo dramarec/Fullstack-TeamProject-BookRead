@@ -113,6 +113,7 @@ const addTraining = async (req, res, next) => {
                 books: selectedBooks,
                 pagesReadPerDay: createTraining.pagesReadPerDay,
                 totalPages: createTraining.totalPages,
+                totalReadPages: createTraining.totalReadPages,
                 results: createTraining.results,
             },
         });

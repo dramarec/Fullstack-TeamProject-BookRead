@@ -148,24 +148,36 @@ const FormTraningStyle = styled.div`
     }
     .error.start {
         position: absolute;
-        left: 100px;
         top: 42px;
+        @media screen and (min-width: 768px) {
+            left: 60px;
+        }
         @media screen and (min-width: 1280px) {
-            left: 200px;
+            left: 160px;
         }
     }
     .error.end {
         position: absolute;
         top: 42px;
-        right: 80px;
+        @media screen and (max-width: 767px) {
+            top: 105px;
+        }
+        @media screen and (min-width: 768px) {
+            right: 110px;
+        }
         @media screen and (min-width: 1280px) {
-            right: 185px;
+            right: 215px;
         }
     }
     .error.book {
         position: absolute;
-        bottom: 195px;
-        left: 0;
+        @media screen and (max-width: 767px) {
+            top: 166px;
+        }
+        @media screen and (min-width: 768px) {
+            left: 10px;
+            bottom: 115px;
+        }
     }
 `;
 

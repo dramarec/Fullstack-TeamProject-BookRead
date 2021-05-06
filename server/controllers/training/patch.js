@@ -10,8 +10,6 @@ const addRead = async (req, res, next) => {
             _id: user?.training,
         }).populate('books');
 
-        console.log(training.books, 'BOOKS FROM TRAINING!!!');
-
         if (!training) {
             return res.status(403).json({
                 status: 'error',
@@ -32,13 +30,13 @@ const addRead = async (req, res, next) => {
 
             arrayBook.readPages += pages;
             arrayBook.readPages += training.rest;
-            console.log((training.rest, 'RESULT'));
+            training.totalReadPages += pages;
+
             training.rest = 0;
 
             if (arrayBook.readPages >= arrayBook.numberOfPages) {
                 training.rest = arrayBook.readPages - arrayBook.numberOfPages;
                 arrayBook.readPages = arrayBook.numberOfPages;
-                training.readBooks += 1;
             }
 
             await training.save();
@@ -72,18 +70,38 @@ const addRead = async (req, res, next) => {
             break;
         }
 
-        if (training.books.length === training.readBooks) {
+        if (training.totalReadPages === training.totalPages) {
             await Training.deleteOne({ _id: req.user.training });
 
             req.user.training = null;
 
             await req.user.save();
 
-            return res.status(403).json({
-                status: 'error',
-                code: 403,
+            res.status(200).json({
+                status: 'success',
+                code: 200,
                 message: 'you have read all the books, the training is over',
+                data: {
+                    book,
+                    training: {
+                        _id: training._id,
+                        start: training.start,
+                        end: training.end,
+                        duration: training.duration,
+                        pagesReadPerDay: training.pagesReadPerDay,
+                        totalPages: training.totalPages,
+                        totalReadPages: training.totalReadPages,
+                        books: training.books,
+                        results: training.results,
+                    },
+                },
             });
+
+            // return res.status(403).json({
+            //     status: 'error',
+            //     code: 403,
+            //     message: 'you have read all the books, the training is over',
+            // });
         }
 
         const currentTime = date.split('-');
@@ -114,6 +132,7 @@ const addRead = async (req, res, next) => {
                     duration: training.duration,
                     pagesReadPerDay: training.pagesReadPerDay,
                     totalPages: training.totalPages,
+                    totalReadPages: training.totalReadPages,
                     books: training.books,
                     results: training.results,
                 },

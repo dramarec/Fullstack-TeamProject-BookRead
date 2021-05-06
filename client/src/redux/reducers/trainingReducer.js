@@ -8,6 +8,7 @@ const initialState = {
     duration: 0,
     pagesReadPerDay: 0,
     totalPages: 0,
+    totalReadPages: 0,
     books: [],
     results: [],
 };
@@ -21,21 +22,22 @@ const trainingReducer = createReducer(initialState, {
             duration: payload.duration,
             pagesReadPerDay: payload.pagesReadPerDay,
             totalPages: payload.totalPages,
+            totalReadPages: payload.totalReadPages,
             books: payload.books,
             results: payload.results,
         };
     },
-    [trainingActions.addReadPagesSuccess]: (state, { payload }) => {
-        console.log(payload, 'PAYLOAD 3456');
+    [trainingActions.addReadPagesSuccess]: (_, { payload }) => {
         return {
-            _id: payload._id,
-            start: payload.start,
-            end: payload.end,
-            duration: payload.duration,
-            pagesReadPerDay: payload.pagesReadPerDay,
-            totalPages: payload.totalPages,
-            books: payload.books,
-            results: payload.results,
+            _id: payload.training._id,
+            start: payload.training.start,
+            end: payload.training.end,
+            duration: payload.training.duration,
+            pagesReadPerDay: payload.training.pagesReadPerDay,
+            totalPages: payload.training.totalPages,
+            totalReadPages: payload.training.totalReadPages,
+            books: payload.training.books,
+            results: payload.training.results,
         };
     },
     [trainingActions.getTrainingSuccess]: (_, { payload }) => {
@@ -48,8 +50,17 @@ const trainingReducer = createReducer(initialState, {
                 ? payload.pagesReadPerDay
                 : 0,
             totalPages: payload.totalPages ? payload.totalPages : 0,
+            totalReadPages: payload.totalReadPages ? payload.totalReadPages : 0,
             books: payload.books ? payload.books : [],
             results: payload.results ? payload.results : [],
+        };
+    },
+    [trainingActions.addTotalReadPages]: (state, { payload }) => {
+        // console.log(payload, 'PAGES FROM Result');
+        console.log(state.totalReadPages, 'STATE TOTALA');
+        return {
+            ...state,
+            totalReadPages: payload,
         };
     },
 });
