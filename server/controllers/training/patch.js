@@ -77,7 +77,7 @@ const addRead = async (req, res, next) => {
 
             await req.user.save();
 
-            res.status(200).json({
+            return res.status(200).json({
                 status: 'success',
                 code: 200,
                 message: 'you have read all the books, the training is over',
@@ -96,12 +96,6 @@ const addRead = async (req, res, next) => {
                     },
                 },
             });
-
-            // return res.status(403).json({
-            //     status: 'error',
-            //     code: 403,
-            //     message: 'you have read all the books, the training is over',
-            // });
         }
 
         const currentTime = date.split('-');

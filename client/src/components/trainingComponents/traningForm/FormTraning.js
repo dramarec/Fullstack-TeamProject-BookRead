@@ -9,6 +9,8 @@ import DescBookList from '../booksLists/desc/DescBookList';
 import InputDatePicker from '../dataPicker/PickerData';
 import FormTraningStyle from './FormTraningStyle';
 import trainingOperation from '../../../redux/operations/trainingOperation';
+import { CSSTransition } from 'react-transition-group';
+import { Notif } from './Notification';
 
 const FormTraning = () => {
     const dispatch = useDispatch();
@@ -16,6 +18,7 @@ const FormTraning = () => {
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
     const [booksArr, setBooks] = useState([]);
+    const [showNotif, setShowNotif] = useState(false);
     // console.log(start, 'FormTraning => START');
     // console.log(end, 'FormTraning => END');
     // console.log(booksArr, 'FormTraning => BOOK STATE!!');
@@ -40,7 +43,8 @@ const FormTraning = () => {
         validationSchema,
         onSubmit: values => {
             if (booksArr.some(item => item._id === values.book._id)) {
-                alert('kiss my ass!');
+                // alert('kiss my ass!');
+                setShowNotif(true);
                 return;
             } else {
                 setBooks(prev => [...prev, values.book]);
@@ -116,7 +120,15 @@ const FormTraning = () => {
                     </button>
                 </div>
             </form>
-
+            <CSSTransition
+                in={showNotif}
+                onEntered={() => setShowNotif(false)}
+                timeout={2000}
+                classNames="ntf"
+                unmountOnExit
+            >
+                <Notif />
+            </CSSTransition>
             <DescBookList
                 onHandleDeleteBook={onHandleDeleteBook}
                 books={booksArr}
