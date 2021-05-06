@@ -214,5 +214,8 @@ const DescBookListStyle = styled.div`
     .helpersImg {
         margin-right: 17px;
     }
+    .books-library__item.readItem {
+        color: var(--secondary-text);
+    }
 `;
 export default DescBookListStyle;

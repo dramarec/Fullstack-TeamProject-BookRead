@@ -17,6 +17,8 @@ const MobBookListStyle = styled.div`
         //margin-bottom: 30px;
 
         &__img {
+            width: 20px;
+            height: 20px;
             display: inline-block;
             margin-right: 20px;
         }
@@ -24,8 +26,7 @@ const MobBookListStyle = styled.div`
             padding-left: 40px;
             display: inline-block;
             width: 100px;
-        }
-        &__item-descr {
+            margin-right: 10px;
         }
 
         &::before {
@@ -44,6 +45,43 @@ const MobBookListStyle = styled.div`
         }
     }
     .recharts-surface {
+    }
+    .helpers {
+        display: flex;
+        justify-content: space-between;
+    }
+    .helpers1 {
+        display: flex;
+        align-items: center;
+    }
+    .readItem {
+        display: flex;
+        flex-direction: column;
+        //color: var(--accent-color);
+        color: var(--secondary-text);
+    }
+    .readItem:not(:last-child) {
+        border-bottom: 1px solid #ccc;
+    }
+    .readItem:not(:first-child) {
+        margin-top: 22px;
+    }
+    .books__item-descr {
+        font-family: 'Montserrat-Regular';
+        font-style: 400;
+
+        font-size: 12px;
+        line-height: 1.25;
+        //line-height: 3.67;
+        color: var(--main-text);
+    }
+    .books-library__card {
+        display: flex;
+        //margin: auto;
+        float: right;
+        background-color: inherit;
+        outline: none;
+        border: none;
     }
 `;
 

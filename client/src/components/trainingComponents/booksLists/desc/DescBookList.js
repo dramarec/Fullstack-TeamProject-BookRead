@@ -23,10 +23,12 @@ const DescBookList = ({ books, onHandleDeleteBook }) => {
                             onDeleteBook={onHandleDeleteBook}
                         />
                     ))}
-                    <li className="helpers">
-                        <img src={book} alt="" className="helpersImg" />
-                        <p>...</p>
-                    </li>
+                    {!books.length && (
+                        <li className="helpers">
+                            <img src={book} alt="" className="helpersImg" />
+                            <p>...</p>
+                        </li>
+                    )}
                 </ul>
             </div>
         </DescBookListStyle>

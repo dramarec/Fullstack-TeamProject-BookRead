@@ -5,13 +5,14 @@ import * as Yup from 'yup';
 import moment from 'moment';
 import InputDatePicker from '../dataPicker/PickerData';
 import Selector from '../traningForm/selectBooks/Selector';
-import moduleName from 'module';
 import ButtonAdd from '../../buttonAdd/ButtonAdd';
 import Modal from '../../modal/Modal';
 import back from '../../../assets/svg/back.svg';
 import TraningMadalStyled from './TraningModalStyled';
 import MobBookList from '../booksLists/mob/MobBookList';
 import trainingOperation from '../../../redux/operations/trainingOperation';
+import { CSSTransition } from 'react-transition-group';
+import { Notif } from '../traningForm/Notification';
 
 const TrainingModal = () => {
     const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const TrainingModal = () => {
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
     const [booksArr, setBooks] = useState([]);
+    const [showNotif, setShowNotif] = useState(false);
 
     const validationSchema = Yup.object().shape({
         start: Yup.string().required('Вкажіть дату початку тренування'),
@@ -35,7 +37,9 @@ const TrainingModal = () => {
         validationSchema,
         onSubmit: values => {
             if (booksArr.some(item => item._id === values.book._id)) {
-                alert('kiss my ass!');
+                // alert('kiss my ass!');
+                setShowNotif(true);
+
                 return;
             } else {
                 setBooks(prev => [...prev, values.book]);
@@ -177,6 +181,15 @@ const TrainingModal = () => {
                                     </button>
                                 </div>
                             </form>
+                            <CSSTransition
+                                in={showNotif}
+                                onEntered={() => setShowNotif(false)}
+                                timeout={2000}
+                                classNames="ntf"
+                                unmountOnExit
+                            >
+                                <Notif />
+                            </CSSTransition>
                         </div>
                     </div>
                 </Modal>

@@ -1,10 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import book from '../../../../assets/svg/book3.svg';
+import trainingSelector from '../../../../redux/selectors/trainingSelector';
 import MobBookItem from './MobBookItem';
 import MobBookListStyle from './MobBookListStyle';
 
 const MobBookList = ({ books }) => {
-    console.log(`books`, books);
+    //const books = useSelector(trainingSelector.trainingBooksList);
+
     return (
         <MobBookListStyle>
             {books.length > 0 ? (

@@ -88,20 +88,14 @@ const TrainingPage = memo(() => {
                 {isTraining.duration !== 0 ? (
                     <>
                         <TimersSet />
-                        <MyGoal
-                            startTraining={isTraining.duration !== 0}
-                            
-                        />
+                        <MyGoal startTraining={isTraining.duration !== 0} />
                         <DescBookList books={trainingBooksList} />
                         <Chart />
                         <Result />
                     </>
                 ) : (
                     <>
-                        <MyGoal
-                            startTraining={isTraining.duration !== 0}
-                            
-                        />
+                        <MyGoal startTraining={isTraining.duration !== 0} />
                         <MyTraining />
                         <Chart />
                     </>
