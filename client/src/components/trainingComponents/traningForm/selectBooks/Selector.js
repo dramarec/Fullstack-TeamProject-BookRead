@@ -4,13 +4,14 @@ import Select from 'react-select';
 import { getWillRead } from '../../../../redux/selectors/bookSelector';
 import FormItem from '../item/FormItem';
 
-const Selector = ({ value, onChange }) => {
+const Selector = ({ onChange }) => {
     const booksWillRead = useSelector(getWillRead);
     const bookSelect = booksWillRead.map(book => ({
         ...book,
         label: book.title,
         value: book.title,
     }));
+
     const customStyles = {
         input: (provided, state) => ({
             ...provided,
@@ -29,7 +30,6 @@ const Selector = ({ value, onChange }) => {
         <Select
             className="selectorBooks"
             placeholder="Обрати книги з бібліотеки"
-            // value={value}
             options={bookSelect}
             onChange={value => onChange(value)}
             styles={customStyles}
