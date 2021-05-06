@@ -58,95 +58,96 @@ const TrainingPage = memo(() => {
     };
 
     return (
-        <TrainingPageStyled className="container">
-            <Desktop>
-                {isTraining.duration !== 0 ? (
-                    <>
-                        <div className="leftSide">
-                            <TimersSet />
-                            <DescBookList books={trainingBooksList} />
-                            <Chart />
-                        </div>
+        <TrainingPageStyled>
+            <div className="container">
+                <Desktop>
+                    {isTraining.duration !== 0 ? (
+                        <>
+                            <div className="leftSide">
+                                <TimersSet />
+                                <DescBookList books={trainingBooksList} />
+                                <Chart />
+                            </div>
 
-                        <div className="rigthSide">
+                            <div className="rigthSide">
+                                <MyGoal
+                                    startTraining={isTraining.duration !== 0}
+                                    //training={isTraining}
+                                />
+                                <Result />
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <MyTraining />
                             <MyGoal
                                 startTraining={isTraining.duration !== 0}
                                 //training={isTraining}
                             />
+                            <Chart />
+                        </>
+                    )}
+                </Desktop>
+                <Tablet>
+                    {isTraining.duration !== 0 ? (
+                        <>
+                            <TimersSet />
+                            <MyGoal startTraining={isTraining.duration !== 0} />
+                            <DescBookList books={trainingBooksList} />
+                            <Chart />
                             <Result />
-                        </div>
-                    </>
-                ) : (
-                    <>
-                        <MyTraining />
-                        <MyGoal
-                            startTraining={isTraining.duration !== 0}
-                            //training={isTraining}
-                        />
-                        <Chart />
-                    </>
-                )}
-            </Desktop>
-            <Tablet>
-                {isTraining.duration !== 0 ? (
-                    <>
-                        <TimersSet />
-                        <MyGoal startTraining={isTraining.duration !== 0} />
-                        <DescBookList books={trainingBooksList} />
-                        <Chart />
-                        <Result />
-                    </>
-                ) : (
-                    <>
-                        <MyGoal startTraining={isTraining.duration !== 0} />
-                        <MyTraining />
-                        <Chart />
-                    </>
-                )}
-            </Tablet>
-            <Mobile>
-                {isTraining.duration !== 0 ? (
-                    <>
-                        <TimersSet />
-                        <MyGoal
-                            startTraining={isTraining.duration !== 0}
-                            //training={isTraining}
-                        />
-                        <MobBookList books={trainingBooksList} />
-                        <Chart />
-                        <Result />
-                    </>
-                ) : (
-                    <>
-                        <MyGoal
-                            startTraining={isTraining.duration !== 0}
-                            //training={isTraining}
-                        />
-                        <MobBookList />
-                        <Chart />
-                        <ButtonAdd onHandleClick={openModal} />
-                        {isOpenModal && (
-                            <Modal closeModal={closeModal}>
-                                <div className="trainingModal">
-                                    <button
-                                        className="bookFormBtnBack"
-                                        onClick={closeModal}
-                                    >
-                                        <img
-                                            src={back}
-                                            alt=""
-                                            width="24px"
-                                            height="11.62px"
-                                        />
-                                    </button>
-                                    <MyTraining />
-                                </div>
-                            </Modal>
-                        )}
-                    </>
-                )}
-            </Mobile>
-            {/* <EndTrainingModal /> */}
+                        </>
+                    ) : (
+                        <>
+                            <MyGoal startTraining={isTraining.duration !== 0} />
+                            <MyTraining />
+                            <Chart />
+                        </>
+                    )}
+                </Tablet>
+                <Mobile>
+                    {isTraining.duration !== 0 ? (
+                        <>
+                            <TimersSet />
+                            <MyGoal
+                                startTraining={isTraining.duration !== 0}
+                                //training={isTraining}
+                            />
+                            <MobBookList books={trainingBooksList} />
+                            <Chart />
+                            <Result />
+                        </>
+                    ) : (
+                        <>
+                            <MyGoal
+                                startTraining={isTraining.duration !== 0}
+                                //training={isTraining}
+                            />
+                            <MobBookList />
+                            <Chart />
+                            <ButtonAdd onHandleClick={openModal} />
+                            {isOpenModal && (
+                                <Modal closeModal={closeModal}>
+                                    <div className="trainingModal">
+                                        <button
+                                            className="bookFormBtnBack"
+                                            onClick={closeModal}
+                                        >
+                                            <img
+                                                src={back}
+                                                alt=""
+                                                width="24px"
+                                                height="11.62px"
+                                            />
+                                        </button>
+                                        <MyTraining />
+                                    </div>
+                                </Modal>
+                            )}
+                        </>
+                    )}
+                </Mobile>
+            </div>
         </TrainingPageStyled>
     );
 });

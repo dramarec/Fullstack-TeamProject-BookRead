@@ -6,6 +6,7 @@ import trainingReducer from './trainingReducer';
 import { bookReduser } from './bookReducer';
 import { loadingReducer } from './loadingReducer';
 import { errorReducer } from './errorReducer';
+import modalReducer from './modalReducer';
 
 const authPersistConfig = {
     key: 'auth',
@@ -15,6 +16,7 @@ const authPersistConfig = {
 
 const rootReducer = combineReducers({
     auth: persistReducer(authPersistConfig, authReducer),
+    modal: modalReducer,
     training: trainingReducer,
     library: bookReduser,
     loading: loadingReducer,

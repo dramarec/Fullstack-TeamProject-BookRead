@@ -10,34 +10,41 @@ import trainingOperation from '../../redux/operations/trainingOperation';
 import trainingSelector from '../../redux/selectors/trainingSelector';
 // import trainingActions from '../../redux/actions/trainingActions';
 import Statistics from '../statistic/Statistics';
-// import EndTrainingModal from '../endTrainingMdl/EndTrainingModal';
-import Modal from '../modal/Modal';
-import EndTrainingModalStyled from '../endTrainingMdl/EndTrainingModalStyled';
-import { Link, useHistory } from 'react-router-dom';
+import EndTrainingModal from '../endTrainingMdl/EndTrainingModal';
+// import Modal from '../modal/Modal';
+// import EndTrainingModalStyled from '../endTrainingMdl/EndTrainingModalStyled';
+// import { Link, useHistory } from 'react-router-dom';
 
 const Result = () => {
-    const history = useHistory();
+    // const history = useHistory();
     const dispatch = useDispatch();
-    const [isOpenModal, setIsOpenModal] = useState(false);
-    console.log('Result ===> isOpenModal', isOpenModal);
+    // const [isOpenModal, setIsOpenModal] = useState(false);
+    // console.log('Result ===> isOpenModal', isOpenModal);
 
     const totalReadPages = useSelector(trainingSelector.getTotalReadPages);
     const totalPages = useSelector(state => state.training.totalPages);
     //const result = useSelector(state => state.training.results);
 
-    const closeModal = () => {
-        setIsOpenModal(false);
-        history.push('/library');
-    };
+    // const openModal = () => {
+    //     return setIsOpenModal(true);
+    // };
 
-    const openModal = () => {
-        return setIsOpenModal(true);
-    };
+    // for (let i = 0; i < 1; i++) {
+    //     if (totalReadPages === totalPages) {
+    //         openModal();
+    //     }
+    //     break;
+    // }
 
-    if (totalReadPages === totalPages) {
-        openModal();
-    }
-    console.log('Result ===> ', isOpenModal);
+    // const closeModal = () => {
+    //     setIsOpenModal(false);
+    //     history.push('/library');
+    // };
+
+    // if (totalReadPages === totalPages) {
+    //     openModal();
+    // }
+    // console.log('Result ===> ', isOpenModal);
 
     const validationSchema = yup.object({
         date: yup.string().required('Виберіть дату'),
@@ -130,8 +137,8 @@ const Result = () => {
                 </button>
             </form>
             <Statistics />
-            {/* <EndTrainingModal /> */}
-            {isOpenModal && (
+            <EndTrainingModal />
+            {/* {isOpenModal && (
                 <Modal closeModal={closeModal}>
                     <EndTrainingModalStyled>
                         <img alt="" className="statModalImg" />
@@ -154,7 +161,7 @@ const Result = () => {
                         </Link>
                     </EndTrainingModalStyled>
                 </Modal>
-            )}
+            )} */}
         </ResultStyled>
     );
 };

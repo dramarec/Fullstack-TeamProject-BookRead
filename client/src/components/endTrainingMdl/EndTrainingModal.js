@@ -5,31 +5,28 @@ import EndTrainingModalStyled from './EndTrainingModalStyled';
 import Modal from '../modal/Modal';
 import { useSelector } from 'react-redux';
 import trainingSelector from '../../redux/selectors/trainingSelector';
+// import NewModal from './NewModal';
 
 const EndTrainingModal = memo(() => {
     const history = useHistory();
     const [isOpenModal, setIsOpenModal] = useState(false);
-    console.log('EndTrainingModal ===> isOpenModal', isOpenModal);
+    // console.log('EndTrainingModal ===> isOpenModal', isOpenModal);
 
     const totalReadPages = useSelector(trainingSelector.getTotalReadPages);
-    console.log('EndTrainingModal ===> totalReadPages', totalReadPages);
+    // console.log('EndTrainingModal ===> totalReadPages', totalReadPages);
     const totalPages = useSelector(state => state.training.totalPages);
-    console.log('EndTrainingModal ===> totalPages', totalPages);
+    // console.log('EndTrainingModal ===> totalPages', totalPages);
 
     const closeModal = () => {
-        setIsOpenModal(false);
         history.push('/library');
-    };
-
-    const openModal = () => {
-        return setIsOpenModal(true);
+        setIsOpenModal(false);
     };
 
     if (totalReadPages === totalPages) {
-        openModal();
+        setTimeout(() => {
+            setIsOpenModal(true);
+        }, 1000);
     }
-    console.log('EndTrainingModal ===> ', isOpenModal);
-    // totalReadPages !== totalPages && setIsOpenModal(true);
 
     return (
         <>
@@ -37,10 +34,15 @@ const EndTrainingModal = memo(() => {
                 <Modal closeModal={closeModal}>
                     <EndTrainingModalStyled>
                         <img src={thumb_up} alt="" className="statModalImg" />
-                        <p className="statModalTitle">Ваша тренування</p>
+                        <p className="statModalTitle">Ваше тренування</p>
                         <p className="statModalTitle">закінчено!</p>
-
-                        <Link
+                        <button className="statModalBtn" onClick={closeModal}>
+                            <a href="/training">Почати нове тренування</a>
+                        </button>
+                        <button className="statModalBtn" onClick={closeModal}>
+                            <a href="/library">Додати нові книжки</a>
+                        </button>
+                        {/* <Link
                             className="statModalBtn"
                             to="/training"
                             onClick={closeModal}
@@ -53,7 +55,7 @@ const EndTrainingModal = memo(() => {
                             onClick={closeModal}
                         >
                             Додати нові книжки
-                        </Link>
+                        </Link> */}
                     </EndTrainingModalStyled>
                 </Modal>
             )}
