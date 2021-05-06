@@ -7,7 +7,7 @@ const MobBookList = ({ books }) => {
     console.log(`books`, books);
     return (
         <MobBookListStyle>
-            {books ? (
+            {books.length > 0 ? (
                 <ul className="books">
                     {books.map(book => (
                         <MobBookItem key={book._id} {...book} />

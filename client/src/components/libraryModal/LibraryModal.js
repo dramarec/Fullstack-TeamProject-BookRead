@@ -8,7 +8,7 @@ import flag from '../../assets/svg/flag.svg';
 import LibraryModalStyled from './LibraryModalStyled';
 import Modal from '../modal/Modal';
 
-const LibraryModal = ({ onCloseModal }) => {
+const LibraryModal = () => {
   const dispatch = useDispatch();
   const [isOpenModal, setIsOpenModal] = useState(true);
 

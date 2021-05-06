@@ -11,15 +11,12 @@ import trainingSelector from '../../redux/selectors/trainingSelector';
 import Result from '../../components/result/Result';
 import trainingOperation from '../../redux/operations/trainingOperation';
 import { getTraining } from '../../redux/selectors/bookSelector';
-import book from '../../assets/svg/book3.svg';
 import MobBookList from '../../components/trainingComponents/booksLists/mob/MobBookList';
-import ButtonAdd from '../../components/buttonAdd/ButtonAdd';
-import Modal from '../../components/modal/Modal';
-import back from '../../assets/svg/back.svg';
+import TrainingModal from '../../components/trainingComponents/myTraining/TrainingModal';
 
 const TrainingPage = () => {
     // const training = useSelector(trainingSelector.getTraining);
-    const [isOpenModal, setIsOpenModal] = useState(false);
+
     const trainingBooksList = useSelector(trainingSelector.trainingBooksList);
     const dispatch = useDispatch();
 
@@ -36,13 +33,13 @@ const TrainingPage = () => {
     );
     const Mobile = props => <Responsive {...props} maxWidth={767} />;
 
-    const openModal = () => {
-        setIsOpenModal(true);
-    };
+    // const openModal = () => {
+    //     setIsOpenModal(true);
+    // };
 
-    const closeModal = () => {
-        setIsOpenModal(false);
-    };
+    // const closeModal = () => {
+    //     setIsOpenModal(false);
+    // };
 
     return (
         <TrainingPageStyled className="container">
@@ -115,27 +112,10 @@ const TrainingPage = () => {
                             startTraining={isTraining.duration !== 0}
                             training={isTraining}
                         />
-                        <MobBookList />
+                        {/* <MobBookList /> */}
+
+                        <TrainingModal />
                         <Chart />
-                        <ButtonAdd onHandleClick={openModal} />
-                        {isOpenModal && (
-                            <Modal closeModal={closeModal}>
-                                <div className="trainingModal">
-                                    <button
-                                        className="bookFormBtnBack"
-                                        onClick={closeModal}
-                                    >
-                                        <img
-                                            src={back}
-                                            alt=""
-                                            width="24px"
-                                            height="11.62px"
-                                        />
-                                    </button>
-                                    <MyTraining />
-                                </div>
-                            </Modal>
-                        )}
                     </>
                 )}
             </Mobile>

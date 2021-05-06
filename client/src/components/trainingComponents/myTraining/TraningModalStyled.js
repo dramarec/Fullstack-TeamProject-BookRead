@@ -1,14 +1,36 @@
 import styled from 'styled-components';
 
-const FormTraningStyle = styled.div`
+const TraningMadalStyled = styled.div`
     position: relative;
+    .training {
+        @media (max-width: 767px) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 60vh;
+            //width: 73vw;
+        }
+    }
 
-    @media (max-width: 767px) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 60vh;
-        //width: 73vw;
+    .baner {
+        width: 270px;
+        height: 60px;
+        color: #fff;
+        font-family: 'Montserrat-Medium';
+        font-size: 20px;
+
+        line-height: 1.9;
+        text-align: center;
+        padding: 11px 47px;
+        background-color: var(--table-title);
+        box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+        margin: 62px auto 20px;
+
+        @media (min-width: 768px) {
+            width: 100%;
+            padding: 15px 200px;
+            margin: 0px auto 32px;
+        }
     }
 
     .training-form {
@@ -169,4 +191,4 @@ const FormTraningStyle = styled.div`
     }
 `;
 
-export default FormTraningStyle;
+export default TraningMadalStyled;
