@@ -13,14 +13,8 @@ const MobBookItem = ({
     numberOfPages,
     onDeleteBook,
 }) => {
-    //  training.book numberOfPages,
-    //readPages,
     const isTraining = useSelector(getTraining);
     const book = useSelector(state => state.training.book);
-    // const readPages = useSelector(state => state.training.book?.readPages);
-    // const numberPages = useSelector(
-    //     state => state.training.book?.numberOfPages,
-    // );
 
     return (
         <>
@@ -68,17 +62,6 @@ const MobBookItem = ({
                     <p className="books__item">Стор.:</p>
                     <span className="books__item-descr">{numberOfPages}</span>
                 </div>
-
-                {/* {isTraining.duration === 0 && (
-                    <button
-                        className="books-library__card"
-                        type="button"
-                        data-id={_id}
-                        onClick={onDeleteBook}
-                    >
-                        <img src={card} alt="" />
-                    </button>
-                )} */}
             </li>
         </>
     );
