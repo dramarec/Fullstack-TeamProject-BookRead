@@ -7,9 +7,9 @@ const operationAddNewTraining = (start, end, books) => async dispatch => {
 
     try {
         const response = await api.addTraining(start, end, books);
-
         dispatch(trainingActions.newTrainingSuccess(response));
     } catch (error) {
+        console.log(error)
         dispatch(trainingActions.newTrainingError(error.message));
     }
 };
@@ -31,7 +31,7 @@ const getTrainingOperation = () => async dispatch => {
 
     try {
         const data = await api.getTraining();
-
+    //console.log('data', data)
         dispatch(trainingActions.getTrainingSuccess(data));
     } catch (error) {
         dispatch(trainingActions.getTrainingError(error.message));

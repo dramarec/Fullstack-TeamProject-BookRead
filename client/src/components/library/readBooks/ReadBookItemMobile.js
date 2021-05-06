@@ -1,6 +1,6 @@
 import book from '../../../assets/svg/book.svg';
 import ReadBookItemMobileStyled from './ReadBookItemMobileStyled';
-import { useDispatch, useSelector } from 'react-redux';
+import { /*useDispatch,*/ useSelector } from 'react-redux';
 import Modal from '../../modal/Modal';
 import ReviewModal from '../reviewModal/ReviewModal';
 import StarRatings from 'react-star-ratings';
@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { getFinishRead } from '../../../redux/selectors/bookSelector';
 
 const ReadingBookItemMobile = ({ item }) => {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const [data, setData] = useState({});
   const [isOpen, setisOpen] = useState(false);
   const finishBooks = useSelector(getFinishRead);
