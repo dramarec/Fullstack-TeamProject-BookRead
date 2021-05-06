@@ -1,15 +1,21 @@
 import ResultStyled from './ResultStyled';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import 'react-datepicker/dist/react-datepicker.css';
 import trainingOperation from '../../redux/operations/trainingOperation';
+import trainingSelector from '../../redux/selectors/trainingSelector';
+// import trainingActions from '../../redux/actions/trainingActions';
+import Statistics from '../statistic/Statistics';
 
 const Result = () => {
     const dispatch = useDispatch();
+    const totalReadPages = useSelector(trainingSelector.getTotalReadPages);
+    const totalPages = useSelector(state => state.training.totalPages);
+
     const validationSchema = yup.object({
         date: yup.string().required('Виберіть дату'),
         pages: yup.number().required(`Обов'язкове поле`),
@@ -32,6 +38,8 @@ const Result = () => {
 
     const patchTraining = async values => {
         try {
+            // dispatch(trainingActions.addTotalReadPages(values.pages));
+
             dispatch(
                 trainingOperation.addReadPagesOperation({
                     date: moment(values.date).format('YYYY-MM-DD'),
@@ -42,6 +50,8 @@ const Result = () => {
             return;
         }
     };
+
+    totalReadPages === totalPages && console.log('You awesome!');
 
     return (
         <ResultStyled>
@@ -96,6 +106,7 @@ const Result = () => {
                     Додати результат
                 </button>
             </form>
+            <Statistics />
         </ResultStyled>
     );
 };

@@ -17,12 +17,12 @@ const trainingSchema = new Schema(
                 ref: 'Book',
             },
         ],
-        readBooks: {
+        pagesReadPerDay: Number,
+        totalPages: Number,
+        totalReadPages: {
             type: Number,
             default: 0,
         },
-        pagesReadPerDay: Number,
-        totalPages: Number,
         rest: {
             type: Number,
             default: null,

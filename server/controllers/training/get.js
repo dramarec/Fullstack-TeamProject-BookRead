@@ -58,6 +58,7 @@ const getTraining = async (req, res, next) => {
                     end,
                     pagesReadPerDay,
                     totalPages,
+                    totalReadPages,
                     results,
                 } = data;
 
@@ -99,6 +100,7 @@ const getTraining = async (req, res, next) => {
                         duration,
                         pagesReadPerDay,
                         totalPages,
+                        totalReadPages,
                         books: validateBooks,
                         results,
                     },

@@ -1,4 +1,4 @@
-import React, { /*useEffect,*/ useState } from 'react';
+import React, { useEffect, useState, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Responsive from 'react-responsive';
 import TrainingPageStyled from './TrainingPageStyled';
@@ -11,24 +11,36 @@ import trainingSelector from '../../redux/selectors/trainingSelector';
 import Result from '../../components/result/Result';
 //import trainingOperation from '../../redux/operations/trainingOperation';
 import { getTraining } from '../../redux/selectors/bookSelector';
-//import book from '../../assets/svg/book3.svg';
 import MobBookList from '../../components/trainingComponents/booksLists/mob/MobBookList';
 import ButtonAdd from '../../components/buttonAdd/ButtonAdd';
 import Modal from '../../components/modal/Modal';
 import back from '../../assets/svg/back.svg';
 
-const TrainingPage = () => {
+const TrainingPage = memo(() => {
+    const trainingBooksList = useSelector(trainingSelector.trainingBooksList);
+    const dispatch = useDispatch();
+    const training = useSelector(state => state.auth.user.training);
+    const isAuth = useSelector(state => state.auth.token);
     // const training = useSelector(trainingSelector.getTraining);
     const [isOpenModal, setIsOpenModal] = useState(false);
-    const trainingBooksList = useSelector(trainingSelector.trainingBooksList);
-    //const dispatch = useDispatch();
-    /*useEffect(() => {
-        dispatch(trainingOperation.getTrainingOperation());
-    }, []);*/
+
+    console.log(`trainingBooksList`, trainingBooksList);
+
     const isTraining = useSelector(getTraining);
-    //const isUserTraining = useSelector(getUserTraining)
-    // console.log('isTraining',isTraining);
-     console.log('TrainingPage');
+
+    const trainingAction = async () => {
+        try {
+            training !== null &&
+                (await dispatch(trainingOperation.getTrainingOperation()));
+        } catch (err) {
+            return;
+        }
+    };
+
+    useEffect(() => {
+        isAuth && trainingAction();
+        // eslint-disable-next-line
+    }, []);
 
     const Desktop = props => <Responsive {...props} minWidth={1280} />;
     const Tablet = props => (
@@ -58,7 +70,7 @@ const TrainingPage = () => {
                         <div className="rigthSide">
                             <MyGoal
                                 startTraining={isTraining.duration !== 0}
-                                training={isTraining}
+                                //training={isTraining}
                             />
                             <Result />
                         </div>
@@ -68,7 +80,7 @@ const TrainingPage = () => {
                         <MyTraining />
                         <MyGoal
                             startTraining={isTraining.duration !== 0}
-                            training={isTraining}
+                            //training={isTraining}
                         />
                         <Chart />
                     </>
@@ -103,7 +115,7 @@ const TrainingPage = () => {
                         <TimersSet />
                         <MyGoal
                             startTraining={isTraining.duration !== 0}
-                            training={isTraining}
+                            //training={isTraining}
                         />
                         <MobBookList books={trainingBooksList} />
                         <Chart />
@@ -113,7 +125,7 @@ const TrainingPage = () => {
                     <>
                         <MyGoal
                             startTraining={isTraining.duration !== 0}
-                            training={isTraining}
+                            //training={isTraining}
                         />
                         <MobBookList />
                         <Chart />
@@ -141,5 +153,5 @@ const TrainingPage = () => {
             </Mobile>
         </TrainingPageStyled>
     );
-};
+});
 export default TrainingPage;
