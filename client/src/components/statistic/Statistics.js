@@ -1,17 +1,17 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import StatisticsItem from './StatisticsItem';
 import StatisticsStyled from './StatisticsStyled';
 
 const Statistics = () => {
- 
+   const result = useSelector(state => state.training.results);
   return (
     <StatisticsStyled>
       <h1 className="statisticTitle">Статистика</h1>
       <ul className="statisticList"> 
-        <li className="statisticItem">
-          <span className="date">05.05.2021</span>
-          <span className="pagesCount">25</span>
-          <span className="pagesText">стор.</span>
-        </li>
+         { result.map(item => 
+                    <StatisticsItem key={item._id} item={item} /> )
+          }
       </ul>
     </StatisticsStyled>
 )

@@ -9,15 +9,14 @@ import { useDispatch } from 'react-redux';
 import PrivateRoutes from './routes/PrivateRoutes';
 import PublicRoutes from './routes/PublicRoutes';
 import { getUsersBooksOperetion } from '../redux/operations/bookOperation';
-import loadingSelectors from '../redux/selectors/loadingSelector';
+// import loadingSelectors from '../redux/selectors/loadingSelector';
 // import trainingSelector from '../redux/selectors/trainingSelector';
 import authOperations from '../redux/operations/authOperation';
-import EndTrainingModal from './endTrainingMdl/EndTrainingModal';
 // import trainingOperation from '../redux/operations/trainingOperation';
 
 const App = () => {
     const dispatch = useDispatch();
-    const isLoading = false//useSelector(loadingSelectors.getLoading);
+    // const isLoading = false//useSelector(loadingSelectors.getLoading);
     const isAuth = useSelector(state => state.auth.token);
     // const training = useSelector(trainingSelector.getTraining);
     // const training = useSelector(state => state.auth.user.training);
@@ -26,7 +25,6 @@ const App = () => {
     const googleToken = {
         accessToken: urlParams.get('accessToken'),
     };
-
     useEffect(() => {
         googleToken?.accessToken &&
             dispatch(authOperations.logInWithGoogleOperation(googleToken));
@@ -48,7 +46,6 @@ const App = () => {
         <>
             {/*isLoading && <Spin />*/}
             <AppBar />
-            <EndTrainingModal />
 
             <Suspense fallback={<Spin />}>
                 <Switch>

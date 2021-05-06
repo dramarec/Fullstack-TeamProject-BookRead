@@ -15,6 +15,7 @@ import MobBookList from '../../components/trainingComponents/booksLists/mob/MobB
 import ButtonAdd from '../../components/buttonAdd/ButtonAdd';
 import Modal from '../../components/modal/Modal';
 import back from '../../assets/svg/back.svg';
+// import EndTrainingModal from '../../components/endTrainingMdl/EndTrainingModal';
 
 const TrainingPage = memo(() => {
     const trainingBooksList = useSelector(trainingSelector.trainingBooksList);
@@ -90,20 +91,14 @@ const TrainingPage = memo(() => {
                 {isTraining.duration !== 0 ? (
                     <>
                         <TimersSet />
-                        <MyGoal
-                            startTraining={isTraining.duration !== 0}
-                            
-                        />
+                        <MyGoal startTraining={isTraining.duration !== 0} />
                         <DescBookList books={trainingBooksList} />
                         <Chart />
                         <Result />
                     </>
                 ) : (
                     <>
-                        <MyGoal
-                            startTraining={isTraining.duration !== 0}
-                            
-                        />
+                        <MyGoal startTraining={isTraining.duration !== 0} />
                         <MyTraining />
                         <Chart />
                     </>
@@ -151,6 +146,7 @@ const TrainingPage = memo(() => {
                     </>
                 )}
             </Mobile>
+            {/* <EndTrainingModal /> */}
         </TrainingPageStyled>
     );
 });

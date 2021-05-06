@@ -20,6 +20,7 @@ const StatisticsStyled = styled.div`
         background: #e0e5eb;
         border: solid #E0E5EB;
         border-width: 0 10px;
+         margin: 0 5px;
       }
       &:before {
         margin-left: -100%;
@@ -38,6 +39,7 @@ const StatisticsStyled = styled.div`
         background: #e0e5eb;
         border: solid #E0E5EB;
         border-width: 0 8px;
+        margin-left: 10px;
       }
       &:after {
         margin-right: -100%;
@@ -55,6 +57,8 @@ const StatisticsStyled = styled.div`
         background: #e0e5eb;
         border: solid #E0E5EB;
         border-width: 0 10px;
+        margin: 0 5px;
+}
       }
       &:before {
         margin-left: -100%;
@@ -67,15 +71,17 @@ const StatisticsStyled = styled.div`
   
   .statisticList {
     overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
     @media (max-width: 767px) {
-      height: 110px;
+      //height: 110px;
     }
     @media (min-width: 768px) and (max-width: 1279px) {
       width: 250px;
-      height: 157px;
+      //height: 157px;
     }
     @media (min-width: 1280px) {
-      height: 110px;
+      //height: 110px;
     }
   }
   .statisticItem {

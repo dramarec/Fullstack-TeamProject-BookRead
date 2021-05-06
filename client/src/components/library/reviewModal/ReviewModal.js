@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-duplicate-props */
+/* eslint-disable react/style-prop-object */
 import React, { useState } from 'react';
 import { useDispatch /*useSelector*/ } from 'react-redux';
 import { changeBookOperation } from '../../../redux/operations/bookOperation';
