@@ -20,6 +20,7 @@ const StatisticsStyled = styled.div`
         background: #e0e5eb;
         border: solid #E0E5EB;
         border-width: 0 10px;
+         margin: 0 5px;
       }
       &:before {
         margin-left: -100%;
@@ -38,6 +39,7 @@ const StatisticsStyled = styled.div`
         background: #e0e5eb;
         border: solid #E0E5EB;
         border-width: 0 8px;
+        margin-left: 10px;
       }
       &:after {
         margin-right: -100%;
@@ -55,6 +57,8 @@ const StatisticsStyled = styled.div`
         background: #e0e5eb;
         border: solid #E0E5EB;
         border-width: 0 10px;
+        margin: 0 5px;
+}
       }
       &:before {
         margin-left: -100%;

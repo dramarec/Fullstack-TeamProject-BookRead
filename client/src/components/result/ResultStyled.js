@@ -22,14 +22,15 @@ const ResultStyled = styled.div`
         text-transform: uppercase;
     }
     .resultsForm {
-        margin-bottom: 40px;
+        margin-bottom: 24px;
         @media (min-width: 768px) and (max-width: 1279px) {
             display: flex;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 0px;
         }
         @media (min-width: 1280px) {
             width: 240px;
+            margin-bottom: 25px;
         }
     }
     .formGroup {
