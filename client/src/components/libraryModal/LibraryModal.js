@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+//import { useDispatch,/* useSelector */} from 'react-redux';
 import Responsive from 'react-responsive';
-import modalActions from '../../redux/actions/modalAction';
+//import modalActions from '../../redux/actions/modalAction';
 import book from '../../assets/svg/book3.svg';
 import vector from '../../assets/svg/vector.svg';
 import flag from '../../assets/svg/flag.svg';
@@ -9,7 +9,7 @@ import LibraryModalStyled from './LibraryModalStyled';
 import Modal from '../modal/Modal';
 
 const LibraryModal = ({ onCloseModal }) => {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const [isOpenModal, setIsOpenModal] = useState(true);
 
   const Mobile = props => <Responsive {...props} maxWidth={767} />;

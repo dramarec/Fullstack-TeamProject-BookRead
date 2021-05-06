@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import modalActions from '../../redux/actions/modalAction';
+//import { useDispatch } from 'react-redux';
+//import modalActions from '../../redux/actions/modalAction';
 import ButtonAddStyled from './ButtonAddStyled';
 
 const ButtonAdd = ({ onHandleClick }) => {

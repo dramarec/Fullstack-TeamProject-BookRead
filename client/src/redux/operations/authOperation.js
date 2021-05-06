@@ -31,7 +31,7 @@ const logInOperation = userCredentials => async dispatch => {
         api.setToken(data.token);
 
         dispatch(authActions.logInSuccess(data));
-        dispatch(getUsersBooksOperetion());
+        //dispatch(getUsersBooksOperetion());
     } catch (err) {
         dispatch(authActions.logInError(err.message));
     }

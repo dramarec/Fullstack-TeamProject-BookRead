@@ -12,6 +12,7 @@ import trainingOperation from '../../../redux/operations/trainingOperation';
 import { CSSTransition } from 'react-transition-group';
 import { Notif } from './Notification';
 
+
 const FormTraning = () => {
     const dispatch = useDispatch();
 
@@ -45,6 +46,7 @@ const FormTraning = () => {
             if (booksArr.some(item => item._id === values.book._id)) {
                 // alert('kiss my ass!');
                 setShowNotif(true);
+
                 return;
             } else {
                 setBooks(prev => [...prev, values.book]);
