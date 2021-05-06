@@ -16,7 +16,7 @@ import authOperations from '../redux/operations/authOperation';
 
 const App = () => {
     const dispatch = useDispatch();
-    const isLoading = useSelector(loadingSelectors.getLoading);
+    const isLoading = false//useSelector(loadingSelectors.getLoading);
     const isAuth = useSelector(state => state.auth.token);
     // const training = useSelector(trainingSelector.getTraining);
     // const training = useSelector(state => state.auth.user.training);
@@ -45,7 +45,7 @@ const App = () => {
 
     return (
         <>
-            {isLoading && <Spin />}
+            {/*isLoading && <Spin />*/}
             <AppBar />
 
             <Suspense fallback={<Spin />}>

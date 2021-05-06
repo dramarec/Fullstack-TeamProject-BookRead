@@ -68,7 +68,7 @@ const TrainingPage = memo(() => {
                         <div className="rigthSide">
                             <MyGoal
                                 startTraining={isTraining.duration !== 0}
-                                training={isTraining}
+                                //training={isTraining}
                             />
                             <Result />
                         </div>
@@ -78,7 +78,7 @@ const TrainingPage = memo(() => {
                         <MyTraining />
                         <MyGoal
                             startTraining={isTraining.duration !== 0}
-                            training={isTraining}
+                            //training={isTraining}
                         />
                         <Chart />
                     </>
@@ -90,7 +90,7 @@ const TrainingPage = memo(() => {
                         <TimersSet />
                         <MyGoal
                             startTraining={isTraining.duration !== 0}
-                            training={isTraining}
+                            
                         />
                         <DescBookList books={trainingBooksList} />
                         <Chart />
@@ -100,7 +100,7 @@ const TrainingPage = memo(() => {
                     <>
                         <MyGoal
                             startTraining={isTraining.duration !== 0}
-                            training={isTraining}
+                            
                         />
                         <MyTraining />
                         <Chart />
@@ -113,7 +113,7 @@ const TrainingPage = memo(() => {
                         <TimersSet />
                         <MyGoal
                             startTraining={isTraining.duration !== 0}
-                            training={isTraining}
+                            //training={isTraining}
                         />
                         <MobBookList books={trainingBooksList} />
                         <Chart />
@@ -123,7 +123,7 @@ const TrainingPage = memo(() => {
                     <>
                         <MyGoal
                             startTraining={isTraining.duration !== 0}
-                            training={isTraining}
+                            //training={isTraining}
                         />
                         {/* <MobBookList /> */}
 

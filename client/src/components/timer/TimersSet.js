@@ -11,7 +11,8 @@ const TimersSet = () => {
     const data = new Date(new Date().getFullYear(), 11, 31);
     //const isTraining = useSelector(getTraining)
     //const dataEnd ={isTraining.end}
-    // console.log('dataStart', dataStart);
+    //console.log('dataStart', dataStart);
+     //console.log('endDate', endDate);
     return (
         <TimerToDayStyled>
             <div className="timerYear">

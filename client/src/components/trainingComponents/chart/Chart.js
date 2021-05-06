@@ -6,28 +6,15 @@ import {
     Line,
     CartesianGrid,
     XAxis,
-    Tooltip,
+    YAxis,
+    //Tooltip,
     Legend,
 } from 'recharts';
 import { getTraining } from '../../../redux/selectors/bookSelector';
 import ChartWrapper from './Chart.styled';
 import { useSelector } from 'react-redux';
 
-/*const data = [
-  { name: 'Day 1', ПЛАН: 570, ФАКТ: 400 },
-  { name: 'Day 2', ПЛАН: 290, ФАКТ: 450 },
-  { name: 'Day 3', ПЛАН: 880, ФАКТ: 720 },
-  { name: 'Day 4', ПЛАН: 260, ФАКТ: 390 },
-];*/
 
-const data = [];
-for (let num = 0; num <= 10; num++) {
-    data.push({
-        name: num,
-        ПЛАН: 34,
-        ФАКТ: 0,
-    });
-}
 
 const style = {
     top: 100,
@@ -41,18 +28,29 @@ const Chart = () => {
     const Tablet = props => <Responsive {...props} minWidth={768} />;
     const Mobile = props => <Responsive {...props} maxWidth={767} />;
     const training = useSelector(getTraining);
-    const result = training.results?.map(item => {
-        // console.log(item, 'item from RESULTS');
-        return [item.pageCount];
-    });
-    // console.log('training', result);
+ 
+    const plan = [];
+    const result = training.results?.map(item => {return item.date });
+    for (let i = 0; i < result?.length; i++) {
+     result[i] != result[i - 1]  && plan.push(result[i])
+    }
+ 
+    const fact = (data) => training.results?.reduce((sum, result) => {
+    if(result.date === data) {
+       return sum + result.pageCount;
+     } else{
+        return sum
+    }; 
+  }, 0);
+  
+  const pagesReadPerDay = training.pagesReadPerDay;
 
-    const data = [];
-    for (let num = 0; num <= training.duration; num++) {
+  const data = [];
+    for (let num = 0; num <= training?.duration; num++) {
         data.push({
-            name: num,
-            ПЛАН: 34,
-            ФАКТ: result[num],
+            name: plan[num],
+            ПЛАН: pagesReadPerDay,
+            ФАКТ: fact(plan[num]),
         });
     }
     const [opacity, setOpacity] = useState({
@@ -60,44 +58,8 @@ const Chart = () => {
         ФАКТ: 1,
     });
 
-    const pagesReadPerDay = training.pagesReadPerDay;
-    // const start = training.start;
-    // const end = training.end;
-    // const duration = training.duration;
-    // const totalPages = training.totalPages;
-    // const books = training.books;
-    // const results = training.results?.map(item => {
-    //     console.log(item, 'item from RESULTS');
-    //     return {
-    //         date: item.date,
-    //         pageCount: item.pageCount,
-    //     };
-    // });
-
-    // console.log(
-    //     start,
-    //     end,
-    //     duration,
-    //     pagesReadPerDay,
-    //     totalPages,
-    //     books,
-    //     results,
-    //     'TRAINinG!',
-    // );
-
-    // const data = [
-    //     { name: 'Training', ПЛАН: 570, ФАКТ: 400 },
-    //     { name: 'Day 2', ПЛАН: 290, ФАКТ: 450 },
-    //     { name: 'Day 3', ПЛАН: 880, ФАКТ: 720 },
-    //     { name: 'Day 4', ПЛАН: 260, ФАКТ: 390 },
-    // ];
-
-    // const [opacity, setOpacity] = useState({
-    //     ПЛАН: 1,
-    //     ФАКТ: 1,
-    // });
-
-    const handleMouseEnter = useCallback(
+    
+    /*const handleMouseEnter = useCallback(
         o => {
             const { dataKey } = o;
             setOpacity({ ...opacity, [dataKey]: 0.5 });
@@ -111,7 +73,7 @@ const Chart = () => {
             setOpacity({ ...opacity, [dataKey]: 1 });
         },
         [opacity, setOpacity],
-    );
+    );*/
 
     const renderColorfulLegendText = value => {
         return <span className="legend">{value}</span>;
@@ -157,12 +119,14 @@ const Chart = () => {
                                 activeDot={{ r: 8 }}
                             />
                             <CartesianGrid horizontal={false} stroke="#ccc" />
-                            <XAxis dataKey="none" tickLine={false}></XAxis>
-                            <Tooltip />
+                            <XAxis padding={{ l: 10 }} dataKey="name" tickLine={false}></XAxis>
+                            <YAxis/>
+
+                           
 
                             <Legend
-                                onMouseEnter={handleMouseEnter}
-                                onMouseLeave={handleMouseLeave}
+                                //onMouseEnter={handleMouseEnter}
+                                //onMouseLeave={handleMouseLeave}
                                 iconSize={0}
                                 layout="vertical"
                                 verticalAlign="middle"
@@ -172,7 +136,8 @@ const Chart = () => {
                         </LineChart>
                     </ResponsiveContainer>
 
-                    <p className="text-x-line">час</p>
+                    <p className="text-x-line">день</p>
+                   
                 </div>
             </Tablet>
             <Mobile>
@@ -206,12 +171,13 @@ const Chart = () => {
                                 activeDot={{ r: 8 }}
                             />
                             <CartesianGrid horizontal={false} stroke="#ccc" />
-                            <XAxis dataKey="none" tickLine={false}></XAxis>
-                            <Tooltip />
+                            <XAxis dataKey="name" tickLine={false}></XAxis>
+                            <YAxis />
+                            
 
                             <Legend
-                                onMouseEnter={handleMouseEnter}
-                                onMouseLeave={handleMouseLeave}
+                               //onMouseEnter={handleMouseEnter}
+                                //onMouseLeave={handleMouseLeave}
                                 iconSize={0}
                                 layout="vertical"
                                 verticalAlign="middle"
@@ -221,7 +187,7 @@ const Chart = () => {
                         </LineChart>
                     </ResponsiveContainer>
 
-                    <p className="text-x-line">час</p>
+                    <p className="text-x-line">day</p>
                 </div>
             </Mobile>
         </ChartWrapper>

@@ -179,6 +179,23 @@ const FormTraningStyle = styled.div`
             bottom: 115px;
         }
     }
+
+    .ntf-enter {
+        opacity: 0;
+    }
+    .ntf-enter-active {
+        opacity: 1;
+
+        transition: all 250ms linear;
+    }
+    .ntf-exit {
+        opacity: 1;
+    }
+    .ntf-exit-active {
+        opacity: 0;
+
+        transition: all 250ms linear;
+    }
 `;
 
 export default FormTraningStyle;
