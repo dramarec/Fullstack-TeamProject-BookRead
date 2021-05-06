@@ -19,10 +19,6 @@ const TrainingPage = memo(() => {
     const dispatch = useDispatch();
     const training = useSelector(state => state.auth.user.training);
     const isAuth = useSelector(state => state.auth.token);
-    // const training = useSelector(trainingSelector.getTraining);
-    const [isOpenModal, setIsOpenModal] = useState(false);
-
-    console.log(`trainingBooksList`, trainingBooksList);
 
     const isTraining = useSelector(getTraining);
 
@@ -46,14 +42,6 @@ const TrainingPage = memo(() => {
     );
     const Mobile = props => <Responsive {...props} maxWidth={767} />;
 
-    // const openModal = () => {
-    //     setIsOpenModal(true);
-    // };
-
-    // const closeModal = () => {
-    //     setIsOpenModal(false);
-    // };
-
     return (
         <TrainingPageStyled>
             <div className="container">
@@ -62,14 +50,13 @@ const TrainingPage = memo(() => {
                         <>
                             <div className="leftSide">
                                 <TimersSet />
-                                <DescBookList books={trainingBooksList} />
+                                <DescBookList />
                                 <Chart />
                             </div>
 
                             <div className="rigthSide">
                                 <MyGoal
                                     startTraining={isTraining.duration !== 0}
-                                    //training={isTraining}
                                 />
                                 <Result />
                             </div>
@@ -77,10 +64,7 @@ const TrainingPage = memo(() => {
                     ) : (
                         <>
                             <MyTraining />
-                            <MyGoal
-                                startTraining={isTraining.duration !== 0}
-                                //training={isTraining}
-                            />
+                            <MyGoal startTraining={isTraining.duration !== 0} />
                             <Chart />
                         </>
                     )}
@@ -90,7 +74,7 @@ const TrainingPage = memo(() => {
                         <>
                             <TimersSet />
                             <MyGoal startTraining={isTraining.duration !== 0} />
-                            <DescBookList books={trainingBooksList} />
+                            <DescBookList />
                             <Chart />
                             <Result />
                         </>
@@ -106,22 +90,14 @@ const TrainingPage = memo(() => {
                     {isTraining.duration !== 0 ? (
                         <>
                             <TimersSet />
-                            <MyGoal
-                                startTraining={isTraining.duration !== 0}
-                                //training={isTraining}
-                            />
-                            <MobBookList books={trainingBooksList} />
+                            <MyGoal startTraining={isTraining.duration !== 0} />
+                            <MobBookList />
                             <Chart />
                             <Result />
                         </>
                     ) : (
                         <>
-                            <MyGoal
-                                startTraining={isTraining.duration !== 0}
-                                //training={isTraining}
-                            />
-                            {/* <MobBookList /> */}
-
+                            <MyGoal startTraining={isTraining.duration !== 0} />
                             <TrainingModal />
                             <Chart />
                         </>

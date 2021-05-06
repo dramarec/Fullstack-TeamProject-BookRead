@@ -11,28 +11,24 @@ const BookListItem = ({
     author,
     year,
     numberOfPages,
+    readPages,
     onDeleteBook,
 }) => {
     const isTraining = useSelector(getTraining);
-    const book = useSelector(state => state.training.book);
 
     return (
         <>
             <li
                 key={_id}
                 className={
-                    book?.readPages === numberOfPages
+                    readPages === numberOfPages
                         ? 'books-library__item readItem'
                         : 'books-library__item'
                 }
             >
                 <img
                     className="books-library__img"
-                    src={
-                        book?.readPages === numberOfPages
-                            ? readBook
-                            : readingBook
-                    }
+                    src={readPages === numberOfPages ? readBook : readingBook}
                     alt=""
                 />
                 <p className="books-library__title">{title}</p>

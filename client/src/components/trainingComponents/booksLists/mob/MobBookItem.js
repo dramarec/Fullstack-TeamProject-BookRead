@@ -3,7 +3,6 @@ import { getTraining } from '../../../../redux/selectors/bookSelector';
 import readingBook from '../../../../assets/svg/book3.svg';
 import readBook from '../../../../assets/svg/bookOrg.svg';
 import card from '../../../../assets/svg/card.svg';
-import trainingOperation from '../../../../redux/operations/trainingOperation';
 
 const MobBookItem = ({
     _id,
@@ -11,23 +10,25 @@ const MobBookItem = ({
     author,
     year,
     numberOfPages,
+    readPages,
     onDeleteBook,
 }) => {
     const isTraining = useSelector(getTraining);
-    const book = useSelector(state => state.training.book);
 
     return (
         <>
             <li
                 key={_id}
-                className={book?.readPages === numberOfPages ? 'readItem' : ''}
+                className={
+                    readPages === numberOfPages ? 'readItem' : 'readingItem'
+                }
             >
                 <div className="helpers">
                     <div className="helpers1">
                         <img
                             className="books__img"
                             src={
-                                book?.readPages === numberOfPages
+                                readPages === numberOfPages
                                     ? readBook
                                     : readingBook
                             }

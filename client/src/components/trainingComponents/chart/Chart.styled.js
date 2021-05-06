@@ -13,7 +13,7 @@ const ChartWrapper = styled.div`
 
     @media screen and (min-width: 768px) {
         margin-bottom: 36px;
-        margin-top: 40px;
+        //margin-top: 40px;
         width: 678px;
         padding: 14px 22px 12px 22px;
         .title {

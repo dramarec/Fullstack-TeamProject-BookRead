@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const P = styled.p`
     position: absolute;
-    top: 42%;
+    top: 40%;
     right: 32%;
     font: 'Montserrat-Regular';
     font-size: 11px;

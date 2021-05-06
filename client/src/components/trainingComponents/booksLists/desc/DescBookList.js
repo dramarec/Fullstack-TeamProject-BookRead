@@ -1,9 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import DescBookListStyle from './DescBookListStyle';
 import BookListItem from '../item/BookListItem';
 import book from '../../../../assets/svg/book3.svg';
+import trainingSelector from '../../../../redux/selectors/trainingSelector';
 
 const DescBookList = ({ books, onHandleDeleteBook }) => {
+    const booksList = useSelector(trainingSelector.trainingBooksList);
+
     return (
         <DescBookListStyle>
             <div className="books-titles">
@@ -16,14 +20,25 @@ const DescBookList = ({ books, onHandleDeleteBook }) => {
             </div>
             <div className="books-library">
                 <ul className="books-library__list">
-                    {books?.map(books => (
-                        <BookListItem
-                            key={books._id}
-                            {...books}
-                            onDeleteBook={onHandleDeleteBook}
-                        />
-                    ))}
-                    {!books.length && (
+                    {books?.length > 0 || booksList.length > 0 ? (
+                        booksList.length > 0 ? (
+                            booksList.map(books => (
+                                <BookListItem
+                                    key={books._id}
+                                    {...books}
+                                    onDeleteBook={onHandleDeleteBook}
+                                />
+                            ))
+                        ) : (
+                            books.map(books => (
+                                <BookListItem
+                                    key={books._id}
+                                    {...books}
+                                    onDeleteBook={onHandleDeleteBook}
+                                />
+                            ))
+                        )
+                    ) : (
                         <li className="helpers">
                             <img src={book} alt="" className="helpersImg" />
                             <p>...</p>

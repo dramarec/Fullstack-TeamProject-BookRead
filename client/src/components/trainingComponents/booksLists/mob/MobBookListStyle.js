@@ -57,7 +57,7 @@ const MobBookListStyle = styled.div`
     .readItem {
         display: flex;
         flex-direction: column;
-        //color: var(--accent-color);
+        //color: tomato;
         color: var(--secondary-text);
     }
     .readItem:not(:last-child) {
@@ -66,6 +66,15 @@ const MobBookListStyle = styled.div`
     .readItem:not(:first-child) {
         margin-top: 22px;
     }
+
+    .readingItem:not(:last-child) {
+        border-bottom: 1px solid #ccc;
+    }
+
+    .readingItem:not(:first-child) {
+        margin-top: 22px;
+    }
+
     .books__item-descr {
         font-family: 'Montserrat-Regular';
         font-style: 400;
