@@ -67,15 +67,17 @@ const StatisticsStyled = styled.div`
   
   .statisticList {
     overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
     @media (max-width: 767px) {
-      height: 110px;
+      //height: 110px;
     }
     @media (min-width: 768px) and (max-width: 1279px) {
       width: 250px;
-      height: 157px;
+      //height: 157px;
     }
     @media (min-width: 1280px) {
-      height: 110px;
+      //height: 110px;
     }
   }
   .statisticItem {
