@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 const TrainingPageStyled = styled.div`
-    display: flex;
-    flex-wrap: wrap;
     background-color: var(--main-background);
-
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+    }
     @media (min-width: 1280px) {
         //padding-top: 50px;
     }

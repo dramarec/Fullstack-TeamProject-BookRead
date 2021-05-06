@@ -55,77 +55,79 @@ const TrainingPage = memo(() => {
     // };
 
     return (
-        <TrainingPageStyled className="container">
-            <Desktop>
-                {isTraining.duration !== 0 ? (
-                    <>
-                        <div className="leftSide">
-                            <TimersSet />
-                            <DescBookList books={trainingBooksList} />
-                            <Chart />
-                        </div>
+        <TrainingPageStyled>
+            <div className="container">
+                <Desktop>
+                    {isTraining.duration !== 0 ? (
+                        <>
+                            <div className="leftSide">
+                                <TimersSet />
+                                <DescBookList books={trainingBooksList} />
+                                <Chart />
+                            </div>
 
-                        <div className="rigthSide">
+                            <div className="rigthSide">
+                                <MyGoal
+                                    startTraining={isTraining.duration !== 0}
+                                    //training={isTraining}
+                                />
+                                <Result />
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <MyTraining />
                             <MyGoal
                                 startTraining={isTraining.duration !== 0}
                                 //training={isTraining}
                             />
+                            <Chart />
+                        </>
+                    )}
+                </Desktop>
+                <Tablet>
+                    {isTraining.duration !== 0 ? (
+                        <>
+                            <TimersSet />
+                            <MyGoal startTraining={isTraining.duration !== 0} />
+                            <DescBookList books={trainingBooksList} />
+                            <Chart />
                             <Result />
-                        </div>
-                    </>
-                ) : (
-                    <>
-                        <MyTraining />
-                        <MyGoal
-                            startTraining={isTraining.duration !== 0}
-                            //training={isTraining}
-                        />
-                        <Chart />
-                    </>
-                )}
-            </Desktop>
-            <Tablet>
-                {isTraining.duration !== 0 ? (
-                    <>
-                        <TimersSet />
-                        <MyGoal startTraining={isTraining.duration !== 0} />
-                        <DescBookList books={trainingBooksList} />
-                        <Chart />
-                        <Result />
-                    </>
-                ) : (
-                    <>
-                        <MyGoal startTraining={isTraining.duration !== 0} />
-                        <MyTraining />
-                        <Chart />
-                    </>
-                )}
-            </Tablet>
-            <Mobile>
-                {isTraining.duration !== 0 ? (
-                    <>
-                        <TimersSet />
-                        <MyGoal
-                            startTraining={isTraining.duration !== 0}
-                            //training={isTraining}
-                        />
-                        <MobBookList books={trainingBooksList} />
-                        <Chart />
-                        <Result />
-                    </>
-                ) : (
-                    <>
-                        <MyGoal
-                            startTraining={isTraining.duration !== 0}
-                            //training={isTraining}
-                        />
-                        {/* <MobBookList /> */}
+                        </>
+                    ) : (
+                        <>
+                            <MyGoal startTraining={isTraining.duration !== 0} />
+                            <MyTraining />
+                            <Chart />
+                        </>
+                    )}
+                </Tablet>
+                <Mobile>
+                    {isTraining.duration !== 0 ? (
+                        <>
+                            <TimersSet />
+                            <MyGoal
+                                startTraining={isTraining.duration !== 0}
+                                //training={isTraining}
+                            />
+                            <MobBookList books={trainingBooksList} />
+                            <Chart />
+                            <Result />
+                        </>
+                    ) : (
+                        <>
+                            <MyGoal
+                                startTraining={isTraining.duration !== 0}
+                                //training={isTraining}
+                            />
+                            {/* <MobBookList /> */}
 
-                        <TrainingModal />
-                        <Chart />
-                    </>
-                )}
-            </Mobile>
+                            <TrainingModal />
+                            <Chart />
+                        </>
+                    )}
+                </Mobile>
+            </div>
         </TrainingPageStyled>
     );
 });
