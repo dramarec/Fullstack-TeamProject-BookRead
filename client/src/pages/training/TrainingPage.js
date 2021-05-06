@@ -9,7 +9,7 @@ import MyGoal from '../../components/myGoal/MyGoal';
 import DescBookList from '../../components/trainingComponents/booksLists/desc/DescBookList';
 import trainingSelector from '../../redux/selectors/trainingSelector';
 import Result from '../../components/result/Result';
-//import trainingOperation from '../../redux/operations/trainingOperation';
+import trainingOperation from '../../redux/operations/trainingOperation';
 import { getTraining } from '../../redux/selectors/bookSelector';
 import MobBookList from '../../components/trainingComponents/booksLists/mob/MobBookList';
 import ButtonAdd from '../../components/buttonAdd/ButtonAdd';
