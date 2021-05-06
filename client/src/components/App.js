@@ -9,14 +9,14 @@ import { useDispatch } from 'react-redux';
 import PrivateRoutes from './routes/PrivateRoutes';
 import PublicRoutes from './routes/PublicRoutes';
 import { getUsersBooksOperetion } from '../redux/operations/bookOperation';
-import loadingSelectors from '../redux/selectors/loadingSelector';
+// import loadingSelectors from '../redux/selectors/loadingSelector';
 // import trainingSelector from '../redux/selectors/trainingSelector';
 import authOperations from '../redux/operations/authOperation';
 // import trainingOperation from '../redux/operations/trainingOperation';
 
 const App = () => {
     const dispatch = useDispatch();
-    const isLoading = false//useSelector(loadingSelectors.getLoading);
+    // const isLoading = false//useSelector(loadingSelectors.getLoading);
     const isAuth = useSelector(state => state.auth.token);
     // const training = useSelector(trainingSelector.getTraining);
     // const training = useSelector(state => state.auth.user.training);

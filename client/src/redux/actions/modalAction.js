@@ -2,4 +2,6 @@ import { createAction } from '@reduxjs/toolkit';
 
 const toggleModal = createAction('modal/toggleModal');
 
-export default toggleModal;
+const modalAction = { toggleModal };
+
+export default modalAction;

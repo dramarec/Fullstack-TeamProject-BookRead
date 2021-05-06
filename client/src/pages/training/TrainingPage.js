@@ -15,6 +15,7 @@ import MobBookList from '../../components/trainingComponents/booksLists/mob/MobB
 import ButtonAdd from '../../components/buttonAdd/ButtonAdd';
 import Modal from '../../components/modal/Modal';
 import back from '../../assets/svg/back.svg';
+// import EndTrainingModal from '../../components/endTrainingMdl/EndTrainingModal';
 
 const TrainingPage = memo(() => {
     const trainingBooksList = useSelector(trainingSelector.trainingBooksList);
