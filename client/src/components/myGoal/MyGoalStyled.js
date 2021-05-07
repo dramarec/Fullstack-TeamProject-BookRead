@@ -26,7 +26,7 @@ const MyGoalStyled = styled.div`
     @media screen and (min-width: 1280px) {
         margin-top: 50px;
         width: 275px;
-        margin-bottom: 100px;
+        margin-bottom: 40px;
     }
 
     .statistic-title {

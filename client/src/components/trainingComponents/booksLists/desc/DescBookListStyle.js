@@ -94,6 +94,8 @@ const DescBookListStyle = styled.div`
         }
         &__img {
             margin-right: 17px;
+            width: 22px;
+            height: 19px;
         }
         &__title {
             width: 230px;
@@ -213,6 +215,9 @@ const DescBookListStyle = styled.div`
     }
     .helpersImg {
         margin-right: 17px;
+    }
+    .books-library__item.readItem {
+        color: var(--secondary-text);
     }
 `;
 export default DescBookListStyle;

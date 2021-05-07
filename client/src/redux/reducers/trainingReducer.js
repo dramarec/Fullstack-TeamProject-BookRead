@@ -1,8 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit';
 import trainingActions from '../actions/trainingActions';
 import authActions from '../actions/authActions';
+import StateManager from 'react-select';
 
 const initialState = {
+    book: {},
     _id: '',
     start: '',
     end: '',
@@ -15,7 +17,7 @@ const initialState = {
 };
 
 const trainingReducer = createReducer(initialState, {
-    [trainingActions.newTrainingSuccess]: (_, { payload }) => {
+    [trainingActions.newTrainingSuccess]: (state, { payload }) => {
         return {
             _id: payload._id,
             start: payload.start,
@@ -30,6 +32,7 @@ const trainingReducer = createReducer(initialState, {
     },
     [trainingActions.addReadPagesSuccess]: (_, { payload }) => {
         return {
+            book: payload.book,
             _id: payload.training._id,
             start: payload.training.start,
             end: payload.training.end,
@@ -41,8 +44,9 @@ const trainingReducer = createReducer(initialState, {
             results: payload.training.results,
         };
     },
-    [trainingActions.getTrainingSuccess]: (_, { payload }) => {
+    [trainingActions.getTrainingSuccess]: (state, { payload }) => {
         return {
+            ...state,
             _id: payload._id ? payload._id : '',
             start: payload.start ? payload.start : '',
             end: payload.end ? payload.end : '',

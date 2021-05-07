@@ -10,15 +10,43 @@ import trainingOperation from '../../redux/operations/trainingOperation';
 import trainingSelector from '../../redux/selectors/trainingSelector';
 // import trainingActions from '../../redux/actions/trainingActions';
 import Statistics from '../statistic/Statistics';
+import EndTrainingModal from '../endTrainingMdl/EndTrainingModal';
+// import Modal from '../modal/Modal';
+// import EndTrainingModalStyled from '../endTrainingMdl/EndTrainingModalStyled';
+// import { Link, useHistory } from 'react-router-dom';
 
 
 
 const Result = () => {
+    // const history = useHistory();
     const dispatch = useDispatch();
-    const [isVisible, setIsVisible] = useState(false)
+    // const [isOpenModal, setIsOpenModal] = useState(false);
+    // console.log('Result ===> isOpenModal', isOpenModal);
+
     const totalReadPages = useSelector(trainingSelector.getTotalReadPages);
     const totalPages = useSelector(state => state.training.totalPages);
     //const result = useSelector(state => state.training.results);
+
+    // const openModal = () => {
+    //     return setIsOpenModal(true);
+    // };
+
+    // for (let i = 0; i < 1; i++) {
+    //     if (totalReadPages === totalPages) {
+    //         openModal();
+    //     }
+    //     break;
+    // }
+
+    // const closeModal = () => {
+    //     setIsOpenModal(false);
+    //     history.push('/library');
+    // };
+
+    // if (totalReadPages === totalPages) {
+    //     openModal();
+    // }
+    // console.log('Result ===> ', isOpenModal);
 
     const validationSchema = yup.object({
         date: yup.string().required('Виберіть дату'),
@@ -113,6 +141,31 @@ const Result = () => {
                 </button>
             </form>
             <Statistics />
+            <EndTrainingModal />
+            {/* {isOpenModal && (
+                <Modal closeModal={closeModal}>
+                    <EndTrainingModalStyled>
+                        <img alt="" className="statModalImg" />
+                        <p className="statModalTitle">Ваша тренування</p>
+                        <p className="statModalTitle">закінчено!</p>
+
+                        <Link
+                            className="statModalBtn"
+                            to="/training"
+                            onClick={closeModal}
+                        >
+                            Почати нове тренування
+                        </Link>
+                        <Link
+                            className="statModalBtn"
+                            to="/library"
+                            onClick={closeModal}
+                        >
+                            Додати нові книжки
+                        </Link>
+                    </EndTrainingModalStyled>
+                </Modal>
+            )} */}
         </ResultStyled>
     );
 };
