@@ -5,7 +5,8 @@ import thumb_up from '../../assets/svg/thumb_up.svg';
 import EndTrainingModalStyled from './EndTrainingModalStyled';
 import Modal from '../modal/Modal';
 import trainingSelector from '../../redux/selectors/trainingSelector';
-import trainingOperation from '../../redux/operations/trainingOperation';
+// import trainingOperation from '../../redux/operations/trainingOperation';
+import trainingActions from '../../redux/actions/trainingActions';
 
 const EndTrainingModal = memo(() => {
     const dispatch = useDispatch();
@@ -14,15 +15,18 @@ const EndTrainingModal = memo(() => {
 
     const totalReadPages = useSelector(trainingSelector.getTotalReadPages);
     const totalPages = useSelector(trainingSelector.getTotalPages);
+    // const training = useSelector(state => state.auth.user.training);
 
     const closeModal = () => {
-        dispatch(trainingOperation.getTrainingOperation());
+        // training !== null && dispatch(trainingOperation.getTrainingOperation());
+        dispatch(trainingActions.clearTraining());
         setIsOpenModal(false);
         history.push('/library');
     };
 
     useEffect(() => {
         totalReadPages === totalPages && setIsOpenModal(true);
+        // eslint-disable-next-line
     }, [totalReadPages]);
 
     return (
