@@ -30,7 +30,7 @@ const App = () => {
     console.log(trainingId, 'ID');
 
     useEffect(() => {
-        training !== null && trainingId === '' && alert('hello!');
+        training !== null && trainingId === '' && console.log('hello!');
     }, [training, trainingId]);
 
     useEffect(() => {
