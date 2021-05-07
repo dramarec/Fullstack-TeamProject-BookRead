@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import Select from 'react-select';
+<<<<<<< HEAD
 import { getWillRead } from '../../../../redux/selectors/bookSelector';
 import FormItem from '../item/FormItem';
+=======
+import {
+    getWillRead,
+    getNowRead,
+} from '../../../../redux/selectors/bookSelector';
+// import FormItem from '../item/FormItem';
+>>>>>>> dev
 
 const Selector = ({ onChange }) => {
     const booksWillRead = useSelector(getWillRead);
