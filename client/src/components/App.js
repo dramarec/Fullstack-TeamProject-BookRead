@@ -36,9 +36,9 @@ const App = () => {
     useEffect(() => {
         setPreloader(false);
 
-        setTimeout(() => {
-            setPreloader(false);
-        }, 3000);
+        // setTimeout(() => {
+        //     setPreloader(false);
+        // }, 3000);
     }, []);
 
     useEffect(() => {
