@@ -19,6 +19,7 @@ const addReadPagesSuccess = createAction('@training/addReadPagesSuccess');
 const addReadPagesError = createAction('@training/addReadPagesError');
 
 const addTotalReadPages = createAction('@training/addTotalReadPages');
+const clearTraining = createAction('@training/clearTraining');
 
 const trainingActions = {
     addBookInTraining,
@@ -37,6 +38,7 @@ const trainingActions = {
     addReadPagesError,
 
     addTotalReadPages,
+    clearTraining,
 
     setStartDateTraining,
     setEndDateTraining,

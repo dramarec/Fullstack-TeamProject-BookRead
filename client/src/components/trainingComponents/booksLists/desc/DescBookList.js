@@ -20,8 +20,8 @@ const DescBookList = ({ books, onHandleDeleteBook }) => {
             </div>
             <div className="books-library">
                 <ul className="books-library__list">
-                    {books?.length > 0 || booksList.length > 0 ? (
-                        booksList.length > 0 ? (
+                    {books?.length > 0 || booksList?.length > 0 ? (
+                        booksList?.length > 0 ? (
                             booksList.map(books => (
                                 <BookListItem
                                     key={books._id}

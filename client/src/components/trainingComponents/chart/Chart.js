@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import Responsive from 'react-responsive';
 import {
     ResponsiveContainer,
@@ -14,8 +14,6 @@ import { getTraining } from '../../../redux/selectors/bookSelector';
 import ChartWrapper from './Chart.styled';
 import { useSelector } from 'react-redux';
 
-
-
 const style = {
     top: 100,
     right: 0,
@@ -28,24 +26,27 @@ const Chart = () => {
     const Tablet = props => <Responsive {...props} minWidth={768} />;
     const Mobile = props => <Responsive {...props} maxWidth={767} />;
     const training = useSelector(getTraining);
- 
-    const plan = [];
-    const result = training.results?.map(item => {return item.date });
-    for (let i = 0; i < result?.length; i++) {
-     result[i] != result[i - 1]  && plan.push(result[i])
-    }
- 
-    const fact = (data) => training.results?.reduce((sum, result) => {
-    if(result.date === data) {
-       return sum + result.pageCount;
-     } else{
-        return sum
-    }; 
-  }, 0);
-  
-  const pagesReadPerDay = training.pagesReadPerDay;
 
-  const data = [];
+    const plan = [];
+    const result = training.results?.map(item => {
+        return item.date;
+    });
+    for (let i = 0; i < result?.length; i++) {
+        result[i] != result[i - 1] && plan.push(result[i]);
+    }
+
+    const fact = data =>
+        training.results?.reduce((sum, result) => {
+            if (result.date === data) {
+                return sum + result.pageCount;
+            } else {
+                return sum;
+            }
+        }, 0);
+
+    const pagesReadPerDay = training.pagesReadPerDay;
+
+    const data = [];
     for (let num = 0; num <= training?.duration; num++) {
         data.push({
             name: plan[num],
@@ -58,7 +59,6 @@ const Chart = () => {
         ФАКТ: 1,
     });
 
-    
     /*const handleMouseEnter = useCallback(
         o => {
             const { dataKey } = o;
@@ -119,10 +119,12 @@ const Chart = () => {
                                 activeDot={{ r: 8 }}
                             />
                             <CartesianGrid horizontal={false} stroke="#ccc" />
-                            <XAxis padding={{ l: 10 }} dataKey="name" tickLine={false}></XAxis>
-                            <YAxis/>
-
-                           
+                            <XAxis
+                                padding={{ l: 10 }}
+                                dataKey="name"
+                                tickLine={false}
+                            ></XAxis>
+                            <YAxis />
 
                             <Legend
                                 //onMouseEnter={handleMouseEnter}
@@ -137,7 +139,6 @@ const Chart = () => {
                     </ResponsiveContainer>
 
                     <p className="text-x-line">день</p>
-                   
                 </div>
             </Tablet>
             <Mobile>
@@ -173,10 +174,9 @@ const Chart = () => {
                             <CartesianGrid horizontal={false} stroke="#ccc" />
                             <XAxis dataKey="name" tickLine={false}></XAxis>
                             <YAxis />
-                            
 
                             <Legend
-                               //onMouseEnter={handleMouseEnter}
+                                //onMouseEnter={handleMouseEnter}
                                 //onMouseLeave={handleMouseLeave}
                                 iconSize={0}
                                 layout="vertical"

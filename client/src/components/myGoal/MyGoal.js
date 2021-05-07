@@ -10,7 +10,9 @@ const MyGoal = ({ startTraining, training }) => {
     let bookRead = 0;
     let booksLeft;
     for (let i = 0; i < isTraining.books?.length; i++) {
-        if (isTraining.books[i].numberOfPages === isTraining.books[i].readPages) {
+        if (
+            isTraining.books[i].numberOfPages === isTraining.books[i].readPages
+        ) {
             bookRead += 1;
         }
         booksLeft = isTraining.books.length - bookRead;
@@ -26,7 +28,7 @@ const MyGoal = ({ startTraining, training }) => {
                 <div className="statistic-book">
                     <div className="statistic__cell">
                         <span className="statistic__number">
-                            {isTraining.books.length}
+                            {isTraining.books?.length}
                         </span>
                     </div>
                     <p className="statistic__text">

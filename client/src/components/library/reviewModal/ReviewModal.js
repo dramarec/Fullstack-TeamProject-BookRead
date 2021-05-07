@@ -70,40 +70,6 @@ const ReviewModal = ({ data, closeModal }) => {
                     Зберегти
                 </button>
             </div>
-
-            <StarRatings
-                style="fill:blue; width: 17px"
-                rating={rating}
-                starSpacing="5px"
-                starRatedColor="#FF6B08"
-                starEmptyColor="white"
-                starSpacing="1px"
-                changeRating={changeRating}
-                starDimension="17px"
-                numberOfStars={5}
-                name="rating"
-            />
-            <p>Резюме</p>
-            <textarea
-                className="form-control"
-                rows="5"
-                type="textarea"
-                name="review"
-                value={book.review}
-                onChange={onHandleChange}
-            />
-            <div className="button-group">
-                <button
-                    type="button"
-                    className="secondButton"
-                    onClick={closeModal}
-                >
-                    Назад
-                </button>
-                <button type="submit" className="mainButton">
-                    Зберегти
-                </button>
-            </div>
         </ReviewModalStyled>
     );
 };
