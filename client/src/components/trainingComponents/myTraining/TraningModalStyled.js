@@ -172,24 +172,15 @@ const TraningMadalStyled = styled.div`
     }
     .error.start {
         position: absolute;
-        left: 100px;
-        top: 42px;
-        @media screen and (min-width: 1280px) {
-            left: 200px;
-        }
+        top: 222px;
     }
     .error.end {
         position: absolute;
-        top: 42px;
-        right: 80px;
-        @media screen and (min-width: 1280px) {
-            right: 185px;
-        }
+        top: 285px;
     }
     .error.book {
         position: absolute;
-        bottom: 195px;
-        left: 0;
+        bottom: 183px;
     }
 `;
 
