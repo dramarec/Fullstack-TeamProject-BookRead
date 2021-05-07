@@ -147,35 +147,43 @@ const FormTraningStyle = styled.div`
         font-size: 11px;
     }
     .error.start {
-        position: absolute;
         top: 42px;
-        @media screen and (min-width: 768px) {
-            left: 60px;
+        position: absolute;
+        @media (min-width: 320px) and (max-width: 767px) {
+            top: 42px;
+            /* bootom: 420px; */
+            /* bootom: 0; */
         }
-        @media screen and (min-width: 1280px) {
-            left: 160px;
+        @media (min-width: 768px) {
+            left: 45px;
+        }
+        @media (min-width: 1280px) {
+            left: 150px;
         }
     }
     .error.end {
         position: absolute;
         top: 42px;
-        @media screen and (max-width: 767px) {
+        @media (min-width: 320px) and (max-width: 767px) {
+            top: 42px;
+            /* bootom: 420px; */
+            /* bootom: 0; */
             top: 105px;
         }
         @media screen and (min-width: 768px) {
-            right: 110px;
+            left: 340px;
         }
         @media screen and (min-width: 1280px) {
-            right: 215px;
+            left: 445px;
         }
     }
     .error.book {
-        position: absolute;
         @media screen and (max-width: 767px) {
             top: 166px;
         }
         @media screen and (min-width: 768px) {
-            left: 10px;
+            position: absolute;
+            left: 5px;
             bottom: 115px;
         }
     }
