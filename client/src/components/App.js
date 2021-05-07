@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { Suspense, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import AppBar from './appBar/AppBar';
 import { Switch, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -9,22 +9,32 @@ import { useDispatch } from 'react-redux';
 import PrivateRoutes from './routes/PrivateRoutes';
 import PublicRoutes from './routes/PublicRoutes';
 import { getUsersBooksOperetion } from '../redux/operations/bookOperation';
-// import loadingSelectors from '../redux/selectors/loadingSelector';
+import loadingSelectors from '../redux/selectors/loadingSelector';
+import Preloader from './loader/preloader/Preloader';
 // import trainingSelector from '../redux/selectors/trainingSelector';
 import authOperations from '../redux/operations/authOperation';
 // import trainingOperation from '../redux/operations/trainingOperation';
 
 const App = () => {
+    const [preloader, setPreloader] = useState(true);
     const dispatch = useDispatch();
-    // const isLoading = false//useSelector(loadingSelectors.getLoading);
+    const isLoading = useSelector(loadingSelectors.getLoading);
     const isAuth = useSelector(state => state.auth.token);
     // const training = useSelector(trainingSelector.getTraining);
     // const training = useSelector(state => state.auth.user.training);
-
     const urlParams = new URLSearchParams(window.location.search);
     const googleToken = {
         accessToken: urlParams.get('accessToken'),
     };
+
+    useEffect(() => {
+        setPreloader(true);
+
+        // setTimeout(() => {
+        //     setPreloader(false);
+        // }, 3000);
+    }, []);
+
     useEffect(() => {
         googleToken?.accessToken &&
             dispatch(authOperations.logInWithGoogleOperation(googleToken));
@@ -44,21 +54,29 @@ const App = () => {
 
     return (
         <>
-            {/*isLoading && <Spin />*/}
-            <AppBar />
-
-            <Suspense fallback={<Spin />}>
-                <Switch>
-                    {mainRoutes.map(route =>
-                        route.isPrivate ? (
-                            <PrivateRoutes {...route} key={route.path} />
-                        ) : (
-                            <PublicRoutes {...route} key={route.path} />
-                        ),
-                    )}
-                    <Redirect to="/" />
-                </Switch>
-            </Suspense>
+            {preloader ? (
+                <Preloader />
+            ) : (
+                <>
+                    {isLoading && <Spin />}
+                    <AppBar />
+                    <Suspense fallback={''}>
+                        <Switch>
+                            {mainRoutes.map(route =>
+                                route.isPrivate ? (
+                                    <PrivateRoutes
+                                        {...route}
+                                        key={route.path}
+                                    />
+                                ) : (
+                                    <PublicRoutes {...route} key={route.path} />
+                                ),
+                            )}
+                            <Redirect to="/" />
+                        </Switch>
+                    </Suspense>
+                </>
+            )}
         </>
     );
 };
