@@ -43,7 +43,7 @@ const addTraining = async (req, res, next) => {
                 });
             }
 
-            if (book.readPages !== 0) {
+            if (book.readPages === book.numberOfPages) {
                 return res.status(400).json({
                     status: 'error',
                     code: 400,

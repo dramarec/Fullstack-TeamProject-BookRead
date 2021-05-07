@@ -1,14 +1,37 @@
 import styled from 'styled-components';
 
-const FormTraningStyle = styled.div`
+const TraningMadalStyled = styled.div`
     position: relative;
+    margin: 0 auto;
+    .training {
+        @media (max-width: 767px) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 60vh;
+            //width: 73vw;
+        }
+    }
 
-    @media (max-width: 767px) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 60vh;
-        //width: 73vw;
+    .baner {
+        width: 270px;
+        height: 60px;
+        color: #fff;
+        font-family: 'Montserrat-Medium';
+        font-size: 20px;
+
+        line-height: 1.9;
+        text-align: center;
+        padding: 11px 47px;
+        background-color: var(--table-title);
+        box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+        margin: 62px auto 20px;
+
+        @media (min-width: 768px) {
+            width: 100%;
+            padding: 15px 200px;
+            margin: 0px auto 32px;
+        }
     }
 
     .training-form {
@@ -126,7 +149,8 @@ const FormTraningStyle = styled.div`
         height: 42px;
 
         @media screen and (max-width: 767px) {
-            display: none;
+            //display: none;
+            margin-bottom: 40px;
         }
 
         @media screen and (min-width: 768px) {
@@ -148,54 +172,25 @@ const FormTraningStyle = styled.div`
     }
     .error.start {
         position: absolute;
+        left: 100px;
         top: 42px;
-        @media screen and (min-width: 768px) {
-            left: 60px;
-        }
         @media screen and (min-width: 1280px) {
-            left: 160px;
+            left: 200px;
         }
     }
     .error.end {
         position: absolute;
         top: 42px;
-        @media screen and (max-width: 767px) {
-            top: 105px;
-        }
-        @media screen and (min-width: 768px) {
-            right: 110px;
-        }
+        right: 80px;
         @media screen and (min-width: 1280px) {
-            right: 215px;
+            right: 185px;
         }
     }
     .error.book {
         position: absolute;
-        @media screen and (max-width: 767px) {
-            top: 166px;
-        }
-        @media screen and (min-width: 768px) {
-            left: 10px;
-            bottom: 115px;
-        }
-    }
-
-    .ntf-enter {
-        opacity: 0;
-    }
-    .ntf-enter-active {
-        opacity: 1;
-
-        transition: all 250ms linear;
-    }
-    .ntf-exit {
-        opacity: 1;
-    }
-    .ntf-exit-active {
-        opacity: 0;
-
-        transition: all 250ms linear;
+        bottom: 195px;
+        left: 0;
     }
 `;
 
-export default FormTraningStyle;
+export default TraningMadalStyled;

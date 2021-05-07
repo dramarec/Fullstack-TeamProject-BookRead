@@ -1,5 +1,6 @@
 const { DateTime } = require('luxon');
 const { Training, Book } = require('../../models');
+// const unionBy = require('lodash.unionby');
 
 const addRead = async (req, res, next) => {
     try {
@@ -39,6 +40,10 @@ const addRead = async (req, res, next) => {
                 arrayBook.readPages = arrayBook.numberOfPages;
             }
 
+            if (training.totalReadPages > training.totalPages) {
+                training.totalReadPages = training.totalPages;
+            }
+
             await training.save();
 
             const {
@@ -70,11 +75,36 @@ const addRead = async (req, res, next) => {
             break;
         }
 
+        // const newArray = training.books.map(item => {
+        //     console.log(`item`, item);
+        //     if (item._id === book._id) {
+        //     }
+        // });
+
+        // const newArray = unionBy([book], training.books, '_id');
+
+        // console.log(`training.books`, training.books);
+        // console.log(`---------book--------`, book);
+        // console.log(`newArray`, JSON.stringify(newArray));
+        training.books.forEach(function (item, index) {
+            // console.log(`item`, item);
+            // console.log(`book1`, book);
+            // console.log(`item_id`, item._id);
+            // console.log(`book1_id`, book._id);
+            if (item._id.equals(book._id)) {
+                this[index] = book;
+            }
+        }, training.books);
+        //  console.log(`---------result--------`);
+        // training.books.forEach(item => {
+        //     console.log(`item`, item);
+        // });
+
         if (training.totalReadPages === training.totalPages) {
             await Training.deleteOne({ _id: req.user.training });
 
             req.user.training = null;
-           // console.log(req.user.training);
+            // console.log(req.user.training);
             await req.user.save();
 
             return res.status(200).json({

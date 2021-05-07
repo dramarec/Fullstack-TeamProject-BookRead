@@ -1,5 +1,8 @@
 import React from 'react';
-import book from '../../../../assets/svg/book3.svg';
+import { useSelector } from 'react-redux';
+import { getTraining } from '../../../../redux/selectors/bookSelector';
+import readingBook from '../../../../assets/svg/book3.svg';
+import readBook from '../../../../assets/svg/bookOrg.svg';
 import card from '../../../../assets/svg/card.svg';
 
 const BookListItem = ({
@@ -8,25 +11,40 @@ const BookListItem = ({
     author,
     year,
     numberOfPages,
+    readPages,
     onDeleteBook,
 }) => {
-    // console.log('BookListItem ===> books', books);
+    const isTraining = useSelector(getTraining);
+
     return (
         <>
-            <li key={_id} className="books-library__item">
-                <img className="books-library__img" src={book} alt="" />
+            <li
+                key={_id}
+                className={
+                    readPages === numberOfPages
+                        ? 'books-library__item readItem'
+                        : 'books-library__item'
+                }
+            >
+                <img
+                    className="books-library__img"
+                    src={readPages === numberOfPages ? readBook : readingBook}
+                    alt=""
+                />
                 <p className="books-library__title">{title}</p>
                 <p className="books-library__author">{author}</p>
                 <p className="books-library__year">{year}</p>
                 <p className="books-library__page">{numberOfPages}</p>
-                <button
-                    className="books-library__card"
-                    type="button"
-                    data-id={_id}
-                    onClick={onDeleteBook}
-                >
-                    <img src={card} alt="" />
-                </button>
+                {isTraining.duration === 0 && (
+                    <button
+                        className="books-library__card"
+                        type="button"
+                        data-id={_id}
+                        onClick={onDeleteBook}
+                    >
+                        <img src={card} alt="" />
+                    </button>
+                )}
             </li>
         </>
     );

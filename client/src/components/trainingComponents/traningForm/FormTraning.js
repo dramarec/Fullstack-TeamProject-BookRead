@@ -141,7 +141,7 @@ const FormTraning = () => {
 
             {booksArr.length > 0 && (
                 <div>
-                    <button onClick={onHandleAddTraining} className="FormBtn">
+                    <button onClick={onHandleAddTraining} className="formBtn">
                         Почати тренування
                     </button>
                 </div>

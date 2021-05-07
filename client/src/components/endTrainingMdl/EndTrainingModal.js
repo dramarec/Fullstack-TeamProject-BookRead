@@ -6,7 +6,6 @@ import EndTrainingModalStyled from './EndTrainingModalStyled';
 import Modal from '../modal/Modal';
 import trainingSelector from '../../redux/selectors/trainingSelector';
 import trainingOperation from '../../redux/operations/trainingOperation';
-// import NewModal from './NewModal';
 
 const EndTrainingModal = memo(() => {
     const dispatch = useDispatch();
@@ -14,17 +13,12 @@ const EndTrainingModal = memo(() => {
     const [isOpenModal, setIsOpenModal] = useState(false);
 
     const totalReadPages = useSelector(trainingSelector.getTotalReadPages);
-    const totalPages = useSelector(state => state.training.totalPages);
+    const totalPages = useSelector(trainingSelector.getTotalPages);
 
-    const closeModal = path => {
-        // if (path === '/training') {
-        //     setIsOpenModal(false);
-        // }
-        if (path === '/library') {
-            setIsOpenModal(false);
-            history.push(path);
-        }
+    const closeModal = () => {
         dispatch(trainingOperation.getTrainingOperation());
+        setIsOpenModal(false);
+        history.push('/library');
     };
 
     useEffect(() => {
@@ -37,34 +31,11 @@ const EndTrainingModal = memo(() => {
                 <Modal closeModal={closeModal}>
                     <EndTrainingModalStyled>
                         <img src={thumb_up} alt="" className="statModalImg" />
+                        <p className="statModalTitle">Ти молодчина!</p>
                         <p className="statModalTitle">Тренування закінчено!</p>
-                        {/* <p className="statModalTitle">закінчено!</p> */}
-                        {/* <button
-                            className="statModalBtn"
-                            onClick={() => closeModal('/training')}
-                        >
-                            Почати нове тренування
-                        </button> */}
-                        <button
-                            className="statModalBtn"
-                            onClick={() => closeModal('/library')}
-                        >
+                        <button className="statModalBtn" onClick={closeModal}>
                             Ok
                         </button>
-                        {/* <Link
-                            className="statModalBtn"
-                            to="/training"
-                            onClick={closeModal}
-                        >
-                            Почати нове тренування
-                        </Link>
-                        <Link
-                            className="statModalBtn"
-                            to="/library"
-                            onClick={closeModal}
-                        >
-                            Додати нові книжки
-                        </Link> */}
                     </EndTrainingModalStyled>
                 </Modal>
             )}
