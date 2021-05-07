@@ -23,6 +23,7 @@ const userReducer = createReducer(initialState, {
         books: payload.user.books,
         training: payload.user.training,
     }),
+    [authActions.logOutSuccess]: () => initialState,
     [getUsersBooksSuccess]: (_, { payload }) => ({
         name: payload.username,
         email: payload.email,
@@ -33,7 +34,12 @@ const userReducer = createReducer(initialState, {
         ...state,
         training: payload._id,
     }),
-    [authActions.logOutSuccess]: () => initialState,
+    [trainingActions.getTrainingSuccess]: (state, { payload }) => {
+        return {
+            ...state,
+            training: payload._id || null,
+        };
+    },
 });
 
 const tokenReducer = createReducer(null, {

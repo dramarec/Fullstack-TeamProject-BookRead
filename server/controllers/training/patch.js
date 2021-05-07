@@ -1,6 +1,6 @@
 const { DateTime } = require('luxon');
 const { Training, Book } = require('../../models');
-const unionBy = require('lodash.unionby');
+// const unionBy = require('lodash.unionby');
 
 const addRead = async (req, res, next) => {
     try {
