@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import Select from 'react-select';
 import { getWillRead } from '../../../../redux/selectors/bookSelector';
-import FormItem from '../item/FormItem';
 
 const Selector = ({ onChange }) => {
     const booksWillRead = useSelector(getWillRead);
@@ -22,10 +21,9 @@ const Selector = ({ onChange }) => {
             marginTop: '0px',
         }),
     };
-   
+
     //const book = bookSelect.filter(obj => obj.title !== value.title)
-    
-    
+
     return (
         <Select
             className="selectorBooks"

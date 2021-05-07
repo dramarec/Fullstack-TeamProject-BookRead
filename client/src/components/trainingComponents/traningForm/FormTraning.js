@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import moment from 'moment';
@@ -11,10 +11,12 @@ import FormTraningStyle from './FormTraningStyle';
 import trainingOperation from '../../../redux/operations/trainingOperation';
 import { CSSTransition } from 'react-transition-group';
 import { Notif } from './Notification';
-
+import trainingActions from '../../../redux/actions/trainingActions';
 
 const FormTraning = () => {
     const dispatch = useDispatch();
+
+    // const booksArray = useSelector(state => state.library.readNow);
 
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
@@ -44,9 +46,7 @@ const FormTraning = () => {
         validationSchema,
         onSubmit: values => {
             if (booksArr.some(item => item._id === values.book._id)) {
-                // alert('kiss my ass!');
                 setShowNotif(true);
-
                 return;
             } else {
                 setBooks(prev => [...prev, values.book]);
@@ -67,6 +67,7 @@ const FormTraning = () => {
 
     const handleBook = value => {
         formik.setFieldValue('book', value);
+        // dispatch(trainingActions.addBookInTraining(value._id));
     };
 
     const books = booksArr.map(book => book._id);
@@ -131,10 +132,13 @@ const FormTraning = () => {
             >
                 <Notif />
             </CSSTransition>
+
             <DescBookList
                 onHandleDeleteBook={onHandleDeleteBook}
                 books={booksArr}
+                // books={booksArray}
             />
+
             {booksArr.length > 0 && (
                 <div>
                     <button onClick={onHandleAddTraining} className="FormBtn">
