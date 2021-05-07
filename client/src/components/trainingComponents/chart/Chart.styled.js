@@ -22,6 +22,7 @@ const ChartWrapper = styled.div`
     }
     @media screen and (min-width: 1280px) {
         width: 886px;
+        margin-top: 0px;
     }
     .title-wrap {
         display: flex;

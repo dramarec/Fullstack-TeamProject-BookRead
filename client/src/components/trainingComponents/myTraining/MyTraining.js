@@ -1,5 +1,5 @@
 import React from 'react';
-import DescBookList from '../booksLists/desc/DescBookList';
+//import DescBookList from '../booksLists/desc/DescBookList';
 import FormTraning from '../traningForm/FormTraning';
 
 const MyTraining = () => {

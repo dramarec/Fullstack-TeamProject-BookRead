@@ -1,17 +1,32 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import book from '../../../../assets/svg/book3.svg';
+import trainingSelector from '../../../../redux/selectors/trainingSelector';
 import MobBookItem from './MobBookItem';
 import MobBookListStyle from './MobBookListStyle';
 
-const MobBookList = ({ books }) => {
-    console.log(`books`, books);
+const MobBookList = ({ books, onHandleDeleteBook }) => {
+    const booksList = useSelector(trainingSelector.trainingBooksList);
+
     return (
         <MobBookListStyle>
-            {books ? (
+            {books?.length > 0 || booksList.length > 0 ? (
                 <ul className="books">
-                    {books.map(book => (
-                        <MobBookItem key={book._id} {...book} />
-                    ))}
+                    {booksList.length > 0
+                        ? booksList.map(book => (
+                              <MobBookItem
+                                  key={book._id}
+                                  {...book}
+                                  onDeleteBook={onHandleDeleteBook}
+                              />
+                          ))
+                        : books.map(book => (
+                              <MobBookItem
+                                  key={book._id}
+                                  {...book}
+                                  onDeleteBook={onHandleDeleteBook}
+                              />
+                          ))}
                 </ul>
             ) : (
                 <ul className="books">

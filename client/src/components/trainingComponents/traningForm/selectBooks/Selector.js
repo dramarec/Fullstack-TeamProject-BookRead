@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Select from 'react-select';
-import { getWillRead } from '../../../../redux/selectors/bookSelector';
+import {
+    getWillRead,
+    getNowRead,
+} from '../../../../redux/selectors/bookSelector';
 import FormItem from '../item/FormItem';
 
 const Selector = ({ onChange }) => {
     const booksWillRead = useSelector(getWillRead);
-    const bookSelect = booksWillRead.map(book => ({
+    const booksIsReading = useSelector(getNowRead);
+    // const booksIsReadingUpdate = booksIsReading.map(book => ({
+
+    // }));
+
+    const totalArray = [...booksWillRead, ...booksIsReading];
+
+    const bookSelect = totalArray.map(book => ({
         ...book,
         label: book.title,
         value: book.title,
@@ -22,10 +32,9 @@ const Selector = ({ onChange }) => {
             marginTop: '0px',
         }),
     };
-   
+
     //const book = bookSelect.filter(obj => obj.title !== value.title)
-    
-    
+
     return (
         <Select
             className="selectorBooks"

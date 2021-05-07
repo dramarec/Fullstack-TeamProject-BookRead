@@ -28,6 +28,10 @@ const TrainingPageStyled = styled.div`
         @media (max-width: 767px) {
             //padding: 25px;
             min-width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 60vh;
         }
 
         @media (min-width: 768px) {
