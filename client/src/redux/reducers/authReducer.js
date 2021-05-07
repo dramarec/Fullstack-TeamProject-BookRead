@@ -7,7 +7,7 @@ const initialState = {
     name: '',
     email: '',
     books: [],
-    training: '',
+    training: null,
 };
 
 const userReducer = createReducer(initialState, {

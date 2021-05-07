@@ -11,28 +11,34 @@ import PublicRoutes from './routes/PublicRoutes';
 import { getUsersBooksOperetion } from '../redux/operations/bookOperation';
 import loadingSelectors from '../redux/selectors/loadingSelector';
 import Preloader from './loader/preloader/Preloader';
-// import trainingSelector from '../redux/selectors/trainingSelector';
+import trainingSelector from '../redux/selectors/trainingSelector';
 import authOperations from '../redux/operations/authOperation';
-// import trainingOperation from '../redux/operations/trainingOperation';
+import trainingOperation from '../redux/operations/trainingOperation';
 
 const App = () => {
-    const [preloader, setPreloader] = useState(true);
+    const [preloader, setPreloader] = useState(false);
+    const [initialModal, setInitialModal] = useState(false);
     const dispatch = useDispatch();
     const isLoading = useSelector(loadingSelectors.getLoading);
     const isAuth = useSelector(state => state.auth.token);
-    // const training = useSelector(trainingSelector.getTraining);
-    // const training = useSelector(state => state.auth.user.training);
+    const trainingId = useSelector(trainingSelector.getTrainingId);
+    const training = useSelector(state => state.auth.user.training);
     const urlParams = new URLSearchParams(window.location.search);
     const googleToken = {
         accessToken: urlParams.get('accessToken'),
     };
+    console.log(trainingId, 'ID');
 
     useEffect(() => {
-        setPreloader(true);
+        training !== null && trainingId === '' && alert('hello!');
+    }, [training, trainingId]);
 
-        // setTimeout(() => {
-        //     setPreloader(false);
-        // }, 3000);
+    useEffect(() => {
+        setPreloader(false);
+
+        setTimeout(() => {
+            setPreloader(false);
+        }, 3000);
     }, []);
 
     useEffect(() => {
