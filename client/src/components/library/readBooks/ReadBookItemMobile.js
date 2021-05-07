@@ -61,7 +61,7 @@ const ReadingBookItemMobile = ({ item }) => {
           id={item._id}
           onClick={handleClick}
         >
-          Резюме
+           {!item.review ? 'Резюме' : 'Читать' }
         </button>
       </ReadBookItemMobileStyled>
       {isOpen && (

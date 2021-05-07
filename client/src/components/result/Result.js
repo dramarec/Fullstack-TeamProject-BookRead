@@ -1,5 +1,5 @@
 import ResultStyled from './ResultStyled';
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
@@ -11,8 +11,11 @@ import trainingSelector from '../../redux/selectors/trainingSelector';
 // import trainingActions from '../../redux/actions/trainingActions';
 import Statistics from '../statistic/Statistics';
 
+
+
 const Result = () => {
     const dispatch = useDispatch();
+    const [isVisible, setIsVisible] = useState(false)
     const totalReadPages = useSelector(trainingSelector.getTotalReadPages);
     const totalPages = useSelector(state => state.training.totalPages);
     //const result = useSelector(state => state.training.results);
@@ -52,8 +55,10 @@ const Result = () => {
         }
     };
 
-    totalReadPages === totalPages && console.log('You awesome!');
-
+    totalReadPages === totalPages && console.log('you are awesome')
+       
+        
+    
     return (
         <ResultStyled>
             <p className="resultsTitle">Результати</p>

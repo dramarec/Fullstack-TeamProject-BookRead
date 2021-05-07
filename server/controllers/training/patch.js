@@ -40,6 +40,7 @@ const addRead = async (req, res, next) => {
             }
 
             await training.save();
+           
 
             const {
                 _id,
@@ -63,6 +64,7 @@ const addRead = async (req, res, next) => {
             };
 
             await arrayBook.save();
+            console.log('arrayBook', );
 
             book = validateBook;
             totalPages = pages;
@@ -71,6 +73,7 @@ const addRead = async (req, res, next) => {
         }
 
         if (training.totalReadPages === training.totalPages) {
+            console.log('user.bboks', user.books)
             await Training.deleteOne({ _id: req.user.training });
 
             req.user.training = null;

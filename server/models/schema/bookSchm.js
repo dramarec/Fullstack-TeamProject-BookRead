@@ -6,7 +6,7 @@ const bookSchema = new Schema(
             type: String,
             required: [true, 'Enter title of book'],
             minlength: [3, "Title can't be smaller than 2 characters"],
-            maxlength: [30, "Title can't be longer than 30 characters"],
+            maxlength: [100, "Title can't be longer than 30 characters"],
             unique: true,
         },
         author: {

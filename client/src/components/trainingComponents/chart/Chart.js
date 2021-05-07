@@ -119,8 +119,8 @@ const Chart = () => {
                                 activeDot={{ r: 8 }}
                             />
                             <CartesianGrid horizontal={false} stroke="#ccc" />
-                            <XAxis padding={{ l: 10 }} dataKey="name" tickLine={false}></XAxis>
-                            <YAxis/>
+                            <XAxis fontSize="12px" marginTop="15px" dataKey="name" tickLine={false}></XAxis>
+                            <YAxis fontSize="12px" />
 
                            
 
@@ -171,8 +171,8 @@ const Chart = () => {
                                 activeDot={{ r: 8 }}
                             />
                             <CartesianGrid horizontal={false} stroke="#ccc" />
-                            <XAxis dataKey="name" tickLine={false}></XAxis>
-                            <YAxis />
+                            <XAxis dataKey="name" fontSize="10px" tickLine={false} ></XAxis>
+                            <YAxis fontSize="10px"/>
                             
 
                             <Legend
@@ -187,7 +187,7 @@ const Chart = () => {
                         </LineChart>
                     </ResponsiveContainer>
 
-                    <p className="text-x-line">day</p>
+                    <p className="text-x-line">день</p>
                 </div>
             </Mobile>
         </ChartWrapper>

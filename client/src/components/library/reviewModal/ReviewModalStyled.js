@@ -31,6 +31,12 @@ width: 510px;
     display: flex;
     justify-content: center;
     line-height: 2.71;
+    position: absolute;
+    bottom: 15px;
+   @media screen and (min-width: 768px) {
+    bottom: 25px;
+    right: 150px;
+}
 }
 
 .button-group .secondButton {
@@ -46,6 +52,14 @@ width: 97px;
 @media screen and (min-width: 768px) {
     width: 130px;
 }
+}
+.current-resume{
+    font-style: italic;
+}
+.review-error{
+    font-size: 10px;
+    color: red;
+    margin-top: -20px;
 }
 `
 

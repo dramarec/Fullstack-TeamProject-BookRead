@@ -58,7 +58,9 @@ const ReadBookItemStyled = styled.li`
 
     .review-button {
         //padding: 11px 36px;
-        background-color: #6d7a8d;
+        background-color: ${props =>
+            props.isReview ? 'var(--secondary-text)' : 'var(--accent-color)'};
+        //background-color: #6d7a8d;
         font-family: 'Montserrat-Medium';
         color: #ffffff;
         font-size: 14px;
@@ -71,7 +73,9 @@ const ReadBookItemStyled = styled.li`
             padding: 11px 36px;
         }
     }
-
+    .review-button:hover {
+        outline: none;
+    }
     .star {
         display: flex;
         align-items: center;

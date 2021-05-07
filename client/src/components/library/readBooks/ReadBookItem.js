@@ -98,7 +98,7 @@ const ReadBookItem = ({ item }) => {
     //console.log(data);
     return (
         <>
-            <ReadBookItemStyled>
+            <ReadBookItemStyled isReview={!item.review}>
                 <div className="bookName">
                     <img src={book} alt="" />
                     <p>{item.title}</p>
