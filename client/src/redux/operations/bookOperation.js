@@ -1,4 +1,5 @@
 import axios from 'axios';
+import api from '../../services/api';
 import {
     addNewBookRequest,
     addNewBookSuccess,
@@ -30,14 +31,15 @@ const token = {
 const addBookOperation = book => async dispatch => {
     dispatch(addNewBookRequest());
     try {
-        const response = await axios.post('/books', book);
+        const response = await api.addBook(book);
+        //const response = await axios.post('/books', book);
 
         // const { data } = response;
         //console.log(`response.data ===>`, response.data.data.newBook);
 
         //console.log(`data`, data);
 
-        dispatch(addNewBookSuccess(response.data));
+        dispatch(addNewBookSuccess(response));
     } catch (error) {
         dispatch(addNewBookError(error));
     }

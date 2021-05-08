@@ -13,7 +13,7 @@ const initialState = {
 const bookReduser = createReducer(initialState, {
     [addNewBookSuccess]: (state, action) => ({
         ...state,
-        willRead: [...state.willRead, action.payload.data.newBook],
+        willRead: [...state.willRead, action.payload.newBook],
     }),
     [getUsersBooksSuccess]: (state, { payload }) => {
         return {
