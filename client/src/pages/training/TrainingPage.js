@@ -1,4 +1,4 @@
-import React, { useEffect, useState, memo } from 'react';
+import React, { useEffect, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Responsive from 'react-responsive';
 import TrainingPageStyled from './TrainingPageStyled';
@@ -7,7 +7,6 @@ import MyTraining from '../../components/trainingComponents/myTraining/MyTrainin
 import TimersSet from '../../components/timer/TimersSet';
 import MyGoal from '../../components/myGoal/MyGoal';
 import DescBookList from '../../components/trainingComponents/booksLists/desc/DescBookList';
-import trainingSelector from '../../redux/selectors/trainingSelector';
 import Result from '../../components/result/Result';
 import trainingOperation from '../../redux/operations/trainingOperation';
 import { getTraining } from '../../redux/selectors/bookSelector';

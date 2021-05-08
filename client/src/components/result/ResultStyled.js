@@ -7,6 +7,8 @@ const ResultStyled = styled.div`
 
     @media screen and (max-width: 767px) {
         margin: 0 auto;
+        height: 340px;
+        margin-bottom: 33px;
     }
     @media (min-width: 768px) and (max-width: 1279px) {
         width: 678px;
