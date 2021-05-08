@@ -48,16 +48,19 @@ const TrainingPage = memo(() => {
                 <Desktop>
                     {isTraining.duration !== 0 ? (
                         <>
-                            <div className="leftSide">
-                                <TimersSet />
-                                <DescBookList />
-                                <Chart />
-                            </div>
+                            <div className="topPart1">
+                                <div className="topPart2">
+                                    <TimersSet />
+                                    <DescBookList />
+                                </div>
 
-                            <div className="rigthSide">
                                 <MyGoal
                                     startTraining={isTraining.duration !== 0}
                                 />
+                            </div>
+
+                            <div className="bottomPart1">
+                                <Chart />
                                 <Result />
                             </div>
                         </>

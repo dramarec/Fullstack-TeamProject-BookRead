@@ -24,7 +24,7 @@ const MyGoalStyled = styled.div`
             props.startTraining ? 'space-around' : 'space-between'};
     }
     @media screen and (min-width: 1280px) {
-        margin-top: 50px;
+        margin-top: ${props => (props.startTraining ? '25px' : '0px')};
         height: 318px;
         width: 275px;
         margin-bottom: 40px;

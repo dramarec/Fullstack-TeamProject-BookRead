@@ -4,6 +4,7 @@ const ResultStyled = styled.div`
     min-width: 270px;
     padding: 10px 17px;
     background-color: #ffffff;
+
     @media screen and (max-width: 767px) {
         margin: 0 auto;
     }
@@ -13,6 +14,8 @@ const ResultStyled = styled.div`
     }
     @media (min-width: 1280px) {
         width: 275px;
+        margin-left: 41px;
+        height: 340px;
     }
     .resultsTitle {
         font-weight: 600;
