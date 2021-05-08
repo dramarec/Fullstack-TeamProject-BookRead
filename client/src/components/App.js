@@ -30,15 +30,15 @@ const App = () => {
     console.log(trainingId, 'ID');
 
     useEffect(() => {
-        training !== null && trainingId === '' && alert('hello!');
+        training !== null && trainingId === '' && console.log('hello!');
     }, [training, trainingId]);
 
     useEffect(() => {
         setPreloader(false);
 
-        setTimeout(() => {
-            setPreloader(false);
-        }, 3000);
+        // setTimeout(() => {
+        //     setPreloader(false);
+        // }, 3000);
     }, []);
 
     useEffect(() => {

@@ -10,6 +10,7 @@ const PreloaderStyled = styled.div`
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    padding: 10px;
     width: 100vw;
     height: 100vh;
     background-color: white;
@@ -18,7 +19,7 @@ const PreloaderStyled = styled.div`
     .wrapper {
         display: flex;
         flex-direction: column;
-        height: 900px;
+        height: 670px;
     }
 
     .firstDiv {
@@ -35,26 +36,29 @@ const PreloaderStyled = styled.div`
     }
 
     .title {
+        font-family: 'AbrilFatface-Regular';
         font-size: 60px;
         color: #ff6b08;
     }
 
     .bookSvg {
-        width: 50px;
-        height: 50px;
-        margin-right: 30px;
+        display: inline-block;
+        width: 70px;
+        height: 70px;
+        margin-right: 20px;
     }
 
     .textSvg {
         display: inline-block;
-        width: 20px;
-        height: 20px;
+        width: 25px;
+        height: 25px;
     }
 
     .team {
+        min-width: 65px;
         color: #fff;
         background-color: #343a40;
-        border-radius: 0.25rem;
+        border-radius: 4px;
         text-decoration: none;
     }
 
@@ -62,44 +66,67 @@ const PreloaderStyled = styled.div`
         color: #343a40;
     }
 
-    @media (min-width: 768px) {
+    @media screen and (min-width: 768px) {
+        .wrapper {
+            height: 780px;
+        }
+
         .bookSvg {
-            width: 70px;
-            height: 70px;
+            width: 90px;
+            height: 90px;
         }
 
         .title {
             font-size: 80px;
         }
     }
+
+    @media screen and (min-width: 1280px) {
+        .wrapper {
+            height: 950px;
+        }
+    }
+
+    .text-div {
+        display: flex;
+        width: 250px;
+        margin-left: auto;
+        margin: auto;
+        justify-content: space-between;
+        align-items: center;
+    }
 `;
 
-const Pulse = styled.h1`
+const Pulse = styled.div`
     animation: 2s ${keyframes`${pulse}`} infinite;
 `;
 
 const Preloader = () => (
     <PreloaderStyled>
         <div className="wrapper">
-            <div className="firstDiv">
+            <Pulse className="firstDiv">
                 <img src={book} alt="book" className="bookSvg" />
-                <Pulse className="title">BR</Pulse>
-            </div>
+                <h1 className="title">BR</h1>
+            </Pulse>
 
             <div className="secondDiv">
-                <p>
-                    <img src={code} alt="book" className="textSvg" /> by{' '}
+                <div className="text-div">
+                    <img src={code} alt="code" className="textSvg" />
+                    <span>by</span>
                     <a
                         className="team"
                         rel="noopener"
                         href="https://github.com/dramarec/Fullstack-TeamProject-BookRead"
+                        target="blank"
                         aria-label="My GitHub"
                     >
                         team-1
-                    </a>{' '}
-                    using <img src={react} alt="book" className="textSvg" /> &{' '}
-                    <img src={node} alt="book" className="textSvg" />
-                </p>
+                    </a>
+                    <span>using</span>
+                    <img src={react} alt="react" className="textSvg" />
+                    <span>&</span>
+                    <img src={node} alt="node" className="textSvg" />
+                </div>
                 <p>
                     <small className="text-muted">
                         Project code is open source. Feel free to fork and make
