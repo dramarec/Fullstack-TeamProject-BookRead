@@ -24,6 +24,15 @@ const TrainingPageStyled = styled.div`
             //margin-top: 50px;
         }
     }
+
+    .topPart {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 40px;
+    }
+
+    .bottomPart {
+    }
     .training {
         @media (max-width: 767px) {
             //padding: 25px;

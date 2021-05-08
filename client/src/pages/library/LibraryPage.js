@@ -1,4 +1,4 @@
-import React, { memo, useEffect} from 'react';
+import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Responsive from 'react-responsive';
 import ReadBooks from '../../components/library/readBooks/ReadBooks';
@@ -12,7 +12,9 @@ import {
     getWillRead,
     getNowRead,
     getFinishRead,
+    getUserTraining,
 } from '../../redux/selectors/bookSelector';
+import StartTrainingBtn from '../../components/library/StartTrainingBtn';
 
 const LibraryPage = memo(() => {
     const dispatch = useDispatch();
@@ -20,6 +22,9 @@ const LibraryPage = memo(() => {
     const bookNowRead = useSelector(getNowRead);
     const bookFinished = useSelector(getFinishRead);
     const isAuth = useSelector(state => state.auth.token);
+    const isTraining = useSelector(getUserTraining);
+
+    console.log(`isTraining`, isTraining);
 
     useEffect(() => {
         isAuth && dispatch(getUsersBooksOperetion());
@@ -32,12 +37,8 @@ const LibraryPage = memo(() => {
     return (
         <LibraryPageStyled>
             <Mobile>
-                {bookFinished.length > 0 && (
-                    <ReadBooks  />
-                )}
-                {bookNowRead.length > 0 && (
-                    <ReadingBooks  />
-                )}
+                {bookFinished.length > 0 && <ReadBooks />}
+                {bookNowRead.length > 0 && <ReadingBooks />}
                 {booksWillRead.length > 0 ||
                 bookNowRead.length > 0 ||
                 bookFinished.length > 0 ? (
@@ -50,12 +51,8 @@ const LibraryPage = memo(() => {
 
             <Tablet>
                 <LibraryForm />
-                {bookFinished.length > 0 && (
-                    <ReadBooks  />
-                )}
-                {bookNowRead.length > 0 && (
-                    <ReadingBooks  />
-                )}
+                {bookFinished.length > 0 && <ReadBooks />}
+                {bookNowRead.length > 0 && <ReadingBooks />}
                 {booksWillRead.length > 0 ||
                 bookNowRead.length > 0 ||
                 bookFinished.length > 0 ? (
@@ -63,9 +60,12 @@ const LibraryPage = memo(() => {
                 ) : (
                     <LibraryModal />
                 )}
+                {booksWillRead.length > 0 && isTraining === null && (
+                    <StartTrainingBtn />
+                )}
             </Tablet>
         </LibraryPageStyled>
     );
-})
+});
 
 export default LibraryPage;
