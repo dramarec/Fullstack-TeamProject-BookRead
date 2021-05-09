@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import moment from 'moment';
@@ -11,10 +11,12 @@ import FormTraningStyle from './FormTraningStyle';
 import trainingOperation from '../../../redux/operations/trainingOperation';
 import { CSSTransition } from 'react-transition-group';
 import { Notif } from './Notification';
-
+import trainingActions from '../../../redux/actions/trainingActions';
 
 const FormTraning = () => {
     const dispatch = useDispatch();
+
+    // const booksArray = useSelector(state => state.library.readNow);
 
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
@@ -30,8 +32,22 @@ const FormTraning = () => {
     };
 
     const validationSchema = Yup.object().shape({
-        start: Yup.string().required('Вкажіть дату початку тренування'),
-        end: Yup.string().required('Вкажіть дату завершення тренування'),
+        start: Yup.date()
+            .required('Вкажіть дату початку тренування')
+            .max(Yup.ref('end'), 'Не коректна дата початку!'),
+        end: Yup.date()
+            .required('Вкажіть дату завершення тренування')
+            .min(Yup.ref('start'), 'Вибіріть коректну дату')
+            .test({
+                message: 'Дата завершення повинна бути більшою',
+                test: function (value) {
+                    const start = moment(this.parent.start).format(
+                        'YYYY-MM-DD',
+                    );
+                    const end = moment(value).format('YYYY-MM-DD');
+                    return !moment(start).isSame(moment(end));
+                },
+            }),
         book: Yup.object().required('Ви не обрали книжку'),
     });
 
@@ -44,9 +60,7 @@ const FormTraning = () => {
         validationSchema,
         onSubmit: values => {
             if (booksArr.some(item => item._id === values.book._id)) {
-                // alert('kiss my ass!');
                 setShowNotif(true);
-
                 return;
             } else {
                 setBooks(prev => [...prev, values.book]);
@@ -67,6 +81,7 @@ const FormTraning = () => {
 
     const handleBook = value => {
         formik.setFieldValue('book', value);
+        // dispatch(trainingActions.addBookInTraining(value._id));
     };
 
     const books = booksArr.map(book => book._id);
@@ -131,10 +146,13 @@ const FormTraning = () => {
             >
                 <Notif />
             </CSSTransition>
+
             <DescBookList
                 onHandleDeleteBook={onHandleDeleteBook}
                 books={booksArr}
+                // books={booksArray}
             />
+
             {booksArr.length > 0 && (
                 <div>
                     <button onClick={onHandleAddTraining} className="formBtn">

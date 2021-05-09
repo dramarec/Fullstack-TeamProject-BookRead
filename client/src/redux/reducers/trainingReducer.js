@@ -1,7 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import trainingActions from '../actions/trainingActions';
 import authActions from '../actions/authActions';
-import StateManager from 'react-select';
 
 const initialState = {
     book: {},
@@ -58,6 +57,11 @@ const trainingReducer = createReducer(initialState, {
             totalReadPages: payload.totalReadPages ? payload.totalReadPages : 0,
             books: payload.books ? payload.books : [],
             results: payload.results ? payload.results : [],
+        };
+    },
+    [trainingActions.clearTraining]: () => {
+        return {
+            duration: 0,
         };
     },
     [authActions.logOutSuccess]: () => initialState,

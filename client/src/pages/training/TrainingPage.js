@@ -32,6 +32,7 @@ const TrainingPage = memo(() => {
 
     useEffect(() => {
         isAuth && trainingAction();
+        console.log(training, 'FROM TRAINING PaGE');
         // eslint-disable-next-line
     }, []);
 

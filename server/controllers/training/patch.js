@@ -1,7 +1,6 @@
 const { DateTime } = require('luxon');
 const { Training, Book } = require('../../models');
 
-
 const addRead = async (req, res, next) => {
     try {
         const user = req.user;
