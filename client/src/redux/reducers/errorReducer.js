@@ -13,6 +13,9 @@ import {
 import trainingActions from '../actions/trainingActions';
 
 export const errorReducer = createReducer(null, {
+    [authActions.regError]: (_, { payload }) => payload,
+    [authActions.regRequest]: () => null,
+
     [authActions.logInError]: (_, { payload }) => payload,
     [authActions.logInRequest]: () => null,
 

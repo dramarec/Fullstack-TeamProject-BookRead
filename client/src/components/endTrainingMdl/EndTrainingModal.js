@@ -5,7 +5,7 @@ import thumb_up from '../../assets/svg/thumb_up.svg';
 import EndTrainingModalStyled from './EndTrainingModalStyled';
 import Modal from '../modal/Modal';
 import trainingSelector from '../../redux/selectors/trainingSelector';
-// import trainingOperation from '../../redux/operations/trainingOperation';
+import { getUsersBooksOperetion } from '../../redux/operations/bookOperation';
 import trainingActions from '../../redux/actions/trainingActions';
 
 const EndTrainingModal = memo(() => {
@@ -18,8 +18,8 @@ const EndTrainingModal = memo(() => {
     // const training = useSelector(state => state.auth.user.training);
 
     const closeModal = () => {
-        // training !== null && dispatch(trainingOperation.getTrainingOperation());
         dispatch(trainingActions.clearTraining());
+        dispatch(getUsersBooksOperetion());
         setIsOpenModal(false);
         history.push('/library');
     };

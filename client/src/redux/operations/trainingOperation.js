@@ -1,6 +1,5 @@
 import api from '../../services/api';
 import trainingActions from '../actions/trainingActions';
-// import { getUsersBooksOperetion } from '../operations/bookOperation';
 
 const operationAddNewTraining = (start, end, books) => async dispatch => {
     dispatch(trainingActions.newTrainingRequest());
@@ -9,7 +8,7 @@ const operationAddNewTraining = (start, end, books) => async dispatch => {
         const response = await api.addTraining(start, end, books);
         dispatch(trainingActions.newTrainingSuccess(response));
     } catch (error) {
-        console.log(error)
+        console.log(error);
         dispatch(trainingActions.newTrainingError(error.message));
     }
 };
@@ -23,6 +22,7 @@ const addReadPagesOperation = (date, pages) => async dispatch => {
         dispatch(trainingActions.addReadPagesSuccess(data));
     } catch (err) {
         dispatch(trainingActions.addReadPagesError(err.message));
+        throw err;
     }
 };
 
@@ -31,10 +31,11 @@ const getTrainingOperation = () => async dispatch => {
 
     try {
         const data = await api.getTraining();
-    //console.log('data', data)
+
         dispatch(trainingActions.getTrainingSuccess(data));
-    } catch (error) {
-        dispatch(trainingActions.getTrainingError(error.message));
+    } catch (err) {
+        dispatch(trainingActions.getTrainingError(err.message));
+        throw err;
     }
 };
 

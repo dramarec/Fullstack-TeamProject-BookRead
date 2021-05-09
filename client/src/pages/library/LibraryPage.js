@@ -1,4 +1,4 @@
-import React, { memo, useEffect} from 'react';
+import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Responsive from 'react-responsive';
 import ReadBooks from '../../components/library/readBooks/ReadBooks';
@@ -21,10 +21,10 @@ const LibraryPage = memo(() => {
     const bookFinished = useSelector(getFinishRead);
     const isAuth = useSelector(state => state.auth.token);
 
-    useEffect(() => {
-        isAuth && dispatch(getUsersBooksOperetion());
-        // eslint-disable-next-line
-    }, []);
+    // useEffect(() => {
+    //     isAuth && dispatch(getUsersBooksOperetion());
+    //     // eslint-disable-next-line
+    // }, []);
 
     const Tablet = props => <Responsive {...props} minWidth={768} />;
     const Mobile = props => <Responsive {...props} maxWidth={767} />;
@@ -32,12 +32,8 @@ const LibraryPage = memo(() => {
     return (
         <LibraryPageStyled>
             <Mobile>
-                {bookFinished.length > 0 && (
-                    <ReadBooks  />
-                )}
-                {bookNowRead.length > 0 && (
-                    <ReadingBooks  />
-                )}
+                {bookFinished.length > 0 && <ReadBooks />}
+                {bookNowRead.length > 0 && <ReadingBooks />}
                 {booksWillRead.length > 0 ||
                 bookNowRead.length > 0 ||
                 bookFinished.length > 0 ? (
@@ -50,12 +46,8 @@ const LibraryPage = memo(() => {
 
             <Tablet>
                 <LibraryForm />
-                {bookFinished.length > 0 && (
-                    <ReadBooks  />
-                )}
-                {bookNowRead.length > 0 && (
-                    <ReadingBooks  />
-                )}
+                {bookFinished.length > 0 && <ReadBooks />}
+                {bookNowRead.length > 0 && <ReadingBooks />}
                 {booksWillRead.length > 0 ||
                 bookNowRead.length > 0 ||
                 bookFinished.length > 0 ? (
@@ -66,6 +58,6 @@ const LibraryPage = memo(() => {
             </Tablet>
         </LibraryPageStyled>
     );
-})
+});
 
 export default LibraryPage;

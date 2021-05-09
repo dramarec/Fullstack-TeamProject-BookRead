@@ -1,4 +1,4 @@
-import React, { useEffect, useState, memo } from 'react';
+import React, { useEffect, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Responsive from 'react-responsive';
 import TrainingPageStyled from './TrainingPageStyled';
@@ -7,7 +7,6 @@ import MyTraining from '../../components/trainingComponents/myTraining/MyTrainin
 import TimersSet from '../../components/timer/TimersSet';
 import MyGoal from '../../components/myGoal/MyGoal';
 import DescBookList from '../../components/trainingComponents/booksLists/desc/DescBookList';
-import trainingSelector from '../../redux/selectors/trainingSelector';
 import Result from '../../components/result/Result';
 import trainingOperation from '../../redux/operations/trainingOperation';
 import { getTraining } from '../../redux/selectors/bookSelector';
@@ -21,20 +20,19 @@ const TrainingPage = memo(() => {
 
     const isTraining = useSelector(getTraining);
 
-    const trainingAction = async () => {
-        try {
-            training !== null &&
-                (await dispatch(trainingOperation.getTrainingOperation()));
-        } catch (err) {
-            return;
-        }
-    };
+    // const trainingAction = async () => {
+    //     try {
+    //         training !== null &&
+    //             (await dispatch(trainingOperation.getTrainingOperation()));
+    //     } catch (err) {
+    //         return;
+    //     }
+    // };
 
-    useEffect(() => {
-        isAuth && trainingAction();
-        console.log(training, 'FROM TRAINING PaGE');
-        // eslint-disable-next-line
-    }, []);
+    // useEffect(() => {
+    //     isAuth && trainingAction();
+    //     // eslint-disable-next-line
+    // }, []);
 
     const Desktop = props => <Responsive {...props} minWidth={1280} />;
     const Tablet = props => (
