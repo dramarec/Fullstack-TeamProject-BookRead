@@ -1,5 +1,5 @@
 const { DateTime } = require('luxon');
-const { Training } = require('../../models');
+const { Training, Book } = require('../../models');
 
 const getTraining = async (req, res, next) => {
     try {
@@ -38,6 +38,8 @@ const getTraining = async (req, res, next) => {
                 const duration = endDate.diff(dateNow, 'days').toObject().days;
 
                 if (!duration || duration < 1) {
+                    
+                 console.log('data.books',data.books)
                     await Training.deleteOne({ _id: req.user.training });
 
                     req.user.training = null;

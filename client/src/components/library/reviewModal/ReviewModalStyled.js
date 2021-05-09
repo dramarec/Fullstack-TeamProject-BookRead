@@ -55,6 +55,8 @@ width: 97px;
 }
 .current-resume{
     font-style: italic;
+    font-size: 14px;
+    line-height: 1.5;
 }
 .review-error{
     font-size: 10px;

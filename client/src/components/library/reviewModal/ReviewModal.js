@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable react/style-prop-object */
 import React, { useState } from 'react';
-import { useDispatch /*useSelector*/ } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeBookOperation } from '../../../redux/operations/bookOperation';
 import ReviewModalStyled from './ReviewModalStyled';
 import StarRatings from 'react-star-ratings';
@@ -59,48 +59,13 @@ console.log(err);
         {error && <p className='review-error'>Не може бути порожнім</p>}
         {data.review && <p className='current-resume'>{data.review}</p>}
            <div className='button-group'>
-           <button type='button' className='secondButton' onClick={closeModal}>Назад</button>
-           <button type='submit'  className='mainButton' >Зберегти</button>
+          <button type='button' className='secondButton' onClick={closeModal}>Назад</button>
+           {data.review ?
+          <button type='submit' className='mainButton' >Change</button> :
+           <button type='submit' className='mainButton' >Зберегти</button>}
            </div>
         </ReviewModalStyled>
     )
 }
-
-          /*  <StarRatings
-                style="fill:blue; width: 17px"
-                rating={rating}
-                starSpacing="5px"
-                starRatedColor="#FF6B08"
-                starEmptyColor="white"
-                starSpacing="1px"
-                changeRating={changeRating}
-                starDimension="17px"
-                numberOfStars={5}
-                name="rating"
-            />
-            <p>Резюме</p>
-            <textarea
-                className="form-control"
-                rows="5"
-                type="textarea"
-                name="review"
-                value={book.review}
-                onChange={onHandleChange}
-            />
-            <div className="button-group">
-                <button
-                    type="button"
-                    className="secondButton"
-                    onClick={closeModal}
-                >
-                    Назад
-                </button>
-                <button type="submit" className="mainButton">
-                    Зберегти
-                </button>
-            </div>
-        </ReviewModalStyled>
-    );
-};
-
-export default ReviewModal;*/
+export default ReviewModal;
+         

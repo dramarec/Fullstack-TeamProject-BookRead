@@ -24,7 +24,8 @@ const AuthFormStyled = styled.div`
   .bg-ph {
     flex: 2 1 0;
     @media  (min-width: 1280px) {
-    padding: 185px 83px;
+    padding-top: ${props => (props.path ? '92px' : '185px')};
+    //padding-top: 185px;
     }
   }
   .buttonSignUpMain__text {
@@ -90,6 +91,7 @@ const AuthFormStyled = styled.div`
   .authFormStar {
     color: #ff6b08;
     font-size: 14px;
+    margin-left: 4px
   }
 
   .authFormBtn {
@@ -290,6 +292,7 @@ background: #091e3fcc;
     .authForm {
       display: flex;
       flex-direction: column;
+      margin: 0 auto;
       width: 400px;
       background-color: white;
     
@@ -298,7 +301,7 @@ background: #091e3fcc;
     max-height: 610px;
     }
     .div-cont {
-      padding-top: 266px;
+      padding-top: 206px;
     }
 
     .div-for-fl {

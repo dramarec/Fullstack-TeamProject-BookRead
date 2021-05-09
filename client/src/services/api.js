@@ -11,7 +11,7 @@ class bookReadApi {
             .post('/users/auth/register', newUser)
             .then(res => res.data.data)
             .catch(err => {
-                throw new Error(err);
+                throw new Error(err.response.data);
             });
     }
 
@@ -20,7 +20,7 @@ class bookReadApi {
             .post('/users/auth/login', userCredentials)
             .then(res => res.data.data)
             .catch(error => {
-                throw new Error(error);
+                throw new Error(error.response.data);
             });
     }
 
@@ -29,7 +29,7 @@ class bookReadApi {
             .post('/users/auth/google-login', userCredentials)
             .then(res => res.data.data)
             .catch(error => {
-                throw new Error(error);
+                throw new Error(error.response.data);
             });
     }
 
@@ -52,16 +52,16 @@ class bookReadApi {
             .then(res => res.data.data)
             .catch(err => {
                  
-                throw new Error(err);
+                throw new Error(err.response.data);
             });
     }
 
-    addReviewToBook(id, review) {
+    addReviewToBook(id, book) {
         return axios
-            .patch(`/books/${id}`, review)
+            .patch(`/books/${id}`, book)
             .then(res => res.data.data)
             .catch(err => {
-                throw new Error(err);
+                throw new Error(err.response.data);
             });
     }
 
@@ -72,7 +72,7 @@ class bookReadApi {
             .then(res => res.data.data)
             .catch(err => {
                 console.log(err.response);
-                throw new Error(err);
+                throw new Error(err.response.data);
             });
     }
 
@@ -81,7 +81,7 @@ class bookReadApi {
             .patch('/training', trainingCredentials)
             .then(res => res.data.data)
             .catch(err => {
-                throw new Error(err);
+                throw new Error(err.response.data);
             });
     }
 
@@ -90,8 +90,8 @@ class bookReadApi {
             .get('/training')
             .then(res => res.data.training)
             .catch(err => {
-                // throw new Error(err);
-                return err;
+                 throw new Error(err.response.data);
+            
             });
     }
 
@@ -101,7 +101,7 @@ class bookReadApi {
             .get('/users/user')
             .then(res => res.data.data)
             .catch(err => {
-                throw new Error(err);
+                throw new Error(err.response.data);
             });
     }
 }

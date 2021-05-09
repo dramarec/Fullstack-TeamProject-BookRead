@@ -13,7 +13,7 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
       : { email: '', password: '' };
 
   return (
-    <AuthFormStyled>
+    <AuthFormStyled path={location.pathname === '/signup'}>
       <div className='auth-container'>
         <div className="container bg-ph">
           <Formik
@@ -30,7 +30,7 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                 {location.pathname === '/signup' && (
                   <label className="authFormFild">
                     <span className="authFormText">
-                      Ім'я <sup className="authFormStar">*</sup>
+                      Ім'я <sup className="authFormStar"> *</sup>
                     </span>
                     <div className="wrapper">
                       <Field
