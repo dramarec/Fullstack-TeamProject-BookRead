@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import * as Yup from 'yup';
@@ -7,6 +8,7 @@ import authOperations from '../../redux/operations/authOperation';
 const AuthFormContainer = () => {
     const dispatch = useDispatch();
     const location = useLocation();
+    const [showNotif, setShowNotif] = useState(false);
 
     const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     const errorMessagesSchemaSignUp = Yup.object().shape({
@@ -59,7 +61,7 @@ const AuthFormContainer = () => {
             );
         } catch (err) {
             err.message === 'Email in use' && console.log('Email in use');
-            return;
+            setShowNotif(true);
         }
     };
 
@@ -69,8 +71,7 @@ const AuthFormContainer = () => {
         } catch (err) {
             err.message === 'Email or password is wrong' &&
                 console.log('Email or password is wrong');
-
-            return;
+            setShowNotif(true);
         }
     };
 
@@ -78,6 +79,8 @@ const AuthFormContainer = () => {
         <AuthForm
             handleSubmit={handleSubmit}
             errorMessagesSchema={errorMessagesSchema}
+            showNotif={showNotif}
+            setShowNotif={setShowNotif}
         />
     );
 };
