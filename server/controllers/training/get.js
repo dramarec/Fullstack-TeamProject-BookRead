@@ -38,6 +38,15 @@ const getTraining = async (req, res, next) => {
                 const duration = endDate.diff(dateNow, 'days').toObject().days;
 
                 if (!duration || duration < 1) {
+                    // console.log(`data.books`, data.books);
+
+                    // data.books.forEach(function (item, index) {
+                    //     if (item.readPages < item.numberOfPages ) {
+                    //         this[index] = book;
+                    //     }
+
+                    // }, data.books);
+
                     await Training.deleteOne({ _id: req.user.training });
 
                     req.user.training = null;
