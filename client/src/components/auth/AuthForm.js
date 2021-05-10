@@ -195,7 +195,7 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                         </div>
                     )}
                     {isOpenModal && window.innerWidth < 767 && (
-                        <Modal className='authModal'>
+                        <Modal className="authModal">
                             <div className="signupDiv">
                                 <h1 className="mainTitleSignUp">
                                     Books Reading

@@ -46,9 +46,9 @@ const getTraining = async (req, res, next) => {
 
                     await req.user.save();
 
-                    return res.status(200).json({
-                        status: 'success',
-                        code: 200,
+                    return res.status(403).json({
+                        status: 'error',
+                        code: 403,
                         message: 'training is over',
                     });
                 }

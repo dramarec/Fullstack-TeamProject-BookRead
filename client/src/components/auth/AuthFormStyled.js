@@ -3,7 +3,6 @@ import imgMob from './photo/mob.jpg';
 import bgMob from './photo/mob-bg.png';
 import imgTab from './photo/tab.jpg';
 import bgTab from './photo/tab-bg.png';
-//import imgDec from './photo/desctop.jpg';
 import bgDec from './photo/dec-bg.png';
 import picTest from './photo/picTest.jpg';
 
