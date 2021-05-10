@@ -106,7 +106,7 @@ const StatisticsStyled = styled.div`
         margin-left: 5px;
     }
     // css transition styles
-    .statisticListItem-enter {
+    /* .statisticListItem-enter {
         opacity: 0;
         transform: translateX(-100%);
     }
@@ -114,10 +114,11 @@ const StatisticsStyled = styled.div`
         opacity: 1;
         transform: translateX(0);
         transition: all 250ms linear;
-    }
+    } */
 
     .scrollbar {
-        overflow-y: scroll;
+        overflow-y: auto;
+        overflow-x: hidden;
         scroll-behavior: smooth;
     }
 
@@ -126,7 +127,7 @@ const StatisticsStyled = styled.div`
         width: 5px;
         margin-left: 0;
         background-color: #f5f5f5;
-        border-radius: 10px;
+        //border-radius: 10px;
     }
     .scrollbar::-webkit-scrollbar-track {
         visibility: visible;
@@ -149,6 +150,24 @@ const StatisticsStyled = styled.div`
         overflow-y: auto;
         overflow-x: hidden;
         padding-right: 2px;
+    }
+
+    .tr-enter {
+        opacity: 0;
+    }
+    .tr-enter-active {
+        opacity: 1;
+        transform: translateX(100%);
+        transition: all 250ms linear;
+        // transition: opacity 500ms ease-in;
+    }
+    .tr-exit {
+        opacity: 1;
+    }
+    .tr-exit-active {
+        opacity: 0;
+        transform: translateX(-100%);
+        transition: all 250ms linear;
     }
 `;
 export default StatisticsStyled;

@@ -30,13 +30,15 @@ const DescBookList = ({ books, onHandleDeleteBook }) => {
                                 />
                             ))
                         ) : (
-                            books.map(books => (
-                                <BookListItem
-                                    key={books._id}
-                                    {...books}
-                                    onDeleteBook={onHandleDeleteBook}
-                                />
-                            ))
+                            books
+                                .map(books => (
+                                    <BookListItem
+                                        key={books._id}
+                                        {...books}
+                                        onDeleteBook={onHandleDeleteBook}
+                                    />
+                                ))
+                                .reverse()
                         )
                     ) : (
                         <li className="helpers">

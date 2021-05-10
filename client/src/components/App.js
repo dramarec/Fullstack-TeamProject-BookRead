@@ -33,24 +33,23 @@ const App = () => {
             dispatch(authOperations.logInWithGoogleOperation(googleToken));
     }, []);
 
-    const initialAction = async () => {
+    const trainingAction = async () => {
         try {
-            await dispatch(getUsersBooksOperetion());
             training !== null &&
                 (await dispatch(trainingOperation.getTrainingOperation()));
         } catch (err) {
             err.message === 'training is over' &&
                 console.log('training is over!!');
             dispatch(getUsersBooksOperetion());
-            /*
-            Тут вызывать переключатель
-            */
             setInitialModal(true);
         }
     };
+    useEffect(() => {
+        isAuth && dispatch(getUsersBooksOperetion());
+    }, []);
 
     useEffect(() => {
-        isAuth && initialAction();
+        isAuth && trainingAction();
     }, [training]);
 
     useEffect(() => {

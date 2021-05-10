@@ -8,10 +8,10 @@ const Statistics = () => {
     return (
         <StatisticsStyled>
             <h1 className="statisticTitle">Статистика</h1>
-            <ul className="statisticList scrollbar scrollbarText">
-                {result.map(item => (
-                    <StatisticsItem key={item._id} item={item} />
-                ))}
+            <ul className="statisticList">
+                {result
+                    .map(item => <StatisticsItem item={item} key={item._id} />)
+                    .reverse()}
             </ul>
         </StatisticsStyled>
     );
