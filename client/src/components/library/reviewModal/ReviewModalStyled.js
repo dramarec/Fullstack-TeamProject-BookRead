@@ -57,6 +57,7 @@ width: 97px;
     font-style: italic;
     font-size: 14px;
     line-height: 1.5;
+    margin-top: 60px;
 }
 .review-error{
     font-size: 10px;

@@ -69,14 +69,14 @@ const changeBookOperation = (id, book) => async dispatch => {
     //const bookId = book._id
     dispatch(changeBookRequest());
     try {
-         await api.addReviewToBook(id, book);
-        //await axios.patch(`/books/${id}`, book);
+         //await api.addReviewToBook(id, book);
+        await axios.patch(`/books/${id}`, book);
         dispatch(changeBookSuccess({ ...book }));
         //console.log('OperBook',book);
         dispatch(getUsersBooksOperetion());
     } catch (error) {
-        dispatch(changeBookError(error.message));
-        //throw error;
+        dispatch(changeBookError(error.response.data.message));
+        throw error;
     }
 };
 
