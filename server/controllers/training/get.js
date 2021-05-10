@@ -39,43 +39,28 @@ const getTraining = async (req, res, next) => {
                 );
                 const duration = endDate.diff(dateNow, 'days').toObject().days;
 
-                //const newBooksList = [];
+                // const newBooksList = [];
 
                 if (!duration || duration < 1) {
-                    // console.log(`data.books`, data.books);
+                    // // console.log(`data.books`, data.books);
                     // const newUser = await User.findOne(user._id).populate(
                     //     'books',
                     // );
-                    // newUser.books.forEach(item => {
+                    // newUser.books.forEach((item, idx) => {
+                    //     // console.log(`idx`, idx);
+                    //     // console.log(`item`, item);
                     //     if (item.readPages < item.numberOfPages) {
-                    //         // let newItem = Object.create(item);
+                    //         let newItem = Object.create(item);
                     //         item.readPages = 0;
 
-                    //         //newBooksList.push(newItem);
+                    //         newBooksList.push(newItem);
                     //     }
                     // }, newUser.books);
 
-                    // console.log(
-                    //     `------------------newBooksList`,
-                    //     newUser.books,
-                    // );
-
-                    // await newUser.save();
+                    // console.log(`------------------newBooksList`);
 
                     // newBooksList.forEach(item => {
                     //     console.log(`item`, item);
-                    // });
-
-                    // newUser.books.forEach(item => {
-                    //     console.log(`item`, item);
-                    // });
-
-                    // .exec(async (err, data) => {
-                    //     if (err) {
-                    //         next(err);
-                    //     }
-
-                    //  // await user.save();
                     // });
 
                     await Training.deleteOne({ _id: req.user.training });
