@@ -1,6 +1,5 @@
 import api from '../../services/api';
 import authActions from '../actions/authActions';
-import { getUsersBooksOperetion } from './bookOperation';
 
 const regOperation = newUser => async dispatch => {
     dispatch(authActions.regRequest());
@@ -19,6 +18,7 @@ const regOperation = newUser => async dispatch => {
         dispatch(logInOperation(logInValues));
     } catch (err) {
         dispatch(authActions.regError(err.message));
+        throw err;
     }
 };
 
@@ -31,9 +31,9 @@ const logInOperation = userCredentials => async dispatch => {
         api.setToken(data.token);
 
         dispatch(authActions.logInSuccess(data));
-        //dispatch(getUsersBooksOperetion());
     } catch (err) {
         dispatch(authActions.logInError(err.message));
+        throw err;
     }
 };
 

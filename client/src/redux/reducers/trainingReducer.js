@@ -62,6 +62,7 @@ const trainingReducer = createReducer(initialState, {
     [trainingActions.clearTraining]: () => {
         return {
             duration: 0,
+            books: [],
         };
     },
     [authActions.logOutSuccess]: () => initialState,

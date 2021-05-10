@@ -11,35 +11,20 @@ import PublicRoutes from './routes/PublicRoutes';
 import { getUsersBooksOperetion } from '../redux/operations/bookOperation';
 import loadingSelectors from '../redux/selectors/loadingSelector';
 import Preloader from './loader/preloader/Preloader';
-import trainingSelector from '../redux/selectors/trainingSelector';
 import authOperations from '../redux/operations/authOperation';
 import trainingOperation from '../redux/operations/trainingOperation';
 
 const App = () => {
     const [preloader, setPreloader] = useState(false);
-    const [initialModal, setInitialModal] = useState(false);
+    // const [initialModal, setInitialModal] = useState(false);
     const dispatch = useDispatch();
     const isLoading = useSelector(loadingSelectors.getLoading);
     const isAuth = useSelector(state => state.auth.token);
-    const trainingId = useSelector(trainingSelector.getTrainingId);
     const training = useSelector(state => state.auth.user.training);
     const urlParams = new URLSearchParams(window.location.search);
     const googleToken = {
         accessToken: urlParams.get('accessToken'),
     };
-    console.log(trainingId, 'ID');
-
-    useEffect(() => {
-        training !== null && trainingId === '' && alert('hello!');
-    }, [training, trainingId]);
-
-    useEffect(() => {
-        setPreloader(false);
-
-        setTimeout(() => {
-            setPreloader(false);
-        }, 3000);
-    }, []);
 
     useEffect(() => {
         googleToken?.accessToken &&
@@ -49,13 +34,28 @@ const App = () => {
     const initialAction = async () => {
         try {
             await dispatch(getUsersBooksOperetion());
+            training !== null &&
+                (await dispatch(trainingOperation.getTrainingOperation()));
         } catch (err) {
-            return;
+            err.message === 'training is over' &&
+                console.log('training is over!!');
+            dispatch(getUsersBooksOperetion());
+            /*
+            Тут вызывать переключатель
+            */
         }
     };
 
     useEffect(() => {
         isAuth && initialAction();
+    }, [training]);
+
+    useEffect(() => {
+        setPreloader(false);
+
+        // setTimeout(() => {
+        //     setPreloader(false);
+        // }, 3000);
     }, []);
 
     return (

@@ -15,7 +15,10 @@ const Result = () => {
 
     const validationSchema = yup.object({
         date: yup.string().required('Виберіть дату'),
-        pages: yup.number().required(`Обов'язкове поле`),
+        pages: yup
+            .number()
+            .min(1, `Обов'язкове поле(не менше одиниці)`)
+            .required(),
     });
 
     const formik = useFormik({

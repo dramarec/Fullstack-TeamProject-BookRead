@@ -26,10 +26,10 @@ const LibraryPage = memo(() => {
 
     console.log(`isTraining`, isTraining);
 
-    useEffect(() => {
-        isAuth && dispatch(getUsersBooksOperetion());
-        // eslint-disable-next-line
-    }, []);
+    // useEffect(() => {
+    //     isAuth && dispatch(getUsersBooksOperetion());
+    //     // eslint-disable-next-line
+    // }, []);
 
     const Tablet = props => <Responsive {...props} minWidth={768} />;
     const Mobile = props => <Responsive {...props} maxWidth={767} />;
