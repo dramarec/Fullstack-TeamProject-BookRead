@@ -19,7 +19,7 @@ const DescBookList = ({ books, onHandleDeleteBook }) => {
                 </div>
             </div>
             <div className="books-library">
-                <ul className="books-library__list">
+                <ul className="books-library__list scrollbar scrollbarText">
                     {books?.length > 0 || booksList?.length > 0 ? (
                         booksList?.length > 0 ? (
                             booksList.map(books => (

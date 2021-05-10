@@ -26,7 +26,7 @@ const ErrTrainingModal = ({ oncloseModal, setInitialModal }) => {
                     height="54px"
                 />
                 <p className="modalTitle">
-                    Твоя тренування закінчена, але книги прочитані не всі.
+                    Твоє тренування закінчено, але книги прочитані не всі.
                 </p>
                 <p className="modalTitle">
                     У тебе є можливість почати тренування знову.
