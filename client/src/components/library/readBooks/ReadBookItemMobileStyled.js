@@ -56,6 +56,8 @@ const ReadingBookItemMobileStyled = styled.li`
         font-size: 14px;
         border: none;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        background-color: ${props =>
+            props.isReview ? 'var(--accent-color)' : 'var(--secondary-text)'};
     }
 `;
 

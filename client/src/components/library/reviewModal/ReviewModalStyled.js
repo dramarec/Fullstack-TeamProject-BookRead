@@ -76,7 +76,7 @@ const ReviewModalStyled = styled.form`
     .review-error {
         font-size: 10px;
         color: red;
-        margin-top: -20px;
+        margin-top: -10px;
     }
 `;
 

@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 const DescBookListStyle = styled.div`
+    @media (min-width: 768px) {
+        margin-top: 40px;
+    }
     @media (max-width: 767px) {
         display: none;
     }
@@ -65,11 +68,11 @@ const DescBookListStyle = styled.div`
             width: 100%;
             border-bottom: 1px solid #e0e5eb;
         }
-        //margin-bottom: 50px;
-        //height: 60px;
-        @media (min-width: 1280px) {
-            margin-bottom: 40px;
-        }
+        /* //margin-bottom: 50px; */
+        /* //height: 60px; */
+        /* @media (min-width: 1280px) { */
+        /* margin-bottom: 40px; */
+        /* } */
         &__list {
             padding-top: 20px;
             padding-bottom: 20px;

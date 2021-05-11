@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import moment from 'moment';
 import InputDatePicker from '../dataPicker/PickerData';
 import Selector from '../traningForm/selectBooks/Selector';
@@ -13,6 +12,7 @@ import MobBookList from '../booksLists/mob/MobBookList';
 import trainingOperation from '../../../redux/operations/trainingOperation';
 import { CSSTransition } from 'react-transition-group';
 import { Notif } from '../traningForm/Notification';
+import { validationSchema } from '../ValidationTrainingForm';
 
 const TrainingModal = () => {
     const dispatch = useDispatch();
@@ -21,12 +21,6 @@ const TrainingModal = () => {
     const [end, setEnd] = useState('');
     const [booksArr, setBooks] = useState([]);
     const [showNotif, setShowNotif] = useState(false);
-
-    const validationSchema = Yup.object().shape({
-        start: Yup.string().required('Вкажіть дату початку тренування'),
-        end: Yup.string().required('Вкажіть дату завершення тренування'),
-        book: Yup.object().required('Ви не обрали книжку'),
-    });
 
     const formik = useFormik({
         initialValues: {
@@ -37,7 +31,6 @@ const TrainingModal = () => {
         validationSchema,
         onSubmit: values => {
             if (booksArr.some(item => item._id === values.book._id)) {
-                // alert('kiss my ass!');
                 setShowNotif(true);
 
                 return;

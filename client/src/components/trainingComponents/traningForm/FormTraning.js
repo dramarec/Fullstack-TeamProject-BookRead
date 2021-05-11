@@ -1,55 +1,28 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import moment from 'moment';
 import Select from './selectBooks/Selector';
-
 import DescBookList from '../booksLists/desc/DescBookList';
 import InputDatePicker from '../dataPicker/PickerData';
 import FormTraningStyle from './FormTraningStyle';
 import trainingOperation from '../../../redux/operations/trainingOperation';
 import { CSSTransition } from 'react-transition-group';
 import { Notif } from './Notification';
-import trainingActions from '../../../redux/actions/trainingActions';
+import { validationSchema } from '../ValidationTrainingForm';
 
 const FormTraning = () => {
     const dispatch = useDispatch();
-
-    // const booksArray = useSelector(state => state.library.readNow);
 
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
     const [booksArr, setBooks] = useState([]);
     const [showNotif, setShowNotif] = useState(false);
-    // console.log(start, 'FormTraning => START');
-    // console.log(end, 'FormTraning => END');
-    // console.log(booksArr, 'FormTraning => BOOK STATE!!');
 
     const onHandleDeleteBook = e => {
         const { id } = e.currentTarget.dataset;
         setBooks(prev => prev.filter(book => book._id !== id));
     };
-
-    const validationSchema = Yup.object().shape({
-        start: Yup.date()
-            .required('Вкажіть дату початку тренування')
-            .max(Yup.ref('end'), 'Не коректна дата початку!'),
-        end: Yup.date()
-            .required('Вкажіть дату завершення тренування')
-            .min(Yup.ref('start'), 'Вибіріть коректну дату')
-            .test({
-                message: 'Дата завершення повинна бути більшою',
-                test: function (value) {
-                    const start = moment(this.parent.start).format(
-                        'YYYY-MM-DD',
-                    );
-                    const end = moment(value).format('YYYY-MM-DD');
-                    return !moment(start).isSame(moment(end));
-                },
-            }),
-        book: Yup.object().required('Ви не обрали книжку'),
-    });
 
     const formik = useFormik({
         initialValues: {
@@ -154,11 +127,9 @@ const FormTraning = () => {
             />
 
             {booksArr.length > 0 && (
-                <div>
-                    <button onClick={onHandleAddTraining} className="formBtn">
-                        Почати тренування
-                    </button>
-                </div>
+                <button onClick={onHandleAddTraining} className="formBtn">
+                    Почати тренування
+                </button>
             )}
         </FormTraningStyle>
     );

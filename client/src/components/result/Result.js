@@ -1,6 +1,6 @@
 import ResultStyled from './ResultStyled';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import { useFormik } from 'formik';
@@ -9,12 +9,27 @@ import 'react-datepicker/dist/react-datepicker.css';
 import trainingOperation from '../../redux/operations/trainingOperation';
 import Statistics from '../statistic/Statistics';
 import EndTrainingModal from '../endTrainingMdl/EndTrainingModal';
+import trainingSelector from '../../redux/selectors/trainingSelector';
 
 const Result = () => {
     const dispatch = useDispatch();
 
+    const startDate = useSelector(trainingSelector.getStartDate);
+
     const validationSchema = yup.object({
-        date: yup.string().required('Виберіть дату'),
+        date: yup
+            .string()
+            .required('Виберіть дату')
+            .test({
+                message: 'Date ERROR',
+                test: function (value) {
+                    const date = moment(value).format('YYYY-MM-DD');
+                    return (
+                        date >= startDate &&
+                        date <= moment(Date.now()).format('YYYY-MM-DD')
+                    );
+                },
+            }),
         pages: yup
             .number()
             .min(1, `Обов'язкове поле(не менше одиниці)`)
@@ -24,7 +39,7 @@ const Result = () => {
     const formik = useFormik({
         initialValues: {
             date: '',
-            pages: 0,
+            pages: '',
         },
         validationSchema,
         onSubmit: values => {
@@ -38,8 +53,6 @@ const Result = () => {
 
     const patchTraining = async values => {
         try {
-            // dispatch(trainingActions.addTotalReadPages(values.pages));
-
             dispatch(
                 trainingOperation.addReadPagesOperation({
                     date: moment(values.date).format('YYYY-MM-DD'),
@@ -50,8 +63,6 @@ const Result = () => {
             return;
         }
     };
-
-    //totalReadPages === totalPages && console.log('you are awesome')
 
     return (
         <ResultStyled className="resultStyled">
@@ -112,11 +123,3 @@ const Result = () => {
     );
 };
 export default Result;
-
-/* <ul className="statisticList"> 
-            {
-                result.map(item => 
-                    <Statistics key={item.id} item={item} />
-                    )
-                }
-                </ul>*/

@@ -31,7 +31,7 @@ const AppBar = () => {
 
     return (
         <AppBarStyled className="appBarStyled">
-            <div className="container ">
+            <div className={isAuth ? 'container' : 'secondContainer'}>
                 <nav className="navigation">
                     {isAuth ? (
                         <ul className="navlist">
@@ -79,8 +79,8 @@ const AppBar = () => {
                             </li>
                         </ul>
                     ) : (
-                        <ul className="navlist">
-                            <li className="logo link">
+                        <ul className="navlist start">
+                            <li className="logo link ">
                                 <NavLink to="/" className="logo__descr link">
                                     BR
                                 </NavLink>

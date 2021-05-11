@@ -7,8 +7,11 @@ const AppBarStyled = styled.header`
 
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
     .container {
-        height: 60px;
+        /* height: 60px; */
         padding: 11px 25px;
+    }
+    .secondContainer {
+        padding: 17px 25px;
     }
     .navlist {
         display: flex;
@@ -44,9 +47,18 @@ const AppBarStyled = styled.header`
             flex-grow: 0;
         }
     }
+    .start {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @media screen and (min-width: 768px) {
+            display: block;
+        }
+    }
 
     .logo__descr {
         font-size: 20px;
+        line-height: 1.35;
         font-family: 'AbrilFatface-Regular';
     }
 

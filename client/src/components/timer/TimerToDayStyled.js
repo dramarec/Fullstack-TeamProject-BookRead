@@ -14,7 +14,7 @@ const TimerToDayStyled = styled.section`
     }
     @media screen and (min-width: 1280px) {
         margin-top: 0px;
-        margin-bottom: 41px;
+        /* margin-bottom: 41px; */
         width: 886px;
     }
 
@@ -36,7 +36,8 @@ const TimerToDayStyled = styled.section`
     .timer {
         display: flex;
         justify-content: center;
-        width: 290px;
+        width: 100%;
+        padding: 0 30px;
         height: 60px;
         background-color: var(--light-text);
         box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);

@@ -8,7 +8,7 @@ const Statistics = () => {
     return (
         <StatisticsStyled className="statisticsStyled">
             <h1 className="statisticTitle">Статистика</h1>
-            <ul className="statisticList">
+            <ul className="statisticList scrollbar scrollbarText">
                 {result
                     .map(item => <StatisticsItem item={item} key={item._id} />)
                     .reverse()}

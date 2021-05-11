@@ -25,10 +25,14 @@ const ReadingBooksStyled = styled.section`
     }
     .table-title p:nth-child(1) {
         flex: 2 1 0%;
+        @media screen and (min-width: 1280px) {
+            margin-right: 40px;
+        }
     }
     .table-title p:nth-child(2) {
         @media screen and (min-width: 768px) {
             flex: 1.3 1 0%;
+            margin-left: -25px;
         }
         @media screen and (min-width: 1280px) {
             flex: 2 1 0%;

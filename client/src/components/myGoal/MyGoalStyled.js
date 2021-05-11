@@ -13,7 +13,7 @@ const MyGoalStyled = styled.div`
         align-items: flex-start;
         margin-top: 30px;
 
-        //margin-bottom: 30px;
+        /* margin-bottom: 30px; */
         height: ${props => (props.startTraining ? '125px' : '105px')};
         width: 678px;
         padding: 23px 45px 11px 45px;
@@ -28,7 +28,6 @@ const MyGoalStyled = styled.div`
         margin-top: ${props => (props.startTraining ? '25px' : '0px')};
         height: 318px;
         width: 275px;
-        margin-bottom: 40px;
     }
 
     .statistic-title {

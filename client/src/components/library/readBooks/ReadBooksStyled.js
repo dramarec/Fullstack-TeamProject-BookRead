@@ -26,6 +26,9 @@ const ReadBooksStyled = styled.section`
     }
     .table-title p:nth-child(1) {
         flex: 2 1 0%;
+        @media screen and (min-width: 1280px) {
+            margin-right: 15px;
+        }
     }
     .table-title p:nth-child(2) {
         flex: 1 1 0%;

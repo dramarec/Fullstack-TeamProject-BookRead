@@ -21,6 +21,7 @@ const Wrapper = styled.div`
     }
     @media screen and (min-width: 1280px) {
         min-width: 1117px;
+        padding-top: 30px;
     }
     .libraryFormTitle {
         @media screen and (max-width: 767px) {
