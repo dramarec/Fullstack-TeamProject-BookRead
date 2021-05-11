@@ -33,6 +33,9 @@ const ReadBookItemStyled = styled.li`
         @media screen and (min-width: 768px) {
             flex: 1 1 0%;
         }
+        @media (min-width: 768px) and (max-width: 1279px) {
+            max-width: 160px;
+        }
     }
     .pages {
         @media screen and (min-width: 768px) {
@@ -71,6 +74,7 @@ const ReadBookItemStyled = styled.li`
         }
         @media screen and (min-width: 1280px) {
             padding: 11px 36px;
+            margin-left: 20px;
         }
     }
     .review-button:hover {

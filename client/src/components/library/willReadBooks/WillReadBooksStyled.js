@@ -24,13 +24,18 @@ const ReadingBooksStyled = styled.section`
     }
     .table-title p:nth-child(1) {
         flex: 2 1 0%;
+        @media screen and (min-width: 1280px) {
+            margin-right: 20px;
+        }
     }
     .table-title p:nth-child(2) {
         @media screen and (min-width: 768px) {
             flex: 1.3 1 0%;
+            margin-left: -25px;
         }
         @media screen and (min-width: 1280px) {
             flex: 2 1 0%;
+            margin-left: 0px;
         }
     }
     .table-title p:nth-child(3) {
@@ -74,6 +79,11 @@ const ReadingBooksStyled = styled.section`
         display: flex;
         align-items: center;
         flex: 2 1 0%;
+        @media (min-width: 768px) and (max-width: 1279px) {
+            & > p {
+                max-width: 230px;
+            }
+        }
     }
     .bookName img {
         margin-right: 18px;
@@ -95,6 +105,7 @@ const ReadingBooksStyled = styled.section`
         }
     }
     .pages {
+        min-width: 40px;
         @media screen and (min-width: 768px) {
             flex: 0 0 0%;
         }

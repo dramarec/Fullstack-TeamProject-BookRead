@@ -25,7 +25,7 @@ const AuthFormStyled = styled.div`
             max-width: 100%;
             min-width: 320px;
             height: 700px;
-            padding: 0 20px;
+            padding: 45px 20px 0;
         }
         @media (min-width: 768px) and (max-width: 1279px) {
             padding: 60px 0 93px 0;
@@ -66,7 +66,7 @@ const AuthFormStyled = styled.div`
     }
     .signupDiv {
         @media (min-width: 768px) and (max-width: 1279px) {
-            padding: 0 110px;
+            padding: 60px 110px 40px;
         }
     }
     .authError {
