@@ -13,11 +13,11 @@ import loadingSelectors from '../redux/selectors/loadingSelector';
 import Preloader from './loader/preloader/Preloader';
 import authOperations from '../redux/operations/authOperation';
 import trainingOperation from '../redux/operations/trainingOperation';
-import usePersistedTheme from './theme/persistedTheme';
-import { ThemeProvider } from 'styled-components';
-import light from '../themes/light';
-import dark from '../themes/dark';
-import GlobalStyle from '../themes/GlobalStyle';
+//import usePersistedTheme from './theme/persistedTheme';
+//import { ThemeProvider } from 'styled-components';
+//import light from '../themes/light';
+//import dark from '../themes/dark';
+//import GlobalStyle from '../themes/GlobalStyle';
 import Modal from './modal/Modal';
 import ErrTrainingModal from './endTrainingMdl/ErrTrainingModal';
 
@@ -80,10 +80,9 @@ const App = () => {
             ) : (
                 <>
                     {isLoading && <Spin />}
-                    <ThemeProvider theme={theme}>
-                        <GlobalStyle />
-                        <AppBar />
-                        {/*isAuth && (
+
+                    <AppBar />
+                    {/*isAuth && (
                             <div className="container">
                                 <label id="switch" className="switch">
                                     <input
@@ -95,25 +94,22 @@ const App = () => {
                                 </label>
                             </div>
                         )*/}
-                        <Suspense fallback={''}>
-                            <Switch>
-                                {mainRoutes.map(route =>
-                                    route.isPrivate ? (
-                                        <PrivateRoutes
-                                            {...route}
-                                            key={route.path}
-                                        />
-                                    ) : (
-                                        <PublicRoutes
-                                            {...route}
-                                            key={route.path}
-                                        />
-                                    ),
-                                )}
-                                <Redirect to="/" />
-                            </Switch>
-                        </Suspense>
-                    </ThemeProvider>
+                    <Suspense fallback={''}>
+                        <Switch>
+                            {mainRoutes.map(route =>
+                                route.isPrivate ? (
+                                    <PrivateRoutes
+                                        {...route}
+                                        key={route.path}
+                                    />
+                                ) : (
+                                    <PublicRoutes {...route} key={route.path} />
+                                ),
+                            )}
+                            <Redirect to="/" />
+                        </Switch>
+                    </Suspense>
+
                     {initialModal && (
                         <Modal closeModal={closeModal}>
                             <ErrTrainingModal
@@ -129,3 +125,7 @@ const App = () => {
 };
 
 export default App;
+
+/* <{/*ThemeProvider theme={theme}}>
+                        <GlobalStyle />
+                        </ThemeProvider>*/
