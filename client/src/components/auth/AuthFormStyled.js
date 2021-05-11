@@ -88,6 +88,7 @@ const AuthFormStyled = styled.div`
         width: 100%;
     }
     .authForm {
+        position: relative;
         display: flex;
         flex-direction: column;
     }
@@ -306,7 +307,7 @@ const AuthFormStyled = styled.div`
         }
         .bg-ph {
             max-height: 100%;
-            margin-bottom: -200px;
+            margin-bottom: -100px;
             //max-height: 790px;
             //height: 790px;
             background: url(${bgDec}), url(${picTest});
@@ -443,7 +444,7 @@ const AuthFormStyled = styled.div`
         }
 
         .buttonSignUpMain {
-            width: 127px;
+            //width: 127px;
             height: 40px;
             color: #ff6b08;
             margin-top: 5px;

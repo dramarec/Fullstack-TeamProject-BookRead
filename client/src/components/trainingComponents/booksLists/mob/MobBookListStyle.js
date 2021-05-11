@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const MobBookListStyle = styled.div`
     margin: 30px auto;
     .books {
-        @media (min-width: 767px) {
+        @media (min-width: 768px) {
             display: none;
         }
         font-weight: 500;
