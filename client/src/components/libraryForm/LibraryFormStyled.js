@@ -159,6 +159,7 @@ const Wrapper = styled.div`
     .bookFormBtn {
         display: flex;
         justify-content: center;
+        align-items: center;
         font-family: 'Montserrat-Medium';
         font-size: 14px;
         line-height: 2.71;
