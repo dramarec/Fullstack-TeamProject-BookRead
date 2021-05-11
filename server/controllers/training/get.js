@@ -5,7 +5,7 @@ const getTraining = async (req, res, next) => {
     try {
         const user = req.user;
 
-        console.log(`user first`, user);
+        // console.log(`user first`, user);
 
         return await Training.findOne({ _id: user?.training })
             .populate('books')
@@ -57,19 +57,22 @@ const getTraining = async (req, res, next) => {
                     //     }
                     // }, newUser.books);
 
-                    // console.log(`------------------newBooksList`);
+                    // // console.log(`------------------newBooksList`);
 
-                    // newBooksList.forEach(item => {
-                    //     console.log(`item`, item);
-                    // });
+                    // // newBooksList.forEach(item => {
+                    // //     console.log(`item`, item);
+                    // // });
 
                     await Training.deleteOne({ _id: req.user.training });
+                    // user.books = newBooksList;
 
+                    // console.log(`------user.books`, user.books);
+                    // console.log(`------newBooksList`, newBooksList);
                     req.user.training = null;
 
                     console.log(`user second`, user);
 
-                    await newUser.save();
+                    await user.save();
 
                     return res.status(403).json({
                         status: 'error',

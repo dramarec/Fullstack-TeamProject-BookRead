@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 const MyGoalStyled = styled.div`
     width: 270px;
-    height: 215px;
+    //height: 215px;
+    height: 270px;
     background-color: #ffffff;
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
     //margin-left: auto;
