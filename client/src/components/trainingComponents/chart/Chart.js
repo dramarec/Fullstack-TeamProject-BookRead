@@ -81,7 +81,7 @@ const Chart = () => {
 
     return (
         // <div >
-        <ChartWrapper>
+        <ChartWrapper className="chartWrapper">
             <div className="title-wrap">
                 <h2 className="title">кiлькiсть сторiнок / день</h2>
                 <div className="page-wrap">
@@ -119,10 +119,13 @@ const Chart = () => {
                                 activeDot={{ r: 8 }}
                             />
                             <CartesianGrid horizontal={false} stroke="#ccc" />
-                            <XAxis fontSize="12px" marginTop="15px" dataKey="name" tickLine={false}></XAxis>
+                            <XAxis
+                                fontSize="12px"
+                                marginTop="15px"
+                                dataKey="name"
+                                tickLine={false}
+                            ></XAxis>
                             <YAxis fontSize="12px" />
-
-                           
 
                             <Legend
                                 //onMouseEnter={handleMouseEnter}
@@ -170,9 +173,12 @@ const Chart = () => {
                                 activeDot={{ r: 8 }}
                             />
                             <CartesianGrid horizontal={false} stroke="#ccc" />
-                            <XAxis dataKey="name" fontSize="10px" tickLine={false} ></XAxis>
-                            <YAxis fontSize="10px"/>
-                            
+                            <XAxis
+                                dataKey="name"
+                                fontSize="10px"
+                                tickLine={false}
+                            ></XAxis>
+                            <YAxis fontSize="10px" />
 
                             <Legend
                                 //onMouseEnter={handleMouseEnter}

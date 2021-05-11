@@ -10,8 +10,6 @@ import trainingOperation from '../../redux/operations/trainingOperation';
 import Statistics from '../statistic/Statistics';
 import EndTrainingModal from '../endTrainingMdl/EndTrainingModal';
 
-
-
 const Result = () => {
     const dispatch = useDispatch();
 
@@ -54,11 +52,9 @@ const Result = () => {
     };
 
     //totalReadPages === totalPages && console.log('you are awesome')
-       
-        
-    
+
     return (
-        <ResultStyled>
+        <ResultStyled className="resultStyled">
             <p className="resultsTitle">Результати</p>
             <form
                 className="resultsForm"

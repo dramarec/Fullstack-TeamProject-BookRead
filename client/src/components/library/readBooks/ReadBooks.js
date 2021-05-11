@@ -12,7 +12,7 @@ const ReadBooks = (/*{ bookFinished }*/) => {
     const bookFinished = useSelector(getFinishRead);
     console.log('ReadBooks ===> bookFinished', bookFinished);
     return (
-        <ReadBooksStyled className="container">
+        <ReadBooksStyled className="readBooksStyled container">
             <Tablet>
                 <h2>Прочитано</h2>
                 <div className="table-title">

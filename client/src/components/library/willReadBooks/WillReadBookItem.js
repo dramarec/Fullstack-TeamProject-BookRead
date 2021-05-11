@@ -4,7 +4,7 @@ import WillReadBookItemStyled from './WillReadBookItemStyled';
 
 const WillReadBookItem = ({ book }) => {
     return (
-        <WillReadBookItemStyled>
+        <WillReadBookItemStyled className="willReadBookItemStyled">
             <li className="listItem" key={book.id}>
                 <div className="bookName">
                     <img src={book3} alt="" />

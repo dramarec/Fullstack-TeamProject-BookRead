@@ -3,9 +3,9 @@ import { useLocation, Link, useRouteMatch } from 'react-router-dom';
 import AuthFormStyled from './AuthFormStyled';
 import Two from './icons/two';
 import GoogleAuthBtn from './GoogleAuthBtn';
-import Modal from '../modal/Modal';
 import { useState } from 'react';
-import Responsive from 'react-responsive';
+import pointer from './icons/pointer.png';
+import AuthModal from './AuthModal';
 
 const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
     const location = useLocation();
@@ -14,6 +14,9 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
 
     const onModal = () => {
         setOpenModal(true);
+    };
+    const closeModal = () => {
+        setOpenModal(false);
     };
     console.log(isOpenModal);
     const initialState =
@@ -25,8 +28,7 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                   passwordConfirmation: '',
               }
             : { email: '', password: '' };
-    const Mobile = props => <Responsive {...props} maxWidth={767} />;
-    const Tablet = props => <Responsive {...props} minWidth={768} />;
+
     return (
         <AuthFormStyled path={location.pathname === '/signup'}>
             <div className="auth-container">
@@ -166,16 +168,27 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                                     <button
                                         className="mainButton authFormBtnSec"
                                         type="button"
-                                        onClick={onModal}
                                     >
-                                        <a
-                                            to="/signup"
-                                            className="buttonSignUpMain"
-                                        >
-                                            <span className="buttonSignUpMain__link">
-                                                Реєстрація
-                                            </span>
-                                        </a>
+                                        {window.innerWidth < 768 ? (
+                                            <a
+                                                to="/signup"
+                                                onClick={onModal}
+                                                className="buttonSignUpMain"
+                                            >
+                                                <span className="buttonSignUpMain__link">
+                                                    Реєстрація
+                                                </span>
+                                            </a>
+                                        ) : (
+                                            <Link
+                                                to="/signup"
+                                                className="buttonSignUpMain"
+                                            >
+                                                <span className="buttonSignUpMain__link">
+                                                    Реєстрація
+                                                </span>
+                                            </Link>
+                                        )}
                                     </button>
                                 )}
                             </Form>
@@ -195,69 +208,7 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                         </div>
                     )}
                     {isOpenModal && window.innerWidth < 767 && (
-                        <Modal className="authModal">
-                            <div className="signupDiv">
-                                <h1 className="mainTitleSignUp">
-                                    Books Reading
-                                </h1>
-                                <h2 className="titleSignUp">Допоможе вам</h2>
-                                <ul>
-                                    <li className="authFormText">
-                                        <sup className="authFormSym">{'>'}</sup>
-                                        <p className="instraction">
-                                            Швидше сформулювати свою ціль і
-                                            розпочати читати
-                                        </p>
-                                    </li>
-                                    <li className="authFormText">
-                                        <sup className="authFormSym">{'>'}</sup>
-                                        <p className="instraction">
-                                            Пропорційно розподілити навантаження
-                                            на кожний день
-                                        </p>
-                                    </li>
-                                    <li className="authFormText">
-                                        <sup className="authFormSym">{'>'}</sup>
-                                        <p className="instraction">
-                                            Відстежувати особистий успіх
-                                        </p>
-                                    </li>
-                                </ul>
-                                <h2 className="titleSignUp">
-                                    Також ви зможете
-                                </h2>
-                                <ul>
-                                    <li className="authFormText ">
-                                        <sup className="authFormSym">{'>'}</sup>
-                                        <p className="instraction">
-                                            Формувати особисту думку незалежну
-                                            від інших
-                                        </p>
-                                    </li>
-                                    <li className="authFormText">
-                                        <sup className="authFormSym">{'>'}</sup>
-                                        <p className="instraction">
-                                            Підвищити свої професійні якості
-                                            опираючись на нові знання
-                                        </p>
-                                    </li>
-                                    <li className="authFormText last">
-                                        <sup className="authFormSym">{'>'}</sup>
-                                        <p className="instraction">
-                                            Стати цікавим співрозмовником
-                                        </p>
-                                    </li>
-                                </ul>
-                                <div className="sign">
-                                    <button className="buttonSign in">
-                                        <Link to="/">Увійти</Link>
-                                    </button>
-                                    <button className="buttonSign up">
-                                        <Link to="/signup">Реєстрація</Link>
-                                    </button>
-                                </div>
-                            </div>
-                        </Modal>
+                        <AuthModal setOpenModal={setOpenModal} />
                     )}
                     {window.innerWidth > 767 &&
                         location.pathname === '/signup' && (
@@ -266,23 +217,35 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                                     Books Reading
                                 </h1>
                                 <h2 className="titleSignUp">Допоможе вам</h2>
-                                <ul>
+                                <ul className="authFormList">
                                     <li className="authFormText">
-                                        <sup className="authFormSym">{'>'}</sup>
+                                        <img
+                                            className="pointer"
+                                            src={pointer}
+                                            alt=""
+                                        />
                                         <p className="instraction">
                                             Швидше сформулювати свою ціль і
                                             розпочати читати
                                         </p>
                                     </li>
                                     <li className="authFormText">
-                                        <sup className="authFormSym">{'>'}</sup>
+                                        <img
+                                            className="pointer"
+                                            src={pointer}
+                                            alt=""
+                                        />
                                         <p className="instraction">
                                             Пропорційно розподілити навантаження
                                             на кожний день
                                         </p>
                                     </li>
                                     <li className="authFormText">
-                                        <sup className="authFormSym">{'>'}</sup>
+                                        <img
+                                            className="pointer"
+                                            src={pointer}
+                                            alt=""
+                                        />
                                         <p className="instraction">
                                             Відстежувати особистий успіх
                                         </p>
@@ -291,36 +254,40 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                                 <h2 className="titleSignUp">
                                     Також ви зможете
                                 </h2>
-                                <ul>
+                                <ul className="authFormList">
                                     <li className="authFormText ">
-                                        <sup className="authFormSym">{'>'}</sup>
+                                        <img
+                                            className="pointer"
+                                            src={pointer}
+                                            alt=""
+                                        />
                                         <p className="instraction">
                                             Формувати особисту думку незалежну
                                             від інших
                                         </p>
                                     </li>
                                     <li className="authFormText">
-                                        <sup className="authFormSym">{'>'}</sup>
+                                        <img
+                                            className="pointer"
+                                            src={pointer}
+                                            alt=""
+                                        />
                                         <p className="instraction">
                                             Підвищити свої професійні якості
                                             опираючись на нові знання
                                         </p>
                                     </li>
                                     <li className="authFormText last">
-                                        <sup className="authFormSym">{'>'}</sup>
+                                        <img
+                                            className="pointer"
+                                            src={pointer}
+                                            alt=""
+                                        />
                                         <p className="instraction">
                                             Стати цікавим співрозмовником
                                         </p>
                                     </li>
                                 </ul>
-                                <div className="sign">
-                                    <button className="buttonSign in">
-                                        <Link to="/">Увійти</Link>
-                                    </button>
-                                    <button className="buttonSign up">
-                                        <Link to="/signup">Реєстрація</Link>
-                                    </button>
-                                </div>
                             </div>
                         )}
                 </div>

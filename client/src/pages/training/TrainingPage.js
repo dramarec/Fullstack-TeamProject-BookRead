@@ -41,7 +41,7 @@ const TrainingPage = memo(() => {
     const Mobile = props => <Responsive {...props} maxWidth={767} />;
 
     return (
-        <TrainingPageStyled>
+        <TrainingPageStyled className="trainingPageStyled training">
             <div className="container">
                 <Desktop>
                     {isTraining.duration !== 0 ? (

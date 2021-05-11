@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, Suspense } from 'react';
 import AppBar from './appBar/AppBar';
-import { Switch, Redirect } from 'react-router-dom';
+import { Switch, Redirect, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Spin from './loader/Spin';
 import mainRoutes from '../routes/routes';
@@ -13,6 +13,11 @@ import loadingSelectors from '../redux/selectors/loadingSelector';
 import Preloader from './loader/preloader/Preloader';
 import authOperations from '../redux/operations/authOperation';
 import trainingOperation from '../redux/operations/trainingOperation';
+import usePersistedTheme from './theme/persistedTheme';
+import { ThemeProvider } from 'styled-components';
+import light from '../themes/light';
+import dark from '../themes/dark';
+import GlobalStyle from '../themes/GlobalStyle';
 
 const App = () => {
     const [preloader, setPreloader] = useState(false);
@@ -57,6 +62,10 @@ const App = () => {
         //     setPreloader(false);
         // }, 3000);
     }, []);
+    const [theme, setTheme] = usePersistedTheme('theme', light);
+    const toggleTheme = () => {
+        setTheme(theme.title === 'light' ? dark : light);
+    };
 
     return (
         <>
@@ -65,22 +74,40 @@ const App = () => {
             ) : (
                 <>
                     {isLoading && <Spin />}
-                    <AppBar />
-                    <Suspense fallback={''}>
-                        <Switch>
-                            {mainRoutes.map(route =>
-                                route.isPrivate ? (
-                                    <PrivateRoutes
-                                        {...route}
-                                        key={route.path}
+                    <ThemeProvider theme={theme}>
+                        <GlobalStyle />
+                        <AppBar />
+                        {isAuth && (
+                            <div className="container">
+                                <label id="switch" className="switch">
+                                    <input
+                                        onChange={toggleTheme}
+                                        type="checkbox"
+                                        id="slider"
                                     />
-                                ) : (
-                                    <PublicRoutes {...route} key={route.path} />
-                                ),
-                            )}
-                            <Redirect to="/" />
-                        </Switch>
-                    </Suspense>
+                                    <span className="slider round"></span>
+                                </label>
+                            </div>
+                        )}
+                        <Suspense fallback={''}>
+                            <Switch>
+                                {mainRoutes.map(route =>
+                                    route.isPrivate ? (
+                                        <PrivateRoutes
+                                            {...route}
+                                            key={route.path}
+                                        />
+                                    ) : (
+                                        <PublicRoutes
+                                            {...route}
+                                            key={route.path}
+                                        />
+                                    ),
+                                )}
+                                <Redirect to="/" />
+                            </Switch>
+                        </Suspense>
+                    </ThemeProvider>
                 </>
             )}
         </>

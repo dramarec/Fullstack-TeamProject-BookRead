@@ -20,7 +20,7 @@ const MyGoal = ({ startTraining, training }) => {
     //console.log('book', isTraining);
     //console.log('array', booksLeft);
     return (
-        <MyGoalStyled startTraining={startTraining}>
+        <MyGoalStyled className="myGoalStyled" startTraining={startTraining}>
             <div className="statistic-title">
                 <p>Моя мета прочитати</p>
             </div>

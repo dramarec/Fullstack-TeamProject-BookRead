@@ -14,7 +14,7 @@ const ReadingBooks = (/*{ bookNowRead }*/) => {
     const Tablet = props => <Responsive {...props} minWidth={768} />;
     const Mobile = props => <Responsive {...props} maxWidth={767} />;
     return (
-        <ReadingBooksStyled className="container">
+        <ReadingBooksStyled className="readingBooksStyled container">
             <Tablet>
                 <h2>Читаю</h2>
                 <div className="table-title">
