@@ -4,8 +4,6 @@ import styled from 'styled-components';
 const StartTrainingBtnStyled = styled.div`
     @media screen and (min-width: 768px) {
         padding-top: 40px;
-        background-color: #f6f7fb;
-        padding-bottom: 40px;
     }
 
     .formBtn {
