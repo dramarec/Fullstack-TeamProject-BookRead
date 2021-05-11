@@ -21,9 +21,19 @@ const Selector = ({ onChange }) => {
             ...provided,
             marginTop: '0px',
         }),
+        placeholder: (provided, state) => ({
+            ...provided,
+            '@media only screen and (max-width: 767px)': {
+                top: '59%',
+            },
+        }),
+        singleValue: (provided, state) => ({
+            ...provided,
+            '@media only screen and (max-width: 767px)': {
+                top: '60%',
+            },
+        }),
     };
-
-    //const book = bookSelect.filter(obj => obj.title !== value.title)
 
     return (
         <Select

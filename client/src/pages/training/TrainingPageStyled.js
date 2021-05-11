@@ -158,6 +158,9 @@ const TrainingPageStyled = styled.div`
   }*/
 
     .baner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 270px;
         height: 60px;
         color: #fff;

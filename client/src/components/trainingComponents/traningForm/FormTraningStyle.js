@@ -153,14 +153,12 @@ const FormTraningStyle = styled.div`
         position: absolute;
         @media (min-width: 320px) and (max-width: 767px) {
             top: 42px;
-            /* bootom: 420px; */
-            /* bootom: 0; */
         }
         @media (min-width: 768px) {
-            left: 45px;
+            left: 65px;
         }
         @media (min-width: 1280px) {
-            left: 150px;
+            left: 170px;
         }
     }
     .error.end {
@@ -168,15 +166,13 @@ const FormTraningStyle = styled.div`
         top: 42px;
         @media (min-width: 320px) and (max-width: 767px) {
             top: 42px;
-            /* bootom: 420px; */
-            /* bootom: 0; */
             top: 105px;
         }
         @media screen and (min-width: 768px) {
-            left: 340px;
+            left: 361px;
         }
         @media screen and (min-width: 1280px) {
-            left: 445px;
+            left: 466px;
         }
     }
     .error.book {
