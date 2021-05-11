@@ -7,9 +7,9 @@ import bgDec from './photo/dec-bg.png';
 import picTest from './photo/picTest.jpg';
 
 const AuthFormStyled = styled.div`
-.pointer {
-    margin-right: 11px;
-}
+    .pointer {
+        margin-right: 11px;
+    }
     .backBtn {
         border: transparent;
         background-color: transparent;
@@ -65,7 +65,7 @@ const AuthFormStyled = styled.div`
         color: var(--accent-color);
     }
     .signupDiv {
-        @media and (min-width: 768px) and (max-width: 1279px) {
+        @media (min-width: 768px) and (max-width: 1279px) {
             padding: 0 110px;
         }
     }
@@ -115,9 +115,8 @@ const AuthFormStyled = styled.div`
         line-height: 2.71;
         color: #ffffff;
     }
-    .authFormList .authFormText
-    {
-          margin-top: 0;
+    .authFormList .authFormText {
+        margin-top: 0;
     }
     .authFormStar {
         color: #ff6b08;
@@ -220,6 +219,9 @@ const AuthFormStyled = styled.div`
     .bg {
         display: flex;
     }
+    .div-cont {
+        margin-top: 20px;
+    }
 
     @media (min-width: 768px) and (max-width: 1279px) {
         .bg-ph {
@@ -263,9 +265,7 @@ const AuthFormStyled = styled.div`
             display: flex;
             justify-content: center;
         }
-        /*.div-cont{
-          padding-top: 62px;
-    }*/
+
         .teza {
             font-size: 24px;
             margin: 0 auto;
@@ -274,6 +274,11 @@ const AuthFormStyled = styled.div`
             width: 526px;
             line-height: 1.58;
             font-family: 'Montserrat-Medium';
+        }
+
+        .div-cont {
+            padding-top: 62px;
+            margin-top: 0;
         }
 
         .line::before {
@@ -326,6 +331,7 @@ const AuthFormStyled = styled.div`
         }
         .div-cont {
             padding-top: 206px;
+            margin-top: 0;
         }
 
         .div-for-fl {
@@ -386,115 +392,113 @@ const AuthFormStyled = styled.div`
         font-size: 34px;
         line-height: 1.1;
         //padding-top: 30px;
-        
-        }
-        .titleSignUp {
-            font-family: 'Montserrat-Medium';
-            font-weight: 500;
-            font-size: 20px;
-            //margin-top: 20px;
-            line-height: 1.9;
-            margin-bottom: 4px;
-            @media (max-width: 767px) {
+    }
+    .titleSignUp {
+        font-family: 'Montserrat-Medium';
+        font-weight: 500;
+        font-size: 20px;
+        //margin-top: 20px;
+        line-height: 1.9;
+        margin-bottom: 4px;
+        @media (max-width: 767px) {
             margin-top: 20px;
         }
-        }
-        .instraction {
-            font-family: 'Montserrat-Medium';
-            font-weight: 500;
-            font-size: 14px;
-            color: #898f9f;
-            line-height: 1.21;
-            margin-top: 14px;
-            @media (min-width: 768px) {
-                line-height: 2.71;
-                 margin-top: 0;
-            }
-        }
-        .sign {
-            width: fit-content;
-            margin: 0 auto;
-        }
-        .buttonSign {
-            width: 127px;
-            height: 40px;
-            border: none;
-            margin-top: 31px;
-            margin-bottom: 58px;
-        }
-        .buttonSign.in {
-            border: 1px solid var(--main-text);
-            background-color: transparent;
-            margin-right: 16px;
-        }
-        .buttonSign.up {
-            background-color: var(--accent-color);
-        }
-        .buttonSign a {
-            text-decoration: none;
-            font-size: 14px;
-            font-family: 'Montserrat-Regular';
+    }
+    .instraction {
+        font-family: 'Montserrat-Medium';
+        font-weight: 500;
+        font-size: 14px;
+        color: #898f9f;
+        line-height: 1.21;
+        margin-top: 14px;
+        @media (min-width: 768px) {
             line-height: 2.71;
+            margin-top: 0;
         }
-        .buttonSign.up a {
-            color: var(--light-text);
-        }
-        .buttonSign.in a {
-            color: var(--main-text);
-        }
+    }
+    .sign {
+        width: fit-content;
+        margin: 0 auto;
+    }
+    .buttonSign {
+        width: 127px;
+        height: 40px;
+        border: none;
+        margin-top: 31px;
+        margin-bottom: 58px;
+    }
+    .buttonSign.in {
+        border: 1px solid var(--main-text);
+        background-color: transparent;
+        margin-right: 16px;
+    }
+    .buttonSign.up {
+        background-color: var(--accent-color);
+    }
+    .buttonSign a {
+        text-decoration: none;
+        font-size: 14px;
+        font-family: 'Montserrat-Regular';
+        line-height: 2.71;
+    }
+    .buttonSign.up a {
+        color: var(--light-text);
+    }
+    .buttonSign.in a {
+        color: var(--main-text);
+    }
 
-        .buttonSignUpMain {
-            //width: 127px;
-            height: 40px;
-            color: #ff6b08;
-            margin-top: 5px;
-            border: none;
-            text-decoration: none;
-            font-family: 'Montserrat-Medium';
-        }
+    .buttonSignUpMain {
+        //width: 127px;
+        height: 40px;
+        color: #ff6b08;
+        margin-top: 5px;
+        border: none;
+        text-decoration: none;
+        font-family: 'Montserrat-Medium';
+    }
 
-        .buttonSignUpMain__text {
-            color: var(--secondary-text);
+    .buttonSignUpMain__text {
+        color: var(--secondary-text);
+    }
+    .buttonSignUp:last-child {
+        margin-left: 16px;
+    }
+    .buttonSignUp:hover {
+        background: orange;
+        color: white;
+        border: none;
+    }
+    .buttonSignUp:focus {
+        background: orange;
+        color: white;
+        border: none;
+    }
+    @media (min-width: 768px) and (max-width: 1279px) {
+        .sign {
+            display: none;
         }
-        .buttonSignUp:last-child {
-            margin-left: 16px;
+        .mainTitleSignUp {
+            padding-top: 0;
+            padding-bottom: 40px;
         }
-        .buttonSignUp:hover {
-            background: orange;
-            color: white;
-            border: none;
+    }
+    @media (min-width: 1280px) {
+        .buttonSign {
+            display: none;
         }
-        .buttonSignUp:focus {
-            background: orange;
-            color: white;
-            border: none;
+        .last {
+            padding-bottom: 93px;
         }
-        @media (min-width: 768px) and (max-width: 1279px) {
-            .sign {
-                display: none;
-            }
-            .mainTitleSignUp {
-                padding-top: 0;
-                padding-bottom: 40px;
-            }
+        .mainTitleSignUp {
+            //padding-top: 133px;
+            text-align: center;
+            margin-bottom: 52px;
+            margin-right: 90px;
         }
-        @media (min-width: 1280px) {
-            .buttonSign {
-                display: none;
-            }
-            .last {
-                padding-bottom: 93px;
-            }
-            .mainTitleSignUp {
-                //padding-top: 133px;
-                text-align: center;
-                margin-bottom: 52px;
-                margin-right: 90px;
-            }
-            .signupDiv {
-                padding-left: 90px;
-                padding-top: 133px;
-            }
+        .signupDiv {
+            padding-left: 90px;
+            padding-top: 133px;
         }
     }
 `;
