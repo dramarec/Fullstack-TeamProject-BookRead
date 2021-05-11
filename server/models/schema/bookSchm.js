@@ -35,12 +35,9 @@ const bookSchema = new Schema(
         },
         review: {
             type: String,
-            //default: null,
-            //maxlength: [3000, "Title can't be longer than 3000 characters"],
         },
         rating: {
             type: Number,
-            //default: null,
             min: 0,
             max: 5,
         },

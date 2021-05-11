@@ -98,7 +98,6 @@ const googleLogin = async (req, res, next) => {
                 message: 'Wrong token!',
             });
         }
-        console.log('googleLogin ===> user', user);
 
         const id = user.id;
         const payload = { id };

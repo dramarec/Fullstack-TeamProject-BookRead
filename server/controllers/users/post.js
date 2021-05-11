@@ -36,7 +36,7 @@ const login = async (req, res, next) => {
     try {
         const { email, password } = req.body;
         const user = await userServices.findUserByEmail(email);
-        // const isValidPassword = await user.validPassword(password)
+
         if (!user || !(await user.validPassword(password))) {
             return res.status(401).json({
                 status: 'error',
