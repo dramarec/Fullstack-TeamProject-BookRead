@@ -62,10 +62,10 @@ const App = () => {
         //     setPreloader(false);
         // }, 3000);
     }, []);
-    const [theme, setTheme] = usePersistedTheme('theme', light);
+    /*const [theme, setTheme] = usePersistedTheme('theme', light);
     const toggleTheme = () => {
         setTheme(theme.title === 'light' ? dark : light);
-    };
+    };*/
 
     return (
         <>
@@ -77,7 +77,7 @@ const App = () => {
                     <ThemeProvider theme={theme}>
                         <GlobalStyle />
                         <AppBar />
-                        {isAuth && (
+                        {/*isAuth && (
                             <div className="container">
                                 <label id="switch" className="switch">
                                     <input
@@ -88,7 +88,7 @@ const App = () => {
                                     <span className="slider round"></span>
                                 </label>
                             </div>
-                        )}
+                        )*/}
                         <Suspense fallback={''}>
                             <Switch>
                                 {mainRoutes.map(route =>
