@@ -9,13 +9,10 @@ const Wrapper = styled.div`
         //justify-content: center;
     }
 
-    @media (mmin-width: 768px) {
-        /* &:not(:last-child) {
+    @media (min-width: 768px) {
+        &:first-child {
             margin-right: 45px;
-        } */
-        /* &:first-child {
-            margin-right: 45px;
-        } */
+        }
     }
     & svg {
         position: absolute;
@@ -41,9 +38,6 @@ const Wrapper = styled.div`
 
         @media (min-width: 768px) {
             width: 250px;
-            &:first-child {
-                margin-right: 45px;
-            }
         }
         &:focus {
             box-shadow: inset 1px 1px 1px rgba(30, 30, 30, 0.1);

@@ -9,20 +9,37 @@ const TrainingPageStyled = styled.div`
     @media (min-width: 1280px) {
         //padding-top: 50px;
     }
-    .leftSide {
+    .topPart1 {
         @media (min-width: 1280px) {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             margin-top: 15px;
         }
     }
-    .rigthSide {
+    .topPart2 {
         @media (min-width: 1280px) {
             display: flex;
             flex-direction: column;
-            margin-left: 41px;
+            margin-right: 41px;
+        }
+    }
+    .bottomPart1 {
+        @media (min-width: 1280px) {
+            display: flex;
+            flex-direction: row;
+            //margin-left: 41px;
             //margin-top: 50px;
         }
+    }
+
+    .topPart {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 40px;
+        margin-top: 50px;
+    }
+
+    .bottomPart {
     }
     .training {
         @media (max-width: 767px) {
@@ -42,7 +59,7 @@ const TrainingPageStyled = styled.div`
         @media (min-width: 1280px) {
             width: 886px;
             margin-right: 40px;
-            margin-top: 50px;
+            margin-top: 00px;
         }
     }
     /* background-color: var(--main-background);

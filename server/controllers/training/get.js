@@ -1,9 +1,11 @@
 const { DateTime } = require('luxon');
-const { Training, Book } = require('../../models');
+const { Training, User } = require('../../models');
 
 const getTraining = async (req, res, next) => {
     try {
         const user = req.user;
+
+        console.log(`user first`, user);
 
         return await Training.findOne({ _id: user?.training })
             .populate('books')
@@ -37,14 +39,37 @@ const getTraining = async (req, res, next) => {
                 );
                 const duration = endDate.diff(dateNow, 'days').toObject().days;
 
+                // const newBooksList = [];
+
                 if (!duration || duration < 1) {
-                    
-                 console.log('data.books',data.books)
+                    // // console.log(`data.books`, data.books);
+                    // const newUser = await User.findOne(user._id).populate(
+                    //     'books',
+                    // );
+                    // newUser.books.forEach((item, idx) => {
+                    //     // console.log(`idx`, idx);
+                    //     // console.log(`item`, item);
+                    //     if (item.readPages < item.numberOfPages) {
+                    //         let newItem = Object.create(item);
+                    //         item.readPages = 0;
+
+                    //         newBooksList.push(newItem);
+                    //     }
+                    // }, newUser.books);
+
+                    // console.log(`------------------newBooksList`);
+
+                    // newBooksList.forEach(item => {
+                    //     console.log(`item`, item);
+                    // });
+
                     await Training.deleteOne({ _id: req.user.training });
 
                     req.user.training = null;
 
-                    await req.user.save();
+                    console.log(`user second`, user);
+
+                    await newUser.save();
 
                     return res.status(403).json({
                         status: 'error',

@@ -18,10 +18,12 @@ import { ThemeProvider } from 'styled-components';
 import light from '../themes/light';
 import dark from '../themes/dark';
 import GlobalStyle from '../themes/GlobalStyle';
+import Modal from './modal/Modal';
+import ErrTrainingModal from './endTrainingMdl/ErrTrainingModal';
 
 const App = () => {
     const [preloader, setPreloader] = useState(false);
-    // const [initialModal, setInitialModal] = useState(false);
+    const [initialModal, setInitialModal] = useState(false);
     const dispatch = useDispatch();
     const isLoading = useSelector(loadingSelectors.getLoading);
     const isAuth = useSelector(state => state.auth.token);
@@ -36,23 +38,23 @@ const App = () => {
             dispatch(authOperations.logInWithGoogleOperation(googleToken));
     }, []);
 
-    const initialAction = async () => {
+    const trainingAction = async () => {
         try {
-            await dispatch(getUsersBooksOperetion());
             training !== null &&
                 (await dispatch(trainingOperation.getTrainingOperation()));
         } catch (err) {
             err.message === 'training is over' &&
                 console.log('training is over!!');
             dispatch(getUsersBooksOperetion());
-            /*
-            Тут вызывать переключатель
-            */
+            setInitialModal(true);
         }
     };
+    useEffect(() => {
+        isAuth && dispatch(getUsersBooksOperetion());
+    }, []);
 
     useEffect(() => {
-        isAuth && initialAction();
+        isAuth && trainingAction();
     }, [training]);
 
     useEffect(() => {
@@ -66,6 +68,10 @@ const App = () => {
     const toggleTheme = () => {
         setTheme(theme.title === 'light' ? dark : light);
     };*/
+
+    const closeModal = () => {
+        setInitialModal(false);
+    };
 
     return (
         <>
@@ -108,6 +114,14 @@ const App = () => {
                             </Switch>
                         </Suspense>
                     </ThemeProvider>
+                    {initialModal && (
+                        <Modal closeModal={closeModal}>
+                            <ErrTrainingModal
+                                oncloseModal={closeModal}
+                                setInitialModal={setInitialModal}
+                            />
+                        </Modal>
+                    )}
                 </>
             )}
         </>

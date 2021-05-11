@@ -9,9 +9,9 @@ const Statistics = () => {
         <StatisticsStyled className="statisticsStyled">
             <h1 className="statisticTitle">Статистика</h1>
             <ul className="statisticList">
-                {result.map(item => (
-                    <StatisticsItem key={item._id} item={item} />
-                ))}
+                {result
+                    .map(item => <StatisticsItem item={item} key={item._id} />)
+                    .reverse()}
             </ul>
         </StatisticsStyled>
     );

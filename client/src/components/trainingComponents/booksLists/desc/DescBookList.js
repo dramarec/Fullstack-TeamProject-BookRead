@@ -19,7 +19,7 @@ const DescBookList = ({ books, onHandleDeleteBook }) => {
                 </div>
             </div>
             <div className="books-library">
-                <ul className="books-library__list">
+                <ul className="books-library__list scrollbar scrollbarText">
                     {books?.length > 0 || booksList?.length > 0 ? (
                         booksList?.length > 0 ? (
                             booksList.map(books => (
@@ -30,13 +30,15 @@ const DescBookList = ({ books, onHandleDeleteBook }) => {
                                 />
                             ))
                         ) : (
-                            books.map(books => (
-                                <BookListItem
-                                    key={books._id}
-                                    {...books}
-                                    onDeleteBook={onHandleDeleteBook}
-                                />
-                            ))
+                            books
+                                .map(books => (
+                                    <BookListItem
+                                        key={books._id}
+                                        {...books}
+                                        onDeleteBook={onHandleDeleteBook}
+                                    />
+                                ))
+                                .reverse()
                         )
                     ) : (
                         <li className="helpers">
