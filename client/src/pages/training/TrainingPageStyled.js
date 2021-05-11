@@ -7,6 +7,9 @@ const TrainingPageStyled = styled.div`
         flex-wrap: wrap;
     }
     @media (min-width: 1280px) {
+        .containerWrap {
+            height: 100vh;
+        }
         //padding-top: 50px;
     }
     .topPart1 {
@@ -35,7 +38,7 @@ const TrainingPageStyled = styled.div`
     .topPart {
         display: flex;
         flex-direction: row;
-        margin-bottom: 40px;
+        /* margin-bottom: 40px; */
         margin-top: 50px;
     }
 

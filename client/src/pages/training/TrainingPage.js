@@ -42,7 +42,14 @@ const TrainingPage = memo(() => {
 
     return (
         <TrainingPageStyled className="trainingPageStyled training">
-            <div className="container">
+            <div
+                // className={
+                //     isTraining.duration !== 0
+                //         ? 'container containerWrap'
+                //         : 'container'
+                // }
+                className="container containerWrap"
+            >
                 <Desktop>
                     {isTraining.duration !== 0 ? (
                         <>
