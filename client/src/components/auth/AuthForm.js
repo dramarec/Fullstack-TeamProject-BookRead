@@ -6,8 +6,15 @@ import GoogleAuthBtn from './GoogleAuthBtn';
 import { useState } from 'react';
 import pointer from './icons/pointer.png';
 import AuthModal from './AuthModal';
+import { InvalidNotif, UseNotif } from './Notificitaions';
+import { CSSTransition } from 'react-transition-group';
 
-const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
+const AuthForm = ({
+    handleSubmit,
+    errorMessagesSchema,
+    showNotif,
+    setShowNotif,
+}) => {
     const location = useLocation();
     //const match = useRouteMatch();
     const [isOpenModal, setOpenModal] = useState(false);
@@ -15,9 +22,10 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
     const onModal = () => {
         setOpenModal(true);
     };
-    const closeModal = () => {
+
+    /*const closeModal = () => {
         setOpenModal(false);
-    };
+    };*/
     console.log(isOpenModal);
     const initialState =
         location.pathname === '/signup'
@@ -87,6 +95,31 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                                             name="email"
                                             placeholder="your@email.com"
                                         />
+                                        {location.pathname === '/signup' ? (
+                                            <CSSTransition
+                                                in={showNotif}
+                                                onEntered={() =>
+                                                    setShowNotif(false)
+                                                }
+                                                timeout={2000}
+                                                classNames="ntf"
+                                                unmountOnExit
+                                            >
+                                                <UseNotif />
+                                            </CSSTransition>
+                                        ) : (
+                                            <CSSTransition
+                                                in={showNotif}
+                                                onEntered={() =>
+                                                    setShowNotif(false)
+                                                }
+                                                timeout={2000}
+                                                classNames="ntf"
+                                                unmountOnExit
+                                            >
+                                                <InvalidNotif />
+                                            </CSSTransition>
+                                        )}
                                         <span className="authError">
                                             <ErrorMessage name="email" />
                                         </span>
@@ -146,51 +179,52 @@ const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
                                         ? 'Зареєструватися'
                                         : 'Увійти'}
                                 </button>
-                                {location.pathname === '/signup' ? (
-                                    <button
-                                        className="mainButton authFormBtnSec"
-                                        type="button"
-                                    >
-                                        <Link
-                                            to="/"
-                                            className="buttonSignUpMain"
+                                {
+                                    location.pathname === '/signup' ? (
+                                        <button
+                                            className="mainButton authFormBtnSec"
+                                            type="button"
                                         >
-                                            <p className="buttonSignUpMain__text">
-                                                Вже з нами?{' '}
-                                                <span className="buttonSignUpMain__link">
-                                                    {' '}
-                                                    Увійти{' '}
-                                                </span>{' '}
-                                            </p>
-                                        </Link>
-                                    </button>
-                                ) : (
-                                    <button
+                                            <Link
+                                                to="/"
+                                                className="buttonSignUpMain"
+                                            >
+                                                <p className="buttonSignUpMain__text">
+                                                    Вже з нами?{' '}
+                                                    <span className="buttonSignUpMain__link">
+                                                        {' '}
+                                                        Увійти{' '}
+                                                    </span>{' '}
+                                                </p>
+                                            </Link>
+                                        </button>
+                                    ) : /*<button
                                         className="mainButton authFormBtnSec"
                                         type="button"
-                                    >
-                                        {window.innerWidth < 768 ? (
-                                            <a
-                                                to="/signup"
-                                                onClick={onModal}
-                                                className="buttonSignUpMain"
-                                            >
-                                                <span className="buttonSignUpMain__link">
-                                                    Реєстрація
-                                                </span>
-                                            </a>
-                                        ) : (
-                                            <Link
-                                                to="/signup"
-                                                className="buttonSignUpMain"
-                                            >
-                                                <span className="buttonSignUpMain__link">
-                                                    Реєстрація
-                                                </span>
-                                            </Link>
-                                        )}
-                                    </button>
-                                )}
+                                        onClick={onModal}
+                                    >*/
+                                    window.innerWidth < 768 ? (
+                                        <button
+                                            type="button"
+                                            onClick={onModal}
+                                            className="mainButton authFormBtnSec buttonSignUpMain"
+                                        >
+                                            <span className="buttonSignUpMain__link">
+                                                Реєстрація
+                                            </span>
+                                        </button>
+                                    ) : (
+                                        <Link
+                                            to="/signup"
+                                            className="mainButton authFormBtnSec buttonSignUpMain"
+                                        >
+                                            <span className="buttonSignUpMain__link">
+                                                Реєстрація
+                                            </span>
+                                        </Link>
+                                    )
+                                    /* </button>*/
+                                }
                             </Form>
                         )}
                     </Formik>

@@ -25,7 +25,7 @@ const WillReadBooks = () => {
                 </div>
                 <ul>
                     {booksWillRead.map(item => (
-                        <WillReadBookItem book={item} key={item.id} />
+                        <WillReadBookItem book={item} key={item._id} />
                     ))}
                 </ul>
             </Tablet>
@@ -34,7 +34,10 @@ const WillReadBooks = () => {
                     <h2>Маю намір прочитати</h2>
                     <ul>
                         {booksWillRead.map(item => (
-                            <WillReadBookItemMobile book={item} key={item.id} />
+                            <WillReadBookItemMobile
+                                book={item}
+                                key={item._id}
+                            />
                         ))}
                     </ul>
                 </div>
