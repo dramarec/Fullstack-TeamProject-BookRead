@@ -219,5 +219,40 @@ const DescBookListStyle = styled.div`
     .books-library__item.readItem {
         color: var(--secondary-text);
     }
+
+    .scrollbar {
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+
+    .scrollbar::-webkit-scrollbar {
+        visibility: visible;
+        width: 5px;
+        margin-left: 0;
+        background-color: #f5f5f5;
+        border-radius: 10px;
+    }
+    .scrollbar::-webkit-scrollbar-track {
+        visibility: visible;
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #f5f5f5;
+        //border-radius: 10px;
+    }
+    .scrollbar::-webkit-scrollbar-thumb {
+        visibility: visible;
+        height: 10px;
+        width: 5px;
+        background-color: var(--secondary-text);
+        // border-radius: 10px;
+    }
+    .scrollbarText {
+        max-height: 173px;
+        //z-index: 1;
+        position: relative;
+        overscroll-behavior: contain;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 2px;
+    }
 `;
 export default DescBookListStyle;

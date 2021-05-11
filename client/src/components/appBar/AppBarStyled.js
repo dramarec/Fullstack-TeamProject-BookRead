@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const AppBarStyled = styled.div`
+const AppBarStyled = styled.header`
     z-index: 20;
     position: relative;
     font-family: 'Montserrat-Regular';

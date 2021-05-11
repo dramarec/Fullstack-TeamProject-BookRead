@@ -4,15 +4,22 @@ const ResultStyled = styled.div`
     min-width: 270px;
     padding: 10px 17px;
     background-color: #ffffff;
+
     @media screen and (max-width: 767px) {
         margin: 0 auto;
+        height: 340px;
+        margin-bottom: 33px;
     }
     @media (min-width: 768px) and (max-width: 1279px) {
         width: 678px;
         padding: 20px 84px;
+        height: 306px;
+        margin-bottom: 56px;
     }
     @media (min-width: 1280px) {
         width: 275px;
+        margin-left: 41px;
+        height: 340px;
     }
     .resultsTitle {
         font-weight: 600;

@@ -12,7 +12,9 @@ import {
     getWillRead,
     getNowRead,
     getFinishRead,
+    getUserTraining,
 } from '../../redux/selectors/bookSelector';
+import StartTrainingBtn from '../../components/library/StartTrainingBtn';
 
 const LibraryPage = memo(() => {
     const dispatch = useDispatch();
@@ -20,11 +22,14 @@ const LibraryPage = memo(() => {
     const bookNowRead = useSelector(getNowRead);
     const bookFinished = useSelector(getFinishRead);
     const isAuth = useSelector(state => state.auth.token);
+    const isTraining = useSelector(getUserTraining);
 
-    // useEffect(() => {
-    //     isAuth && dispatch(getUsersBooksOperetion());
-    //     // eslint-disable-next-line
-    // }, []);
+    console.log(`isTraining`, isTraining);
+
+    useEffect(() => {
+        isAuth && dispatch(getUsersBooksOperetion());
+        // eslint-disable-next-line
+    }, []);
 
     const Tablet = props => <Responsive {...props} minWidth={768} />;
     const Mobile = props => <Responsive {...props} maxWidth={767} />;
@@ -54,6 +59,9 @@ const LibraryPage = memo(() => {
                     !!booksWillRead.length && <WillReadBooks />
                 ) : (
                     <LibraryModal />
+                )}
+                {booksWillRead.length > 0 && isTraining === null && (
+                    <StartTrainingBtn />
                 )}
             </Tablet>
         </LibraryPageStyled>

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import Responsive from 'react-responsive';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-// import modalActions from '../../redux/actions/modalAction';
 import { addBookOperation } from '../../redux/operations/bookOperation';
 import back from '../../assets/svg/back.svg';
 import LibraryFormStyled from './LibraryFormStyled';
@@ -67,7 +66,7 @@ const LibraryForm = () => {
     };
 
     return (
-        <LibraryFormStyled>
+        <LibraryFormStyled className="container">
             <Mobile>
                 {booksWillRead.length ||
                 bookNowRead.length ||

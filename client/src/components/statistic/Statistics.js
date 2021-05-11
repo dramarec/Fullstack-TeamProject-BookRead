@@ -4,17 +4,17 @@ import StatisticsItem from './StatisticsItem';
 import StatisticsStyled from './StatisticsStyled';
 
 const Statistics = () => {
-   const result = useSelector(state => state.training.results);
-  return (
-    <StatisticsStyled>
-      <h1 className="statisticTitle">Статистика</h1>
-      <ul className="statisticList"> 
-         { result.map(item => 
-                    <StatisticsItem key={item._id} item={item} /> )
-          }
-      </ul>
-    </StatisticsStyled>
-)
-}
+    const result = useSelector(state => state.training.results);
+    return (
+        <StatisticsStyled>
+            <h1 className="statisticTitle">Статистика</h1>
+            <ul className="statisticList">
+                {result
+                    .map(item => <StatisticsItem item={item} key={item._id} />)
+                    .reverse()}
+            </ul>
+        </StatisticsStyled>
+    );
+};
 
 export default Statistics;

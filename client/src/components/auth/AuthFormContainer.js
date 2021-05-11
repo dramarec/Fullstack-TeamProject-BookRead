@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import * as Yup from 'yup';
 import AuthForm from './AuthForm';
 import authOperations from '../../redux/operations/authOperation';
+import { getUsersBooksOperetion } from '../../redux/operations/bookOperation';
 
 const AuthFormContainer = () => {
     const dispatch = useDispatch();
@@ -68,6 +69,7 @@ const AuthFormContainer = () => {
     const signIn = async values => {
         try {
             await dispatch(authOperations.logInOperation(values));
+            await dispatch(getUsersBooksOperetion());
         } catch (err) {
             err.message === 'Email or password is wrong' &&
                 console.log('Email or password is wrong');

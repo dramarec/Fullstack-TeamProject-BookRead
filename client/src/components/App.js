@@ -13,10 +13,12 @@ import loadingSelectors from '../redux/selectors/loadingSelector';
 import Preloader from './loader/preloader/Preloader';
 import authOperations from '../redux/operations/authOperation';
 import trainingOperation from '../redux/operations/trainingOperation';
+import Modal from './modal/Modal';
+import ErrTrainingModal from './endTrainingMdl/ErrTrainingModal';
 
 const App = () => {
     const [preloader, setPreloader] = useState(false);
-    // const [initialModal, setInitialModal] = useState(false);
+    const [initialModal, setInitialModal] = useState(false);
     const dispatch = useDispatch();
     const isLoading = useSelector(loadingSelectors.getLoading);
     const isAuth = useSelector(state => state.auth.token);
@@ -31,23 +33,23 @@ const App = () => {
             dispatch(authOperations.logInWithGoogleOperation(googleToken));
     }, []);
 
-    const initialAction = async () => {
+    const trainingAction = async () => {
         try {
-            await dispatch(getUsersBooksOperetion());
             training !== null &&
                 (await dispatch(trainingOperation.getTrainingOperation()));
         } catch (err) {
             err.message === 'training is over' &&
                 console.log('training is over!!');
             dispatch(getUsersBooksOperetion());
-            /*
-            Тут вызывать переключатель
-            */
+            setInitialModal(true);
         }
     };
+    useEffect(() => {
+        isAuth && dispatch(getUsersBooksOperetion());
+    }, []);
 
     useEffect(() => {
-        isAuth && initialAction();
+        isAuth && trainingAction();
     }, [training]);
 
     useEffect(() => {
@@ -57,6 +59,10 @@ const App = () => {
         //     setPreloader(false);
         // }, 3000);
     }, []);
+
+    const closeModal = () => {
+        setInitialModal(false);
+    };
 
     return (
         <>
@@ -81,6 +87,14 @@ const App = () => {
                             <Redirect to="/" />
                         </Switch>
                     </Suspense>
+                    {initialModal && (
+                        <Modal closeModal={closeModal}>
+                            <ErrTrainingModal
+                                oncloseModal={closeModal}
+                                setInitialModal={setInitialModal}
+                            />
+                        </Modal>
+                    )}
                 </>
             )}
         </>

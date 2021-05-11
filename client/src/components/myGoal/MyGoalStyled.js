@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const MyGoalStyled = styled.div`
     width: 270px;
-    //height: 215px;
+    height: 215px;
     background-color: #ffffff;
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
     //margin-left: auto;
@@ -11,7 +11,7 @@ const MyGoalStyled = styled.div`
     @media screen and (min-width: 768px) and (max-width: 1279px) {
         align-items: flex-start;
         margin-top: 30px;
-        height: 318px;
+
         //margin-bottom: 30px;
         height: ${props => (props.startTraining ? '125px' : '105px')};
         width: 678px;
@@ -24,7 +24,8 @@ const MyGoalStyled = styled.div`
             props.startTraining ? 'space-around' : 'space-between'};
     }
     @media screen and (min-width: 1280px) {
-        margin-top: 50px;
+        margin-top: ${props => (props.startTraining ? '25px' : '0px')};
+        height: 318px;
         width: 275px;
         margin-bottom: 40px;
     }

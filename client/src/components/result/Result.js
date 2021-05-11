@@ -1,6 +1,6 @@
 import ResultStyled from './ResultStyled';
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import { useFormik } from 'formik';
