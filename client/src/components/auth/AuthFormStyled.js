@@ -7,6 +7,31 @@ import bgDec from './photo/dec-bg.png';
 import picTest from './photo/picTest.jpg';
 
 const AuthFormStyled = styled.div`
+.pointer {
+    margin-right: 11px;
+}
+    .backBtn {
+        border: transparent;
+        background-color: transparent;
+        margin-top: 15px;
+        margin-bottom: 40px;
+    }
+    .modal {
+        width: 100%;
+        height: 100%;
+    }
+    .signupDiv {
+        @media (max-width: 767px) {
+            max-width: 100%;
+            min-width: 320px;
+            height: 700px;
+            padding: 0 20px;
+        }
+        @media (min-width: 768px) and (max-width: 1279px) {
+            padding: 60px 0 93px 0;
+        }
+    }
+
     .auth-container {
         @media (max-width: 1279px) {
             display: block;
@@ -18,10 +43,18 @@ const AuthFormStyled = styled.div`
     .div-for-fl {
         flex: 3 1 0;
     }
+    .div-for-fl.container {
+        @media (min-width: 1280px) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
     .bg-ph {
         flex: 2 1 0;
         @media (min-width: 1280px) {
-            padding: 185px 83px;
+            padding-top: ${props => (props.path ? '92px' : '185px')};
+            //padding-top: 185px;
         }
     }
     .buttonSignUpMain__text {
@@ -32,7 +65,7 @@ const AuthFormStyled = styled.div`
         color: var(--accent-color);
     }
     .signupDiv {
-        @media (min-width: 768px) and (max-width: 1279px) {
+        @media and (min-width: 768px) and (max-width: 1279px) {
             padding: 0 110px;
         }
     }
@@ -43,7 +76,6 @@ const AuthFormStyled = styled.div`
     }
 
     .wrapper {
-        position: relative;
         display: grid;
         height: 30px;
     }
@@ -51,6 +83,7 @@ const AuthFormStyled = styled.div`
         background: url(${bgMob}), url(${imgMob});
         background-repeat: no-repeat;
         background-size: cover;
+        //min-height: 444px;
         max-height: 656px;
         width: 100%;
     }
@@ -61,7 +94,6 @@ const AuthFormStyled = styled.div`
     .btn-google {
         font-weight: bold;
         font-size: 16px;
-
         text-align: center;
         color: #707375;
         background: #f5f7fa;
@@ -75,15 +107,21 @@ const AuthFormStyled = styled.div`
     }
     .authFormText {
         display: flex;
+        margin-top: 10px;
         align-items: baseline;
-        font-family: Montserrat-Medium;
+        font-family: Montserrat-SemiBold;
         font-size: 14px;
         line-height: 2.71;
         color: #ffffff;
     }
+    .authFormList .authFormText
+    {
+          margin-top: 0;
+    }
     .authFormStar {
         color: #ff6b08;
         font-size: 14px;
+        margin-left: 4px;
     }
 
     .authFormBtn {
@@ -116,7 +154,7 @@ const AuthFormStyled = styled.div`
         font-size: 14px;
         line-height: 1.21;
         letter-spacing: 0.04em;
-        margin-bottom: 25px;
+        //margin-bottom: 25px;
     }
     .authFormInput {
         font-family: 'Montserrat-Regular';
@@ -146,7 +184,7 @@ const AuthFormStyled = styled.div`
         margin: 0 auto;
         text-align: center;
         box-sizing: border-box;
-        //width: 229px;
+        width: 229px;
         font-family: 'Montserrat-Medium';
     }
     .svg {
@@ -209,8 +247,8 @@ const AuthFormStyled = styled.div`
             max-height: 610px;
             background-color: white;
             margin: 0 auto;
-            margin-top: 70px;
-            margin-bottom: 70px;
+            margin-top: 60px;
+            margin-bottom: 60px;
         }
         .div-for-fl {
             width: fit-content;
@@ -224,9 +262,9 @@ const AuthFormStyled = styled.div`
             display: flex;
             justify-content: center;
         }
-        .div-cont {
-            padding-top: 62px;
-        }
+        /*.div-cont{
+          padding-top: 62px;
+    }*/
         .teza {
             font-size: 24px;
             margin: 0 auto;
@@ -263,10 +301,14 @@ const AuthFormStyled = styled.div`
     @media (min-width: 1280px) {
         .container.bg-ph {
             background-size: cover;
+            padding-left: 0;
+            padding-right: 0;
         }
         .bg-ph {
             max-height: 100%;
             margin-bottom: -200px;
+            //max-height: 790px;
+            //height: 790px;
             background: url(${bgDec}), url(${picTest});
             background-repeat: no-repeat;
             width: 100%;
@@ -275,14 +317,14 @@ const AuthFormStyled = styled.div`
         .authForm {
             display: flex;
             flex-direction: column;
+            margin: 0 auto;
             width: 400px;
             background-color: white;
-
             max-height: 610px;
             max-height: 610px;
         }
         .div-cont {
-            padding-top: 266px;
+            padding-top: 206px;
         }
 
         .div-for-fl {
@@ -341,126 +383,118 @@ const AuthFormStyled = styled.div`
         font-family: 'AbrilFatface-Regular';
         font-weight: normal;
         font-size: 34px;
-
-        padding-top: 30px;
-        margin-bottom: 20px;
-    }
-    .titleSignUp {
-        font-family: 'Montserrat-Medium';
-        font-weight: 500;
-        font-size: 20px;
-        margin-top: 20px;
-    }
-    .instraction {
-        font-family: 'Montserrat-Medium';
-        font-weight: 500;
-        font-size: 14px;
-        color: #898f9f;
-        line-height: 2.71;
-    }
-    .sign {
-        width: fit-content;
-        margin: 0 auto;
-    }
-    .buttonSign {
-        width: 127px;
-        height: 40px;
-        border: none;
-        margin-top: 31px;
-        margin-bottom: 58px;
-    }
-    .buttonSign.in {
-        border: 1px solid var(--main-text);
-        background-color: transparent;
-        margin-right: 16px;
-    }
-    .buttonSign.up {
-        background-color: var(--accent-color);
-    }
-    .buttonSign a {
-        text-decoration: none;
-        font-size: 14px;
-        font-family: 'Montserrat-Regular';
-        line-height: 2.71;
-    }
-    .buttonSign.up a {
-        color: var(--light-text);
-    }
-    .buttonSign.in a {
-        color: var(--main-text);
-    }
-
-    .buttonSignUpMain {
-        width: 127px;
-        height: 40px;
-        color: #ff6b08;
-        margin-top: 5px;
-        border: none;
-        text-decoration: none;
-        font-family: 'Montserrat-Medium';
-    }
-
-    .buttonSignUpMain__text {
-        color: var(--secondary-text);
-    }
-    .buttonSignUp:last-child {
-        margin-left: 16px;
-    }
-    .buttonSignUp:hover {
-        background: orange;
-        color: white;
-        border: none;
-    }
-    .buttonSignUp:focus {
-        background: orange;
-        color: white;
-        border: none;
-    }
-    @media (min-width: 768px) and (max-width: 1279px) {
+        line-height: 1.1;
+        //padding-top: 30px;
+        
+        }
+        .titleSignUp {
+            font-family: 'Montserrat-Medium';
+            font-weight: 500;
+            font-size: 20px;
+            //margin-top: 20px;
+            line-height: 1.9;
+            margin-bottom: 4px;
+            @media (max-width: 767px) {
+            margin-top: 20px;
+        }
+        }
+        .instraction {
+            font-family: 'Montserrat-Medium';
+            font-weight: 500;
+            font-size: 14px;
+            color: #898f9f;
+            line-height: 1.21;
+            margin-top: 14px;
+            @media (min-width: 768px) {
+                line-height: 2.71;
+                 margin-top: 0;
+            }
+        }
         .sign {
-            display: none;
+            width: fit-content;
+            margin: 0 auto;
         }
-        .last {
-            padding-bottom: 93px;
-        }
-        .mainTitleSignUp {
-            padding-top: 60px;
-            padding-bottom: 20px;
-        }
-    }
-    @media (min-width: 1280px) {
         .buttonSign {
-            display: none;
+            width: 127px;
+            height: 40px;
+            border: none;
+            margin-top: 31px;
+            margin-bottom: 58px;
         }
-        .last {
-            padding-bottom: 93px;
+        .buttonSign.in {
+            border: 1px solid var(--main-text);
+            background-color: transparent;
+            margin-right: 16px;
         }
-        .mainTitleSignUp {
-            padding-top: 133px;
-            text-align: center;
-            padding-bottom: 32px;
-            margin-right: 90px;
+        .buttonSign.up {
+            background-color: var(--accent-color);
         }
-        .signupDiv {
-            padding-left: 90px;
+        .buttonSign a {
+            text-decoration: none;
+            font-size: 14px;
+            font-family: 'Montserrat-Regular';
+            line-height: 2.71;
         }
-    }
+        .buttonSign.up a {
+            color: var(--light-text);
+        }
+        .buttonSign.in a {
+            color: var(--main-text);
+        }
 
-    .ntf-enter {
-        opacity: 0;
-    }
-    .ntf-enter-active {
-        opacity: 1;
+        .buttonSignUpMain {
+            width: 127px;
+            height: 40px;
+            color: #ff6b08;
+            margin-top: 5px;
+            border: none;
+            text-decoration: none;
+            font-family: 'Montserrat-Medium';
+        }
 
-        transition: all 250ms linear;
-    }
-    .ntf-exit {
-        opacity: 1;
-    }
-    .ntf-exit-active {
-        opacity: 0;
-
-        transition: all 250ms linear;
+        .buttonSignUpMain__text {
+            color: var(--secondary-text);
+        }
+        .buttonSignUp:last-child {
+            margin-left: 16px;
+        }
+        .buttonSignUp:hover {
+            background: orange;
+            color: white;
+            border: none;
+        }
+        .buttonSignUp:focus {
+            background: orange;
+            color: white;
+            border: none;
+        }
+        @media (min-width: 768px) and (max-width: 1279px) {
+            .sign {
+                display: none;
+            }
+            .mainTitleSignUp {
+                padding-top: 0;
+                padding-bottom: 40px;
+            }
+        }
+        @media (min-width: 1280px) {
+            .buttonSign {
+                display: none;
+            }
+            .last {
+                padding-bottom: 93px;
+            }
+            .mainTitleSignUp {
+                //padding-top: 133px;
+                text-align: center;
+                margin-bottom: 52px;
+                margin-right: 90px;
+            }
+            .signupDiv {
+                padding-left: 90px;
+                padding-top: 133px;
+            }
+        }
     }
 `;
 export default AuthFormStyled;

@@ -55,9 +55,9 @@ class bookReadApi {
             });
     }
 
-    addReviewToBook(id, review) {
+    addReviewToBook(id, book) {
         return axios
-            .patch(`/books/${id}`, review)
+            .patch(`/books/${id}`, book)
             .then(res => res.data.data)
             .catch(err => {
                 throw new Error(err.response.data.message);

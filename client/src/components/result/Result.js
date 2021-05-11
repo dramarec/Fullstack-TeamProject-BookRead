@@ -51,8 +51,10 @@ const Result = () => {
         }
     };
 
+    //totalReadPages === totalPages && console.log('you are awesome')
+
     return (
-        <ResultStyled>
+        <ResultStyled className="resultStyled">
             <p className="resultsTitle">Результати</p>
             <form
                 className="resultsForm"

@@ -37,6 +37,7 @@ const addBookOperation = book => async dispatch => {
         // const { data } = response;
         //console.log(`response.data ===>`, response.data.data.newBook);
 
+        //dispatch(addNewBookSuccess(data));
         //console.log(`data`, data);
 
         dispatch(addNewBookSuccess(response));
@@ -46,18 +47,22 @@ const addBookOperation = book => async dispatch => {
 };
 
 const getUsersBooksOperetion = () => async (dispatch, getState) => {
+    dispatch(getUsersBooksRequest());
     const accessToken = getState().auth.token;
 
     token.set(accessToken);
-    dispatch(getUsersBooksRequest());
     try {
-        const response = await axios.get('/users/user');
+        const data = await api.getLibraryInfo();
+
+        //api.setToken(data.token);
+
+        //const response = await axios.get('/users/user');
         //dispatch(console.log(response.data));
-        dispatch(getUsersBooksSuccess(response.data.data));
+        dispatch(getUsersBooksSuccess(data));
         // console.log(response.data);
     } catch (error) {
         dispatch(getUsersBooksError(error.message));
-        throw error;
+        //throw error;
     }
 };
 
@@ -65,6 +70,7 @@ const changeBookOperation = (id, book) => async dispatch => {
     //const bookId = book._id
     dispatch(changeBookRequest());
     try {
+        //await api.addReviewToBook(id, book);
         await axios.patch(`/books/${id}`, book);
         dispatch(changeBookSuccess({ ...book }));
         //console.log('OperBook',book);

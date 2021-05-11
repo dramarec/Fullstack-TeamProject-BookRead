@@ -6,7 +6,7 @@ import StatisticsStyled from './StatisticsStyled';
 const Statistics = () => {
     const result = useSelector(state => state.training.results);
     return (
-        <StatisticsStyled>
+        <StatisticsStyled className="statisticsStyled">
             <h1 className="statisticTitle">Статистика</h1>
             <ul className="statisticList">
                 {result

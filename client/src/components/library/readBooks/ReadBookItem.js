@@ -1,5 +1,5 @@
 /*import React, { useState } from 'react';
-import {/* useDispatch,*//* useSelector } from 'react-redux';
+import {/* useDispatch,*/ /* useSelector } from 'react-redux';
 import book from '../../../assets/svg/book.svg';
 import Modal from '../../modal/Modal';
 import ReviewModal from '../reviewModal/ReviewModal';
@@ -21,7 +21,7 @@ const ReadBookItem = ({ item }) => {
         setisOpen(true);
         /*dispatch(modalActions.toggleModal());
     document.body.style.overflow = 'visible';*/
-   /* };
+/* };
     const closeModal = () => {
         setisOpen(false);
     };
@@ -67,9 +67,8 @@ const ReadBookItem = ({ item }) => {
 
 export default ReadBookItem;*/
 
-
 import React, { useState } from 'react';
-import {/* useDispatch,*/ useSelector } from 'react-redux';
+import { /* useDispatch,*/ useSelector } from 'react-redux';
 import book from '../../../assets/svg/book.svg';
 import Modal from '../../modal/Modal';
 import ReviewModal from '../reviewModal/ReviewModal';
@@ -98,7 +97,10 @@ const ReadBookItem = ({ item }) => {
     //console.log(data);
     return (
         <>
-            <ReadBookItemStyled>
+            <ReadBookItemStyled
+                className="readBookItemStyled"
+                isReview={!item.review}
+            >
                 <div className="bookName">
                     <img src={book} alt="" />
                     <p>{item.title}</p>
@@ -136,8 +138,3 @@ const ReadBookItem = ({ item }) => {
 };
 
 export default ReadBookItem;
-
-
-
-
-

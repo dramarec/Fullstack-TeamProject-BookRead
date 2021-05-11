@@ -4,6 +4,7 @@ const GoogleAuthStyle = styled.div`
     margin-left: auto;
     margin-right: auto;
     margin-top: 40px;
+    margin-bottom: 14px;
     .google-btn {
         display: inline-block;
         position: relative;

@@ -35,7 +35,7 @@ const LibraryPage = memo(() => {
     const Mobile = props => <Responsive {...props} maxWidth={767} />;
 
     return (
-        <LibraryPageStyled>
+        <LibraryPageStyled className="libraryPageStyled library">
             <Mobile>
                 {bookFinished.length > 0 && <ReadBooks />}
                 {bookNowRead.length > 0 && <ReadingBooks />}

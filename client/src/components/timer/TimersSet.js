@@ -12,9 +12,9 @@ const TimersSet = () => {
     //const isTraining = useSelector(getTraining)
     //const dataEnd ={isTraining.end}
     //console.log('dataStart', dataStart);
-     //console.log('endDate', endDate);
+    //console.log('endDate', endDate);
     return (
-        <TimerToDayStyled>
+        <TimerToDayStyled className="timerToDayStyled">
             <div className="timerYear">
                 <p className="timer-title">До закінчення року залишилось</p>
                 <TimerToDay data={data /*'December 31, 2021 00:00:00:00'*/} />
