@@ -55,9 +55,9 @@ const getTraining = async (req, res, next) => {
                         }
                     }
 
-                    await Training.deleteOne({ _id: req.user.training });
+                    await Training.deleteOne({ _id: user.training });
 
-                    req.user.training = null;
+                    user.training = null;
 
                     await user.save();
 

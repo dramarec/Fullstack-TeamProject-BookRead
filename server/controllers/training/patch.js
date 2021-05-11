@@ -44,7 +44,6 @@ const addRead = async (req, res, next) => {
             }
 
             await training.save();
-           
 
             const {
                 _id,
@@ -68,7 +67,6 @@ const addRead = async (req, res, next) => {
             };
 
             await arrayBook.save();
-            console.log('arrayBook', );
 
             book = validateBook;
             totalPages = pages;
@@ -83,12 +81,11 @@ const addRead = async (req, res, next) => {
         }, training.books);
 
         if (training.totalReadPages === training.totalPages) {
-            console.log('user.bboks', user.books)
-            await Training.deleteOne({ _id: req.user.training });
+            await Training.deleteOne({ _id: user.training });
 
-            req.user.training = null;
-            // console.log(req.user.training);
-            await req.user.save();
+            user.training = null;
+
+            await user.save();
 
             return res.status(200).json({
                 status: 'success',
@@ -120,8 +117,6 @@ const addRead = async (req, res, next) => {
 
         date = currentDate.toFormat('yyyy-LL-dd');
         pages = totalPages;
-
-        console.log(date, 'end test');
 
         training.results.push({ date, pageCount: pages });
 

@@ -3,7 +3,7 @@ const { booksServices } = require('../../services');
 const updateOneBook = async (req, res, next) => {
     try {
         const userID = req.user.id;
-        console.log(userID);
+
         const book = await booksServices.updateBook(
             userID,
             req.params.bookId,
