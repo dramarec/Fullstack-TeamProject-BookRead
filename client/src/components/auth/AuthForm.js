@@ -1,19 +1,24 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { CSSTransition } from 'react-transition-group';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useRouteMatch } from 'react-router-dom';
 import AuthFormStyled from './AuthFormStyled';
 import Two from './icons/two';
 import GoogleAuthBtn from './GoogleAuthBtn';
-import { UseNotif, InvalidNotif } from './Notificitaions';
+import { useState } from 'react';
+import pointer from './icons/pointer.png';
+import AuthModal from './AuthModal';
 
-const AuthForm = ({
-    handleSubmit,
-    errorMessagesSchema,
-    showNotif,
-    setShowNotif,
-}) => {
+const AuthForm = ({ handleSubmit, errorMessagesSchema }) => {
     const location = useLocation();
+    //const match = useRouteMatch();
+    const [isOpenModal, setOpenModal] = useState(false);
 
+    const onModal = () => {
+        setOpenModal(true);
+    };
+    const closeModal = () => {
+        setOpenModal(false);
+    };
+    console.log(isOpenModal);
     const initialState =
         location.pathname === '/signup'
             ? {
@@ -25,7 +30,7 @@ const AuthForm = ({
             : { email: '', password: '' };
 
     return (
-        <AuthFormStyled>
+        <AuthFormStyled path={location.pathname === '/signup'}>
             <div className="auth-container">
                 <div className="container bg-ph">
                     <Formik
@@ -36,7 +41,7 @@ const AuthForm = ({
                         }}
                     >
                         {({ errors, touched }) => (
-                            <Form className="authForm">
+                            /* location.pathname !== '/signup/rules' &&*/ <Form className="authForm">
                                 <GoogleAuthBtn />
 
                                 {location.pathname === '/signup' && (
@@ -44,6 +49,7 @@ const AuthForm = ({
                                         <span className="authFormText">
                                             Ім'я{' '}
                                             <sup className="authFormStar">
+                                                {' '}
                                                 *
                                             </sup>
                                         </span>
@@ -81,31 +87,6 @@ const AuthForm = ({
                                             name="email"
                                             placeholder="your@email.com"
                                         />
-                                        {location.pathname === '/signup' ? (
-                                            <CSSTransition
-                                                in={showNotif}
-                                                onEntered={() =>
-                                                    setShowNotif(false)
-                                                }
-                                                timeout={2000}
-                                                classNames="ntf"
-                                                unmountOnExit
-                                            >
-                                                <UseNotif />
-                                            </CSSTransition>
-                                        ) : (
-                                            <CSSTransition
-                                                in={showNotif}
-                                                onEntered={() =>
-                                                    setShowNotif(false)
-                                                }
-                                                timeout={2000}
-                                                classNames="ntf"
-                                                unmountOnExit
-                                            >
-                                                <InvalidNotif />
-                                            </CSSTransition>
-                                        )}
                                         <span className="authError">
                                             <ErrorMessage name="email" />
                                         </span>
@@ -165,11 +146,11 @@ const AuthForm = ({
                                         ? 'Зареєструватися'
                                         : 'Увійти'}
                                 </button>
-                                <button
-                                    className="mainButton authFormBtnSec"
-                                    type="submit"
-                                >
-                                    {location.pathname === '/signup' ? (
+                                {location.pathname === '/signup' ? (
+                                    <button
+                                        className="mainButton authFormBtnSec"
+                                        type="button"
+                                    >
                                         <Link
                                             to="/"
                                             className="buttonSignUpMain"
@@ -182,17 +163,34 @@ const AuthForm = ({
                                                 </span>{' '}
                                             </p>
                                         </Link>
-                                    ) : (
-                                        <Link
-                                            to="/signup"
-                                            className="buttonSignUpMain"
-                                        >
-                                            <span className="buttonSignUpMain__link">
-                                                Реєстрація
-                                            </span>
-                                        </Link>
-                                    )}
-                                </button>
+                                    </button>
+                                ) : (
+                                    <button
+                                        className="mainButton authFormBtnSec"
+                                        type="button"
+                                    >
+                                        {window.innerWidth < 768 ? (
+                                            <a
+                                                to="/signup"
+                                                onClick={onModal}
+                                                className="buttonSignUpMain"
+                                            >
+                                                <span className="buttonSignUpMain__link">
+                                                    Реєстрація
+                                                </span>
+                                            </a>
+                                        ) : (
+                                            <Link
+                                                to="/signup"
+                                                className="buttonSignUpMain"
+                                            >
+                                                <span className="buttonSignUpMain__link">
+                                                    Реєстрація
+                                                </span>
+                                            </Link>
+                                        )}
+                                    </button>
+                                )}
                             </Form>
                         )}
                     </Formik>
@@ -209,88 +207,91 @@ const AuthForm = ({
                             <p className="becon line">Бэкон Ф.</p>
                         </div>
                     )}
-                    {location.pathname === '/signup' && (
-                        <div className="signupDiv">
-                            <h1 className="mainTitleSignUp">Books Reading</h1>
-                            <h2 className="titleSignUp">Допоможе вам</h2>
-                            <ul>
-                                <li className="authFormText">
-                                    <sup className="authFormSym">{'>'}</sup>
-                                    <p className="instraction">
-                                        Швидше сформулювати свою ціль і
-                                        розпочати читати
-                                    </p>
-                                </li>
-                                <li className="authFormText">
-                                    <sup className="authFormSym">{'>'}</sup>
-                                    <p className="instraction">
-                                        Пропорційно розподілити навантаження на
-                                        кожний день
-                                    </p>
-                                </li>
-                                <li className="authFormText">
-                                    <sup className="authFormSym">{'>'}</sup>
-                                    <p className="instraction">
-                                        Відстежувати особистий успіх
-                                    </p>
-                                </li>
-                            </ul>
-                            <h2 className="titleSignUp">Також ви зможете</h2>
-                            <ul>
-                                <li className="authFormText ">
-                                    <sup className="authFormSym">{'>'}</sup>
-                                    <p className="instraction">
-                                        Формувати особисту думку незалежну від
-                                        інших
-                                    </p>
-                                </li>
-                                <li className="authFormText">
-                                    <sup className="authFormSym">{'>'}</sup>
-                                    <p className="instraction">
-                                        Підвищити свої професійні якості
-                                        опираючись на нові знання
-                                    </p>
-                                </li>
-                                <li className="authFormText last">
-                                    <sup className="authFormSym">{'>'}</sup>
-                                    <p className="instraction">
-                                        Стати цікавим співрозмовником
-                                    </p>
-                                </li>
-                            </ul>
-                            <div className="sign">
-                                <button className="buttonSign in">
-                                    <Link to="/">Увійти</Link>
-                                </button>
-                                <button className="buttonSign up">
-                                    <Link to="/signup">Реєстрація</Link>
-                                </button>
-                            </div>
-                        </div>
+                    {isOpenModal && window.innerWidth < 767 && (
+                        <AuthModal setOpenModal={setOpenModal} />
                     )}
+                    {window.innerWidth > 767 &&
+                        location.pathname === '/signup' && (
+                            <div className="signupDiv">
+                                <h1 className="mainTitleSignUp">
+                                    Books Reading
+                                </h1>
+                                <h2 className="titleSignUp">Допоможе вам</h2>
+                                <ul className="authFormList">
+                                    <li className="authFormText">
+                                        <img
+                                            className="pointer"
+                                            src={pointer}
+                                            alt=""
+                                        />
+                                        <p className="instraction">
+                                            Швидше сформулювати свою ціль і
+                                            розпочати читати
+                                        </p>
+                                    </li>
+                                    <li className="authFormText">
+                                        <img
+                                            className="pointer"
+                                            src={pointer}
+                                            alt=""
+                                        />
+                                        <p className="instraction">
+                                            Пропорційно розподілити навантаження
+                                            на кожний день
+                                        </p>
+                                    </li>
+                                    <li className="authFormText">
+                                        <img
+                                            className="pointer"
+                                            src={pointer}
+                                            alt=""
+                                        />
+                                        <p className="instraction">
+                                            Відстежувати особистий успіх
+                                        </p>
+                                    </li>
+                                </ul>
+                                <h2 className="titleSignUp">
+                                    Також ви зможете
+                                </h2>
+                                <ul className="authFormList">
+                                    <li className="authFormText ">
+                                        <img
+                                            className="pointer"
+                                            src={pointer}
+                                            alt=""
+                                        />
+                                        <p className="instraction">
+                                            Формувати особисту думку незалежну
+                                            від інших
+                                        </p>
+                                    </li>
+                                    <li className="authFormText">
+                                        <img
+                                            className="pointer"
+                                            src={pointer}
+                                            alt=""
+                                        />
+                                        <p className="instraction">
+                                            Підвищити свої професійні якості
+                                            опираючись на нові знання
+                                        </p>
+                                    </li>
+                                    <li className="authFormText last">
+                                        <img
+                                            className="pointer"
+                                            src={pointer}
+                                            alt=""
+                                        />
+                                        <p className="instraction">
+                                            Стати цікавим співрозмовником
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        )}
                 </div>
             </div>
-            {/* {location.pathname === '/signup' ? (
-                <CSSTransition
-                    in={showNotif}
-                    onEntered={() => setShowNotif(true)}
-                    timeout={2000}
-                    classNames="ntf"
-                    unmountOnExit
-                >
-                    <UseNotif />
-                </CSSTransition>
-            ) : (
-                <CSSTransition
-                    in={showNotif}
-                    onEntered={() => setShowNotif(true)}
-                    timeout={2000}
-                    classNames="ntf"
-                    unmountOnExit
-                >
-                    <InvalidNotif />
-                </CSSTransition>
-            )} */}
         </AuthFormStyled>
     );
 };

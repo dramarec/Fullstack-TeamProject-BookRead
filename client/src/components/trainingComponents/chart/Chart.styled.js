@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 
 const ChartWrapper = styled.div`
+
+   .chart-box {
+    margin-left: -40px;
+    @media screen and (min-width: 768px) {
+        margin-left: -30px;
+        }
+    }
+
     @media screen and (max-width: 767px) {
         margin: 0 auto 30px;
     }

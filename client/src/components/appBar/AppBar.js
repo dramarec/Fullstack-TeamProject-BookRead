@@ -30,8 +30,8 @@ const AppBar = () => {
     };
 
     return (
-        <AppBarStyled>
-            <div className="container">
+        <AppBarStyled className="appBarStyled">
+            <div className="container ">
                 <nav className="navigation">
                     {isAuth ? (
                         <ul className="navlist">

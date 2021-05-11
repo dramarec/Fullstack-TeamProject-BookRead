@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, Suspense } from 'react';
 import AppBar from './appBar/AppBar';
-import { Switch, Redirect } from 'react-router-dom';
+import { Switch, Redirect, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Spin from './loader/Spin';
 import mainRoutes from '../routes/routes';
@@ -13,6 +13,11 @@ import loadingSelectors from '../redux/selectors/loadingSelector';
 import Preloader from './loader/preloader/Preloader';
 import authOperations from '../redux/operations/authOperation';
 import trainingOperation from '../redux/operations/trainingOperation';
+//import usePersistedTheme from './theme/persistedTheme';
+//import { ThemeProvider } from 'styled-components';
+//import light from '../themes/light';
+//import dark from '../themes/dark';
+//import GlobalStyle from '../themes/GlobalStyle';
 import Modal from './modal/Modal';
 import ErrTrainingModal from './endTrainingMdl/ErrTrainingModal';
 
@@ -59,6 +64,10 @@ const App = () => {
         //     setPreloader(false);
         // }, 3000);
     }, []);
+    /*const [theme, setTheme] = usePersistedTheme('theme', light);
+    const toggleTheme = () => {
+        setTheme(theme.title === 'light' ? dark : light);
+    };*/
 
     const closeModal = () => {
         setInitialModal(false);
@@ -71,7 +80,20 @@ const App = () => {
             ) : (
                 <>
                     {isLoading && <Spin />}
+
                     <AppBar />
+                    {/*isAuth && (
+                            <div className="container">
+                                <label id="switch" className="switch">
+                                    <input
+                                        onChange={toggleTheme}
+                                        type="checkbox"
+                                        id="slider"
+                                    />
+                                    <span className="slider round"></span>
+                                </label>
+                            </div>
+                        )*/}
                     <Suspense fallback={''}>
                         <Switch>
                             {mainRoutes.map(route =>
@@ -87,6 +109,7 @@ const App = () => {
                             <Redirect to="/" />
                         </Switch>
                     </Suspense>
+
                     {initialModal && (
                         <Modal closeModal={closeModal}>
                             <ErrTrainingModal
@@ -102,3 +125,7 @@ const App = () => {
 };
 
 export default App;
+
+/* <{/*ThemeProvider theme={theme}}>
+                        <GlobalStyle />
+                        </ThemeProvider>*/
