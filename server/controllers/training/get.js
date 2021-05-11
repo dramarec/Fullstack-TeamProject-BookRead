@@ -5,8 +5,6 @@ const getTraining = async (req, res, next) => {
     try {
         const user = req.user;
 
-        // console.log(`user first`, user);
-
         return await Training.findOne({ _id: user?.training })
             .populate('books')
             .exec(async (err, data) => {
@@ -39,38 +37,27 @@ const getTraining = async (req, res, next) => {
                 );
                 const duration = endDate.diff(dateNow, 'days').toObject().days;
 
-                // const newBooksList = [];
+                const newBooksList = [];
 
                 if (!duration || duration < 1) {
-                    // // console.log(`data.books`, data.books);
-                    // const newUser = await User.findOne(user._id).populate(
-                    //     'books',
-                    // );
-                    // newUser.books.forEach((item, idx) => {
-                    //     // console.log(`idx`, idx);
-                    //     // console.log(`item`, item);
-                    //     if (item.readPages < item.numberOfPages) {
-                    //         let newItem = Object.create(item);
-                    //         item.readPages = 0;
+                    const newUser = await User.findOne(user._id).populate(
+                        'books',
+                    );
 
-                    //         newBooksList.push(newItem);
-                    //     }
-                    // }, newUser.books);
-
-                    // // console.log(`------------------newBooksList`);
-
-                    // // newBooksList.forEach(item => {
-                    // //     console.log(`item`, item);
-                    // // });
+                    for (let i = 0; i < newUser.books.length; i++) {
+                        if (
+                            newUser.books[i].readPages <
+                            newUser.books[i].numberOfPages
+                        ) {
+                            newUser.books[i].readPages = 0;
+                            await newUser.books[i].save();
+                            newBooksList.push(newUser.books[i]);
+                        }
+                    }
 
                     await Training.deleteOne({ _id: req.user.training });
-                    // user.books = newBooksList;
 
-                    // console.log(`------user.books`, user.books);
-                    // console.log(`------newBooksList`, newBooksList);
                     req.user.training = null;
-
-                    console.log(`user second`, user);
 
                     await user.save();
 
