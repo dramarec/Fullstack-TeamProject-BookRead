@@ -59,10 +59,10 @@ const googleRedirect = async (req, res, next) => {
         const email = userData.data.email;
         const username = userData.data.name;
 
-        const user = await userServices.findUserByEmail(email);
+        let user = await userServices.findUserByEmail(email);
         const password = process.env.JWT_SECRET_KEY;
         if (!user) {
-            await userServices.addUser({ email, username, password });
+            user = await userServices.addUser({ email, username, password });
         }
 
         const id = user._id;
