@@ -73,23 +73,16 @@ const StatisticsStyled = styled.div`
         overflow-y: auto;
         display: flex;
         flex-direction: column-reverse;
-        @media (max-width: 767px) {
-            //height: 110px;
-        }
+
         @media (min-width: 768px) and (max-width: 1279px) {
             width: 250px;
-            //height: 157px;
-        }
-        @media (min-width: 1280px) {
-            //height: 110px;
         }
     }
     .statisticItem {
         list-style: none;
         display: flex;
-        justify-content: space-around;
-        @media (min-width: 768px) and (max-width: 1279px) {
-            justify-content: space-between;
+        justify-content: space-between;
+        @media (min-width: 768px) {
             margin-right: 8px;
         }
     }
@@ -105,16 +98,6 @@ const StatisticsStyled = styled.div`
         color: #898f9f;
         margin-left: 5px;
     }
-    // css transition styles
-    /* .statisticListItem-enter {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-    .statisticListItem-enter-active {
-        opacity: 1;
-        transform: translateX(0);
-        transition: all 250ms linear;
-    } */
 
     .scrollbar {
         overflow-y: auto;
@@ -127,7 +110,6 @@ const StatisticsStyled = styled.div`
         width: 5px;
         margin-left: 0;
         background-color: #f5f5f5;
-        //border-radius: 10px;
     }
     .scrollbar::-webkit-scrollbar-track {
         visibility: visible;
@@ -140,34 +122,14 @@ const StatisticsStyled = styled.div`
         height: 10px;
         width: 5px;
         background-color: var(--secondary-text);
-        // border-radius: 10px;
     }
     .scrollbarText {
         max-height: 88px;
-        //z-index: 1;
         position: relative;
         overscroll-behavior: contain;
         overflow-y: auto;
         overflow-x: hidden;
         padding-right: 2px;
-    }
-
-    .tr-enter {
-        opacity: 0;
-    }
-    .tr-enter-active {
-        opacity: 1;
-        transform: translateX(100%);
-        transition: all 250ms linear;
-        // transition: opacity 500ms ease-in;
-    }
-    .tr-exit {
-        opacity: 1;
-    }
-    .tr-exit-active {
-        opacity: 0;
-        transform: translateX(-100%);
-        transition: all 250ms linear;
     }
 `;
 export default StatisticsStyled;

@@ -8,7 +8,6 @@ const AppBarStyled = styled.header`
 
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
     .container {
-        /* height: 60px; */
         padding: 11px 25px;
     }
     .secondContainer {

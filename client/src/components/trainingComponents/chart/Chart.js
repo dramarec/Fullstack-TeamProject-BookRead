@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Responsive from 'react-responsive';
 import {
     ResponsiveContainer,
@@ -7,12 +8,10 @@ import {
     CartesianGrid,
     XAxis,
     YAxis,
-    //Tooltip,
     Legend,
 } from 'recharts';
 import { getTraining } from '../../../redux/selectors/bookSelector';
 import ChartWrapper from './Chart.styled';
-import { useSelector } from 'react-redux';
 
 const style = {
     top: 100,
@@ -119,8 +118,6 @@ const Chart = () => {
                             <YAxis fontSize="12px" />
 
                             <Legend
-                                //onMouseEnter={handleMouseEnter}
-                                //onMouseLeave={handleMouseLeave}
                                 iconSize={0}
                                 layout="vertical"
                                 verticalAlign="middle"
@@ -172,8 +169,6 @@ const Chart = () => {
                             <YAxis fontSize="10px" />
 
                             <Legend
-                                //onMouseEnter={handleMouseEnter}
-                                //onMouseLeave={handleMouseLeave}
                                 iconSize={0}
                                 layout="vertical"
                                 verticalAlign="middle"
@@ -187,7 +182,6 @@ const Chart = () => {
                 </div>
             </Mobile>
         </ChartWrapper>
-        // </div>
     );
 };
 

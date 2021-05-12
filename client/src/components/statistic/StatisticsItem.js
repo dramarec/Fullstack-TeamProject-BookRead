@@ -5,7 +5,7 @@ const StatisticsItem = ({ item }) => {
         return str.split('-').reverse().join('.');
     };
     const changedDate = reverseString(item.date);
-    //console.log(res);
+
     return (
         <li className="statisticItem">
             <span className="date">{changedDate}</span>

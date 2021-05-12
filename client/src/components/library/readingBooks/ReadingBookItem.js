@@ -3,7 +3,6 @@ import bookOrg from '../../../assets/svg/bookOrg.svg';
 import ReadingBookItemStyled from './ReadingBookItemStyled';
 
 const ReadingBookItem = ({ item }) => {
-    // console.log('item', item);
     return (
         <ReadingBookItemStyled className="readingBookItemStyled">
             <div className="bookName">

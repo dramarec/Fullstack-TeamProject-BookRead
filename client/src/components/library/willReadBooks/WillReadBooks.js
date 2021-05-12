@@ -1,18 +1,17 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import WillReadBookItem from './WillReadBookItem';
-import WillReadBooksStyled from './WillReadBooksStyled';
 import Responsive from 'react-responsive';
+import WillReadBookItem from './WillReadBookItem';
 import WillReadBookItemMobile from './WillReadBookItemMobile';
 import { getWillRead } from '../../../redux/selectors/bookSelector';
+import WillReadBooksStyled from './WillReadBooksStyled';
 
 const WillReadBooks = () => {
     const booksWillRead = useSelector(getWillRead);
-    // console.log('WillReadBooks ===> booksWillRead', booksWillRead);
 
     const Tablet = props => <Responsive {...props} minWidth={768} />;
     const Mobile = props => <Responsive {...props} maxWidth={767} />;
+
     return (
         <WillReadBooksStyled className="willReadBooksStyled  container">
             <Tablet>

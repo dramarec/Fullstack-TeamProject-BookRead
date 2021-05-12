@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Modal from '../modal/Modal';
 import back from '../../assets/svg/back.svg';
-import { Link } from 'react-router-dom';
 import pointer from './icons/pointer.png';
 
 const AuthModal = ({ setOpenModal }) => {

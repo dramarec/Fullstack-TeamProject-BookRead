@@ -141,10 +141,8 @@ p {
 }
 
 .mainButton {
-    /*display: flex;*/
     align-items: center;
     justify-content: center;
-    /*padding: 0 26px;*/
     background-color: var(--accent-color);
     border: none;
     font-family: 'Montserrat-Medium';
@@ -191,14 +189,12 @@ p {
     height: 20px;
 }
 
-/* Hide default HTML checkbox */
 .switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
 
-/* The slider */
 .slider {
     position: absolute;
     cursor: pointer;
@@ -246,7 +242,6 @@ input:checked + .slider:before {
     background-position: center;
 }
 
-/* Rounded sliders */
 .slider.round {
     border-radius: 14px;
 }

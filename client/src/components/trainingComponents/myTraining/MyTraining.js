@@ -1,5 +1,4 @@
 import React from 'react';
-//import DescBookList from '../booksLists/desc/DescBookList';
 import FormTraning from '../traningForm/FormTraning';
 
 const MyTraining = () => {
@@ -9,7 +8,6 @@ const MyTraining = () => {
                 <p className="baner__title">Моє тренування</p>
             </div>
             <FormTraning />
-            {/* <DescBookList /> */}
         </div>
     );
 };

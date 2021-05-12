@@ -12,7 +12,7 @@ const DescBookListStyle = styled.div`
         width: 880px;
         margin-buttom: 0px;
     }
-    /* outline: 1px solid red; */
+
     .books-titles {
         color: var(--secondary-text);
         &:before {
@@ -29,13 +29,11 @@ const DescBookListStyle = styled.div`
         }
         &__list {
             display: flex;
-            /* justify-content: space-between; */
             align-items: center;
             height: 40px;
             @media (min-width: 768px) and (max-width: 1279px) {
                 padding-right: 100px;
             }
-            //padding-right: 160px;
         }
         &__item {
             &:first-child {
@@ -50,13 +48,6 @@ const DescBookListStyle = styled.div`
             &:nth-child(3) {
                 margin-right: 60px;
             }
-            /* &:nth-child(2n + 1) {
-                flex-grow: 2;
-                color: red;
-            }
-            &:nth-child(even) {
-                flex-grow: 1;
-            } */
         }
     }
 
@@ -68,11 +59,7 @@ const DescBookListStyle = styled.div`
             width: 100%;
             border-bottom: 1px solid #e0e5eb;
         }
-        /* //margin-bottom: 50px; */
-        /* //height: 60px; */
-        /* @media (min-width: 1280px) { */
-        /* margin-bottom: 40px; */
-        /* } */
+
         &__list {
             padding-top: 20px;
             padding-bottom: 20px;
@@ -80,13 +67,11 @@ const DescBookListStyle = styled.div`
         &__item {
             position: relative;
             &:not(:last-child) {
-                /* border-bottom: 1px solid #e0e5eb; */
                 padding-bottom: 15px;
                 height: 38px;
             }
             display: flex;
 
-            //padding-right: 40px;
             @media (min-width: 1280px) {
                 padding-right: 25px;
                 align-items: center;
@@ -123,32 +108,26 @@ const DescBookListStyle = styled.div`
 
     .books-titles__list p:nth-child(1) {
         @media screen and (min-width: 768px) {
-            //flex: 1.3 1 0%;
             white-space: nowrap;
             margin-right: 165px;
         }
         @media screen and (min-width: 1280px) {
-            /* flex: 4.4 1 0%; */
             margin-right: 280px;
         }
     }
     .books-titles__list p:nth-child(2) {
         @media screen and (min-width: 768px) {
-            /* flex: 1.3 1 0%; */
             margin-right: 146px;
         }
         @media screen and (min-width: 1280px) {
-            /* flex: 2 1 0%; */
             margin-right: 175px;
         }
     }
     .books-titles__list p:nth-child(3) {
         @media screen and (min-width: 768px) {
-            // flex: 0.5 1 0%;
             margin-right: 55px;
         }
         @media screen and (min-width: 1280px) {
-            /* flex: 1 1 0%; */
             margin-right: 90px;
         }
     }
@@ -156,34 +135,22 @@ const DescBookListStyle = styled.div`
         @media screen and (min-width: 768px) {
             flex: 0.4 0 0%;
         }
-        @media screen and (min-width: 1280px) {
-            /* flex: 1 1 0%; */
-        }
     }
     .books-library__item p:nth-child(2) {
         flex: 3 1 0%;
         margin-right: 13px;
     }
     .books-library__item p:nth-child(3) {
-        /* @media screen and (min-width: 768px) {
-            flex: 1.3 1 0%;
-        } */
         @media screen and (min-width: 1280px) {
             flex: 2 1 0%;
         }
     }
     .books-library__item p:nth-child(4) {
-        /* @media screen and (min-width: 768px) {
-            flex: 0.5 1 0%;
-        } */
         @media screen and (min-width: 1280px) {
             flex: 1 1 0%;
         }
     }
     .books-library__item p:nth-child(5) {
-        /* @media screen and (min-width: 768px) {
-            flex: 0.4 0 0%;
-        } */
         @media screen and (min-width: 1280px) {
             flex: 1 1 0%;
         }
@@ -203,9 +170,6 @@ const DescBookListStyle = styled.div`
         outline: none;
         height: 42px;
 
-        /* @media screen and (min-width: 1280px) {
-      margin: 36px 0px 0px 41px;
-    } */
         &:hover,
         &:focus {
             color: #000;
@@ -240,18 +204,15 @@ const DescBookListStyle = styled.div`
         visibility: visible;
         box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         background-color: #f5f5f5;
-        //border-radius: 10px;
     }
     .scrollbar::-webkit-scrollbar-thumb {
         visibility: visible;
         height: 10px;
         width: 5px;
         background-color: var(--secondary-text);
-        // border-radius: 10px;
     }
     .scrollbarText {
         max-height: 173px;
-        //z-index: 1;
         position: relative;
         overscroll-behavior: contain;
         overflow-y: auto;

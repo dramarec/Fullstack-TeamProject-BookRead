@@ -113,25 +113,6 @@ const ReadingBooksStyled = styled.section`
             flex: 1 1 0%;
         }
     }
-    .trans {
-        .tr-enter {
-            opacity: 0;
-        }
-        .tr-enter-active {
-            opacity: 1;
-            transform: translateX(100%);
-            transition: all 250ms linear;
-            // transition: opacity 500ms ease-in;
-        }
-        .tr-exit {
-            opacity: 1;
-        }
-        .tr-exit-active {
-            opacity: 0;
-            transform: translateX(-100%);
-            transition: all 250ms linear;
-        }
-    }
 `;
 
 export default ReadingBooksStyled;

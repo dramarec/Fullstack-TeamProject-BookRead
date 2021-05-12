@@ -60,10 +60,8 @@ const ReadBookItemStyled = styled.li`
     }
 
     .review-button {
-        //padding: 11px 36px;
         background-color: ${props =>
             props.isReview ? 'var(--secondary-text)' : 'var(--accent-color)'};
-        //background-color: #6d7a8d;
         font-family: 'Montserrat-Medium';
         color: #ffffff;
         font-size: 14px;

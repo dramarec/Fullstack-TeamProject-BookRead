@@ -5,8 +5,6 @@ const Wrapper = styled.div`
 
     padding-top: 52px;
     padding-bottom: 42px;
-    /* height: 90vh;
-  width: 100vw; */
 
     @media screen and (max-width: 767px) {
         flex-direction: column;
@@ -47,22 +45,17 @@ const Wrapper = styled.div`
         }
 
         @media screen and (min-width: 768px) and (max-width: 1279px) {
-            //margin: 0px 87px 693px;
             width: 594px;
             margin: 0 auto;
         }
         @media screen and (min-width: 1280px) {
             display: flex;
             flex-direction: row;
-            //margin: 30px 124px 680px 39px;
             width: 1117px;
         }
     }
 
     .bookFormModal {
-        /* display: flex;
-    flex-direction: column; */
-        //align-items: center;
         background-color: #f6f7fb;
         padding: 25px;
         min-width: 320px;
@@ -72,10 +65,7 @@ const Wrapper = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
-        /* margin-top: 15px; */
 
-        @media screen and (min-width: 768px) {
-        }
         @media screen and (min-width: 1280px) {
             flex-direction: row;
         }
@@ -90,21 +80,6 @@ const Wrapper = styled.div`
             margin-right: 15px;
         }
     }
-    /* .bookFormListItem:nth-child(2) {
-    flex-grow: 2;
-    flex-shrink: 1;
-    flex-basis: 0%;
-  }
-  .bookFormListItem:nth-child(3) {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0%;
-  }
-  .bookFormListItem:nth-child(4) {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0%;
-  } */
 
     .bookFormListItemTitle {
         font-family: 'Montserrat-Medium';
@@ -112,11 +87,6 @@ const Wrapper = styled.div`
         line-height: 2.71;
         color: #898f9f;
         margin: 20px 0px 10px 0px;
-
-        @media screen and (min-width: 768px) {
-        }
-        @media screen and (min-width: 1280px) {
-        }
     }
     .bookFormInput {
         font-family: 'Montserrat-Regular';

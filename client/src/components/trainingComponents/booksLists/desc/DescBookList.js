@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import DescBookListStyle from './DescBookListStyle';
 import BookListItem from '../item/BookListItem';
-import book from '../../../../assets/svg/book3.svg';
 import trainingSelector from '../../../../redux/selectors/trainingSelector';
+import book from '../../../../assets/svg/book3.svg';
+import DescBookListStyle from './DescBookListStyle';
 
 const DescBookList = ({ books, onHandleDeleteBook }) => {
     const booksList = useSelector(trainingSelector.trainingBooksList);

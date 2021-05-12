@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import Responsive from 'react-responsive';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { addBookOperation } from '../../redux/operations/bookOperation';
-import back from '../../assets/svg/back.svg';
-import LibraryFormStyled from './LibraryFormStyled';
 import Modal from '../modal/Modal';
 import ButtonAdd from '../buttonAdd/ButtonAdd';
+import { addBookOperation } from '../../redux/operations/bookOperation';
 import {
     getWillRead,
     getNowRead,
     getFinishRead,
 } from '../../redux/selectors/bookSelector';
+import back from '../../assets/svg/back.svg';
+import LibraryFormStyled from './LibraryFormStyled';
 
 const getYear = () => {
     return new Date().getFullYear();

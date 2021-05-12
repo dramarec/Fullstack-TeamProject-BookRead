@@ -1,18 +1,12 @@
-/* eslint-disable react/jsx-no-duplicate-props */
-/* eslint-disable react/style-prop-object */
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import StarRatings from 'react-star-ratings';
 import { changeBookOperation } from '../../../redux/operations/bookOperation';
 import ReviewModalStyled from './ReviewModalStyled';
-import StarRatings from 'react-star-ratings';
 
-const initialState = {
-    review: '',
-    rating: null,
-};
 const ReviewModal = ({ data, closeModal }) => {
     const dispatch = useDispatch();
-    const [book, setBook] = useState({ ...data /*, ...initialState*/ });
+    const [book, setBook] = useState({ ...data });
     const [rating, setRating] = useState();
     const [showError, setShowError] = useState(false);
     const [change, setChange] = useState(false);
@@ -32,7 +26,7 @@ const ReviewModal = ({ data, closeModal }) => {
                 rating: rating,
             }),
         );
-        setBook({ ...book /*, ...initialState*/ });
+        setBook({ ...book });
     };
     const isChange = () => {
         setChange(true);
@@ -41,7 +35,7 @@ const ReviewModal = ({ data, closeModal }) => {
     const changeRating = newRating => {
         setRating(newRating);
     };
-    //console.log('CHANGE', change);
+
     return (
         <ReviewModalStyled isReview={data.review} onSubmit={onHandleSubmit}>
             {!data.review && (
@@ -96,7 +90,6 @@ const ReviewModal = ({ data, closeModal }) => {
             {data.review && !change && (
                 <p className="current-resume">{data.review}</p>
             )}
-            {/*!change && <p className="current-resume">{data.review}</p>*/}
             <div className="button-group">
                 <button
                     type="button"

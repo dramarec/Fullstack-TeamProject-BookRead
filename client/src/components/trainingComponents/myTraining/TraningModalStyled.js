@@ -9,7 +9,6 @@ const TraningMadalStyled = styled.div`
             flex-direction: column;
             align-items: center;
             height: 60vh;
-            //width: 73vw;
         }
     }
 
@@ -119,13 +118,6 @@ const TraningMadalStyled = styled.div`
             margin-top: 35px;
         }
 
-        @media screen and (min-width: 768px) {
-            //margin-top: 40px;
-        }
-        @media screen and (min-width: 1280px) {
-            //margin-top: 40px;
-        }
-
         &:hover,
         &:focus {
             color: #f6f7fb;
@@ -151,7 +143,6 @@ const TraningMadalStyled = styled.div`
         height: 42px;
 
         @media screen and (max-width: 767px) {
-            //display: none;
             margin-bottom: 40px;
         }
 

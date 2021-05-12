@@ -27,18 +27,7 @@ const mainRoutes = [
         isPrivate: false,
         restricted: true,
     },
-    /*{
-    path: '/signup/rules',
-    name: 'Регістрація',
-    exact: true,
-    component: lazy(() =>
-      import(
-        '../pages/signup/RegisterPage' /* webpackChunkName: "SignUpPage"*/
-    /* ),
-    ),
-    isPrivate: false,
-    restricted: true,
-  },*/
+
     {
         path: '/library',
         name: 'бібліотека',

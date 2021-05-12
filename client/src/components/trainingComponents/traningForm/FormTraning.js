@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
 import { useFormik } from 'formik';
 import moment from 'moment';
-import Select from './selectBooks/Selector';
 import DescBookList from '../booksLists/desc/DescBookList';
 import InputDatePicker from '../dataPicker/PickerData';
-import FormTraningStyle from './FormTraningStyle';
-import trainingOperation from '../../../redux/operations/trainingOperation';
-import { CSSTransition } from 'react-transition-group';
 import { Notif } from './Notification';
 import { validationSchema } from '../ValidationTrainingForm';
+import trainingOperation from '../../../redux/operations/trainingOperation';
+import Select from './selectBooks/Selector';
+import FormTraningStyle from './FormTraningStyle';
 
 const FormTraning = () => {
     const dispatch = useDispatch();
@@ -54,7 +54,6 @@ const FormTraning = () => {
 
     const handleBook = value => {
         formik.setFieldValue('book', value);
-        // dispatch(trainingActions.addBookInTraining(value._id));
     };
 
     const books = booksArr.map(book => book._id);
@@ -123,7 +122,6 @@ const FormTraning = () => {
             <DescBookList
                 onHandleDeleteBook={onHandleDeleteBook}
                 books={booksArr}
-                // books={booksArray}
             />
 
             {booksArr.length > 0 && (
@@ -136,38 +134,3 @@ const FormTraning = () => {
 };
 
 export default FormTraning;
-
-// const handleStartDate = date => {
-//     const startDate = moment(date).format('YYYY-MM-DD');
-//     dispatch(trainingActions.setStartDateTraining(startDate));
-// };
-// const handleEndDate = date => {
-//     const endDate = moment(date).format('YYYY-MM-DD');
-//     dispatch(trainingActions.setEndDateTraining(endDate));
-// };
-
-// // const onHandleChange = (e) => {
-// //   const { name, value } = e.target;
-// //   setState((prev) => ({ ...prev, [name]: value }));
-// // };
-
-// const initialState = {
-// firstName: "",
-// lastName: "",
-// stack: "HTML",
-// position: "Mentor",
-// };
-
-// const TutorForm = () => {
-// // const isLoading = useSelector((state) => state.tutors.isLoading);
-// const [state, setState] = useState({ ...initialState });
-// const dispatch = useDispatch();
-
-// const onHandleChange = (evt) => {
-//   const { name, value } = evt.target;
-//   setState((prev) => ({ ...prev, [name]: value }));
-// };
-
-// const onHandleSubmit = (e) => {
-//   e.preventDefault();
-//   dispatch(addNew)

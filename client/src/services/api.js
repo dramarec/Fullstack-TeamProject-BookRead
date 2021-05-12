@@ -5,7 +5,6 @@ class bookReadApi {
         axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
     }
 
-    // auth end-points
     reg(newUser) {
         return axios
             .post('/users/auth/register', newUser)
@@ -45,7 +44,6 @@ class bookReadApi {
         axios.defaults.headers.common.Authorization = '';
     }
 
-    // library end-points
     addBook(book) {
         return axios
             .post('/books', book)
@@ -64,7 +62,6 @@ class bookReadApi {
             });
     }
 
-    // training end-points
     addTraining(training) {
         return axios
             .post('/training', training)
@@ -92,7 +89,6 @@ class bookReadApi {
             });
     }
 
-    // user end-point
     getLibraryInfo() {
         return axios
             .get('/users/user')

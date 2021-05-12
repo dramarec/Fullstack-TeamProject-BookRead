@@ -10,11 +10,9 @@ const MobBookListStyle = styled.div`
         font-size: 12px;
         line-height: 38px;
         color: var(--secondary-text);
-        /* outline: 1px solid red; */
         width: 270px;
         margin-left: auto;
         margin-right: auto;
-        //margin-bottom: 30px;
 
         &__img {
             width: 20px;
@@ -44,8 +42,7 @@ const MobBookListStyle = styled.div`
             padding-bottom: 15px;
         }
     }
-    .recharts-surface {
-    }
+
     .helpers {
         display: flex;
         justify-content: space-between;
@@ -57,7 +54,6 @@ const MobBookListStyle = styled.div`
     .readItem {
         display: flex;
         flex-direction: column;
-        //color: tomato;
         color: var(--secondary-text);
     }
     .readItem:not(:last-child) {
@@ -81,12 +77,10 @@ const MobBookListStyle = styled.div`
 
         font-size: 12px;
         line-height: 1.25;
-        //line-height: 3.67;
         color: var(--main-text);
     }
     .books-library__card {
         display: flex;
-        //margin: auto;
         float: right;
         background-color: inherit;
         outline: none;

@@ -42,9 +42,9 @@ export const loadingReducer = createReducer(false, {
     [trainingActions.newTrainingSuccess]: () => false,
     [trainingActions.newTrainingError]: () => false,
 
-    // [trainingActions.addReadPagesRequest]: () => true,
-    // [trainingActions.addReadPagesSuccess]: () => false,
-    // [trainingActions.addReadPagesError]: () => false,
+    [trainingActions.addReadPagesRequest]: () => true,
+    [trainingActions.addReadPagesSuccess]: () => false,
+    [trainingActions.addReadPagesError]: () => false,
 
     [trainingActions.getTrainingRequest]: () => true,
     [trainingActions.getTrainingSuccess]: () => false,

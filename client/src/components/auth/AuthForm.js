@@ -1,13 +1,13 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useLocation, Link, useRouteMatch } from 'react-router-dom';
-import AuthFormStyled from './AuthFormStyled';
-import Two from './icons/two';
-import GoogleAuthBtn from './GoogleAuthBtn';
 import { useState } from 'react';
-import pointer from './icons/pointer.png';
+import { useLocation, Link } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import GoogleAuthBtn from './GoogleAuthBtn';
 import AuthModal from './AuthModal';
 import { InvalidNotif, UseNotif } from './Notificitaions';
-import { CSSTransition } from 'react-transition-group';
+import pointer from './icons/pointer.png';
+import Two from './icons/two';
+import AuthFormStyled from './AuthFormStyled';
 
 const AuthForm = ({
     handleSubmit,
@@ -16,17 +16,12 @@ const AuthForm = ({
     setShowNotif,
 }) => {
     const location = useLocation();
-    //const match = useRouteMatch();
     const [isOpenModal, setOpenModal] = useState(false);
 
     const onModal = () => {
         setOpenModal(true);
     };
 
-    /*const closeModal = () => {
-        setOpenModal(false);
-    };*/
-    console.log(isOpenModal);
     const initialState =
         location.pathname === '/signup'
             ? {
@@ -49,7 +44,7 @@ const AuthForm = ({
                         }}
                     >
                         {({ errors, touched }) => (
-                            /* location.pathname !== '/signup/rules' &&*/ <Form className="authForm">
+                            <Form className="authForm">
                                 <GoogleAuthBtn />
 
                                 {location.pathname === '/signup' && (
@@ -179,52 +174,44 @@ const AuthForm = ({
                                         ? 'Зареєструватися'
                                         : 'Увійти'}
                                 </button>
-                                {
-                                    location.pathname === '/signup' ? (
-                                        <button
-                                            className="mainButton authFormBtnSec"
-                                            type="button"
-                                        >
-                                            <Link
-                                                to="/"
-                                                className="buttonSignUpMain"
-                                            >
-                                                <p className="buttonSignUpMain__text">
-                                                    Вже з нами?{' '}
-                                                    <span className="buttonSignUpMain__link">
-                                                        {' '}
-                                                        Увійти{' '}
-                                                    </span>{' '}
-                                                </p>
-                                            </Link>
-                                        </button>
-                                    ) : /*<button
+                                {location.pathname === '/signup' ? (
+                                    <button
                                         className="mainButton authFormBtnSec"
                                         type="button"
-                                        onClick={onModal}
-                                    >*/
-                                    window.innerWidth < 768 ? (
-                                        <button
-                                            type="button"
-                                            onClick={onModal}
-                                            className="mainButton authFormBtnSec buttonSignUpMain"
-                                        >
-                                            <span className="buttonSignUpMain__link">
-                                                Реєстрація
-                                            </span>
-                                        </button>
-                                    ) : (
+                                    >
                                         <Link
-                                            to="/signup"
-                                            className="mainButton authFormBtnSec buttonSignUpMain"
+                                            to="/"
+                                            className="buttonSignUpMain"
                                         >
-                                            <span className="buttonSignUpMain__link">
-                                                Реєстрація
-                                            </span>
+                                            <p className="buttonSignUpMain__text">
+                                                Вже з нами?{' '}
+                                                <span className="buttonSignUpMain__link">
+                                                    {' '}
+                                                    Увійти{' '}
+                                                </span>{' '}
+                                            </p>
                                         </Link>
-                                    )
-                                    /* </button>*/
-                                }
+                                    </button>
+                                ) : window.innerWidth < 768 ? (
+                                    <button
+                                        type="button"
+                                        onClick={onModal}
+                                        className="mainButton authFormBtnSec buttonSignUpMain"
+                                    >
+                                        <span className="buttonSignUpMain__link">
+                                            Реєстрація
+                                        </span>
+                                    </button>
+                                ) : (
+                                    <Link
+                                        to="/signup"
+                                        className="mainButton authFormBtnSec buttonSignUpMain"
+                                    >
+                                        <span className="buttonSignUpMain__link">
+                                            Реєстрація
+                                        </span>
+                                    </Link>
+                                )}
                             </Form>
                         )}
                     </Formik>

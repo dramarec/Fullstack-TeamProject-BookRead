@@ -17,9 +17,6 @@ const Wrapper = styled.div`
         background-color: inherit;
     }
 
-    .trainingModal {
-    }
-
     .modalImg {
         margin: 15px auto 15px;
         width: 60px;
@@ -45,10 +42,6 @@ const Wrapper = styled.div`
         background-color: var(--accent-color);
         outline: none;
         height: 40px;
-
-        @media screen and (min-width: 1280px) {
-            //margin: 36px 0px 0px 41px;
-        }
     }
 `;
 
