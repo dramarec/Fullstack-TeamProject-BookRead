@@ -4,6 +4,7 @@ const AppBarStyled = styled.header`
     z-index: 20;
     position: relative;
     font-family: 'Montserrat-Regular';
+    background-color: #fff;
 
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
     .container {
@@ -69,7 +70,10 @@ const AppBarStyled = styled.header`
         @media screen and (min-width: 768px) {
             order: 0;
             margin-right: auto;
-            margin-left: auto;
+            margin-left: 260px;
+        }
+        @media screen and (min-width: 1280px) {
+            margin-left: 520px;
         }
         &__icon {
             display: flex;

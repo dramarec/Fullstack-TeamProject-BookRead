@@ -31,9 +31,17 @@ const Chart = () => {
     const result = training.results?.map(item => {
         return item.date;
     });
-    for (let i = 0; i < result?.length; i++) {
-        result[i] != result[i - 1] && plan.push(result[i]);
-    }
+    const unique = result => {
+        if (result?.length > 0) {
+            for (let item of result) {
+                if (!plan.includes(item)) {
+                    plan.push(item);
+                }
+            }
+            return plan;
+        }
+    };
+    unique(result);
 
     const fact = data =>
         training.results?.reduce((sum, result) => {
@@ -59,28 +67,11 @@ const Chart = () => {
         ФАКТ: 1,
     });
 
-    /*const handleMouseEnter = useCallback(
-        o => {
-            const { dataKey } = o;
-            setOpacity({ ...opacity, [dataKey]: 0.5 });
-        },
-        [opacity, setOpacity],
-    );
-
-    const handleMouseLeave = useCallback(
-        o => {
-            const { dataKey } = o;
-            setOpacity({ ...opacity, [dataKey]: 1 });
-        },
-        [opacity, setOpacity],
-    );*/
-
     const renderColorfulLegendText = value => {
         return <span className="legend">{value}</span>;
     };
 
     return (
-        // <div >
         <ChartWrapper className="chartWrapper">
             <div className="title-wrap">
                 <h2 className="title">кiлькiсть сторiнок / день</h2>
@@ -90,7 +81,7 @@ const Chart = () => {
             </div>
             <Tablet>
                 <div className="chart-box">
-                    <ResponsiveContainer width="100%" height={290}>
+                    <ResponsiveContainer width="100%" height={245}>
                         <LineChart
                             data={data}
                             margin={{
