@@ -9,14 +9,11 @@ const ReadBookItemMobileStyled = styled.li`
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
     margin-bottom: 15px;
     margin-top: 10px;
-    //width: 270px;
     .flex {
         display: flex;
         align-items: center;
     }
-    .bookName {
-        //padding: 0 61px 0 20px;
-    }
+
     .bookName p {
         line-height: 14.6px;
     }

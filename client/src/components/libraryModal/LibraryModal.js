@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Responsive from 'react-responsive';
+import Modal from '../modal/Modal';
 import book from '../../assets/svg/book3.svg';
 import vector from '../../assets/svg/vector.svg';
 import flag from '../../assets/svg/flag.svg';
 import LibraryModalStyled from './LibraryModalStyled';
-import Modal from '../modal/Modal';
 
 const LibraryModal = () => {
     const [isOpenModal, setIsOpenModal] = useState(true);

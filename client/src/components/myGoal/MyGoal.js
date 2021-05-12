@@ -3,9 +3,7 @@ import { useSelector } from 'react-redux';
 import { getTraining } from '../../redux/selectors/bookSelector';
 import MyGoalStyled from './MyGoalStyled';
 
-const MyGoal = ({ startTraining, training }) => {
-    //const [startTraning, setStartTraning] = useState(false)
-    //console.log('startTraining', startTraining);
+const MyGoal = ({ startTraining }) => {
     const isTraining = useSelector(getTraining);
     let bookRead = 0;
     let booksLeft;
@@ -17,8 +15,7 @@ const MyGoal = ({ startTraining, training }) => {
         }
         booksLeft = isTraining.books.length - bookRead;
     }
-    //console.log('book', isTraining);
-    //console.log('array', booksLeft);
+
     return (
         <MyGoalStyled className="myGoalStyled" startTraining={startTraining}>
             <div className="statistic-title">

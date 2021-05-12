@@ -14,7 +14,6 @@ const TimerToDayStyled = styled.section`
     }
     @media screen and (min-width: 1280px) {
         margin-top: 0px;
-        /* margin-bottom: 41px; */
         width: 886px;
     }
 

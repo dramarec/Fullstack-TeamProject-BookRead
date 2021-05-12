@@ -2,17 +2,16 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import mainRoutes from '../../routes/routes';
-import AppBarStyled from './AppBarStyled';
-import Modal from '../modal/Modal';
 import authOperations from '../../redux/operations/authOperation';
 import authSelectors from '../../redux/selectors/authSelector';
+import Modal from '../modal/Modal';
+import AppBarStyled from './AppBarStyled';
 
 const AppBar = () => {
     const dispatch = useDispatch();
 
-    const isAuth = useSelector(state => state.auth.token);
+    const isAuth = useSelector(authSelectors.isAuthSelect);
     const name = useSelector(authSelectors.getUserName);
-    // console.log(name);
 
     const [showModal, setShowModal] = useState(false);
 

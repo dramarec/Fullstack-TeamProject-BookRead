@@ -1,11 +1,11 @@
-import book from '../../../assets/svg/book.svg';
-import ReadBookItemMobileStyled from './ReadBookItemMobileStyled';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import StarRatings from 'react-star-ratings';
 import Modal from '../../modal/Modal';
 import ReviewModal from '../reviewModal/ReviewModal';
-import StarRatings from 'react-star-ratings';
-import { useState } from 'react';
 import { getFinishRead } from '../../../redux/selectors/bookSelector';
+import book from '../../../assets/svg/book.svg';
+import ReadBookItemMobileStyled from './ReadBookItemMobileStyled';
 
 const ReadingBookItemMobile = ({ item }) => {
     const [data, setData] = useState({});

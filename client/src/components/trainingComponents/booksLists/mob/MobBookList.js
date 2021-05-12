@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import book from '../../../../assets/svg/book3.svg';
-import trainingSelector from '../../../../redux/selectors/trainingSelector';
 import MobBookItem from './MobBookItem';
+import trainingSelector from '../../../../redux/selectors/trainingSelector';
+import book from '../../../../assets/svg/book3.svg';
 import MobBookListStyle from './MobBookListStyle';
 
 const MobBookList = ({ books, onHandleDeleteBook }) => {

@@ -61,8 +61,7 @@ const AuthFormContainer = () => {
                 }),
             );
         } catch (err) {
-            err.message === 'Email in use' && console.log('Email in use');
-            setShowNotif(true);
+            err.message === 'Email in use' && setShowNotif(true);
         }
     };
 
@@ -71,9 +70,7 @@ const AuthFormContainer = () => {
             await dispatch(authOperations.logInOperation(values));
             await dispatch(getUsersBooksOperetion());
         } catch (err) {
-            err.message === 'Email or password is wrong' &&
-                console.log('Email or password is wrong');
-            setShowNotif(true);
+            err.message === 'Email or password is wrong' && setShowNotif(true);
         }
     };
 

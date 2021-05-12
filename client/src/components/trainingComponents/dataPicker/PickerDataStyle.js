@@ -4,9 +4,7 @@ const Wrapper = styled.div`
     position: relative;
 
     @media (max-width: 767px) {
-        //display: none;
         display: flex;
-        //justify-content: center;
     }
 
     @media (min-width: 768px) {
@@ -26,7 +24,6 @@ const Wrapper = styled.div`
         outline: none;
         height: 42px;
         width: 270px;
-        /* text-align: center; */
         font-family: 'Montserrat-Regular';
         font-size: 14px;
         line-height: 2.71;
@@ -41,7 +38,6 @@ const Wrapper = styled.div`
         }
         &:focus {
             box-shadow: inset 1px 1px 1px rgba(30, 30, 30, 0.1);
-            /* border: 1px solid var(--accent-color); */
         }
     }
 `;

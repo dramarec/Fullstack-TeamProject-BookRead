@@ -1,15 +1,15 @@
-import ResultStyled from './ResultStyled';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import 'react-datepicker/dist/react-datepicker.css';
-import trainingOperation from '../../redux/operations/trainingOperation';
 import Statistics from '../statistic/Statistics';
 import EndTrainingModal from '../endTrainingMdl/EndTrainingModal';
+import trainingOperation from '../../redux/operations/trainingOperation';
 import trainingSelector from '../../redux/selectors/trainingSelector';
+import ResultStyled from './ResultStyled';
 
 const Result = () => {
     const dispatch = useDispatch();

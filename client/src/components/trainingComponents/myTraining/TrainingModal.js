@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
 import { useFormik } from 'formik';
 import moment from 'moment';
 import InputDatePicker from '../dataPicker/PickerData';
-import Selector from '../traningForm/selectBooks/Selector';
 import ButtonAdd from '../../buttonAdd/ButtonAdd';
 import Modal from '../../modal/Modal';
-import back from '../../../assets/svg/back.svg';
-import TraningMadalStyled from './TraningModalStyled';
 import MobBookList from '../booksLists/mob/MobBookList';
-import trainingOperation from '../../../redux/operations/trainingOperation';
-import { CSSTransition } from 'react-transition-group';
 import { Notif } from '../traningForm/Notification';
 import { validationSchema } from '../ValidationTrainingForm';
+import Selector from '../traningForm/selectBooks/Selector';
+import trainingOperation from '../../../redux/operations/trainingOperation';
+import back from '../../../assets/svg/back.svg';
+import TraningMadalStyled from './TraningModalStyled';
 
 const TrainingModal = () => {
     const dispatch = useDispatch();
@@ -79,7 +79,6 @@ const TrainingModal = () => {
             }),
         );
     };
-    console.log(`booksArr`, booksArr);
 
     return (
         <TraningMadalStyled>

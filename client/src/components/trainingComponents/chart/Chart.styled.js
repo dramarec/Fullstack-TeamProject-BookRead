@@ -73,12 +73,9 @@ const ChartWrapper = styled.div`
         font-size: 12px;
         line-height: 32px;
         background-color: #f5f7fa;
-        /* color: #091E3F; */
         box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
     }
-    /* .recharts-default-legend {
-        margin: 40px;
-    } */
+
     .text-x-line {
         margin-top: -10px;
         padding-right: 20px;
@@ -88,9 +85,6 @@ const ChartWrapper = styled.div`
         line-height: 3.16;
         text-transform: uppercase;
         color: #091e3f;
-        /* @media screen and (min-width: 1280px) {
-            margin-top: -37px;
-        } */
     }
 `;
 

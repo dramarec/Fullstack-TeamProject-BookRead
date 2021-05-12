@@ -54,7 +54,6 @@ const AuthFormStyled = styled.div`
         flex: 2 1 0;
         @media (min-width: 1280px) {
             padding-top: ${props => (props.path ? '92px' : '185px')};
-            //padding-top: 185px;
         }
     }
     .buttonSignUpMain__text {
@@ -83,7 +82,6 @@ const AuthFormStyled = styled.div`
         background: url(${bgMob}), url(${imgMob});
         background-repeat: no-repeat;
         background-size: cover;
-        //min-height: 444px;
         max-height: 656px;
         width: 100%;
     }
@@ -154,7 +152,6 @@ const AuthFormStyled = styled.div`
         font-size: 14px;
         line-height: 1.21;
         letter-spacing: 0.04em;
-        //margin-bottom: 25px;
     }
     .authFormInput {
         font-family: 'Montserrat-Regular';
@@ -175,7 +172,6 @@ const AuthFormStyled = styled.div`
 
     .div-for-fl {
         width: fit-content;
-        background: #ffffff;
         margin: 0 auto;
     }
 
@@ -255,7 +251,6 @@ const AuthFormStyled = styled.div`
         }
         .div-for-fl {
             width: fit-content;
-            background: #ffffff;
             margin: 0 auto;
         }
         .svg {
@@ -313,8 +308,6 @@ const AuthFormStyled = styled.div`
         .bg-ph {
             max-height: 100%;
             margin-bottom: -100px;
-            //max-height: 790px;
-            //height: 790px;
             background: url(${bgDec}), url(${picTest});
             background-repeat: no-repeat;
             width: 100%;
@@ -391,13 +384,11 @@ const AuthFormStyled = styled.div`
         font-weight: normal;
         font-size: 34px;
         line-height: 1.1;
-        //padding-top: 30px;
     }
     .titleSignUp {
         font-family: 'Montserrat-Medium';
         font-weight: 500;
         font-size: 20px;
-        //margin-top: 20px;
         line-height: 1.9;
         margin-bottom: 4px;
         @media (max-width: 767px) {
@@ -449,7 +440,6 @@ const AuthFormStyled = styled.div`
     }
 
     .buttonSignUpMain {
-        //width: 127px;
         height: 40px;
         color: #ff6b08;
         margin-top: 5px;
@@ -491,7 +481,6 @@ const AuthFormStyled = styled.div`
             padding-bottom: 93px;
         }
         .mainTitleSignUp {
-            //padding-top: 133px;
             text-align: center;
             margin-bottom: 52px;
             margin-right: 90px;

@@ -1,12 +1,12 @@
 import React, { useState, memo, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import thumb_up from '../../assets/svg/thumb_up.svg';
-import EndTrainingModalStyled from './EndTrainingModalStyled';
 import Modal from '../modal/Modal';
-import trainingSelector from '../../redux/selectors/trainingSelector';
 import { getUsersBooksOperetion } from '../../redux/operations/bookOperation';
 import trainingActions from '../../redux/actions/trainingActions';
+import trainingSelector from '../../redux/selectors/trainingSelector';
+import thumb_up from '../../assets/svg/thumb_up.svg';
+import EndTrainingModalStyled from './EndTrainingModalStyled';
 
 const EndTrainingModal = memo(() => {
     const dispatch = useDispatch();
@@ -15,7 +15,6 @@ const EndTrainingModal = memo(() => {
 
     const totalReadPages = useSelector(trainingSelector.getTotalReadPages);
     const totalPages = useSelector(trainingSelector.getTotalPages);
-    // const training = useSelector(state => state.auth.user.training);
 
     const closeModal = () => {
         dispatch(trainingActions.clearTraining());

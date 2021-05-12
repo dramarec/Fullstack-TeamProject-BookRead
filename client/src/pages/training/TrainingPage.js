@@ -1,38 +1,19 @@
-import React, { useEffect, memo } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { memo } from 'react';
+import { useSelector } from 'react-redux';
 import Responsive from 'react-responsive';
-import TrainingPageStyled from './TrainingPageStyled';
 import Chart from '../../components/trainingComponents/chart/Chart';
 import MyTraining from '../../components/trainingComponents/myTraining/MyTraining';
+import TrainingModal from '../../components/trainingComponents/myTraining/TrainingModal';
 import TimersSet from '../../components/timer/TimersSet';
 import MyGoal from '../../components/myGoal/MyGoal';
-import DescBookList from '../../components/trainingComponents/booksLists/desc/DescBookList';
 import Result from '../../components/result/Result';
-import trainingOperation from '../../redux/operations/trainingOperation';
-import { getTraining } from '../../redux/selectors/bookSelector';
+import DescBookList from '../../components/trainingComponents/booksLists/desc/DescBookList';
 import MobBookList from '../../components/trainingComponents/booksLists/mob/MobBookList';
-import TrainingModal from '../../components/trainingComponents/myTraining/TrainingModal';
+import { getTraining } from '../../redux/selectors/bookSelector';
+import TrainingPageStyled from './TrainingPageStyled';
 
 const TrainingPage = memo(() => {
-    const dispatch = useDispatch();
-    const training = useSelector(state => state.auth.user.training);
-    const isAuth = useSelector(state => state.auth.token);
-
     const isTraining = useSelector(getTraining);
-
-    // const trainingAction = async () => {
-    //     try {
-    //         training !== null &&
-    //             (await dispatch(trainingOperation.getTrainingOperation()));
-    //     } catch (err) {
-    //         return;
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     isAuth && trainingAction();
-    //     // eslint-disable-next-line
-    // }, []);
 
     const Desktop = props => <Responsive {...props} minWidth={1280} />;
     const Tablet = props => (
@@ -42,14 +23,7 @@ const TrainingPage = memo(() => {
 
     return (
         <TrainingPageStyled className="trainingPageStyled training">
-            <div
-                // className={
-                //     isTraining.duration !== 0
-                //         ? 'container containerWrap'
-                //         : 'container'
-                // }
-                className="container containerWrap"
-            >
+            <div className="container containerWrap">
                 <Desktop>
                     {isTraining.duration !== 0 ? (
                         <>

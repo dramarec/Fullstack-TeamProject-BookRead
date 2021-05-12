@@ -5,8 +5,8 @@ import ReadBooks from '../../components/library/readBooks/ReadBooks';
 import ReadingBooks from '../../components/library/readingBooks/ReadingBooks';
 import WillReadBooks from '../../components/library/willReadBooks/WillReadBooks';
 import LibraryForm from '../../components/libraryForm/LibraryForm';
-import LibraryPageStyled from './LibraryPagesStyled';
 import LibraryModal from '../../components/libraryModal/LibraryModal';
+import StartTrainingBtn from '../../components/library/StartTrainingBtn';
 import { getUsersBooksOperetion } from '../../redux/operations/bookOperation';
 import {
     getWillRead,
@@ -14,17 +14,16 @@ import {
     getFinishRead,
     getUserTraining,
 } from '../../redux/selectors/bookSelector';
-import StartTrainingBtn from '../../components/library/StartTrainingBtn';
+import authSelectors from '../../redux/selectors/authSelector';
+import LibraryPageStyled from './LibraryPagesStyled';
 
 const LibraryPage = memo(() => {
     const dispatch = useDispatch();
     const booksWillRead = useSelector(getWillRead);
     const bookNowRead = useSelector(getNowRead);
     const bookFinished = useSelector(getFinishRead);
-    const isAuth = useSelector(state => state.auth.token);
+    const isAuth = useSelector(authSelectors.isAuthSelect);
     const isTraining = useSelector(getUserTraining);
-
-    console.log(`isTraining`, isTraining);
 
     useEffect(() => {
         isAuth && dispatch(getUsersBooksOperetion());
@@ -35,7 +34,6 @@ const LibraryPage = memo(() => {
     const Mobile = props => <Responsive {...props} maxWidth={767} />;
 
     return (
-        // <LibraryPageStyled className="libraryPageStyled library">
         <LibraryPageStyled
             className={
                 booksWillRead.length > 0

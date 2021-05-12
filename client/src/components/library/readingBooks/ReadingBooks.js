@@ -1,18 +1,16 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Responsive from 'react-responsive';
 import ReadingBookItem from './ReadingBookItem';
 import ReadBookItemMobile from './ReadingBookItemMobile';
-import ReadingBooksStyled from './ReadingBooksStyled';
-import Responsive from 'react-responsive';
 import { getNowRead } from '../../../redux/selectors/bookSelector';
+import ReadingBooksStyled from './ReadingBooksStyled';
 
-const ReadingBooks = (/*{ bookNowRead }*/) => {
-    //console.log('ReadingBooks ===> bookNowRead', bookNowRead);
-    //const  nowArray = useSelector(librarySelector.getUsersreadNow);
-    //console.log(now);
+const ReadingBooks = () => {
     const bookNowRead = useSelector(getNowRead);
     const Tablet = props => <Responsive {...props} minWidth={768} />;
     const Mobile = props => <Responsive {...props} maxWidth={767} />;
+
     return (
         <ReadingBooksStyled className="readingBooksStyled container">
             <Tablet>

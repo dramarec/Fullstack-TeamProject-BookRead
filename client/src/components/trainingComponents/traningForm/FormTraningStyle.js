@@ -8,7 +8,6 @@ const FormTraningStyle = styled.div`
         flex-direction: column;
         align-items: center;
         height: 60vh;
-        //width: 73vw;
     }
 
     .training-form {
@@ -94,13 +93,6 @@ const FormTraningStyle = styled.div`
 
         @media screen and (max-width: 767px) {
             margin-top: 35px;
-        }
-
-        @media screen and (min-width: 768px) {
-            //margin-top: 40px;
-        }
-        @media screen and (min-width: 1280px) {
-            //margin-top: 40px;
         }
 
         &:hover,

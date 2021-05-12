@@ -16,7 +16,7 @@ const initialState = {
 };
 
 const trainingReducer = createReducer(initialState, {
-    [trainingActions.newTrainingSuccess]: (state, { payload }) => {
+    [trainingActions.newTrainingSuccess]: (_, { payload }) => {
         return {
             _id: payload._id,
             start: payload.start,
