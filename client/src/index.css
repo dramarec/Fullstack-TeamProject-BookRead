@@ -22,7 +22,7 @@ html {
 body {
     margin: 0;
     font-family: Verdana;
-    background-color: white;
+    background-color: var(--main-background);
     color: black;
 }
 

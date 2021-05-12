@@ -11,8 +11,6 @@ const ChartWrapper = styled.div`
     @media screen and (max-width: 767px) {
         margin: 0 auto 30px;
     }
-    /* margin: 0 auto 46px; */
-    //width: 270px;
     width: 270px;
     padding: 14px 21px 5px 22px;
     background: #ffffff;
@@ -90,6 +88,9 @@ const ChartWrapper = styled.div`
         line-height: 3.16;
         text-transform: uppercase;
         color: #091e3f;
+        /* @media screen and (min-width: 1280px) {
+            margin-top: -37px;
+        } */
     }
 `;
 

@@ -4,7 +4,11 @@ import moment from 'moment';
 export const validationSchema = Yup.object().shape({
     start: Yup.date()
         .required('Вкажіть дату початку тренування')
-        .max(Yup.ref('end'), 'Не коректна дата початку!'),
+        .max(
+            moment(Date.now()).format('YYYY-MM-DD'),
+            'Повинна бути сьогодняшня дата!',
+        ),
+
     end: Yup.date()
         .required('Вкажіть дату завершення тренування')
         .min(Yup.ref('start'), 'Вибіріть коректну дату')
