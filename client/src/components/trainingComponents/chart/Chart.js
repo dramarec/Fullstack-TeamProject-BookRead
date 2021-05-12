@@ -61,7 +61,7 @@ const Chart = () => {
             ФАКТ: fact(plan[num]),
         });
     }
-    const [opacity, setOpacity] = useState({
+    const [opacity] = useState({
         ПЛАН: 1,
         ФАКТ: 1,
     });

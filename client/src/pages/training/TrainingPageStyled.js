@@ -11,6 +11,11 @@ const TrainingPageStyled = styled.div`
             height: 100vh;
         }
     }
+    .bottomPart {
+        @media (min-width: 1280px) {
+            margin-top: 40px;
+        }
+    }
     .topPart1 {
         @media (min-width: 1280px) {
             display: flex;

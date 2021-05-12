@@ -33,6 +33,7 @@ const App = () => {
     useEffect(() => {
         googleToken?.accessToken &&
             dispatch(authOperations.logInWithGoogleOperation(googleToken));
+        // eslint-disable-next-line
     }, []);
 
     const trainingAction = async () => {
@@ -47,10 +48,12 @@ const App = () => {
     };
     useEffect(() => {
         isAuth && dispatch(getUsersBooksOperetion());
+        // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
         isAuth && trainingAction();
+        // eslint-disable-next-line
     }, [training]);
 
     useEffect(() => {
@@ -59,6 +62,7 @@ const App = () => {
         setTimeout(() => {
             setPreloader(false);
         }, 3000);
+        // eslint-disable-next-line
     }, []);
 
     const closeModal = () => {
