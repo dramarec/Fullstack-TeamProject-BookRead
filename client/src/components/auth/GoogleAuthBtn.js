@@ -6,7 +6,7 @@ const GoogleAuthBtn = () => {
     return (
         <GoogleAuthStyle>
             <a
-                href="http://localhost:5000/api/users/auth/google"
+                href={process.env.REACT_APP_GOOGLE_BASE_URL}
                 className="google-btn"
             >
                 <img
